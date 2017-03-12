@@ -34,7 +34,7 @@
       <file leaf-file-name="list.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/web/member/list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45251396" vertical-offset="14457" max-vertical-offset="16950">
+            <state vertical-scroll-proportion="0.59217876" vertical-offset="14382" max-vertical-offset="16950">
               <caret line="588" column="23" selection-start-line="588" selection-start-column="23" selection-end-line="588" selection-end-column="23" />
               <folding>
                 <marker date="1489292238193" expanded="true" signature="1824:1937" placeholder="select * fro..." />
@@ -452,7 +452,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -604,7 +604,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/web/member/list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45251396" vertical-offset="14457" max-vertical-offset="16950">
+        <state vertical-scroll-proportion="0.59217876" vertical-offset="14382" max-vertical-offset="16950">
           <caret line="588" column="23" selection-start-line="588" selection-start-column="23" selection-end-line="588" selection-end-column="23" />
           <folding>
             <marker date="1489292238193" expanded="true" signature="1824:1937" placeholder="select * fro..." />

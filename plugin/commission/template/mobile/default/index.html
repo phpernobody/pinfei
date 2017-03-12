@@ -12,66 +12,57 @@
 		<div class="title">{php echo $this->set['texts']['center']}</div>
 		<div class="fui-header-right"></div>
 	</div>
-    <div class='fui-content navbar'>
+
+	<div class='fui-content navbar'>
+
+
 	<div class="headinfo" style="width:100%;background: #F13627">
-	    <div class="userinfo" style="height:10.5rem;">
-		<div class='fui-list' style="height:6rem;">
-		    <div class='fui-list-media' style="width:100%;">
-					<img src="../addons/ewei_shopv2/static/img/touxiang.png" style="margin:0 auto;width:5rem;height:5rem"/>
-			</div>
-		</div>
-		<div class='fui-list-info' style="width:100%;height:2.5rem;">
+		<div style="width: 100%; height: 7.75rem; border-bottom: 1px solid #fff;padding-top: .6rem;">
+			<img src="../addons/ewei_shopv2/static/img/touxiang.png" style="width: 3.5rem; height: 3.5rem; margin: auto; display: block;"/>
 
-
-			<!--<div class='subtitle'  {if $this->set['levelurl']!=''}onclick='location.href="{php echo $this->set['levelurl']}"'{/if}>-->
-				<!--&lt;{php echo empty($level) ? ( empty($this->set['levelname'])?'等级':$this->set['levelname'] ) : $level['levelname']}&gt;-->
-				<!--{if $this->set['levelurl']!=''}<i class='icon icon-question' style='font-size:8px;'></i>{/if}-->
-			<!--</div>-->
-			<div class="row" style="color:white;margin-top:0.5rem">
-				<div style="width:8rem;margin:0 auto">
-					用户名：{$member['nickname']}
+			<div>
+				<div class="row" style="color: #fff; font-size: .65rem; text-align: center; margin-top: .6rem; height: 1rem; line-height: 1rem;">
+						用户名：{$member['nickname']}
 				</div>
-
-			</div>
-
-			<div class='text' style="font-size:0.7rem;margin:0 auto;margin-top: 0.6rem;">
-				<div style="width:50%;height:1rem;margin:0 auto;">
-					等级：
-					{if $this->set['levelurl']!=''}onclick='location.href="{php echo $this->set['levelurl']}"'{/if}
-					{php echo empty($level) ? ( empty($this->set['levelname'])?'代理':$this->set['levelname'] ) : $level['levelname']}
-					{if $this->set['levelurl']!=''}{/if}
-					{php echo $this->set['texts']['up']}: {if empty($up)}
-					总店
-					{else}
-					{$up['nickname']}
-					{/if}
-
+				<div style="font-size: .5rem; text-align: center; color: #fffc00;">
+						等级：
+						{if $this->set['levelurl']!=''}onclick='location.href="{php echo $this->set['levelurl']}"'{/if}
+						{php echo empty($level) ? ( empty($this->set['levelname'])?'代理':$this->set['levelname'] ) : $level['levelname']}
+						&nbsp;&nbsp;&nbsp;
+						{if $this->set['levelurl']!=''}{/if}
+						{php echo $this->set['texts']['up']}: {if empty($up)}
+						总店
+						{else}
+						{$up['nickname']}
+						{/if}
 				</div>
-
 			</div>
 		</div>
-			<!--{if empty($this->set['closemyshop'])}-->
-			<!--<a class="setbtn" href="{php echo mobileUrl('commission/myshop/set')}"><i class="icon icon-settings"></i></a>-->
-		<!--{/if}-->
-	    </div>
-	    <div class="userblock" style="height:4rem">
-		<div class="line total" style="width:35%;float:left;">
-		    <div class="title" style="font-size:0.7rem;">{php echo $this->set['texts']['commission_pay']}({php echo $this->set['texts']['yuan']})</div>
-		    <div class="num" style="font-size:0.7rem">{php echo number_format($member['commission_pay'],2)}</div>
-		</div>
-			<div class="line usable">
+
+		<div style="height: 3.1rem; font-size: .55rem; color: #fff; overflow: hidden;">
+			<div style="height: 3.1rem; float: left; line-height: 1rem; margin-left: .8rem;">
+				<div style="margin-top: .55rem;">{php echo $this->set['texts']['commission_pay']}({php echo $this->set['texts']['yuan']})</div>
+				<div>￥ {php echo number_format($member['commission_pay'],2)}</div>
+			</div>
+			<div style="height: 3.1rem; float: left; line-height: 1rem; margin-left: .8rem;">
+				<div style="margin-top: .55rem;">{php echo $this->set['texts']['commission_ok']}({php echo $this->set['texts']['yuan']})</div>
+				<div>￥ {php echo number_format( $member['commission_ok'],2)}</div>
+			</div>
+			<div style="float: right; height: 3.1rem; display: flex; align-items: center; margin-right: .5rem;">
 				{if $cansettle}
 				<a class="btn" href="{php echo mobileUrl('commission/withdraw')}" >{php echo $this->set['texts']['commission']}{php echo $this->set['texts']['withdraw']}</a>
 				{else}
-				<div class="btn disabled"  style="color:white;border:1px solid white;font-size:0.8rem;border-radius: 1rem" onclick="FoxUI.toast.show('满 {php echo $this->set['withdraw']} {php echo $this->set['texts']['yuan']}才能提现!')">{php echo $this->set['texts']['commission']}{php echo $this->set['texts']['withdraw']}</div>
+				<div class="btn disabled" style="width: 3.55rem; height: 1.05rem; border-radius: .525rem;border: 1px solid #fff; font-size: .55rem; line-height: 1.05rem;" onclick="FoxUI.toast.show('满 {php echo $this->set['withdraw']} {php echo $this->set['texts']['yuan']}才能提现!')">{php echo $this->set['texts']['commission']}{php echo $this->set['texts']['withdraw']}</div>
 				{/if}
-				<div class="text" style="width:100%;margin-left:0;">
-					<div class="title" style="font-size:0.7rem;color:white;">{php echo $this->set['texts']['commission_ok']}({php echo $this->set['texts']['yuan']})</div>
-					<div class="num" style="font-size:0.7rem;color:white;margin-top:0.3rem">{php echo number_format( $member['commission_ok'],2)}</div>
-				</div>
 			</div>
 		</div>
 	</div>
+
+
+
+
+
+
 		<a class="fui-block-child" href="{php echo mobileUrl('commission/withdraw')}" style="color:black;">
 			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC">
 				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem;">分销佣金&nbsp;&nbsp;&nbsp;

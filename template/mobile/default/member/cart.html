@@ -16,7 +16,7 @@
 		height:0.3rem;
 		width: 0.3rem;
     	border-color: #fff;
-	}	
+	}
 	.fui-number:before,.fui-number:after{
 	    border-top: 1.5px solid #9E9E9E;
 	}
@@ -71,7 +71,7 @@
 				</div>
 			</div>
 			<%each list as g%>
-			
+
 			<div class="fui-list goods-item align-start"
 				 data-cartid="<%g.id%>"
 				 data-goodsid="<%g.goodsid%>"
@@ -79,7 +79,7 @@
 				 data-seckill-maxbuy="<%g.seckillmaxbuy%>"
 				 data-seckill-selfcount="<%g.seckillselfcount%>"
 				 data-seckill-price ="<%g.seckillprice%>"
-				 style="background: #F2F2F2;margin-bottom: 0.5rem;padding: 0.2rem;"
+				 style="font-size: .5rem;background: #F2F2F2;margin-bottom: 0.5rem;padding: 0.2rem;"
 			>
 				<div class="fui-list-media">
 					<input type="checkbox" style='margin-left:.3rem'name="checkbox" class="fui-radio fui-radio-danger cartmode check-item"<%if g.selected==1%>checked<%/if%>/>
@@ -88,7 +88,7 @@
 
 				<div class="fui-list-media image-media" style="height: 4.5rem;">
 					<a href="{php echo mobileUrl('goods/detail')}&id=<%g.goodsid%>">
-						<img id="gimg_{$g['id']}" data-lazy="<%g.thumb%>" class="round" style="width: 4rem;height: 4rem; vertical-align:middle;">
+						<img id="gimg_{$g['id']}" data-lazy="<%g.thumb%>" class="round" style="width: 3.45rem;height: 3.45rem; vertical-align:middle;">
 					</a>
 				</div>
 				<div class="fui-list-inner">
@@ -96,10 +96,10 @@
 						<div class="text" style="text-overflow :ellipsis;width: 8rem;overflow:hidden;white-space:nowrap;margin-top:.2rem">
 							<%if g.seckillprice>0%>
 							<div class="fui fui-label fui-label-danger"><%g.seckilltag%></div>
-							<%/if%>	
-							<span style="height: 1rem;font-size: .65rem"><%g.title%></span>
+							<%/if%>
+							<span style="height: 1rem;"><%g.title%></span>
 							<br/>
-							短标题
+							<!-- 短标题 -->
 						</div>
 						<%if g.optionid%>
 						<div class="text cart-option cartmode">
@@ -115,7 +115,7 @@
 					<%/if%>-->
 					<div class='text' style="height: .8rem;white-space: normal; overflow: hidden;">
 						<!--<span style="display: inline;">aaa</span>-->
-						<div style="float: left; height: .7rem;width: 2rem;line-height: .7rem;font-family: '微软雅黑',sans-serif;font-size: 0.65rem;color: #9E9E9E;">数量：</div>
+						<div style="float: left; height: .7rem;width: 2rem;line-height: .7rem;font-family: '微软雅黑',sans-serif;color: #9E9E9E;">数量：</div>
 						<div class="fui-number small "
 							id='shul'
 							 data-value="<%g.total%>"
@@ -124,23 +124,23 @@
 							 data-maxtoast="最多购买{max}<%g.unit%>"
 							 data-mintoast="{min}<%g.unit%>起售"
 							 style="width: 2.4rem;height: .7rem"
-						>	
+						>
 							<div class="minus" style="background: #d9d9d9;font-family: serif;color: #9E9E9E;width: .7rem;height: .7rem;line-height: .7rem">-</div>
 							<input class="num shownum" type="tel" style="width: 1rem;height: .7rem;line-height: .7rem;" value="<%g.total%>"/>
 							<div class="plus "style="background: #d9d9d9;font-family: serif;color: #9E9E9E;width: .7rem;height: .7rem;line-height: .7rem">+</div>
 						</div>
-						
-						<!-- <div  class="sl" style="float: right; line-height: 1rem; color: #EC3027;font-size: 0.7rem;">共<%g.total%>件商品：￥<%g.total*g.marketprice%></div> 
+
+						<!-- <div  class="sl" style="float: right; line-height: 1rem; color: #EC3027;font-size: 0.7rem;">共<%g.total%>件商品：￥<%g.total*g.marketprice%></div>
 height: 1rem;line-height: 1rem;
 						-->
-						
+
 					</div>
-					<div style="color: red; font-size: .5rem; width: 100%;display: flex;justify-content: flex-end;">
+					<div style="color: red; width: 100%;display: flex;">
 							共<span class="se-total"><%g.total%></span>件商品:
-							<span class="price">￥<span class='se-totalprice'><%g.marketprice * g.total%></span></span>	
-							<span class="marketprice" style="display: none;"><%g.marketprice%></span>					
+							<span class="price">￥<span class='se-totalprice'><%g.marketprice * g.total%></span></span>
+							<span class="marketprice" style="display: none;"><%g.marketprice%></span>
 						</div>
-					
+
 				</div>
 				<div class='fui-list-angle' id='ljt' style="width: 20%;height: 4rem;margin-left: 0.5rem;padding:0.5rem;text-align: center;line-height: 3rem;">
 						<!--单类商品回收-->
@@ -183,7 +183,7 @@ height: 1rem;line-height: 1rem;
 															   class="fui-radio fui-radio-danger " <%if ischeckall%>checked<%/if%>/>&nbsp;全选</label>
 			</div>-->
 			<div class="fui-list-inner">
-				<div class='subtitle' style="color: #9E9E9E;font-size: 0.75rem;padding-left:1rem;">共<%total%>件商品：<span class="text-danger"style="color: #9E9E9E;"></span><span class='text-danger totalprice'><%totalprice%></span></div>
+				<div class='subtitle' style="color: #9E9E9E;padding-left:1rem;">共<%total%>件商品：<span class="text-danger"style="color: #9E9E9E;"></span><span class='text-danger totalprice'><%totalprice%></span></div>
 				<!--<div class='text'>不含运费</div>-->
 			</div>
 			<div class='fui-list-angle'>
