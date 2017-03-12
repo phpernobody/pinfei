@@ -1,3 +1,140 @@
+<!--十点开团-->
+<style>
+	body{
+		background: #fff;
+	}
+	.shidian{
+		height:4rem;
+		width: 100%;
+		padding-top: .85rem;
+	}
+	.shidian .shidian_btn{
+	 	width: 50%;
+	 	background:red;
+	 	height: 1.4rem;
+	 	border: 1px solid #ec3028;
+	 	display: flex;
+	 	flex-direction: row;
+	 	font-family: '微软雅黑',sans-serif;
+	 	font-size:.65rem;
+	 }
+	.shidian .shidian_btn .shidian_con{
+		height: 100%;
+		width: 50%;
+		text-align: center;
+		line-height: 1.4rem;
+	}
+
+	.shidian .shidian_count{
+		height:1.4rem;
+		font-family: '微软雅黑',sans-serif;
+		font-size:.6rem;
+		width: 50%;
+		line-height: 1.4rem;
+		text-align: center;
+		color:#848383;
+	}
+	.shidian .shidian_count span{
+		background: #ec3028;
+		color: #fff;
+	}
+	.show{
+		width: 100%;
+		font-family: '微软雅黑',sans-serif;
+	}
+	.show .show_con{
+		padding: .2rem .6rem;
+	}
+	.show .show_con .con-title{
+		font-size: .65rem;
+		font-weight: bold;
+		color: #000;
+		height: 1rem;
+		line-height: 1rem;
+	}
+	.show .show_con .con-jies{
+		font-size: .55rem;
+		color:#767676;
+		height: 1rem;
+		line-height: 1rem
+	}
+	.rows{
+		display: flex;
+		flex-direction: row;
+	}
+	.rows .row_btn{
+		height: 1rem;
+		width: 3.5rem;
+		line-height: 1rem;
+		text-align: center;
+		background: #ec3028;
+		border:0px;
+		color: #fff;
+		font-size: .55rem;
+	}
+	.magic{
+		margin: 1rem 0;
+		padding: 0rem .6rem;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		font-family: '微软雅黑',sans-serif;
+	}
+	.magic .magic-left;.magic .magic-right{
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.magic .magic-left{
+		width: 47%;
+		padding-right: .55rem;
+	}
+	.magic .magic-right{
+		display: flex;
+		flex-direction: column;
+		width: 53%;
+		justify-content: space-between;
+	}
+	.magic .magic-left .magic-left1{
+		height:24%;
+	}
+	.magic-left .magic-left2,.magic-left .magic-left3{
+		height:38%;
+		padding-top: .55rem;
+	}
+	.magic-right .magic-right1,.magic-right .magic-right2{
+		height:45%;
+	}
+	.left-cont,.right-cont{
+		display: flex;
+		flex-direction: row;
+		height: 2rem;
+	}
+	.zhuangui{
+		width: 100%;
+		padding-left:1rem;
+		padding-right:1rem;
+	}
+	.zhuangui .zhuangui-con{
+		width: 100%;
+		margin-top:1rem;
+		display: flex;
+		flex-direction: column;
+	}
+	.zhuangui .zhuangui-art{
+		width: 100%;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		color: #676767;
+		font-family: '微软雅黑',sans-serif;
+	}
+	#RemainH,#RemainM,#RemainS{
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+</style>
+
 <div id="recommand"></div>
 <div class='infinite-loading' style="text-align: center; color: #666;">
 	<span class='fui-preloader'></span>
@@ -45,164 +182,178 @@
 <?php
 	date_default_timezone_set('PRC');
 	$starttimestr = "10:00:00";
-	$endtimestr = "22:00:00";
+	$endtimestr = "14:03:00";
 	$starttime = strtotime($starttimestr);
 	$endtime = strtotime($endtimestr);
 	$nowtime = time();
 
 ?>
 <div class="shidian">
-	<div class="shidian_btn">
-		<div style="width:13rem;height:2.3rem;margin:0 auto">
-
-			<div class="btn btn-primary" style="border-radius: 0;background: #EC3027;width:6.5rem;height:1.8rem;line-height: 1.8rem;border-color: #EC3027;font-size:18px;margin:0 auto;">十点开团</div>
-			<div class="btn btn-primary" style="border-radius: 0;background:white;width:6.5rem;height:1.8rem;line-height: 1.8rem;color:#EC3027;border-color: #EC3027;margin-left:-20px;font-size:18px">晚十抢购</div>
-		</div>
+	<div class="shidian_btn" style="margin: 0 auto">
+		<div class='shidian_con' style="background: #ec3028;color: #fff">十点开团</div>
+		<div class='shidian_con' style="background: #fff;color:#de2a22">晚十抢购</div>
 	</div>
-
-
 	<!--$lefttime为零时限时秒杀结束-->
-
-	<div class="shidian_count" a="<?php echo $nowtime;?>" b="<?php echo $starttime;?>" c="<?php echo $endtime;?>">
-		<div style="width:11.27rem;height:1.3rem;margin:0 auto;">
-
-			<span class="miaosha" style="color:#838383;font-size:0.6rem;float:left;">距离结束还有：</span>
-			<div class="red_font" style="background:#EC3027;"><span style="color:white;font-size:95%;font-weight: 400;margin-left:1px;font-family: 圆体;" id="RemainH">00</span></div>
-			<div class="red_font" style="width:15px;color:#838383;font-size:0.8rem">：</div>
-			<div class="red_font" style="background:#EC3027;"><span style="color:white;font-size:95%;font-weight: 400;margin-left:1px;font-family: 圆体;" id="RemainM">00</span></div>
-			<div class="red_font" style="width:15px;color:#838383;font-size:0.8rem">：</div>
-			<div class="red_font" style="background:#EC3027;"><span style="color:white;font-size:95%;font-weight: 400;margin-left:1px;font-family: 圆体;" id="RemainS">00</span></div>
-		</div>
+	<div class="shidian_count" style="margin: 0 auto" 
+	a="<?php echo $nowtime;?>" b="<?php echo $starttime;?>" 
+	c="<?php echo $endtime;?>" >
+		<sapn class="miaosha">距离抢购结束:</sapn>
+		<span id="RemainH">00</span>:<span  id="RemainM">00</span>:<span id="RemainS">00</span>
 	</div>
 </div>
 
-<!--十点开团-->
-<style>
-	.shidian{height:5.6rem;margin-top:1rem}
-	.shidian .shidian_btn{height:3rem;margin:0 auto;}
-	.shidian .shidian_count{height:1.5rem;}
-	.red_font{width:1.2rem;height:1.2rem;float:left;line-height: 1.2rem;}
-	.show{width:100%;height:18rem;}
-	.show .show_pic{width:94%;margin:0 auto}
-	.magic{width:94%;height:40rem;margin:0 auto;}
-	.magic .magic-left{width:43.2%;height:26.7rem;float:left;}
-	.magic .magic-left .magic-detail{width:100%;height:3rem}
-	.magic .magic-right{width:54.8%;height:26.7rem;float:right;}
-	.magic .magic-right .magic-detail{width:100%;height:3rem}
-</style>
+
 <!--商品展示-->
 <div class="show">
-	<div class="show_pic">
-		<img src="../addons/ewei_shopv2/static/img/pro_img2.jpg" alt="" style="width:100%">
-	</div>
-	<div style="width:94%;margin-left:1.1rem;height:4.5rem">
+	<!--<div class='show_con'>-->
+		<!--<img src="../addons/ewei_shopv2/static/img/pro_img2.jpg" style="width:100%;">-->
+		<!--<div style="width: 100%;padding-left: .3rem">-->
+			<!--<div class='con-title'>帕里欧干红葡萄酒帕里欧干红葡萄酒</div>-->
+			<!--<div class='con-jies'>葡萄酒产地：意大利产区葡萄</div>-->
+			<!--<div class='rows'>-->
+				<!--<a href=""><div class="row_btn">立即抢购</div></a>-->
+				<!--<span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥1000</span>-->
+				<!--<span style="font-size:0.55rem;color:#ec3028;line-height: 1rem;height: 1rem;margin-left:.5rem">抢购价:￥500</span>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
 
-		<div class="row" style="font-size:0.67rem;font-weight: bold;font-family: 微软雅黑;color:black;">帕里欧干红葡萄酒帕里欧干红葡萄酒</div>
-		<div class="row" style="font-size:0.52rem;color:#7B7B7B;margin-top:3px;">葡萄酒产地：意大利产区葡萄</div>
-		<div class="row" style="margin-top:3px">
-			<button class="btn btn-danger" style="border-radius: 0;background: #EC3027;color:white;height:1.2rem;line-height: 1.2rem;font-size:14px;width:4.5rem">立即抢购</button>
-			<span style="text-decoration:line-through;font-size:0.6rem">原价:￥1000</span>
-			<span style="margin-left:0.3rem;font-size:0.52rem;color:#EC3027;font-weight:500">抢购价:￥500</span>
-		</div>
-	</div>
 </div>
-
-<div class="show">
-	<div class="show_pic">
-		<img src="../addons/ewei_shopv2/static/img/pro_img2.jpg" alt="" style="width:100%">
-	</div>
-	<div style="width:94%;margin-left:1.1rem;height:4.5rem">
-
-		<div class="row" style="font-size:0.67rem;font-weight: bold;font-family: 微软雅黑;color:black;">帕里欧干红葡萄酒帕里欧干红葡萄酒</div>
-		<div class="row" style="font-size:0.52rem;color:#7B7B7B;margin-top:3px;">葡萄酒产地：意大利产区葡萄</div>
-		<div class="row" style="margin-top:3px">
-			<button class="btn btn-danger" style="border-radius: 0;background: #EC3027;color:white;height:1.2rem;line-height: 1.2rem;font-size:14px;width:4.5rem">立即抢购</button>
-			<span style="text-decoration:line-through;font-size:0.6rem">原价:￥1000</span>
-			<span style="margin-left:0.3rem;font-size:0.52rem;color:#EC3027;font-weight:500">抢购价:￥500</span>
-		</div>
-	</div>
-</div>
-
-<div class="show">
-	<div class="show_pic">
-		<img src="../addons/ewei_shopv2/static/img/pro_img2.jpg" alt="" style="width:100%">
-	</div>
-	<div style="width:94%;margin-left:1.1rem;height:4.5rem">
-
-		<div class="row" style="font-size:0.67rem;font-weight: bold;font-family: 微软雅黑;color:black;">帕里欧干红葡萄酒帕里欧干红葡萄酒</div>
-		<div class="row" style="font-size:0.52rem;color:#7B7B7B;margin-top:3px;">葡萄酒产地：意大利产区葡萄</div>
-		<div class="row" style="margin-top:3px">
-			<button class="btn btn-danger" style="border-radius: 0;background: #EC3027;color:white;height:1.2rem;line-height: 1.2rem;font-size:14px;width:4.5rem">立即抢购</button>
-			<span style="text-decoration:line-through;font-size:0.6rem">原价:￥1000</span>
-			<span style="margin-left:0.3rem;font-size:0.52rem;color:#EC3027;font-weight:500">抢购价:￥500</span>
-		</div>
-	</div>
-</div>
-
 <!--魔方样式-->
 <div class="magic">
 	<div class="magic-left">
-		<img src="../addons/ewei_shopv2/static/img/news.jpg" alt="" style="width:100%">
-		<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" alt="" style="width:100%">
-		<div class="magic-detail">
-			<div class="row">
-				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">佳能单反入门相机</span>
-				<div style="width:3rem;height:1.1rem;background: #EC3027;float:right;line-height: 1.1rem">
-					<span style="font-size:0.6rem;color:white;font-family: 微软雅黑;margin-left:7%">新品优惠</span>
-				</div>
-			</div>
-			<div class="row">
-				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">相机</span>
-				<span style="float:right;font-size:0.67rem;color:#EC3027;font-weight:600">￥2688</span>
-			</div>
+		<div class='magic-left1'>
+			<a href="">
+				<img src="../addons/ewei_shopv2/static/img/news.jpg" style="width: 100%">
+			</a>
 		</div>
-		<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" alt="" style="width:100%">
-		<div class="magic-detail">
-			<div class="row">
-				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">佳能单反入门相机</span>
-				<div style="width:3rem;height:1.1rem;background: #EC3027;float:right;line-height: 1.1rem">
-					<span style="font-size:0.6rem;color:white;font-family: 微软雅黑;margin-left:7%">新品优惠</span>
-				</div>
-			</div>
-			<div class="row">
-				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">相机</span>
-				<span style="float:right;font-size:0.67rem;color:#EC3027;font-weight:600">￥2688</span>
-			</div>
-		</div>
+		<!--<div class='magic-left2'>-->
+			<!--<a href="">-->
+				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" style="width: 100%">-->
+				<!--<div class="left-cont">-->
+					<!--<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">-->
+						<!--佳能单反入门相机相机佳-->
+					<!--</div>-->
+					<!--<div style='width: 37%;height: 2rem;'>-->
+						<!--<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>-->
+							<!--新品优惠-->
+						<!--</div>-->
+						<!--<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>-->
+							<!--￥2688-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</a>-->
+		<!--</div>-->
+		<!--<div class='magic-left3'>-->
+			<!--<a href="">-->
+				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" style="width: 100%">-->
+				<!--<div class="left-cont">-->
+					<!--<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">-->
+						<!--佳能单反入门相机相机佳-->
+					<!--</div>-->
+					<!--<div style='width: 37%;height: 2rem;'>-->
+						<!--<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>-->
+							<!--新品优惠-->
+						<!--</div>-->
+						<!--<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>-->
+							<!--￥2688-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</a>-->
+		<!--</div>		-->
 	</div>
 	<div class="magic-right">
-		<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" alt="" style="width:100%">
-		<div class="magic-detail">
-			<div class="row">
-				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">佳能单反入门相机</span>
-				<div style="width:3rem;height:1.1rem;background: #EC3027;float:right;line-height: 1.1rem">
-					<span style="font-size:0.6rem;color:white;font-family: 微软雅黑;margin-left:7%">新品优惠</span>
-				</div>
-			</div>
-			<div class="row">
-				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">相机</span>
-				<span style="float:right;font-size:0.67rem;color:#EC3027;font-weight:600">￥2688</span>
-			</div>
-		</div>
-		<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" alt="" style="width:100%">
-		<div class="magic-detail">
-			<div class="row">
-				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">佳能单反入门相机</span>
-				<div style="width:3rem;height:1.1rem;background: #EC3027;float:right;line-height: 1.1rem">
-					<span style="font-size:0.6rem;color:white;font-family: 微软雅黑;margin-left:7%">新品优惠</span>
-				</div>
-			</div>
-			<div class="row">
-				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">相机</span>
-				<span style="float:right;font-size:0.67rem;color:#EC3027;font-weight:600">￥2688</span>
-			</div>
-		</div>
+		<!--<div class="magic-right1">-->
+			<!--<a href="">-->
+				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" style="width: 100%">-->
+				<!--<div class="right-cont">-->
+					<!--<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">-->
+						<!--路易威登全球限量款手提 包包-->
+					<!--</div>-->
+					<!--<div style='width: 30%;height: 2rem;'>-->
+						<!--<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>-->
+							<!--新品优惠-->
+						<!--</div>-->
+						<!--<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>-->
+							<!--￥2688-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</a>-->
+		<!--</div>-->
+		<!--<div class="magic-right2">-->
+			 <!--<a href="">-->
+				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" style="width: 100%">-->
+				<!--<div class="right-cont">-->
+					<!--<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">-->
+						<!--路易威登全球限量款手提 包包-->
+					<!--</div>-->
+					<!--<div style='width: 30%;height: 2rem;'>-->
+						<!--<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>-->
+							<!--新品优惠-->
+						<!--</div>-->
+						<!--<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>-->
+							<!--￥2688-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</a> -->
+		<!--</div>-->
 	</div>
 </div>
-<div style="width:94%;height:2rem;background: #eee;margin:0 auto;line-height: 2rem;">
-	<span style="font-size:0.8rem;color:black;margin-left:43%;">更多新品>></span>
+
+<div style="margin:0 .6rem;text-align:center;color:#000;background:#eeeeee;height: 1.5rem;line-height:1.5rem;font-size: .6rem">更多新品>></div>
+<div style="width: 100%;background:#f5f5f5;margin-top:1rem;">
+	<img src="../addons/ewei_shopv2/static/img/zg_img.jpg"style="width: 100%">
 </div>
-<div style="width:100%;height:6rem;margin-top:1rem;">
+<!-- 专柜商品 -->
+<div class='zhuangui'>
+	<div class='zhuangui-con'>
+		<a href="">
+		<div style="width: 100%;padding: .5rem;background: #eee;margin-bottom: .7rem">
+			<img src="../addons/ewei_shopv2/static/img/zg_pro_img.jpg"style="width:100%">
+		</div>
+		<div class='zhuangui-art'>
+			<span style="color: #000;margin: 0 auto;border-bottom: 1px solid #000;margin-bottom:.6rem;font-size: .67rem">商品标题商品标题</span>
+			<span style="text-align: center;font-size: .55rem;margin-bottom: .7rem">
+			商品详细介绍,<br/>服装的种类很多，由于服装的基本形态、品种、用途、制作方法、<br/>			原材料的不同，各类服装亦表现出不同的、<br/>风格与特色，变化万千，<br/>十分丰富</span>
+			<div style="color: #fff;font-size:.5rem;background: #ec3028;margin: 0 auto;padding-left: .5rem;padding-right: .5rem;height: .7rem;line-height: .7rem ">查看更多</div>
+		</div>
+		</a>
+	</div>
+	<div class='zhuangui-con'>
+		<a href="">
+		<div style="width: 100%;padding: .5rem;background: #eee;margin-bottom: .7rem">
+			<img src="../addons/ewei_shopv2/static/img/zg_pro_img.jpg"style="width:100%">
+		</div>
+		<div class='zhuangui-art'>
+			<span style="color: #000;margin: 0 auto;border-bottom: 1px solid #000;margin-bottom:.6rem;font-size: .67rem">商品标题商品标题</span>
+			<span style="text-align: center;font-size: .55rem;margin-bottom: .7rem">
+			商品详细介绍,<br/>服装的种类很多，由于服装的基本形态、品种、用途、制作方法、<br/>			原材料的不同，各类服装亦表现出不同的、<br/>风格与特色，变化万千，<br/>十分丰富</span>
+			<div style="color: #fff;font-size:.5rem;background: #ec3028;margin: 0 auto;padding-left: .5rem;padding-right: .5rem;height: .7rem;line-height: .7rem ">查看更多</div>
+		</div>
+		</a>
+	</div>
+	<div class='zhuangui-con'>
+		<a href="">
+		<div style="width: 100%;padding: .5rem;background: #eee;margin-bottom: .7rem">
+			<img src="../addons/ewei_shopv2/static/img/zg_pro_img.jpg"style="width:100%">
+		</div>
+		<div class='zhuangui-art'>
+			<span style="color: #000;margin: 0 auto;border-bottom: 1px solid #000;margin-bottom:.6rem;font-size: .67rem">商品标题商品标题</span>
+			<span style="text-align: center;font-size: .55rem;margin-bottom: .7rem">
+			商品详细介绍,<br/>服装的种类很多，由于服装的基本形态、品种、用途、制作方法、<br/>			原材料的不同，各类服装亦表现出不同的、<br/>风格与特色，变化万千，<br/>十分丰富</span>
+			<div style="color: #fff;font-size:.5rem;background: #ec3028;margin: 0 auto;padding-left: .5rem;padding-right: .5rem;height: .7rem;line-height: .7rem ">查看更多</div>
+		</div>
+		</a>
+	</div>
+</div>
+<!-- <div style="width:94%;height:2rem;background: #eee;margin:0 auto;line-height: 2rem;">
+	<span style="font-size:0.8rem;color:black;margin-left:43%;">更多新品>></span>
+</div> -->
+<!-- <div style="width:100%;height:6rem;margin-top:1rem;">
 	<img src="../addons/ewei_shopv2/static/img/zg_img.jpg" alt="" style="width:100%">
 </div>
 <div style="width:86%;margin:0 auto;height:23rem;">
@@ -263,7 +414,7 @@
 			<button class="btn btn-danger" style="background:#EC3027;border-radius: 0;width:4.6rem;height:1.1rem;line-height:1.1rem;font-size:0.8rem;margin-top:0.6rem">查看更多</button>
 		</div>
 	</div>
-</div>
+</div> -->
 <script language='javascript'>
 	require(['biz/shop/index'], function (modal) {modal.init({merchid:{php echo intval($_GPC['merchid'])}})});
 </script>
@@ -312,18 +463,96 @@
 			if(nowtime>=starttime){
 				setTimeout("GetRTime()",1000);
 			}else{
-
-				$("#RemainH").html('00');
-				$("#RemainM").html('00');
-				$("#RemainS").html('00');
 				$('.miaosha').html('10:00开始秒杀：');
 			}
 
 		}
+
+		if(nMS==0){
+			$('.miaosha').html('10:00开始秒杀：');
+			$('.row_btn').css('background','gray');
+		}
 	}
-	var Num = 0;
+
 	$(document).ready(function() {
+
+		$.ajax({
+            url:"{php echo mobileUrl('shop/category/getIstime')}",
+			dataType:'json',
+			success:function(data){
+				var htm = '';
+				$.each(data,function(key,value){
+                    htm +='<div class="show_con">'
+					htm +='<img onclick="doUrl(this)" a="'+value.id
+					htm +='" src="../attachment/'+value.thumb+'" style="width:100%;">'
+					htm +='<div style="width: 100%;padding-left: .3rem">'
+					htm +='<div class="con-title">'+value.title+'</div>'
+					htm +='<div class="con-jies">'+value.content+'</div>'
+					htm +='<div class="rows">'
+					htm +='<a href="" onclick="doUrl(this)" a="'+value.id
+					htm +='"><div class="row_btn">立即抢购</div></a>'
+					htm +='<span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥'+value.productprice+'</span>'
+					htm +='<span style="font-size:0.55rem;color:#ec3028;line-height: 1rem;height: 1rem;margin-left:.5rem">抢购价:￥'+value.marketprice+'</span>'
+					htm +='</div></div></div>'
+				});
+				$('.show').append(htm);
+			},
+		})
+
+
+		$.ajax({
+			url:"{php echo mobileUrl('shop/category/getIsnew1')}",
+			dataType:'json',
+			success:function(data){
+				var htm = '';
+				console.log(data);
+				$.each(data,function(key,value){
+                    htm +='<div class="magic-left2" onclick="doUrl(this)" a="'+value.id
+					htm +='">'
+					htm +='<img src="../attachment/'+value.thumb+'" style="width: 100%">'
+					htm +='<div class="left-cont">'
+					htm +='<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">'
+					htm +=value.title+'</div>'
+					htm +='<div style="width: 37%;height: 2rem;">'
+					htm +='<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">'
+					htm +='新品优惠</div><div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">'
+					htm +='￥'+value.productprice+'</div></div></div></div>'
+				});
+				$('.magic-left').append(htm);
+			},
+		})
+
+		$.ajax({
+			url:"{php echo mobileUrl('shop/category/getIsnew2')}",
+			dataType:'json',
+			success:function(data){
+				var htm = '';
+				console.log(data);
+				$.each(data,function(key,value){
+					htm +='<div class="magic-right2" onclick="doUrl(this)" a="'+value.id
+					htm +='">'
+					htm +='<img src="../attachment/'+value.thumb+'" style="width: 100%">'
+					htm +='<div class="right-cont">'
+					htm +='<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">'
+					htm +=value.title+'</div>'
+					htm +='<div style="width: 30%;height: 2rem;">'
+					htm +='<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">'
+					htm +='新品优惠</div><div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">'
+					htm +='￥'+value.productprice+'</div></div></div></div>'
+				});
+				$('.magic-right').html(htm);
+			},
+		})
+
 		GetRTime();
 	})
+
+	function doUrl(obj){
+		var id = $(obj).attr('a');
+		window.location.href='./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=goods.detail&mid=1&id='+id;
+	}
+
 </script>
+
+
 
