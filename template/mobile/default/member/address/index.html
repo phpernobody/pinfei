@@ -1,0 +1,93 @@
+{template '_header'}
+<style >
+	.btn.btn-danger {
+    background: #ec3028;
+	}
+	.fui-list-group:not(.fui-list-group-o):after{
+		border: 0px;
+	}
+</style>
+
+<div class='fui-page  fui-page-current' style="background: #fff;">
+    <div class="fui-header">
+	<div class="fui-header-left">
+	    <a class="back"></a>
+	</div>
+	<div class="title" style="background: #fff;">收货地址</div> 
+	<div class="fui-header-right">&nbsp;</div>
+    </div>
+    <div class='fui-content navbar' >
+
+	
+	<div class='content-empty' {if !empty($list)}style='display:none'{/if}>
+	    <i class='icon icon-location'></i>
+	    <br/>您还没有任何收货地址
+	</div>
+	
+	{loop $list $address}
+	<div class="fui-list-group address-item" style='margin-top:.6rem;background: #fbfbfb;'
+	     data-addressid="{$address['id']}">
+	    <div  class="fui-list"style="padding: 0rem;" >
+		<div class="fui-list-inner"style="padding-top: 0.5rem; height: 6rem;background: #fbfbfb">
+			<div style="padding-left:1rem ;padding-right: 1rem;">
+		    <div class="title"style="color: #ec3028;font-family: '微软雅黑',sans-serif;font-size: 0.8rem;"><span class='realname' style="float: left;">{$address['realname']}</span> <span class='mobile'style="float: right;">{$address['mobile']}</span></div>
+		    <div class="text" style="width: 100%;height: 2rem;">
+			<span class='address'style="font-family: '微软雅黑',sans-serif;color: #292828;">{$address['province']}{$address['city']}{$address['area']} {$address['address']}</span>
+		    </div>
+		    </div>
+		    <div class='bar' style="margin-top:0.6rem;height: 1rem;line-height: 1rem;font-size: 0.65rem;padding-left:1rem ;padding-right: 1rem;">
+			<span class='pull-right'>
+			    <a class="external" href="{php echo mobileUrl('member/address/post',array('id'=>$address['id']))}" data-nocache="true">
+				<i><img src="../addons/ewei_shopv2/static/img/shdz_img1.png" style="height: .55rem"></i> 编辑
+			    </a>
+			    &nbsp;&nbsp;
+			    <a data-toggle='delete' class='external'>
+				<i><img src="../addons/ewei_shopv2/static/img/shdz_img2.png" style="height: .55rem"></i> 删除
+			    </a>
+			</span>
+
+			<label class='radio-inline' style="padding-left: 1rem;font-size: 0.6rem;">
+			    <input type="radio" name='setdefault' style="height: .6rem;width: .6rem;" data-toggle='setdefault'  class="fui-radio  fui-radio-danger" {if $address['isdefault']}checked{/if} /> 设置默认
+			</label>
+		    </div>
+		</div>
+	    </div>
+	</div> 
+	{/loop}
+
+    </div>
+    <div class='fui-navbar'>
+	<a href="{php echo mobileUrl('member/address/post')}" class='nav-item btn btn-danger external' data-nocache="true"><i class="icon icon-add"style="font-size: 1rem;font-family: '微软雅黑',sans-serif;">添加地址</i></a>
+    </div>
+    <script id="tpl_address_item" type="text/html">
+	<div class="fui-list-group address-item" style='margin-top:5px;' data-addressid="<%address.id%>">
+	    <div  class="fui-list" >
+		<div class="fui-list-inner">
+		    <div class="title"><span class='realname'><%address.realname%></span> <span class='mobile'><%address.mobile%></span></div>
+		    <div class="text">
+			<span class='address'><%address.areas%> <%address.address%></span>
+		    </div>
+		    <div class='bar' >
+			<span class='pull-right'>
+			    <a class="external" href="{php echo mobileUrl('member/address/post')}&id=<%address.id%>" data-nocache='true'>
+				<i class='icon icon-edit'></i> 编辑 
+			    </a>
+			    &nbsp;&nbsp;
+			    <a data-toggle='delete' class='external'>
+				<i class='icon icon-delete'></i> 删除
+			    </a>
+			</span>
+
+			<label class='radio-inline'>
+			    <input type="radio" data-toggle='setdefault' class="fui-radio  fui-radio-danger" <%if address.isdefault==1%>checked<%/if%> /> 设置默认
+			</label>
+		    </div>
+		</div>
+	    </div>
+	</div> 
+   </script>
+    <script language='javascript'>require(['biz/member/address'], function (modal) {
+                    modal.initList();
+                });</script>
+</div> 
+{template '_footer'}

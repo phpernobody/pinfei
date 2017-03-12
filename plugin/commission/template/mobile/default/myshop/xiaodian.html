@@ -1,0 +1,167 @@
+{template '_header'}
+{template 'commission/common'}
+<style>
+	.tubiao{
+		width: 50%;
+		float: right;
+		text-align: center;
+		border: 1px solid #D9D9D9;
+		height: 4rem;
+		line-height: 4rem;
+
+	}
+	.tubiao a{
+		font-family:'微软雅黑',sans-serif;
+		font-size: 0.75rem;
+		color:#282828;
+	}
+</style>
+<div class="fui-page fui-page-current">
+	<div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back"></a>
+        </div>
+        <div class="title">我的小店</div>
+    </div>
+	<div class='fui-content' style="background: #fff">
+		<div style="width: 100%;background: #F33C2C;">
+			<div style="width: 100%;padding: 1rem;border-bottom: 2px solid #f67167;">
+				<div style="color: #fff;text-align:center;font-size: 0.8rem;font-family:'微软雅黑',sans-serif;margin-bottom: 0.5rem"><b>今天付款金额（元）</b></div>
+				<div style="color:#fffc00;text-align:center;font-size: 1.2rem;font-family:'微软雅黑',sans-serif;">123555</div>
+			</div>
+			<div style="width:100%;padding:.5rem;height: 4rem;font-family:'微软雅黑',sans-serif;color: #fff">
+				<div style="width:33%;height:3rem;float: left;text-align:center; ">浏览人数<br/>37221</div>
+				<div style="width:33%;height:3rem;float:left;text-align:center;border-left:1px solid #f67167;border-right:1px solid #f67167; ">付款订单数<br/>11039</div>
+				<div style="width:33%;height:3rem;float:left;text-align:center;">付款件数<br/>19223</div>
+			</div>
+		</div>
+		<div class='fui-cell-group'>
+			<div style="width: 100%;margin:0px;">
+				<div style="width: 100%; font-family:'微软雅黑',sans-serif;font-size: 0.75rem;color:#282828">
+					<div class='tubiao'>
+					<div style="padding-left: 1rem;padding-right: 1rem">
+						<a href="{php echo mobileUrl('commission/down')}">
+						<div style="float: left;height: 4rem;padding: 1rem">
+							<img src="../addons/ewei_shopv2/static/img/1.png" style="height: 2rem; ">
+						</div>
+						<div style="float: left;height: 100%;text-align: center;">代理团队信息</div>
+						</a>
+					</div>										
+					</div>
+					<div  class='tubiao'>
+					<div style="padding-left: 1rem;padding-right: 1rem">
+						<a href="{php echo mobileUrl('commission/myshop/set')}">
+						<div style="float: left;height: 4rem;padding: 1rem">
+							<img src="../addons/ewei_shopv2/static/img/2.png" style="height: 2rem; ">
+						</div>
+						<div style="float: left;height: 100%;text-align: center;">店铺设置</div>
+						</a>
+					</div>
+					</div>
+				</div>
+				<div style="width: 100%;font-family:'微软雅黑',sans-serif;font-size: 0.75rem;color:#282828">
+					<div class='tubiao'>
+					<div style="padding-left: 1rem;padding-right: 1rem">
+						<a href="{php echo mobileUrl('commission/myshop/select') }">
+						<div style="float: left;height: 4rem;padding: 1rem">
+							<img src="../addons/ewei_shopv2/static/img/3.png" style="height: 2rem; ">
+						</div>
+						<div style="float: left;height: 100%;text-align: center;">商品管理</div>
+						</a>
+					</div>
+					</div>
+					<div  class='tubiao'>
+					<div style="padding-left: 1rem;padding-right: 1rem">
+						<a href="{php echo mobileUrl('commission/order')}">
+						<div style="float: left;height: 4rem;padding: 1rem">
+							<img src="../addons/ewei_shopv2/static/img/4.png" style="height: 2rem; ">
+						</div>
+						<div style="float: left;height: 100%;text-align: center;">订单管理</div>
+						</a>
+					</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- <div class='fui-cell'>
+				<div class='fui-cell-label'>名称</div>
+				<div class='fui-cell-info'><input type="text" class='fui-input' id="shopname" value="{$shop['name']}" placeholder='填写默认为您的昵称'/></div>
+			</div>
+			<div class='fui-cell'>
+				<div class='fui-cell-label'>图标</div>
+				<div class='fui-cell-info'>
+					<ul class="fui-images fui-images-sm" id="imageLogo"> 
+						{if !empty($shop['logo'])}
+						<li style="background-image:url({php echo tomedia($shop['logo'])})" class="image image-sm" data-filename="{$shop['logo']}">
+							<span class="image-remove"><i class="icon icon-roundclose"></i></span></li>
+						{/if}
+			
+			
+					</ul>
+					
+					<div class="fui-uploader fui-uploader-sm "  {if !empty($shop['logo'])}style='display:none'{/if}
+						 data-max="1" 
+						data-count="{if !empty($shop['logo'])}1{else}0{/if}"> 
+						 <input type="file" name='imgFile0' id='imgFile0'  {if !is_h5app() || (is_h5app() && is_ios())}multiple="" accept="image/*" {/if}>
+					</div>
+				 
+					
+				</div>
+			</div>
+			<div class='fui-cell'>
+				<div class='fui-cell-label'>店招</div>
+				<div class='fui-cell-info'>
+					
+					<ul class="fui-images" id="imageImg"> 
+						{if !empty($shop['img'])}
+						<li style="background-image:url({php echo tomedia($shop['img'])})" class="image long" data-filename="{$shop['img']}" >
+							<span class="image-remove"><i class="icon icon-roundclose"></i></span></li>
+						{/if}
+			
+			
+					</ul>
+				 
+					<div class="fui-uploader img-container-uploader long"   {if !empty($shop['img'])}style='display:none'{/if}
+						  data-max="1" 
+						  data-long="1"
+						  data-count="{if !empty($shop['img'])}1{else}0{/if}"> 
+						 <input type="file" name='imgFile1' id='imgFile1' {if !is_h5app() || (is_h5app() && is_ios())}multiple="" accept="image/*" {/if} >
+					</div>
+					 
+					
+				</div>
+			</div>
+			<div class='fui-cell'>
+				<div class='fui-cell-info'><textarea id="desc" rows="3" placeholder="小店简介,分享你的小店">{$shop['desc']}</textarea></div>
+			</div>
+					</div>
+					<div class='btn btn-danger block btn-submit'>保存设置</div> -->
+	</div>
+
+		<div style="width:100%;height:0.6rem;border-bottom:1px solid #d9d9d9"></div>
+		<div style="width:100%;height:3rem;border-bottom:1px solid #d9d9d9;line-height:3rem;">
+			<span style="margin-top:5px;font-size:21px;margin-left: 2rem;">我的推广连接</span>
+			<span style="float:right;margin-right: 2rem;">分享&nbsp;<img src="../addons/ewei_shopv2/static/img/fx.png" alt=""></span>
+		</div>
+		<div style="width:100%;height:1rem;"></div>
+        <div style="width:100%;height:4rem;">
+			<input class="form-control" id="disabledInput" type="text" placeholder="www.baidu.com" disabled style="width:90%;height:2rem;font-size:20px;margin-left:5%;margin-top:1rem;padding:1rem;">
+		</div>
+		<div style="width:100%;">
+			<img src="../addons/ewei_shopv2/static/img/erweima.png" alt="" style="margin-left:26%;margin-top:2rem;">
+		</div>
+		<div style="width:100%;height:3rem;">
+			<img src="../addons/ewei_shopv2/static/img/xiazhai.png" alt="" style="margin-left:35%;margin-top:0.5rem;">
+			<span style="font-size:26px;">下载二维码</span>
+		</div>
+
+	
+	<script language='javascript'>
+		require(['../addons/ewei_shopv2/plugin/commission/static/js/myshop.js'], function (modal) {
+			modal.initSet();
+	});
+</script>
+
+</div>
+{php $this->footerMenus()}
+{template '_footer'}

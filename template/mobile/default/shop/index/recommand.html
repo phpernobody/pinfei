@@ -1,0 +1,329 @@
+<div id="recommand"></div>
+<div class='infinite-loading' style="text-align: center; color: #666;">
+	<span class='fui-preloader'></span>
+	<span class='text'> 正在加载...</span>
+</div>
+
+<!--<script type="text/html" id="tpl_recommand">-->
+	<!--<%if list!=''%>-->
+		<!--<%if page==1%>-->
+			<!--<div class="fui-line" style="background: #f4f4f4;">-->
+				<!--<div class="text text-danger"><i class="icon icon-hotfill"></i> 店铺推荐</div>-->
+			<!--</div>-->
+			<!--<div class="fui-goods-group block border">-->
+		<!--<%/if%>-->
+		<!---->
+			<!--<%each list as item%>-->
+				<!--<div class="fui-goods-item" data-goodsid="<%item.id%>" data-type="<%item.type%>">-->
+					<!--<a <%if item.bargain>0%>href="{php echo mobileUrl('bargain/detail')}&id=<%item.bargain%>"<%else%>href="{php echo mobileUrl('goods/detail')}&id=<%item.id%>"<%/if%>>-->
+						<!--<div class="image" data-lazy-background="<%item.thumb%>">-->
+							<!--<%if item.total<=0%><div class="salez" style="background-image: url('{php echo tomedia($_W['shopset']['shop']['saleout'])}'); "></div><%/if%>-->
+						<!--</div>-->
+					<!--</a>-->
+					<!--<div class="detail">-->
+						<!--<a <%if item.bargain>0%>href="{php echo mobileUrl('bargain/detail')}&id=<%item.bargain%>"<%else%>href="{php echo mobileUrl('goods/detail')}&id=<%item.id%>"<%/if%>>-->
+							<!--<div class="name">-->
+								<!--<%if item.ispresell==1%><i class="fui-tag fui-tag-danger">预售</i><%/if%>-->
+								<!--<%item.title%>-->
+							<!--</div>-->
+						<!--</a>-->
+						<!--<div class="price">-->
+							<!--<span class="text">￥<%item.minprice%></span>-->
+							<!--<span class="buy"><%if item.bargain>0%>砍价活动<%else%><i class="icon icon-cart"></i><%/if%></span>-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+
+			<!--<%/each%>-->
+			<!---->
+		<!--<%if page==1%>-->
+			<!--</div>-->
+		<!--<%/if%>-->
+		<!---->
+	<!--<%/if%>-->
+<!--</script>-->
+<?php
+	date_default_timezone_set('PRC');
+	$starttimestr = "10:00:00";
+	$endtimestr = "22:00:00";
+	$starttime = strtotime($starttimestr);
+	$endtime = strtotime($endtimestr);
+	$nowtime = time();
+
+?>
+<div class="shidian">
+	<div class="shidian_btn">
+		<div style="width:13rem;height:2.3rem;margin:0 auto">
+
+			<div class="btn btn-primary" style="border-radius: 0;background: #EC3027;width:6.5rem;height:1.8rem;line-height: 1.8rem;border-color: #EC3027;font-size:18px;margin:0 auto;">十点开团</div>
+			<div class="btn btn-primary" style="border-radius: 0;background:white;width:6.5rem;height:1.8rem;line-height: 1.8rem;color:#EC3027;border-color: #EC3027;margin-left:-20px;font-size:18px">晚十抢购</div>
+		</div>
+	</div>
+
+
+	<!--$lefttime为零时限时秒杀结束-->
+
+	<div class="shidian_count" a="<?php echo $nowtime;?>" b="<?php echo $starttime;?>" c="<?php echo $endtime;?>">
+		<div style="width:11.27rem;height:1.3rem;margin:0 auto;">
+
+			<span class="miaosha" style="color:#838383;font-size:0.6rem;float:left;">距离结束还有：</span>
+			<div class="red_font" style="background:#EC3027;"><span style="color:white;font-size:95%;font-weight: 400;margin-left:1px;font-family: 圆体;" id="RemainH">00</span></div>
+			<div class="red_font" style="width:15px;color:#838383;font-size:0.8rem">：</div>
+			<div class="red_font" style="background:#EC3027;"><span style="color:white;font-size:95%;font-weight: 400;margin-left:1px;font-family: 圆体;" id="RemainM">00</span></div>
+			<div class="red_font" style="width:15px;color:#838383;font-size:0.8rem">：</div>
+			<div class="red_font" style="background:#EC3027;"><span style="color:white;font-size:95%;font-weight: 400;margin-left:1px;font-family: 圆体;" id="RemainS">00</span></div>
+		</div>
+	</div>
+</div>
+
+<!--十点开团-->
+<style>
+	.shidian{height:5.6rem;margin-top:1rem}
+	.shidian .shidian_btn{height:3rem;margin:0 auto;}
+	.shidian .shidian_count{height:1.5rem;}
+	.red_font{width:1.2rem;height:1.2rem;float:left;line-height: 1.2rem;}
+	.show{width:100%;height:18rem;}
+	.show .show_pic{width:94%;margin:0 auto}
+	.magic{width:94%;height:40rem;margin:0 auto;}
+	.magic .magic-left{width:43.2%;height:26.7rem;float:left;}
+	.magic .magic-left .magic-detail{width:100%;height:3rem}
+	.magic .magic-right{width:54.8%;height:26.7rem;float:right;}
+	.magic .magic-right .magic-detail{width:100%;height:3rem}
+</style>
+<!--商品展示-->
+<div class="show">
+	<div class="show_pic">
+		<img src="../addons/ewei_shopv2/static/img/pro_img2.jpg" alt="" style="width:100%">
+	</div>
+	<div style="width:94%;margin-left:1.1rem;height:4.5rem">
+
+		<div class="row" style="font-size:0.67rem;font-weight: bold;font-family: 微软雅黑;color:black;">帕里欧干红葡萄酒帕里欧干红葡萄酒</div>
+		<div class="row" style="font-size:0.52rem;color:#7B7B7B;margin-top:3px;">葡萄酒产地：意大利产区葡萄</div>
+		<div class="row" style="margin-top:3px">
+			<button class="btn btn-danger" style="border-radius: 0;background: #EC3027;color:white;height:1.2rem;line-height: 1.2rem;font-size:14px;width:4.5rem">立即抢购</button>
+			<span style="text-decoration:line-through;font-size:0.6rem">原价:￥1000</span>
+			<span style="margin-left:0.3rem;font-size:0.52rem;color:#EC3027;font-weight:500">抢购价:￥500</span>
+		</div>
+	</div>
+</div>
+
+<div class="show">
+	<div class="show_pic">
+		<img src="../addons/ewei_shopv2/static/img/pro_img2.jpg" alt="" style="width:100%">
+	</div>
+	<div style="width:94%;margin-left:1.1rem;height:4.5rem">
+
+		<div class="row" style="font-size:0.67rem;font-weight: bold;font-family: 微软雅黑;color:black;">帕里欧干红葡萄酒帕里欧干红葡萄酒</div>
+		<div class="row" style="font-size:0.52rem;color:#7B7B7B;margin-top:3px;">葡萄酒产地：意大利产区葡萄</div>
+		<div class="row" style="margin-top:3px">
+			<button class="btn btn-danger" style="border-radius: 0;background: #EC3027;color:white;height:1.2rem;line-height: 1.2rem;font-size:14px;width:4.5rem">立即抢购</button>
+			<span style="text-decoration:line-through;font-size:0.6rem">原价:￥1000</span>
+			<span style="margin-left:0.3rem;font-size:0.52rem;color:#EC3027;font-weight:500">抢购价:￥500</span>
+		</div>
+	</div>
+</div>
+
+<div class="show">
+	<div class="show_pic">
+		<img src="../addons/ewei_shopv2/static/img/pro_img2.jpg" alt="" style="width:100%">
+	</div>
+	<div style="width:94%;margin-left:1.1rem;height:4.5rem">
+
+		<div class="row" style="font-size:0.67rem;font-weight: bold;font-family: 微软雅黑;color:black;">帕里欧干红葡萄酒帕里欧干红葡萄酒</div>
+		<div class="row" style="font-size:0.52rem;color:#7B7B7B;margin-top:3px;">葡萄酒产地：意大利产区葡萄</div>
+		<div class="row" style="margin-top:3px">
+			<button class="btn btn-danger" style="border-radius: 0;background: #EC3027;color:white;height:1.2rem;line-height: 1.2rem;font-size:14px;width:4.5rem">立即抢购</button>
+			<span style="text-decoration:line-through;font-size:0.6rem">原价:￥1000</span>
+			<span style="margin-left:0.3rem;font-size:0.52rem;color:#EC3027;font-weight:500">抢购价:￥500</span>
+		</div>
+	</div>
+</div>
+
+<!--魔方样式-->
+<div class="magic">
+	<div class="magic-left">
+		<img src="../addons/ewei_shopv2/static/img/news.jpg" alt="" style="width:100%">
+		<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" alt="" style="width:100%">
+		<div class="magic-detail">
+			<div class="row">
+				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">佳能单反入门相机</span>
+				<div style="width:3rem;height:1.1rem;background: #EC3027;float:right;line-height: 1.1rem">
+					<span style="font-size:0.6rem;color:white;font-family: 微软雅黑;margin-left:7%">新品优惠</span>
+				</div>
+			</div>
+			<div class="row">
+				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">相机</span>
+				<span style="float:right;font-size:0.67rem;color:#EC3027;font-weight:600">￥2688</span>
+			</div>
+		</div>
+		<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" alt="" style="width:100%">
+		<div class="magic-detail">
+			<div class="row">
+				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">佳能单反入门相机</span>
+				<div style="width:3rem;height:1.1rem;background: #EC3027;float:right;line-height: 1.1rem">
+					<span style="font-size:0.6rem;color:white;font-family: 微软雅黑;margin-left:7%">新品优惠</span>
+				</div>
+			</div>
+			<div class="row">
+				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">相机</span>
+				<span style="float:right;font-size:0.67rem;color:#EC3027;font-weight:600">￥2688</span>
+			</div>
+		</div>
+	</div>
+	<div class="magic-right">
+		<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" alt="" style="width:100%">
+		<div class="magic-detail">
+			<div class="row">
+				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">佳能单反入门相机</span>
+				<div style="width:3rem;height:1.1rem;background: #EC3027;float:right;line-height: 1.1rem">
+					<span style="font-size:0.6rem;color:white;font-family: 微软雅黑;margin-left:7%">新品优惠</span>
+				</div>
+			</div>
+			<div class="row">
+				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">相机</span>
+				<span style="float:right;font-size:0.67rem;color:#EC3027;font-weight:600">￥2688</span>
+			</div>
+		</div>
+		<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" alt="" style="width:100%">
+		<div class="magic-detail">
+			<div class="row">
+				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">佳能单反入门相机</span>
+				<div style="width:3rem;height:1.1rem;background: #EC3027;float:right;line-height: 1.1rem">
+					<span style="font-size:0.6rem;color:white;font-family: 微软雅黑;margin-left:7%">新品优惠</span>
+				</div>
+			</div>
+			<div class="row">
+				<span style="font-size:0.67rem;font-weight:bold;color:black;float:left;">相机</span>
+				<span style="float:right;font-size:0.67rem;color:#EC3027;font-weight:600">￥2688</span>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="width:94%;height:2rem;background: #eee;margin:0 auto;line-height: 2rem;">
+	<span style="font-size:0.8rem;color:black;margin-left:43%;">更多新品>></span>
+</div>
+<div style="width:100%;height:6rem;margin-top:1rem;">
+	<img src="../addons/ewei_shopv2/static/img/zg_img.jpg" alt="" style="width:100%">
+</div>
+<div style="width:86%;margin:0 auto;height:23rem;">
+	<div style="width:100%;background: #EFEFEF">
+
+		<div style="width:94%;margin:0 auto;">
+			<img src="../addons/ewei_shopv2/static/img/zg_pro_img.jpg" alt="" style="width:100%;margin-top:0.5rem">
+		</div>
+	</div>
+	<div style="width:100%;height:8.5rem;margin-top:0.5rem;text-align: center;">
+		<span style="font-weight:bold;text-decoration:underline;color:black;font-family: 宋体;font-size:1.2rem">商品标题商品标题</span>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;margin-top:0.4rem">商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍</div>
+        <div class="row">
+			<button class="btn btn-danger" style="background:#EC3027;border-radius: 0;width:4.6rem;height:1.1rem;line-height:1.1rem;font-size:0.8rem;margin-top:0.6rem">查看更多</button>
+		</div>
+	</div>
+</div>
+
+<div style="width:86%;margin:0 auto;height:23rem;">
+	<div style="width:100%;background: #EFEFEF">
+
+		<div style="width:94%;margin:0 auto;">
+			<img src="../addons/ewei_shopv2/static/img/zg_pro_img.jpg" alt="" style="width:100%;margin-top:0.5rem">
+		</div>
+	</div>
+	<div style="width:100%;height:8.5rem;margin-top:0.5rem;text-align: center;">
+		<span style="font-weight:bold;text-decoration:underline;color:black;font-family: 宋体;font-size:1.2rem">商品标题商品标题</span>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;margin-top:0.4rem">商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍</div>
+		<div class="row">
+			<button class="btn btn-danger" style="background:#EC3027;border-radius: 0;width:4.6rem;height:1.1rem;line-height:1.1rem;font-size:0.8rem;margin-top:0.6rem">查看更多</button>
+		</div>
+	</div>
+</div>
+
+<div style="width:86%;margin:0 auto;height:23rem;">
+	<div style="width:100%;background: #EFEFEF">
+
+		<div style="width:94%;margin:0 auto;">
+			<img src="../addons/ewei_shopv2/static/img/zg_pro_img.jpg" alt="" style="width:100%;margin-top:0.5rem">
+		</div>
+	</div>
+	<div style="width:100%;height:8.5rem;margin-top:0.5rem;text-align: center;">
+		<span style="font-weight:bold;text-decoration:underline;color:black;font-family: 宋体;font-size:1.2rem">商品标题商品标题</span>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;margin-top:0.4rem">商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍</div>
+		<div class="row">
+			<button class="btn btn-danger" style="background:#EC3027;border-radius: 0;width:4.6rem;height:1.1rem;line-height:1.1rem;font-size:0.8rem;margin-top:0.6rem">查看更多</button>
+		</div>
+	</div>
+</div>
+<script language='javascript'>
+	require(['biz/shop/index'], function (modal) {modal.init({merchid:{php echo intval($_GPC['merchid'])}})});
+</script>
+
+
+<script language="JavaScript">
+	var runtimes = 0;
+	function GetRTime(){
+		var nowtime = $('.shidian_count').attr('a');
+		var starttime = $('.shidian_count').attr('b');
+		var endtime = $('.shidian_count').attr('c');
+
+
+		if (endtime>=nowtime){
+			lefttime = endtime-nowtime; //实际剩下的时间（秒）
+		}else{
+			lefttime=0;
+		}
+        if(lefttime == 0){
+			$("#RemainH").html('00');
+			$("#RemainM").html('00');
+			$("#RemainS").html('00');
+			$('.miaosha').html('10:00开始秒杀：');
+		}
+
+		var nMS = lefttime*1000-runtimes*1000;
+
+		if (nMS>=0){
+			var nH=Math.floor(nMS/(1000*60*60))%24;
+			if(nH<=9){
+			nH = '0'+nH;
+			}
+			var nM=Math.floor(nMS/(1000*60)) % 60;
+			if(nM<=9){
+			nM = '0'+nM;
+			}
+			var nS=Math.floor(nMS/1000) % 60;
+			if(nS<=9){
+			nS = '0'+nS;
+			}
+			$("#RemainH").html(nH);
+			$("#RemainM").html(nM);
+			$("#RemainS").html(nS);
+
+			runtimes++;
+			if(nowtime>=starttime){
+				setTimeout("GetRTime()",1000);
+			}else{
+
+				$("#RemainH").html('00');
+				$("#RemainM").html('00');
+				$("#RemainS").html('00');
+				$('.miaosha').html('10:00开始秒杀：');
+			}
+
+		}
+	}
+	var Num = 0;
+	$(document).ready(function() {
+		GetRTime();
+	})
+</script>
+

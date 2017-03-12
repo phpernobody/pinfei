@@ -1,0 +1,104 @@
+{template '_header'}
+<style>
+	.fui-cell-group .fui-cell .fui-cell-label{
+		text-align:left;
+		height: 1rem;
+		line-height: 1rem;
+		overflow: hidden;
+		float: left;
+		font-family: '微软雅黑',sans-serif;
+		font-size: 0.7rem
+	}
+	.btn.btn-success {
+	    background: #F33C2C;
+	    color: #fff;
+	    border: 1px solid #F33C2C;
+	    margin-top:3rem;
+	    font-family: '微软雅黑',sans-serif;
+	    
+	}
+	.fui-cell-group .fui-cell .fui-input{
+		width: 92%;
+	}
+	.fui-cell-group:not(.fui-cell-group-o):before{
+		border: 0px;
+	}
+</style>
+<div class='fui-page  fui-page-current'>
+    <div class="fui-header">
+		<div class="fui-header-left">
+			<a class="back" onclick='location.back()'></a>
+		</div>
+		<div class="title">个人资料</div> 
+		<div class="fui-header-right">&nbsp;</div>
+	</div>
+	<div class='fui-content' style='margin-top:0px;margin-bottom: 0px;background: #fff'>
+		<div class="headinfo" style="height: 10.8rem;background: #F33C2C;">
+			<div  style="width: 80%;height：80%;margin: 0 auto;padding-top:2.4rem">
+				<div class="face" style="width: 4rem;height: 4rem;border: 0px;padding: .05rem;margin: 0 auto;">
+					<!-- <img src="{$member['avatar']}" style="width: 2.8rem;height: 2.8rem;border-radius:2.8rem;">  -->
+					<img src="{php echo $member['avatar']?$member['avatar']:'../addons/ewei_shopv2/static/img/touxiang.png';}" style="width: 3.9rem;height: 3.9rem;border-radius:3.9rem;">
+				</div>
+				<div style="text-align: center;font-size: 0.75rem;color: #fff;font-family:'微软雅黑',sans-serif;margin-top:1rem">
+					{if empty($member['nickname'])}
+						用户昵称{else}用户:{$member['nickname']}
+					{/if}
+				</div>
+				<div style="text-align: center;font-size: 0.6rem;color:#fffc00;font-family:'微软雅黑',sans-serif;overflow: hidden;line-height: 1rem;height: 1rem">等级：一级代理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;推荐人: 市级代理</div>
+			</div>		
+		</div>
+		{if empty($template_flag)}
+			 
+		<div class="fui-cell-group">
+			<div class="fui-cell must ">
+				<div class="fui-cell-label" style="letter-spacing: .75em;" >姓&nbsp;名</div>
+				<div class="fui-cell-info"><input type="text" class='fui-input' id='realname' name='realname' placeholder="请输入您的姓名"  value="{$member['realname']}" /><i><img src="../addons/ewei_shopv2/static/img/grzl_img.png" style="height:.7rem " ></i></div>
+			</div>
+
+			{if empty($wapset['open'])}
+				<div class="fui-cell must">
+					<div class="fui-cell-label" style="letter-spacing: .5em">手机号</div>
+					<div class="fui-cell-info"><input type="text" class='fui-input' id='mobile' name='mobile' placeholder="请输入您的手机号"  value="{$member['mobile']}" /><i><img src="../addons/ewei_shopv2/static/img/grzl_img.png" style="height:.7rem " ></i></div>
+				</div>
+			{/if}
+			
+			<div class="fui-cell">
+				<div class="fui-cell-label"style="letter-spacing: .5em">微信号</div>
+				<div class="fui-cell-info"><input type="text"  class='fui-input'  id='weixin' name='weixin' placeholder="请输入您的微信号"  value="{$member['weixin']}" /><i><img src="../addons/ewei_shopv2/static/img/grzl_img.png" style="height:.7rem " ></i></div>
+			</div>
+			<div class="fui-cell">
+				<div class="fui-cell-label" style="letter-spacing: .75em">工&nbsp;作</div>
+				<div class="fui-cell-info"><input type="text"  class='fui-input'  id='work' name='work' placeholder="请输入您的工作"  value="" /><i><img src="../addons/ewei_shopv2/static/img/grzl_img.png" style="height:.7rem " ></i></div>
+			</div>
+			<div class="fui-cell">
+				<div class="fui-cell-label">兴趣爱好</div>
+				<div class="fui-cell-info"><input type="text"  class='fui-input'  id='hobe' name='hobe' placeholder="请输入您的兴趣爱好"  value="" /><i><img src="../addons/ewei_shopv2/static/img/grzl_img.png" style="height:.7rem " ></i></div>
+			</div>
+			<div class="fui-cell">
+				<div class="fui-cell-label">出生日期</div>
+				<div class="fui-cell-info"><input type="text"  class='fui-input'  id='birthday' name='birthday' placeholder="请选择出生日期"  value="{$member['birthday']}" readonly/><i><img src="../addons/ewei_shopv2/static/img/grzl_img.png" style="height:.7rem " ></i></div>
+			</div>
+			<div class="fui-cell">
+				<div class="fui-cell-label ">所在城市</div>
+				<div class="fui-cell-info"><input type="text"  class='fui-input'  id='city' name='city' placeholder="请选择城市"  value="{if !empty($member) && !empty($member['city'])}{$member['province']} {$member['city']}{/if}" readonly/><i><img src="../addons/ewei_shopv2/static/img/grzl_img.png" style="height:.7rem " ></i></div>
+			</div>
+		 
+		</div>
+		{else}
+		   {template 'diyform/formfields'}
+		{/if}
+
+		<a href='#' id='btn-submit' class='btn btn-success block' style="border-radius: 0;">确认修改</a>
+	</div>
+	<script language='javascript'>
+		require(['biz/member/info'], function (modal) {
+		  	modal.init({
+			    returnurl:"{$returnurl}",
+			    template_flag: {php echo intval($template_flag)},
+				wapopen: {php echo intval($wapset['open'])}
+			});
+	});
+</script>
+</div>
+{template '_footer'}
+

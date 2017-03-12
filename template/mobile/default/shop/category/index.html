@@ -1,0 +1,135 @@
+{template '_header'}
+<style>
+    .fui-fullHigh-item.menu nav.on{ background:#F2F2F2;  }
+    .fui-fullHigh-item{  background: #f2f2f2;  }
+    .fui-fullHigh-item.menu nav.on{  background:#F2F2F2;  color:#848484;  }
+    .left{height:2.5rem;width:33%}
+    .allType{height:2.5rem;width:20%;float:left;line-height:2.3rem}
+
+
+</style>
+<div class="fui-page fui-page-current page-shop-goods_category">
+    <div class="fui-header">
+        <div class="title" style="padding-left: 0">
+            <form method="post" action="{php echo mobileUrl('goods')}" name="form1">
+                <div class="left" style="float:left;">
+                        <div class="left_pic1" style="height:2.5rem;width:20%;float:left;">
+                            <img src="../addons/ewei_shopv2/static/img/fl_img1.png" alt="" style="float:left;margin-left:0.3rem;margin-top:0.8rem;width:0.8rem">
+                        </div>
+                        <div class="allType" style="font-size:0.7rem;color:#ED322B;font-weight: bold;font-family: 宋体">
+                            全部分类
+                        </div>
+                        <img src="../addons/ewei_shopv2/static/img/fl_img2.png" alt="" style="float:right;margin-right:1.9rem;margin-top:1rem;">
+                </div>
+                <div class="searchbar">
+                    <div class="search-input" style="float:left;">
+                        <input type="search" name="keywords" placeholder="请输入商品名称" style="border-radius:30px;margin-left:23%;width:80%">
+                    </div>
+                    <div class="search-right-pic" style="width:10%;height:10rem;float:right;margin-right: 10px">
+                        <img src="../addons/ewei_shopv2/static/img/fl_ssimg.png" alt="" onclick="document.form1.submit();">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+	<div class="fui-content navbar">
+    <div class="fui-fullHigh-group">
+
+        <div class="fui-fullHigh-item menu" id="tab" style="border-left:0;width:9rem;background:white">
+                {loop $getCategory $value}
+
+                <nav class="category" onclick="getGoods(this)" a="{$value['id']}">{$value['name']}
+                    <img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:10px;width:7%" ></nav>
+                {/loop}
+        </div>
+
+        <div id="container" style="width:100%;">
+            <!--<div style="width:94%;height:6rem;margin:0 auto;background:white;margin-top:10px">-->
+                <!--<div style="width:6rem;height:6rem;float:left">-->
+                    <!--<img src="../addons/ewei_shopv2/static/img/pro_img.jpg" alt="" style="width:5.4rem;margin-top:0.3rem;margin-left:0.3rem;">-->
+                <!--</div>-->
+                <!--<div style="width:63%;height:6rem;float:right">-->
+                    <!--<div style="width:100%;height:4rem;">-->
+                        <!--<div class="row" style="height:2.3rem;">-->
+                            <!--<span style="font-size:18px;word-spacing: 50%">拉菲红酒原装正品拉菲红酒原装正品拉菲红酒原装正品</span>-->
+                        <!--</div>-->
+                        <!--<div class="row" style="height:1rem;">-->
+                            <!--<span style="font-size:14px;color:#A5A5A5;">月销：8888件</span>-->
+                        <!--</div>-->
+                        <!--<div class="row" style="height:2rem;margin-top:1rem;">-->
+                            <!--<span style="font-size:15px;color: #EC3029;">￥：2000</span>-->
+                            <!--<button class="btn btn-danger" style="border-radius: 0;width:3.6rem;height:1rem;line-height:1rem;font-size:13px;float:right;background: #EC3029;">加入购物车</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+<!--<script language='javascript'>-->
+    <!--require(['biz/shop/category'], function (modal) {-->
+        <!--modal.init({php echo json_encode($category)},{php echo json_encode($category_set)});-->
+    <!--});-->
+<!--</script>-->
+<style>
+
+</style>
+<script>
+    function getGoods(obj){
+        var id = $(obj).attr('a');
+        $.ajax({
+            type:'post',
+            url:"{php echo mobileUrl('shop/category/getGoods')}",
+            data:{'id':id},
+            success:function(data){
+                var htm = '';
+
+                $.each(data,function(key,value){
+                    htm +='<div style="width:94%;height:6rem;margin:0 auto;background:white;margin-top:10px">'
+                    htm +='<div style="width:6rem;height:6rem;float:left">'
+                    htm +='<img src="../attachment/'+value.thumb+'" alt="" style="width:5.4rem;height:5.4rem;margin-top:0.3rem;margin-left:0.3rem;"></div>'
+                    htm +='<div style="width:63%;height:6rem;float:right">'
+                    htm +='<div style="width:100%;height:4rem;">'
+                    htm +='<div class="row" style="height:2.3rem;">'
+                    htm +='<span style="font-size:18px;word-spacing: 50%">'+value.title+'</span></div>'
+                    htm +='<div class="row" style="height:1rem;">'
+                    htm +='<span style="font-size:14px;color:#A5A5A5;">销量：'+value.salesreal+'&nbsp;件</span></div>'
+                    htm +='<div class="row" style="height:2rem;margin-top:1rem;">'
+                    htm +='<span style="font-size:15px;color: #EC3029;">￥：'+value.marketprice+'</span>'
+                    htm +='<button class="btn btn-danger" style="border-radius: 0;width:3.6rem;height:1rem;line-height:1rem;font-size:13px;float:right;background: #EC3029;">加入购物车</button>'
+                    htm +='</div></div></div></div>'
+                })
+                $('#container').html(htm);
+            },
+            dataType:'json',
+        })
+        $(obj).css('background','#EFEFEF');
+        $(obj).siblings().css("background", "none");
+    }
+</script>
+<!--<div style="width:94%;height:6rem;margin:0 auto;background:white;margin-top:10px">-->
+    <!--<div style="width:6rem;height:6rem;float:left">-->
+        <!--<img src="../addons/ewei_shopv2/static/img/pro_img.jpg" alt="" style="width:5.4rem;margin-top:0.3rem;margin-left:0.3rem;">-->
+    <!--</div>-->
+    <!--<div style="width:63%;height:6rem;float:right">-->
+        <!--<div style="width:100%;height:4rem;">-->
+            <!--<div class="row" style="height:2.3rem;">-->
+                <!--<span style="font-size:18px;word-spacing: 50%">拉菲红酒原装正品拉菲红酒原装正品拉菲红酒原装正品</span>-->
+            <!--</div>-->
+            <!--<div class="row" style="height:1rem;">-->
+                <!--<span style="font-size:14px;color:#A5A5A5;">月销：8888件</span>-->
+            <!--</div>-->
+            <!--<div class="row" style="height:2rem;margin-top:1rem;">-->
+                <!--<span style="font-size:15px;color: #EC3029;">￥：2000</span>-->
+                <!--<button class="btn btn-danger" style="border-radius: 0;width:3.6rem;height:1rem;line-height:1rem;font-size:13px;float:right;background: #EC3029;">加入购物车</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+{php $this->footerMenus()}
+{template '_footer'}

@@ -1,0 +1,131 @@
+{template '_header'}
+{template 'commission/common'}
+<div class="fui-page fui-page-current page-commission-order">
+<!--     <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back"></a>
+        </div>
+        <div class="title">{php echo $this->set['texts']['order']}</div>
+		 
+    </div> -->
+    <div class="fui-content navbar">
+		<div class='fui-cell-group' style='margin-top: 0px; position: relative;'>
+        <img src="../public/images/order_header.png" alt="" style="width: 100%; display: block;">
+
+        <div style="position: absolute; left: 10%; top: 20%;">
+            <div style="color: #922e04; font-weight: bold; font-size: 15px;">累计佣金</div>
+            <div style="color: #fff; font-weight: bold; font-size: 20px;">
+                {php echo number_format($member['commission_total'],2)}{php echo $this->set['texts']['yuan']}
+            </div>
+        </div>
+<!-- 			<div class='fui-cell'>
+				<div class='fui-cell-label' style='width:auto'>{php echo $this->set['texts']['commission_total']}</div>
+				<div class='fui-cell-info'></div>
+				<div class='fui-cell-remark noremark'>+<span style="color: red;">{php echo number_format($member['commission_total'],2)}</span> {php echo $this->set['texts']['yuan']}</div>
+			</div> -->
+		</div>
+        <div class="fui-tab fui-tab-warning" id="tab" style="margin-bottom: 0;">
+            <a class="active" data-tab='status'>所有</a>
+            <a href="javascript:void(0)" data-tab='status0'>待付款</a>
+            <a href="javascript:void(0)" data-tab='status1'>已付款</a>
+            <a href="javascript:void(0)" data-tab='status3'>已完成</a>
+        </div>
+
+        <div class='content-empty' style='display:none;'>
+            <i class='icon icon-list'></i><br/>暂时没有任何订单
+        </div>
+        <div class="fui-according-group" id="container" style="margin-top: 0;"></div>
+        <div class='infinite-loading'><span class='fui-preloader'></span><span class='text'> 正在加载...</span></div>
+   </div>
+</div>
+
+<script id='tpl_commission_order_list' type='text/html'">
+    <%each list as order%>
+    <div style="width: 100%; height: 10px; background: #FAFAFA;"></div>
+    <div class='fui-according se-nobefore' style="border-top: 1px solid #eee; border-bottom: 1px solid #eee; display: <%downid ? (order.id==downid ? 'block' : 'none') : 'block'%>">
+        <div class='fui-according-header' style="display: flex; justify-content: space-between; line-height: 18px; padding: 5px 10px;">
+            <!-- <img data-lazy="<%order.buyer.avatar%>" class="round" style='width:2rem;height:2rem;'> -->
+            <div style="">
+                <div style="display: flex; align-items: center; font-size: 10px; color: #333;"><%order.buyer.nickname%></div>
+                <div style="display: flex; align-items: center; font-size: 9px; color: #a1a1a1;"><%order.buyer.agentlevel%>级代理</div>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 10px; font-weight: bold; color: #ff5d15;"><%order.status%></div>
+                <div style="font-size: 9px; color: #a1a1a1;"><%order.createtime%></div>
+            </div>
+        </div>
+<!--         <div class='fui-according-header'>
+                    <span class="left"><%order.ordersn%>(<%order.level%>)<br>
+                        <span><%order.createtime%></span>
+                    </span>
+            <span class="right">+<%order.commission%><br><span><%order.status%></span></span>
+            {if !empty($this->set['openorderdetail']) || !empty($this->set['openorderbuyer'])}
+            <span class="remark"></span>
+            {/if}
+        </div> -->
+        {if !empty($this->set['openorderdetail']) || !empty($this->set['openorderbuyer'])}
+        <div class='fui-according-content' style="height: auto; border-top: none; background: #FAFAFA;">
+            <div class='content-block' style="position: relative; overflow: hidden; padding: 0;">
+                {if false && !empty($this->set['openorderbuyer'])}
+                <div class="fui-list">
+                    <div class="fui-list-media">
+                        <img data-lazy="<%order.buyer.avatar%>" class="round" style='width:2rem;height:2rem;'>
+                    </div>
+                    <div class="fui-list-inner">
+                        <div class="row">
+                            <div class="row-text" style="font-size: 15px"><%order.buyer.nickname%></div>
+                        </div>
+                        <div class="subtitle" style="font-size: 15px">微信号: <%order.buyer.weixin%></div>
+                    </div>
+                </div>
+                {/if}
+                {if !empty($this->set['openorderdetail'])}
+                <%each order.order_goods as g%>
+                <div class="fui-list" style="display: flex; justify-content: flex-start; align-items: flex-start;">
+                    <img data-lazy="<%g.thumb%>" style='width:3.2rem;height:3.2rem;'>
+                    <div style="font-size: 10px; color: #333; width: calc(100% - 70px - 3.2rem); margin-left: 10px;">
+                        <%g.title%>  <%g.shorttitle%>
+                    </div>
+                    <div style="width: 70px; text-align: right;">
+                        <div class="subtitle" style="font-size: 12px; "><%g.optionname%>¥<%g.price%></div>
+                        <div style="color: #a1a1a1;">×<%g.total%></div>
+                    </div>
+                </div>
+<!--                 <div class="fui-list" style="padding: 10px;">
+                    <div class="fui-list-media">
+                        <img data-lazy="<%g.thumb%>" style='width:3.2rem;height:3.2rem;'>
+                    </div>
+                    <div class="fui-list-inner">
+                        <div class="row">
+                            <div class="row-text" style="font-size: 10px; color: #333; width: calc(100% - 140px - 3.2rem); "><%g.title%><%g.shorttitle%></div>
+                        </div>
+                        <div class="subtitle" style="font-size: 12px; color: orange;"><%g.optionname%>¥<%g.price%></div>
+                    </div>
+                    <div class="row-remark">
+                        <p>佣金</p>
+                        <p>+<%g.commission%></p>
+                    </div>
+                </div> -->
+                <%/each%>
+                <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; font-size: 9px; background: #fff; height: 30px; line-height: 30px; padding: 0 10px;">
+                    <span style="color: orange; font-size: 18px;"></span>    
+                    <span>
+                    共<%order.goods_number%>件商品 合计：¥<%order.amount_total%>&nbsp;&nbsp;&nbsp;<span style="color: #ff5d15;">( 总佣金：¥<%order.commission%> )</span>
+                    </span>
+                </div> 
+                {/if}
+                {/if}
+            </div>
+        </div>
+    </div>
+    <%/each%>
+</script>
+
+<script language='javascript'>
+    require(['../addons/ewei_shopv2/plugin/commission/static/js/order.js'], function (modal) {
+        console.log(modal);
+    modal.init({fromDetail:false});
+});
+</script>
+{php $this->footerMenus()}
+{template '_footer'}

@@ -1,0 +1,233 @@
+{template '_header'}
+<script>document.title = "{php echo $this->set['texts']['center']}"; </script>
+{template 'commission/common'}
+<style>
+	.text{color:#FCD90B;margin-left:38%;font-size:15px;}
+</style>
+<div class="fui-page fui-page-current page-commission-index ">
+	<div class="fui-header">
+		<div class="fui-header-left">
+			<a class="back" onclick='location.back()'></a>
+		</div>
+		<div class="title">{php echo $this->set['texts']['center']}</div>
+		<div class="fui-header-right"></div>
+	</div>
+    <div class='fui-content navbar'>
+	<div class="headinfo" style="width:100%;background: #F13627">
+	    <div class="userinfo" style="height:10.5rem;">
+		<div class='fui-list' style="height:6rem;">
+		    <div class='fui-list-media' style="width:100%;">
+					<img src="../addons/ewei_shopv2/static/img/touxiang.png" style="margin:0 auto;width:5rem;height:5rem"/>
+			</div>
+		</div>
+		<div class='fui-list-info' style="width:100%;height:2.5rem;">
+
+
+			<!--<div class='subtitle'  {if $this->set['levelurl']!=''}onclick='location.href="{php echo $this->set['levelurl']}"'{/if}>-->
+				<!--&lt;{php echo empty($level) ? ( empty($this->set['levelname'])?'等级':$this->set['levelname'] ) : $level['levelname']}&gt;-->
+				<!--{if $this->set['levelurl']!=''}<i class='icon icon-question' style='font-size:8px;'></i>{/if}-->
+			<!--</div>-->
+			<div class="row" style="color:white;margin-top:0.5rem">
+				<div style="width:8rem;margin:0 auto">
+					用户名：{$member['nickname']}
+				</div>
+
+			</div>
+
+			<div class='text' style="font-size:0.7rem;margin:0 auto;margin-top: 0.6rem;">
+				<div style="width:50%;height:1rem;margin:0 auto;">
+					等级：
+					{if $this->set['levelurl']!=''}onclick='location.href="{php echo $this->set['levelurl']}"'{/if}
+					{php echo empty($level) ? ( empty($this->set['levelname'])?'代理':$this->set['levelname'] ) : $level['levelname']}
+					{if $this->set['levelurl']!=''}{/if}
+					{php echo $this->set['texts']['up']}: {if empty($up)}
+					总店
+					{else}
+					{$up['nickname']}
+					{/if}
+
+				</div>
+
+			</div>
+		</div>
+			<!--{if empty($this->set['closemyshop'])}-->
+			<!--<a class="setbtn" href="{php echo mobileUrl('commission/myshop/set')}"><i class="icon icon-settings"></i></a>-->
+		<!--{/if}-->
+	    </div>
+	    <div class="userblock" style="height:4rem">
+		<div class="line total" style="width:35%;float:left;">
+		    <div class="title" style="font-size:0.7rem;">{php echo $this->set['texts']['commission_pay']}({php echo $this->set['texts']['yuan']})</div>
+		    <div class="num" style="font-size:0.7rem">{php echo number_format($member['commission_pay'],2)}</div>
+		</div>
+			<div class="line usable">
+				{if $cansettle}
+				<a class="btn" href="{php echo mobileUrl('commission/withdraw')}" >{php echo $this->set['texts']['commission']}{php echo $this->set['texts']['withdraw']}</a>
+				{else}
+				<div class="btn disabled"  style="color:white;border:1px solid white;font-size:0.8rem;border-radius: 1rem" onclick="FoxUI.toast.show('满 {php echo $this->set['withdraw']} {php echo $this->set['texts']['yuan']}才能提现!')">{php echo $this->set['texts']['commission']}{php echo $this->set['texts']['withdraw']}</div>
+				{/if}
+				<div class="text" style="width:100%;margin-left:0;">
+					<div class="title" style="font-size:0.7rem;color:white;">{php echo $this->set['texts']['commission_ok']}({php echo $this->set['texts']['yuan']})</div>
+					<div class="num" style="font-size:0.7rem;color:white;margin-top:0.3rem">{php echo number_format( $member['commission_ok'],2)}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<a class="fui-block-child" href="{php echo mobileUrl('commission/withdraw')}" style="color:black;">
+			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC">
+				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem;">分销佣金&nbsp;&nbsp;&nbsp;
+					<span>{php echo number_format($member['commission_total'],2)}</span>
+					{php echo $this->set['texts']['yuan']}
+				</span>
+			</div>
+		</a>
+		<div style="width:100%;height:0.5rem;"></div>
+		<a class="fui-block-child" href="{php echo mobileUrl('commission/order')}" style="color:black;">
+			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
+				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">佣金明细<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+			</div>
+		</a>
+		<div style="width:100%;height:0.5rem;"></div>
+		<a class="fui-block-child" href="{php echo mobileUrl('commission/log')}" style="color:black;">
+			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
+				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">提现明细<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+			</div>
+		</a>
+
+		<div style="width:100%;height:0.5rem;"></div>
+		{if $hasglobonus}
+		<a class="fui-block-child" href="{php echo mobileUrl('globonus')}" style="color:black;">
+			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
+				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">我的下线<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+			</div>
+		</a>
+		{/if}
+
+		{if !$this->set['closed_qrcode']}
+		<a class="fui-block-child" href="{php echo mobileUrl('commission/qrcode')}" style="color:black;">
+			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
+				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">推广二维码<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+			</div>
+		</a>
+		{/if}
+
+
+		<div style="width:100%;height:0.5rem;"></div>
+		<a class="fui-block-child" href="{php echo mobileUrl('commission/down')}" style="color:black;">
+			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
+				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">分销成员<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+			</div>
+		</a>
+
+		<div style="width:100%;height:0.5rem;"></div>
+		{if empty($this->set['closemyshop'])}
+		<a class="fui-block-child" href="{php echo mobileUrl('commission/myshop/set')}" style="color:black;">
+			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
+				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">我是店长<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+			</div>
+		</a>
+		{/if}
+
+
+
+
+	<!--<div class="fui-block-group col-3" style='margin-top:0; overflow: hidden;'>-->
+            <!--<a class="fui-block-child" href="{php echo mobileUrl('commission/withdraw')}">-->
+                <!--<div class="icon text-yellow"><i class="icon icon-money"></i></div>-->
+                <!--<div class="title">{php echo $this->set['texts']['commission1']}</div> -->
+                <!--<div class="text"><span>{php echo number_format($member['commission_total'],2)}</span> {php echo $this->set['texts']['yuan']}</div>-->
+            <!--</a>-->
+            <!--<a class="fui-block-child" href="{php echo mobileUrl('commission/order')}">-->
+                <!--<div class="icon text-blue"><i class="icon icon-list"></i></div>-->
+                <!--<div class="title">{php echo $this->set['texts']['order']}</div>-->
+                <!--<div class="text"><span>{php echo number_format($member['ordercount0'],0)}</span> 笔</div>-->
+            <!--</a>-->
+            <!--<a class="fui-block-child" href="{php echo mobileUrl('commission/log')}">-->
+                <!--<div class="icon text-orange"><i class="icon icon-manageorder"></i></div>-->
+                <!--<div class="title">{php echo $this->set['texts']['commission_detail']}</div>-->
+		<!--<div class="text"><span>{php echo number_format($member['applycount'],0)}</span> 笔</div>-->
+            <!--</a>-->
+            <!--<a class="fui-block-child" href="{php echo mobileUrl('commission/down')}">-->
+                <!--<div class="icon text-orange"><i class="icon icon-group"></i></div>-->
+                <!--<div class="title">{php echo $this->set['texts']['mydown']}</div>-->
+                <!--<div class="text"><span>{php echo number_format($member['downcount'],0)}</span>人</div>-->
+            <!--</a>-->
+
+		<!--{if $hasglobonus}-->
+		<!--<a class="fui-block-child" href="{php echo mobileUrl('globonus')}">-->
+			<!--<div class="icon text-yellow"><i class="icon icon-profile"></i></div>-->
+			<!--<div class="title">{$plugin_globonus_set['texts']['center']}</div>-->
+			<!--<div class="text"></div>-->
+		<!--</a>-->
+		<!--{/if}-->
+
+
+		<!--{if $hasabonus}-->
+		<!--<a class="fui-block-child" href="{php echo mobileUrl('abonus')}">-->
+			<!--<div class="icon text-orange"><i class="icon icon-shengfen"></i></div>-->
+			<!--<div class="title">{$plugin_abonus_set['texts']['center']}</div>-->
+			<!--<div class="text"></div>-->
+		<!--</a>-->
+		<!--{/if}-->
+
+		<!--{if $hasauthor}-->
+		<!--<a class="fui-block-child" href="{php echo mobileUrl('author')}">-->
+			<!--<div class="icon text-orange"><i class="icon icon-profile"></i></div>-->
+			<!--<div class="title">{$plugin_author_set['texts']['center']}</div>-->
+			<!--<div class="text"></div>-->
+		<!--</a>-->
+		<!--{if $team_money>0}-->
+		<!--<a class="fui-block-child">-->
+			<!--<div class="icon text-blue"><i class="icon icon-money"></i></div>-->
+			<!--<div class="title">已获团队奖励</div>-->
+			<!--<div class="text"><span>{$team_money}</span> 元</div>-->
+		<!--</a>-->
+		<!--{/if}-->
+		<!--{/if}-->
+
+		<!--{if !empty($plugin_author_set['team_open'])}-->
+		<!--<a class="fui-block-child" href="{php echo mobileUrl('author/team')}">-->
+			<!--<div class="icon text-red"><i class="icon icon-people2"></i></div>-->
+			<!--<div class="title">{$plugin_author_set['texts']['bonus_team']}</div>-->
+			<!--<div class="text"></div>-->
+		<!--</a>-->
+		<!--{/if}-->
+
+		<!--{if !$this->set['closed_qrcode']}-->
+            <!--<a class="fui-block-child" href="{php echo mobileUrl('commission/qrcode')}">-->
+                <!--<div class="icon text-yellow"><i class="icon icon-qrcode"></i></div>-->
+                <!--<div class="title">推广二维码</div>-->
+                <!--<div class="text"></div>-->
+            <!--</a>-->
+		<!--{/if}-->
+
+
+	    <!--{if empty($this->set['closemyshop'])}-->
+
+	    <!--<a class="fui-block-child" href="{php echo mobileUrl('commission/myshop/set')}">-->
+		<!--<div class="icon text-blue"><i class="icon icon-shopfill"></i></div>-->
+		<!--<div class="title">小店设置</div>-->
+		<!--<div class="text"></div>-->
+	    <!--</a>-->
+	    <!--{if $this->set['openselect']}-->
+	    <!--<a class="fui-block-child" href="{php echo mobileUrl('commission/myshop/select')}">-->
+		<!--<div class="icon text-blue"><i class="icon icon-apps"></i></div>-->
+		<!--<div class="title">自选商品</div>-->
+		<!--<div class="text"></div>-->
+	    <!--</a>-->
+	    <!--{/if}-->
+	    <!--{/if}-->
+	    <!--{if !empty($this->set['rank']['status'])}-->
+		  <!--<a class="fui-block-child" href="{php echo mobileUrl('commission/rank');}">-->
+			    <!--<div class="icon text-orange"><i class="icon icon-rank"></i></div>-->
+			    <!--<div class="title">{php echo $this->set['texts']['commission']}排名</div>-->
+			    <!--<div class="text"></div>-->
+		 <!--</a>-->
+	    <!--{/if}-->
+
+	<!--</div>-->
+		{template '_copyright'}
+    </div>
+
+    {php $this->footerMenus()}
+</div>
+{template '_footer'}
