@@ -46,7 +46,7 @@
 						</div>
 						<div style="float: left;height: 100%;text-align: center;">代理团队信息</div>
 						</a>
-					</div>										
+					</div>
 					</div>
 					<div  class='tubiao'>
 					<div style="padding-left: 1rem;padding-right: 1rem">
@@ -90,45 +90,45 @@
 			<div class='fui-cell'>
 				<div class='fui-cell-label'>图标</div>
 				<div class='fui-cell-info'>
-					<ul class="fui-images fui-images-sm" id="imageLogo"> 
+					<ul class="fui-images fui-images-sm" id="imageLogo">
 						{if !empty($shop['logo'])}
 						<li style="background-image:url({php echo tomedia($shop['logo'])})" class="image image-sm" data-filename="{$shop['logo']}">
 							<span class="image-remove"><i class="icon icon-roundclose"></i></span></li>
 						{/if}
-			
-			
+
+
 					</ul>
-					
+
 					<div class="fui-uploader fui-uploader-sm "  {if !empty($shop['logo'])}style='display:none'{/if}
-						 data-max="1" 
-						data-count="{if !empty($shop['logo'])}1{else}0{/if}"> 
+						 data-max="1"
+						data-count="{if !empty($shop['logo'])}1{else}0{/if}">
 						 <input type="file" name='imgFile0' id='imgFile0'  {if !is_h5app() || (is_h5app() && is_ios())}multiple="" accept="image/*" {/if}>
 					</div>
-				 
-					
+
+
 				</div>
 			</div>
 			<div class='fui-cell'>
 				<div class='fui-cell-label'>店招</div>
 				<div class='fui-cell-info'>
-					
-					<ul class="fui-images" id="imageImg"> 
+
+					<ul class="fui-images" id="imageImg">
 						{if !empty($shop['img'])}
 						<li style="background-image:url({php echo tomedia($shop['img'])})" class="image long" data-filename="{$shop['img']}" >
 							<span class="image-remove"><i class="icon icon-roundclose"></i></span></li>
 						{/if}
-			
-			
+
+
 					</ul>
-				 
+
 					<div class="fui-uploader img-container-uploader long"   {if !empty($shop['img'])}style='display:none'{/if}
-						  data-max="1" 
+						  data-max="1"
 						  data-long="1"
-						  data-count="{if !empty($shop['img'])}1{else}0{/if}"> 
+						  data-count="{if !empty($shop['img'])}1{else}0{/if}">
 						 <input type="file" name='imgFile1' id='imgFile1' {if !is_h5app() || (is_h5app() && is_ios())}multiple="" accept="image/*" {/if} >
 					</div>
-					 
-					
+
+
 				</div>
 			</div>
 			<div class='fui-cell'>
@@ -155,7 +155,7 @@
 			<span style="font-size:26px;">下载二维码</span>
 		</div>
 
-	
+
 	<script language='javascript'>
 		require(['../addons/ewei_shopv2/plugin/commission/static/js/myshop.js'], function (modal) {
 			modal.initSet();

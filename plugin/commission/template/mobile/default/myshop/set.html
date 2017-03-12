@@ -8,46 +8,38 @@
         <div class="title">我的小店</div>
     </div>
 	<div class='fui-content' style="background: #fff">
-		<div style="width: 100%;background: #F33C2C;">
-			<div style="width: 100%;padding: 1rem;border-bottom: 2px solid #f67167;">
-				<div style="color: #fff;text-align:center;font-size: 0.8rem;font-family:'微软雅黑',sans-serif;margin-bottom: 0.5rem"><b>今天付款金额（元）</b></div>
-				<div style="color:#fffc00;text-align:center;font-size: 1.2rem;font-family:'微软雅黑',sans-serif;">28858.06</div>
+		<div style="width: 100%;background: #F33C2C; text-align: center;">
+			<div style="width: 100%; height: 6.2rem;border-bottom: 1px solid #f67167; padding-top: 1.5rem;">
+				<div style="color: #fff;font-size: .75rem;"><b>今天付款金额（元）</b></div>
+				<div style="color:#fffc00;font-size: 1rem;margin-top: .6rem;">28858.06</div>
 			</div>
-			<div style="width:100%;padding:.5rem;height: 4rem;font-family:'微软雅黑',sans-serif;color: #fff">
-				<div style="width:33%;height:3rem;float: left;text-align:center; ">浏览人数<br/>37221</div>
-				<div style="width:33%;height:3rem;float:left;text-align:center;border-left:1px solid #f67167;border-right:1px solid #f67167; ">付款订单数<br/>11039</div>
-				<div style="width:33%;height:3rem;float:left;text-align:center;">付款件数<br/>19223</div>
+			<div style="width:100%; height: 3.1rem; padding: 0.65rem 0;font-size: .5rem;color: #fff; display
+			: flex;">
+				<div style="width: calc(100% / 3); border-right: 1px solid #fff;">浏览人数<br/>37221</div>
+				<div style="width: calc(100% / 3); border-right: 1px solid #fff;">付款订单数<br/>11039</div>
+				<div style="width: calc(100% / 3);">付款件数<br/>19223</div>
 			</div>
 		</div>
-		<div class='fui-cell-group'>
-			<div style="width: 100%;margin:0px;">
-				<div style="width: 100%; font-family:'微软雅黑',sans-serif;font-size: 0.75rem;color:#282828">
-					<div style="width: 50%;float: left;text-align: center;
-					border: 1px solid #D9D9D9;height: 4rem;line-height: 4rem;">
-						<div style="padding-left: 1rem;padding-right: 1rem">
-							<div style="float: left;height: 4rem;padding: 1rem"><img src="../addons/ewei_shopv2/static/img/1.png" style="height: 2rem; "></div>
-							<div style="float: left;height: 100%;text-align: center;">代理团队信息</div>
-						</div>										
-					</div>
-					<div style="width: 50%;float: right;text-align: center;
-					border: 1px solid #D9D9D9;height: 4rem;line-height: 4rem"><div style="padding-left: 1rem;padding-right: 1rem">
-							<div style="float: left;height: 4rem;padding: 1rem"><img src="../addons/ewei_shopv2/static/img/2.png" style="height: 2rem; "></div>
-							<div style="float: left;height: 100%;text-align: center;">店铺设置</div>
-						</div></div>
-				</div>
-				<div style="width: 100%;font-family:'微软雅黑',sans-serif;font-size: 0.75rem;color:#282828">
-					<div style="width: 50%;float: left;text-align: center;
-					border: 1px solid #D9D9D9;height: 4rem;line-height: 4rem"><div style="padding-left: 1rem;padding-right: 1rem">
-							<div style="float: left;height: 4rem;padding: 1rem"><img src="../addons/ewei_shopv2/static/img/3.png" style="height: 2rem; "></div>
-							<div style="float: left;height: 100%;text-align: center;">商品管理</div>
-						</div></div>
-					<div style="width: 50%;float: right;text-align: center;
-					border: 1px solid #D9D9D9;height: 4rem;line-height: 4rem"><div style="padding-left: 1rem;padding-right: 1rem">
-							<div style="float: left;height: 4rem;padding: 1rem"><img src="../addons/ewei_shopv2/static/img/4.png" style="height: 2rem; "></div>
-							<div style="float: left;height: 100%;text-align: center;">订单管理</div>
-						</div></div>
+		<div style="height: 3.1rem; border-bottom: 1px solid #ededed; border-top: 1px solid #ededed; display: flex;">
+			<div style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem;">
+				<img src="../addons/ewei_shopv2/static/img/1.png" style="margin: auto; display: block;width:1.1rem;">
+				<div>
+					代理团队信息
 				</div>
 			</div>
+			<div style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem;">
+				<img src="../addons/ewei_shopv2/static/img/1.png" style="margin: auto; display: block;width:1.1rem;">
+				<div>
+					商品管理
+				</div>
+			</div>
+			<div style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem;">
+				<img src="../addons/ewei_shopv2/static/img/1.png" style="margin: auto; display: block;width:1.1rem;">
+				<div>
+					订单管理
+				</div>
+			</div>
+		</div>
 
 			<!-- <div class='fui-cell'>
 				<div class='fui-cell-label'>名称</div>
@@ -56,45 +48,45 @@
 			<div class='fui-cell'>
 				<div class='fui-cell-label'>图标</div>
 				<div class='fui-cell-info'>
-					<ul class="fui-images fui-images-sm" id="imageLogo"> 
+					<ul class="fui-images fui-images-sm" id="imageLogo">
 						{if !empty($shop['logo'])}
 						<li style="background-image:url({php echo tomedia($shop['logo'])})" class="image image-sm" data-filename="{$shop['logo']}">
 							<span class="image-remove"><i class="icon icon-roundclose"></i></span></li>
 						{/if}
-			
-			
+
+
 					</ul>
-					
+
 					<div class="fui-uploader fui-uploader-sm "  {if !empty($shop['logo'])}style='display:none'{/if}
-						 data-max="1" 
-						data-count="{if !empty($shop['logo'])}1{else}0{/if}"> 
+						 data-max="1"
+						data-count="{if !empty($shop['logo'])}1{else}0{/if}">
 						 <input type="file" name='imgFile0' id='imgFile0'  {if !is_h5app() || (is_h5app() && is_ios())}multiple="" accept="image/*" {/if}>
 					</div>
-				 
-					
+
+
 				</div>
 			</div>
 			<div class='fui-cell'>
 				<div class='fui-cell-label'>店招</div>
 				<div class='fui-cell-info'>
-					
-					<ul class="fui-images" id="imageImg"> 
+
+					<ul class="fui-images" id="imageImg">
 						{if !empty($shop['img'])}
 						<li style="background-image:url({php echo tomedia($shop['img'])})" class="image long" data-filename="{$shop['img']}" >
 							<span class="image-remove"><i class="icon icon-roundclose"></i></span></li>
 						{/if}
-			
-			
+
+
 					</ul>
-				 
+
 					<div class="fui-uploader img-container-uploader long"   {if !empty($shop['img'])}style='display:none'{/if}
-						  data-max="1" 
+						  data-max="1"
 						  data-long="1"
-						  data-count="{if !empty($shop['img'])}1{else}0{/if}"> 
+						  data-count="{if !empty($shop['img'])}1{else}0{/if}">
 						 <input type="file" name='imgFile1' id='imgFile1' {if !is_h5app() || (is_h5app() && is_ios())}multiple="" accept="image/*" {/if} >
 					</div>
-					 
-					
+
+
 				</div>
 			</div>
 			<div class='fui-cell'>
@@ -121,7 +113,7 @@
 			<span style="font-size:26px;">下载二维码</span>
 		</div>
 
-	
+
 	<script language='javascript'>
 		require(['../addons/ewei_shopv2/plugin/commission/static/js/myshop.js'], function (modal) {
 			modal.initSet();
