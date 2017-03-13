@@ -390,9 +390,10 @@
             return;
         }
         $("#module-menus-notice-hagent").html("正在搜索....")
-        $.get('{php echo webUrl('abonus/agent/query')}', {
+        $.get('{php echo webUrl('abonus/agent/query_hagent')}', {
             keyword: $.trim($('#search-kwd-notice-hagent').val()), 'op': 'query', selfid: "{$id}"
         }, function (dat) {
+            console.log(dat);
             $('#module-menus-notice-hagent').html(dat);
         });
     }

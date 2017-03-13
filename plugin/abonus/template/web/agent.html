@@ -228,8 +228,8 @@
                     <div class="btn-group btn-group-sm">
                         <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="javascript:;">操作 <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-left">
-                            
-                            
+                            <!-- 团队订单页面跳转 -->
+                            <li><a href="{php echo webUrl('abonusorder/index',array('id' => $row['id']));}" title='会员信息' target='_blank'><i class='fa fa-user'></i> 团队订单</a></li>
                             
                             {ifp 'member.list.view'}<li><a href="{php echo webUrl('member/list/detail',array('id' => $row['id']));}" title='会员信息' target='_blank'><i class='fa fa-user'></i> 会员信息</a></li>	{/if}
                             {ifp 'order.list'}<li><a  href="{php echo webUrl('order/list',array('agentid' => $row['id']));}" title='推广订单'  target='_blank'><i class='fa fa-list'></i> 推广订单</a></li>{/if}

@@ -183,7 +183,7 @@ class Agent_EweiShopV2Page extends PluginWebPage
         }
         $params = array();
         $params[':uniacid'] = $wechatid;
-        $condition = ' and uniacid=:uniacid and isagent=1 and status=1';
+        $condition = ' and uniacid=:uniacid and isagent=1 and status=1 and isaagent=1';
         if (!(empty($kwd)))
         {
             $condition .= ' AND ( `nickname` LIKE :keyword or `realname` LIKE :keyword or `mobile` LIKE :keyword )';
@@ -194,6 +194,7 @@ class Agent_EweiShopV2Page extends PluginWebPage
             $condition .= ' and id<>' . intval($_GPC['selfid']);
         }
         $ds = pdo_fetchall('SELECT id,avatar,nickname,openid,realname,mobile FROM ' . tablename('ewei_shop_member') . ' WHERE 1 ' . $condition . ' order by createtime desc', $params);
+
         include $this->template('abonus/query');
     }
 
