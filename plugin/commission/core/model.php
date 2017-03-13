@@ -1109,13 +1109,14 @@ if (!(class_exists('CommissionModel')))
 				load()->func('file');
 				mkdirs($path);
 			}
-			$url = mobileUrl('commission/myshop', array('mid' => $mid), true);
+			$url = mobileUrl('', array('mid' => $mid), true);
 			if (!(empty($posterid))) 
 			{
 				$url .= '&posterid=' . $posterid;
 			}
 			$file = 'myshop_' . $posterid . '_' . $mid . '.png';
 			$qr_file = $path . '/' . $file;
+			//生成二维码QRcode::png($url, $qr_file, QR_ECLEVEL_H, 4);
 			if (!(is_file($qr_file))) 
 			{
 				require IA_ROOT . '/framework/library/qrcode/phpqrcode.php';
@@ -1163,6 +1164,7 @@ if (!(class_exists('CommissionModel')))
 				set_time_limit(0);
 				$font = IA_ROOT . '/addons/ewei_shopv2/static/fonts/msyh.ttf';
 				$target = imagecreatetruecolor(640, 1225);
+				$target =imagecreatetruecolor(228,228);
 				$bg = imagecreatefromjpeg(IA_ROOT . '/addons/ewei_shopv2/plugin/commission/static/images/poster.jpg');
 				imagecopy($target, $bg, 0, 0, 0, 0, 640, 1225);
 				imagedestroy($bg);
@@ -1262,7 +1264,13 @@ if (!(class_exists('CommissionModel')))
 			$file = $md5 . '.jpg';
 			if (!(is_file($path . $file))) 
 			{
-				set_time_limit(0);
+				set_time_limit(0);	
+				@ini_set('memory_limit', '256M');
+				$qrcode_file = tomedia($this->createMyShopQrcode($userinfo['id']));
+				$target = $this->createImage($qrcode_file);
+				imagejpeg($target, $path . $file);
+				imagedestroy($target);
+				/*set_time_limit(0);
 				@ini_set('memory_limit', '256M');
 				$font = IA_ROOT . '/addons/ewei_shopv2/static/fonts/msyh.ttf';
 				$target = imagecreatetruecolor(640, 1225);
@@ -1270,6 +1278,7 @@ if (!(class_exists('CommissionModel')))
 				$cc = imagecolorallocate($target, 240, 102, 0);
 				$wc = imagecolorallocate($target, 255, 255, 255);
 				$yc = imagecolorallocate($target, 255, 255, 0);
+				//海报背景
 				$bg = imagecreatefromjpeg(IA_ROOT . '/addons/ewei_shopv2/plugin/commission/static/images/poster.jpg');
 				imagecopy($target, $bg, 0, 0, 0, 0, 640, 1225);
 				imagedestroy($bg);
@@ -1308,7 +1317,8 @@ if (!(class_exists('CommissionModel')))
 				$str4 = '代言';
 				imagettftext($target, 20, 0, 240 + $width + 10, 105, $bc, $font, $str4);
 				imagejpeg($target, $path . $file);
-				imagedestroy($target);
+				imagedestroy($target);*/
+				
 			}
 			return $_W['siteroot'] . 'addons/ewei_shopv2/data/poster/' . $_W['uniacid'] . '/' . $file;
 		}
