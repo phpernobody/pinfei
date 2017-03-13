@@ -4,7 +4,8 @@
 		{loop $shoppes $item}
 		<div class="se-shoppe" data-url="{php echo mobileUrl('shoppe').'&shoppe='.$item['id']}">
 			<div style="background: #EFEFEF; margin: 20px; padding: 5px;">
-				<img style="width: 100%; display: block;" src="{$item['advimg']}" alt="">
+				<!--<img style="width: 100%; display: block;" src="{$item['advimg']}" alt="">-->
+				<img style="width: 100%; display: block;" src="../attachment/{$item['advimg']}" alt="">
 			</div>
 			<div style="width: 80%; margin: auto; text-align: center; font-size: 12px; font-weight: bold;">
 				<div style="margin: auto; display: inline-block; height: 18px; border-bottom: 1px solid #000;">{$item['name']}</div>
