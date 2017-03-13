@@ -3,7 +3,7 @@
 {ifp 'abonus.partner|abonus.level'}
 <ul>
     {ifp 'abonus.partner'}<li {if $_W['routes']=='abonus.agent'}class="active"{/if}><a href="{php echo webUrl('abonus/agent')}">代理商管理</a></li>{/if}
-    {ifp 'abonus.level'}<li {if $_W['routes']=='abonus.level'}class="active"{/if}><a href="{php echo webUrl('abonus/level')}">代理商等级</a></li>{/if}
+<!--     {ifp 'abonus.level'}<li {if $_W['routes']=='abonus.level'}class="active"{/if}><a href="{php echo webUrl('abonus/level')}">代理商等级</a></li>{/if} -->
 </ul>
 {/if}
 
@@ -15,7 +15,7 @@
         float:right;margin-right:20px;
     }
 </style>
-{ifp 'abonus.bonus.status0|abonus.bonus.status1|abonus.bonus.status2|abonus.bonus.build'}
+<!-- {ifp 'abonus.bonus.status0|abonus.bonus.status1|abonus.bonus.status2|abonus.bonus.build'}
 
 
 {php $totals = $this->model->getTotals()}
@@ -27,13 +27,13 @@
     {ifp 'abonus.bonus.status2'}<li {if ($_W['routes']=='abonus.bonus.status2') || ($_W['routes']=='abonus.bonus.detail' && $data['status']==2)}class="active"{/if}><a href="{php echo webUrl('abonus/bonus/status2')}">已结算 <span  class='text-success' id="total2">-</span></a></li>{/if}
     {ifp 'abonus.bonus.build'}<li {if $_W['routes']=='abonus.bonus.build'}class="active"{/if}><a href="{php echo webUrl('abonus/bonus/build')}">创建结算单</a></li>{/if}
 </ul>
-{/if}
+{/if} -->
 
 {ifp 'abonus.cover|abonus.notice|abonus.set'}
 <div class="menu-header">设置</div>
 <ul>
-    {ifp 'abonus.cover'}<li {if $_W['routes']=='abonus.cover'}class="active"{/if}><a href="{php echo webUrl('abonus/cover')}">入口设置</a></li>{/if}
-    {ifp 'abonus.notice'}<li {if $_W['routes']=='abonus.notice'}class="active"{/if}><a href="{php echo webUrl('abonus/notice')}">通知设置</a></li>{/if}
+<!--     {ifp 'abonus.cover'}<li {if $_W['routes']=='abonus.cover'}class="active"{/if}><a href="{php echo webUrl('abonus/cover')}">入口设置</a></li>{/if}
+    {ifp 'abonus.notice'}<li {if $_W['routes']=='abonus.notice'}class="active"{/if}><a href="{php echo webUrl('abonus/notice')}">通知设置</a></li>{/if} -->
     {ifp 'abonus.set'}<li {if $_W['routes']=='abonus.set'}class="active"{/if}><a href="{php echo webUrl('abonus/set')}">基础设置</a></li>{/if}
 </ul>
 
