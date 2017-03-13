@@ -25,6 +25,7 @@ class Index_EweiShopV2Page extends MobilePage
 				}
 			}
 		}
+		
 		include $this->template();
 	}
 	public function gift() 

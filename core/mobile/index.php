@@ -72,7 +72,7 @@ class Index_EweiShopV2Page extends MobilePage
 		$banners = pdo_fetchall('select id,bannername,link,thumb from ' . tablename('ewei_shop_banner') . ' where uniacid=:uniacid and enabled=1 order by displayorder desc', array(':uniacid' => $uniacid));
 		$bannerswipe = $_W['shopset']['shop']['bannerswipe'];
 		// 获取专柜列表
-		$shoppes = pdo_fetchall('select * from '. tablename('ewei_shop_shoppe') . 'where uniacid=:uniacid', array(':uniacid' => $uniacid));
+		$shoppes = pdo_fetchall('select * from '. tablename('ewei_shop_shoppe') . ' where uniacid=:uniacid and enabled=1', array(':uniacid' => $uniacid));
 		// var_dump($shoppes);exit();
 		if (!(empty($_W['shopset']['shop']['indexrecommands']))) 
 		{

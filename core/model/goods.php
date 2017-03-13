@@ -24,6 +24,7 @@ class Goods_EweiShopV2Model
 		$random = ((!(empty($args['random'])) ? $args['random'] : false));
 		$displayorder = 'displayorder';
         $shoppe = ((!(empty($args['shoppe'])) ? $args['shoppe'] : false));
+		$getnew = ((!(empty($args['getnew'])) ? $args['getnew'] : false));
 		$merchid = ((!(empty($args['merchid'])) ? trim($args['merchid']) : ''));
 		if (!(empty($merchid))) 
 		{
@@ -53,6 +54,12 @@ class Goods_EweiShopV2Model
             $condition .= ' and shoppe=:shoppe';
             $params[':shoppe'] = $shoppe;
         }
+		if (!(empty($getnew)))
+		{
+			$condition .= ' and getnew=:getnew';
+			$params[':getnew'] = getnew;
+		}
+
 		else if ($is_openmerch == 0) 
 		{
 			$condition .= ' and `merchid` = 0';
