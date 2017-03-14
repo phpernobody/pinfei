@@ -335,11 +335,22 @@
     <div class="col-sm-9 col-xs-12">
         {ife 'goods' $item}
         <div class="input-group">
+            <span class="input-group-addon">商场价</span>
             <input type="text" name="marketprice" id="marketprice" class="form-control" value="{$item['marketprice']}" />
-            <span class="input-group-addon">元 原价</span>
+            <span class="input-group-addon">元 </span>
+            <span class="input-group-addon">原&nbsp;&nbsp;&nbsp;价</span>
             <input type="text" name="productprice" id="productprice" class="form-control" value="{$item['productprice']}" />
-            <span class="input-group-addon">元 成本</span>
-            <input type="text" name="costprice" id="costprice" class="form-control" value="{$item['costprice']}" />
+            <span class="input-group-addon">元 </span>
+        </div>
+        <div class="input-group" style="margin-top: 10px;">
+            <span class="input-group-addon">省代价</span>
+            <input type="text" name="province_price" id="province_price" class="form-control" value="{$item['province_price']}" />
+            <span class="input-group-addon">元 </span>
+            <span class="input-group-addon">市代价</span>
+            <input type="text" name="city_price" id="city_price" class="form-control" value="{$item['city_price']}" />
+            <span class="input-group-addon">元 </span>
+            <span class="input-group-addon">区代价</span>
+            <input type="text" name="county_price" id="county_price" class="form-control" value="{$item['county_price']}" />
             <span class="input-group-addon">元</span>
         </div>
         <span class='help-block'>尽量填写完整，有助于于商品销售的数据分析</span>
