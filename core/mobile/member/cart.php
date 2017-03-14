@@ -306,18 +306,23 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 		$cartcount = pdo_fetchcolumn('select sum(total) from ' . tablename('ewei_shop_member_cart') . ' where openid=:openid and deleted=0 and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':openid' => $_W['openid']));
 		show_json(1, array('isnew' => false, 'cartcount' => $cartcount));
 	}
-	public function remove() 
+	public function del()
 	{
 		global $_W;
 		global $_GPC;
 		$ids = $_GPC['ids'];
-		if (empty($ids) || !(is_array($ids))) 
-		{
-			show_json(0, '参数错误');
-		}
-		$sql = 'update ' . tablename('ewei_shop_member_cart') . ' set deleted=1 where uniacid=:uniacid and openid=:openid and id in (' . implode(',', $ids) . ')';
-		pdo_query($sql, array(':uniacid' => $_W['uniacid'], ':openid' => $_W['openid']));
-		show_json(1);
+
+		$sql = 'delete from ims_ewei_shop_member_cart where id ='.$ids;
+
+		if(pdo_fetchall($sql)){
+			$data['ok'] = 1;
+		}else{
+			$data['ok'] = 0;
+		};
+
+		echo $data;
+
+
 	}
 	public function tofavorite() 
 	{

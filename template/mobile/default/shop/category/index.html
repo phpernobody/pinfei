@@ -186,10 +186,10 @@
 
 
                 $.each(data,function(key,value){
-                    htm +='<div class="goodShow">'
-                    htm +='<div class="goodShow-left">'
                     htm +='<a href="./index.php?i=1&amp;c=entry&amp;m=ewei_shopv2&amp;do=mobile&amp;r=goods.detail&amp;mid=1&amp;id='+value.id
-                    htm +='"><img src="../attachment/'+value.thumb+'" style="width: 100%;vertical-align:middle;"></a></div>'
+                    htm +='"><div class="goodShow">'
+                    htm +='<div class="goodShow-left">'
+                    htm +='<img src="../attachment/'+value.thumb+'" style="width: 100%;vertical-align:middle;"></div>'
                     htm +='<div class="goodShow-right"><div>'
                     htm +='<div class="row" style="height: 2.5em;">'
                     htm +='<span style="line-height: 130%;overflow: hidden;top:0px;display: block;color:#000;font-weight:500">'+value.title+'</span></div>'
@@ -197,9 +197,9 @@
                     htm +='<span style="color: #959595">销量：'+value.salesreal+'&nbsp;件</span></div></div>'
                     htm +='<div class="row" style="display: flex;flex-direction: row;justify-content: space-between;font-size: .8em">'
                     htm +='<span style="color: #EC3029;">&yen;:'+value.marketprice+'</span>'
-                    htm +='<a href="./index.php?i=1&amp;c=entry&amp;m=ewei_shopv2&amp;do=mobile&amp;r=goods.detail&amp;mid=1&amp;id='+value.id
-                    htm +='" id="buy"><img src="../addons/ewei_shopv2/static/img/gwc.jpg" style="height: .8em"></a>'
-                    htm +='</div></div></div>'
+//                    htm +='<a href="./index.php?i=1&amp;c=entry&amp;m=ewei_shopv2&amp;do=mobile&amp;r=goods.detail&amp;mid=1&amp;id='+value.id
+//                    htm +='" id="buy"><img src="../addons/ewei_shopv2/static/img/gwc.jpg" style="height: .8em"></a>'
+                    htm +='</div></div></div></a>'
                 })
                 $('#container').html(htm);
             },
