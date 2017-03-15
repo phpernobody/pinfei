@@ -128,10 +128,12 @@ class Page extends WeModuleSite
 		global $_GPC;
 		if (empty($filename)) 
 		{
+            // 解析路径名，比如path.innerpath解析成path/innerpath
 			$filename = str_replace('.', '/', $_W['routes']);
 		}
 		if ($_GPC['do'] == 'web') 
 		{
+            // 路径中带add和edit改成post
 			$filename = str_replace('/add', '/post', $filename);
 			$filename = str_replace('/edit', '/post', $filename);
 			$filename = 'web/' . $filename;

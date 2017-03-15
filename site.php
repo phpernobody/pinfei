@@ -25,6 +25,7 @@ class Ewei_shopv2ModuleSite extends WeModuleSite
 
 	public function doMobileMobile()
 	{
+        // core/model/route
 		m('route')->run(false);
 	}
 

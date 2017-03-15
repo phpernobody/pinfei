@@ -118,16 +118,19 @@
 
 
 <script type="text/javascript">
+
 	// 初始化专柜select
 	$('#selectshoppe option').each(function() {
-		if ($(this).attr('value') == {$item['shoppe']}) {
+		if ( $(this).attr('value') == "{$item['shoppe']}" ) {
 			$(this).attr('selected', 'selected');
 		}
 	});
 	window.type = "{$item['type']}";
 	window.virtual = "{$item['virtual']}";
         require(['bootstrap'], function () {
+        	console.log('hshsss')
 		$('#myTab a').click(function (e) {
+			console.log(e);
 			$('#tab').val( $(this).attr('href'));
 			e.preventDefault();
 			$(this).tab('show');
