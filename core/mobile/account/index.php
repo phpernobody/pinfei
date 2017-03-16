@@ -9,6 +9,7 @@ class Index_EweiShopV2Page extends MobilePage
 	{
 		global $_W;
 		global $_GPC;
+		
 		$set = m('common')->getSysset(array('shop', 'wap'));
 		$set['wap']['color'] = ((empty($set['wap']['color']) ? '#fff' : $set['wap']['color']));
 		$params = array();
@@ -38,6 +39,7 @@ class Index_EweiShopV2Page extends MobilePage
 			$mobile = trim($_GPC['mobile']);
 			$pwd = trim($_GPC['pwd']);
 			$member = pdo_fetch('select id,openid,mobile,pwd,salt from ' . tablename('ewei_shop_member') . ' where mobile=:mobile and mobileverify=1 and uniacid=:uniacid limit 1', array(':mobile' => $mobile, ':uniacid' => $_W['uniacid']));
+
 			if (empty($member)) 
 			{
 				show_json(0, '用户不存在');
@@ -49,7 +51,9 @@ class Index_EweiShopV2Page extends MobilePage
 			m('account')->setLogin($member);
 			show_json(1, '登录成功');
 		}
+
 		$set = $this->getWapSet();
+
 		$backurl = '';
 		if (!(empty($_GPC['backurl']))) 
 		{
@@ -57,6 +61,8 @@ class Index_EweiShopV2Page extends MobilePage
 		}
 		$wapset = $_W['shopset']['wap'];
 		$sns = $wapset['sns'];
+//		var_dump($_GPC);
+//		exit;
 		include $this->template('login', NULL, true);
 	}
 	public function register() 
@@ -188,6 +194,7 @@ class Index_EweiShopV2Page extends MobilePage
 			}
 			m('account')->setLogin($_GET['openid']);
 		}
+
 		$backurl = '';
 		if (!(empty($_GPC['backurl']))) 
 		{

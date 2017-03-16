@@ -9,6 +9,8 @@ class Account_EweiShopV2Model
 	{
 		global $_W;
 		global $_GPC;
+
+
 		if (empty($_W['openid'])) 
 		{
 			$openid = $this->checkOpenid();
