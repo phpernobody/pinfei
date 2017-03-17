@@ -214,44 +214,52 @@
 
 <!--商品展示-->
 <div class="show">
-	<!--<div class='show_con'>-->
-		<!--<img src="../addons/ewei_shopv2/static/img/pro_img2.jpg" style="width:100%;">-->
-		<!--<div style="width: 100%;padding-left: .3rem">-->
-			<!--<div class='con-title'>帕里欧干红葡萄酒帕里欧干红葡萄酒</div>-->
-			<!--<div class='con-jies'>葡萄酒产地：意大利产区葡萄</div>-->
-			<!--<div class='rows'>-->
-				<!--<a href=""><div class="row_btn">立即抢购</div></a>-->
-				<!--<span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥1000</span>-->
-				<!--<span style="font-size:0.55rem;color:#ec3028;line-height: 1rem;height: 1rem;margin-left:.5rem">抢购价:￥500</span>-->
-			<!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
-
+	{loop $getIstime $v}
+	<div class="show_con">
+		<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
+			<img src="../attachment/{$v['thumb']}" style="width:100%;">
+		</a>
+		<div style="width: 100%;padding-left: .3rem">
+			<div class='con-title'>{$v['title']}</div>
+			<div class='con-jies'>{$v['content']}</div>
+			<div class='rows'>
+				<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
+					<div class="row_btn">立即抢购</div>
+				</a>
+				<span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥{$v['productprice']}</span>
+				<span style="font-size:0.55rem;color:#ec3028;line-height: 1rem;height: 1rem;margin-left:.5rem">抢购价:￥{$v['marketprice']}</span>
+			</div>
+		</div>
+	</div>
+	{/loop}
 </div>
 <!--魔方样式-->
+
 <div class="magic">
 	<div class="magic-left">
 		<div class='magic-left1'>
 				<img onclick="doNew()" src="../addons/ewei_shopv2/static/img/news.jpg" style="width: 100%">
 		</div>
-		<!--<div class='magic-left2'>-->
-			<!--<a href="">-->
-				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" style="width: 100%">-->
-				<!--<div class="left-cont">-->
-					<!--<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">-->
-						<!--佳能单反入门相机相机佳-->
-					<!--</div>-->
-					<!--<div style='width: 37%;height: 2rem;'>-->
-						<!--<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>-->
-							<!--新品优惠-->
-						<!--</div>-->
-						<!--<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>-->
-							<!--￥2688-->
-						<!--</div>-->
-					<!--</div>-->
-				<!--</div>-->
-			<!--</a>-->
-		<!--</div>-->
+		{loop $getIsnew1 $v}
+		<div class='magic-left2'>
+			<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
+				<img src="../attachment/{$v['thumb']}" style="width: 100%">
+				<div class="left-cont">
+					<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
+						{$v['title']}
+					</div>
+					<div style='width: 37%;height: 2rem;'>
+						<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">
+							新品优惠
+						</div>
+						<div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">
+							￥{$v['productprice']}
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		{/loop}
 		<!--<div class='magic-left3'>-->
 			<!--<a href="">-->
 				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" style="width: 100%">-->
@@ -271,25 +279,28 @@
 			<!--</a>-->
 		<!--</div>-->
 	</div>
+
 	<div class="magic-right">
-		<!--<div class="magic-right1">-->
-			<!--<a href="">-->
-				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" style="width: 100%">-->
-				<!--<div class="right-cont">-->
-					<!--<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">-->
-						<!--路易威登全球限量款手提 包包-->
-					<!--</div>-->
-					<!--<div style='width: 30%;height: 2rem;'>-->
-						<!--<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>-->
-							<!--新品优惠-->
-						<!--</div>-->
-						<!--<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>-->
-							<!--￥2688-->
-						<!--</div>-->
-					<!--</div>-->
-				<!--</div>-->
-			<!--</a>-->
-		<!--</div>-->
+		{loop $getIsnew2 $v}
+		<div class="magic-right2">
+			<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
+				<img id="rightImg" src="../attachment/{$v['thumb']}" style="width: 100%">
+				<div class="right-cont">
+					<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
+						{$v['title']}
+					</div>
+					<div style='width: 30%;height: 2rem;'>
+						<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">
+							新品优惠
+						</div>
+						<div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">
+							￥{$v['productprice']}
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		{/loop}
 		<!--<div class="magic-right2">-->
 			 <!--<a href="">-->
 				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" style="width: 100%">-->
@@ -463,84 +474,85 @@
 
 	$(document).ready(function() {
 
-		$.ajax({
-            url:"{php echo mobileUrl('shop/category/getIstime')}",
-			dataType:'json',
-			success:function(data){
-				var htm = '';
-				$.each(data,function(key,value){
-                    htm +='<div class="show_con">'
-					htm +='<img onclick="doUrl(this)" a="'+value.id
-					htm +='" src="../attachment/'+value.thumb+'" style="width:100%;">'
-					htm +='<div style="width: 100%;padding-left: .3rem">'
-					htm +='<div class="con-title">'+value.title+'</div>'
-					htm +='<div class="con-jies">'+value.content+'</div>'
-					htm +='<div class="rows">'
-					htm +='<a href="" onclick="doUrl(this)" a="'+value.id
-					htm +='"><div class="row_btn">立即抢购</div></a>'
-					htm +='<span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥'+value.productprice+'</span>'
-					htm +='<span style="font-size:0.55rem;color:#ec3028;line-height: 1rem;height: 1rem;margin-left:.5rem">抢购价:￥'+value.marketprice+'</span>'
-					htm +='</div></div></div>'
-				});
-				$('.show').append(htm);
-			},
-		})
+//		$.ajax({
+//            url:"{php echo mobileUrl('shop/category/getIstime')}",
+//			dataType:'json',
+//			success:function(data){
+//				var htm = '';
+//				$.each(data,function(key,value){
+//                    htm +='<div class="show_con">'
+//					htm +='<img onclick="doUrl(this)" a="'+value.id
+//					htm +='" src="../attachment/'+value.thumb+'" style="width:100%;">'
+//					htm +='<div style="width: 100%;padding-left: .3rem">'
+//					htm +='<div class="con-title">'+value.title+'</div>'
+//					htm +='<div class="con-jies">'+value.content+'</div>'
+//					htm +='<div class="rows">'
+//					htm +='<a href="{php echo mobileUrl('goods/detail').'&id='}"'
+//					htm +='"><div class="row_btn">立即抢购</div></a>'
+//					htm +='<span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥'+value.productprice+'</span>'
+//					htm +='<span style="font-size:0.55rem;color:#ec3028;line-height: 1rem;height: 1rem;margin-left:.5rem">抢购价:￥'+value.marketprice+'</span>'
+//					htm +='</div></div></div>'
+//				});
+//				$('.show').append(htm);
+//			},
+//		})
 
 
-		$.ajax({
-			url:"{php echo mobileUrl('shop/category/getIsnew1')}",
-			dataType:'json',
-			success:function(data){
-				var htm = '';
-				console.log(data);
-				$.each(data,function(key,value){
-                    htm +='<div class="magic-left2" onclick="doUrl(this)" a="'+value.id
-					htm +='">'
-					htm +='<img id="leftImg" src="../attachment/'+value.thumb+'" style="width: 100%">'
-					htm +='<div class="left-cont">'
-					htm +='<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">'
-					htm +=value.title+'</div>'
-					htm +='<div style="width: 37%;height: 2rem;">'
-					htm +='<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">'
-					htm +='新品优惠</div><div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">'
-					htm +='￥'+value.productprice+'</div></div></div></div>'
-				});
-				$('.magic-left').append(htm);
-			},
-		})
+//		$.ajax({
+//			url:"{php echo mobileUrl('shop/category/getIsnew1')}",
+//			dataType:'json',
+//			success:function(data){
+//				var htm = '';
+//				console.log(data);
+//				$.each(data,function(key,value){
+//                    htm +='<div class="magic-left2" onclick="doUrl(this)" a="'+value.id
+//					htm +='">'
+//					htm +='<img id="leftImg" src="../attachment/'+value.thumb+'" style="width: 100%">'
+//					htm +='<div class="left-cont">'
+//					htm +='<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">'
+//					htm +=value.title+'</div>'
+//					htm +='<div style="width: 37%;height: 2rem;">'
+//					htm +='<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">'
+//					htm +='新品优惠</div><div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">'
+//					htm +='￥'+value.productprice+'</div></div></div></div>'
+//				});
+//				$('.magic-left').append(htm);
+//			},
+//		})
 
-		$.ajax({
-			url:"{php echo mobileUrl('shop/category/getIsnew2')}",
-			dataType:'json',
-			success:function(data){
-				var htm = '';
-				console.log(data);
-				$.each(data,function(key,value){
-					htm +='<div class="magic-right2" onclick="doUrl(this)" a="'+value.id
-					htm +='">'
-					htm +='<img  id="rightImg" src="../attachment/'+value.thumb+'" style="width: 100%">'
-					htm +='<div class="right-cont">'
-					htm +='<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">'
-					htm +=value.title+'</div>'
-					htm +='<div style="width: 30%;height: 2rem;">'
-					htm +='<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">'
-					htm +='新品优惠</div><div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">'
-					htm +='￥'+value.productprice+'</div></div></div></div>'
-				});
-				$('.magic-right').html(htm);
-			},
-		})
+//		$.ajax({
+//			url:"{php echo mobileUrl('shop/category/getIsnew2')}",
+//			dataType:'json',
+//			success:function(data){
+//				var htm = '';
+//				console.log(data);
+//				$.each(data,function(key,value){
+//					htm +='<div class="magic-right2" onclick="doUrl(this)" a="'+value.id
+//					htm +='">'
+//					htm +='<img  id="rightImg" src="../attachment/'+value.thumb+'" style="width: 100%">'
+//					htm +='<div class="right-cont">'
+//					htm +='<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">'
+//					htm +=value.title+'</div>'
+//					htm +='<div style="width: 30%;height: 2rem;">'
+//					htm +='<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">'
+//					htm +='新品优惠</div><div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">'
+//					htm +='￥'+value.productprice+'</div></div></div></div>'
+//				});
+//				$('.magic-right').html(htm);
+//			},
+//		})
 
 		GetRTime();
 	})
 
-	function doUrl(obj){
-		var id = $(obj).attr('a');
-		window.location.href='./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=goods.detail&mid=1&id='+id;
-	}
+//	function doUrl(obj){
+//		var id = $(obj).attr('a');
+////		window.location.href='./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=goods.detail&mid=1&id='+id;
+//		window.location.href="{php echo mobileUrl('goods/detail').'&id='}";
+//	}
 
 	function doNew(){
-		window.location.href='./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=newgoods&mid=1&isnew=1';
+		window.location.href="{php echo mobileUrl('newgoods').'&isnew=1'}";
 	}
 
 </script>

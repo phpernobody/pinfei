@@ -73,6 +73,9 @@ class Index_EweiShopV2Page extends MobilePage
 		$bannerswipe = $_W['shopset']['shop']['bannerswipe'];
 		// 获取专柜列表
 		$shoppes = pdo_fetchall('select * from '. tablename('ewei_shop_shoppe') . ' where uniacid=:uniacid and enabled=1', array(':uniacid' => $uniacid));
+		$getIstime = pdo_fetchall('select id,title,content,productprice,marketprice,thumb from ims_ewei_shop_goods where istime=1');
+		$getIsnew1 = pdo_fetchall('select id,title,productprice,marketprice,thumb from ims_ewei_shop_goods where isnew=1 limit 2');
+		$getIsnew2 = pdo_fetchall('select id,title,productprice,marketprice,thumb from ims_ewei_shop_goods where isnew=1 order by id desc limit 2');
 		// var_dump($shoppes);exit();
 		if (!(empty($_W['shopset']['shop']['indexrecommands']))) 
 		{

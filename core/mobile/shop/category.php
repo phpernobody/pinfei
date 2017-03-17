@@ -14,12 +14,7 @@ class Category_EweiShopV2Page extends MobilePage
 		$sql = "select * from ims_ewei_shop_category where level=1";
 
 		$getCategory = pdo_fetchall($sql);
-
-//		$sql = "select id,title,content,productprice,marketprice from ims_ewei_shop_goods where istime=1";
-//
-//		$getIstime = pdo_fetchall($sql);
-//        var_dump($getIstime);
-//		exit;
+		
 
 		include $this->template();
 	}
