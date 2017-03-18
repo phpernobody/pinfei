@@ -73,14 +73,13 @@
 		color: #fff;
 		font-size: .55rem;
 	}
-	.magic{
+	/* .magic{
 		margin: 1rem 0;
 		padding: 0rem .6rem;
 		width: 100%;
 		display: flex;
 		flex-direction: row;
 		font-family: '微软雅黑',sans-serif;
-		/* height: 22.5rem; */
 	}
 	.magic .magic-left;.magic .magic-right{
 		height: 100%;
@@ -89,8 +88,7 @@
 	}
 	.magic .magic-left{
 		width: 42%;
-		margin-right: 2%;
-		padding-right: .55rem;
+		margin-right:2%;
 	}
 	#leftImg{
 		width:100%;
@@ -120,7 +118,7 @@
 		display: flex;
 		flex-direction: row;
 		height: 2rem;
-	}
+	} */
 	.zhuangui{
 		width: 100%;
 		padding-left:1rem;
@@ -219,7 +217,7 @@
 	{loop $getIstime $v}
 	<div class="show_con">
 		<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
-			<img src="../attachment/{$v['thumb']}" style="width:100%;height: 6.5rem">
+			<img src="../attachment/{$v['thumb']}" style="width:100%;">
 		</a>
 		<div style="width: 100%;padding-left: .3rem">
 			<div class='con-title'>{$v['title']}</div>
@@ -236,15 +234,127 @@
 	{/loop}
 </div>
 <!--魔方样式-->
+<style>
+	.magic{
+		margin: 1rem 0;
+		padding: 0rem .6rem;
+		width: 100%;
+		height: 22.5rem;
+		display: flex;
+		flex-direction: row;
+		font-family: '微软雅黑',sans-serif;
+	}
+	.magic .magic-left;.magic .magic-right{
+		height: 100%;	
+	}
+	.magic .magic-left{
+		width: 42%;
+		margin-right: 2%;
+		display: flex;
+		flex-direction: column;
+	}
+	.magic .magic-right{
+		width: 56%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.magic .magic-left1, .magic .magic-left-goods{
+		padding-top: .55rem;
+	}
+	.magic .magic-left-goods .left-cont,.magic .magic-right-goods .right-cont{
+		display: flex;
+		flex-direction: row;
+		height: 2rem;
+	}
+</style>
 <div class="magic">
 	<div class="magic-left">
 		<div class='magic-left1'>
-				<img onclick="doNew()" src="../addons/ewei_shopv2/static/img/news.jpg" style="width: 100%;height: 4.275rem">
+				<img onclick="doNew()" src="../addons/ewei_shopv2/static/img/news.jpg" style="width: 100%;height: 4.27rem">
 		</div>
-		{loop $getIsnew1 $v}
+		<!-- 左边商品-->
+		<div class='magic-left-goods'>
+			<a href="">
+				<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" style="width: 100%;height:6.2rem">
+				<div class="left-cont">
+					<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
+						佳能单反入门相机相机佳
+					</div>
+					<div style='width: 37%;height: 2rem;'>
+						<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>
+							新品优惠
+						</div>
+						<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>
+							￥2688
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class='magic-left-goods'>
+			<a href="">
+				<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" style="width: 100%;height:6.2rem">
+				<div class="left-cont">
+					<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
+						佳能单反入门相机相机佳
+					</div>
+					<div style='width: 37%;height: 2rem;'>
+						<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>
+							新品优惠
+						</div>
+						<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>
+							￥2688
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="magic-right">
+		<!-- 右边商品-->
+		<div class='magic-right-goods'>
+			<a href="">
+				<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" style="width: 100%;height: 8.55rem">
+				<div class="right-cont">
+					<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
+						路易威登全球限量款手提 包包
+					</div>
+					<div style='width: 30%;height: 2rem;'>
+						<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>
+							新品优惠
+						</div>
+						<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>
+							￥2688
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class='magic-right-goods'>
+			<a href="">
+				<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" style="width: 100%;height: 8.55rem">
+				<div class="right-cont">
+					<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
+						路易威登全球限量款手提 包包
+					</div>
+					<div style='width: 30%;height: 2rem;'>
+						<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>
+							新品优惠
+						</div>
+						<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>
+							￥2688
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+		
+		<!-- {loop $getIsnew1 $v}
 		<div class='magic-left2'>
 			<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
-				<img src="../attachment/{$v['thumb']}" style="width: 100%;height: 6.2rem">
+				<img src="../attachment/{$v['thumb']}" style="width: 100%">
 				<div class="left-cont">
 					<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
 						{$v['title']}
@@ -260,32 +370,32 @@
 				</div>
 			</a>
 		</div>
-		{/loop}
-		<!--<div class='magic-left3'>-->
-			<!--<a href="">-->
-				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" style="width: 100%">-->
-				<!--<div class="left-cont">-->
-					<!--<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">-->
-						<!--佳能单反入门相机相机佳-->
-					<!--</div>-->
-					<!--<div style='width: 37%;height: 2rem;'>-->
-						<!--<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>-->
-							<!--新品优惠-->
-						<!--</div>-->
-						<!--<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>-->
-							<!--￥2688-->
-						<!--</div>-->
-					<!--</div>-->
-				<!--</div>-->
-			<!--</a>-->
-		<!--</div>-->
-	</div>
-
-	<div class="magic-right">
+		{/loop} -->
+		<!-- <div class='magic-left3'>
+			<a href="">
+				<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" style="width: 100%">
+				<div class="left-cont">
+					<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
+						佳能单反入门相机相机佳
+					</div>
+					<div style='width: 37%;height: 2rem;'>
+						<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>
+							新品优惠
+						</div>
+						<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>
+							￥2688
+						</div>
+					</div>
+				</div>
+			</a>
+		</div> 
+			</div>
+		
+			<div class="magic-right">
 		{loop $getIsnew2 $v}
 		<div class="magic-right2">
 			<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
-				<img id="rightImg" src="../attachment/{$v['thumb']}" style="width: 100%;height: 8.55rem">
+				<img id="rightImg" src="../attachment/{$v['thumb']}" style="width: 100%">
 				<div class="right-cont">
 					<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
 						{$v['title']}
@@ -302,25 +412,24 @@
 			</a>
 		</div>
 		{/loop}
-		<!--<div class="magic-right2">-->
-			 <!--<a href="">-->
-				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" style="width: 100%">-->
-				<!--<div class="right-cont">-->
-					<!--<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">-->
-						<!--路易威登全球限量款手提 包包-->
-					<!--</div>-->
-					<!--<div style='width: 30%;height: 2rem;'>-->
-						<!--<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>-->
-							<!--新品优惠-->
-						<!--</div>-->
-						<!--<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>-->
-							<!--￥2688-->
-						<!--</div>-->
-					<!--</div>-->
-				<!--</div>-->
-			<!--</a>-->
-		<!--</div>-->
-	</div>
+		<div class="magic-right2">
+			 <a href="">
+				<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" style="width: 100%">
+				<div class="right-cont">
+					<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
+						路易威登全球限量款手提 包包
+					</div>
+					<div style='width: 30%;height: 2rem;'>
+						<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>
+							新品优惠
+						</div>
+						<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>
+							￥2688
+						</div>
+					</div>
+				</div>
+			</a>
+		</div> -->
 </div>
 
 <div onclick="doNew()" style="margin:0 .6rem;text-align:center;color:#000;background:#eeeeee;height: 1.5rem;line-height:1.5rem;font-size: .6rem">更多新品>></div>

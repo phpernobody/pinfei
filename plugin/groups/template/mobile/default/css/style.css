@@ -38,11 +38,11 @@ margin-right:0.2rem;text-align: center;font-weight: normal;line-height: 1.2rem;}
 拼团分类
 */
 .fui-header a.category_menu{font-size:1rem;}
-.category_menu_list{width:100%;background: #fff;position: absolute;top:2.2rem;left:0rem;display: none;z-index: 1001;}
+.category_menu_list{width:100%;background: #fff;position: absolute;/* top:2.2rem; */left:0rem;display: none;z-index: 1001;}
 .category_menu_list a{height:2rem;display: block;line-height: 2rem;padding:0 10px;font-size:0.7rem;border-bottom: 1px solid #eee;color:#ff9326;background: #fff;}
 .content-empty{margin:0;display: none;}
 .fui-message.fui-message-popup{position: relative;padding:0;}
-.lynn-mask{display:none;opacity: 0.8;top:2.2rem;}
+.lynn-mask{display:none;opacity: 0.8;/* top:2.2rem; */}
 /*
 拼团订单
 */
