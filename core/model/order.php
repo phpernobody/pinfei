@@ -5,6 +5,35 @@ if (!(defined('IN_IA')))
 }
 class Order_EweiShopV2Model 
 {
+    /**
+     * 计算价格
+     * by yaowk
+     * @param $member
+     * @param $value
+     * @return mixed
+     */
+    public function caculatePrice($member,$value){
+        $price = $value['marketprice'];
+        if($member['isaagent']){
+            switch ($member['aagenttype']){
+                case 1: $price = $value['provinceprice'];break;
+                case 2: $price = $value['cityprice'];break;
+                case 3: $price = $value['countyprice'];break;
+            }
+        }
+        return $price;
+    }
+
+    /**
+     * 计算库存
+     * by yaowk
+     * @param $params
+     * @return bool|string
+     */
+    public function caculateStock($openid,$goodsid){
+        return 10;
+    }
+
 	public function payResult($params) 
 	{
 		global $_W;
