@@ -81,6 +81,7 @@ class Index_EweiShopV2Page extends MobilePage
 		{
 			header('location: ' . mobileUrl());
 		}
+        // 注册验证
 		if ($_W['ispost']) 
 		{
 			$mobile = trim($_GPC['mobile']);
@@ -104,7 +105,8 @@ class Index_EweiShopV2Page extends MobilePage
 				show_json(0, '验证码错误或已过期!');
 			}
 			$member = pdo_fetch('select id,openid,mobile,pwd,salt from ' . tablename('ewei_shop_member') . ' where mobile=:mobile and mobileverify=1 and uniacid=:uniacid limit 1', array(':mobile' => $mobile, ':uniacid' => $_W['uniacid']));
-			if (empty($type)) 
+			// $type=0表示注册，1表示忘记密码
+            if (empty($type))
 			{
 				if (!(empty($member))) 
 				{
@@ -133,6 +135,7 @@ class Index_EweiShopV2Page extends MobilePage
 				$salt = m('account')->getSalt();
 				$data = array('salt' => $salt, 'pwd' => md5($pwd . $salt));
 			}
+            // 条件：已经有了会员信息
 			if (empty($member)) 
 			{
 				pdo_insert('ewei_shop_member', $data);
@@ -141,8 +144,10 @@ class Index_EweiShopV2Page extends MobilePage
 			{
 				pdo_update('ewei_shop_member', $data, array('id' => $member['id']));
 			}
+            // 条件：有分销应用
 			if (p('commission')) 
 			{
+                // 检查分销关系，路径plugin/commission/core/model.php
 				p('commission')->checkAgent($openid);
 			}
 			unset($_SESSION[$key]);
@@ -157,6 +162,7 @@ class Index_EweiShopV2Page extends MobilePage
 		{
 			$endtime = 60 - time() - $sendtime;
 		}
+        // 获取系统配置
 		$set = $this->getWapSet();
 		include $this->template('rf', NULL, true);
 	}

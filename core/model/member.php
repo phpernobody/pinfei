@@ -54,18 +54,21 @@ class Member_EweiShopV2Model
 			$info = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where  openid=:openid and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':openid' => $openid));
 			if (empty($info)) 
 			{
+                // 条件：用户是qq端
 				if (strexists($openid, 'sns_qq_')) 
 				{
 					$openid = str_replace('sns_qq_', '', $openid);
 					$condition = ' openid_qq=:openid ';
 					$bindsns = 'qq';
 				}
+                // 条件：用户是微信端
 				else if (strexists($openid, 'sns_wx_')) 
 				{
 					$openid = str_replace('sns_wx_', '', $openid);
 					$condition = ' openid_wx=:openid ';
 					$bindsns = 'wx';
 				}
+                // 条件：用户是上述二者之一
 				if (!(empty($condition))) 
 				{
 					$info = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where ' . $condition . '  and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':openid' => $openid));
@@ -80,6 +83,7 @@ class Member_EweiShopV2Model
 		{
 			$info = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where id=:id and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':id' => $openid));
 		}
+        // 会员信息不为空的时候更新会员卡信息
 		if (!(empty($info))) 
 		{
 			$info = $this->updateCredits($info);
@@ -240,12 +244,14 @@ class Member_EweiShopV2Model
 		global $_W;
 		global $_GPC;
 		$member = array();
+        // 商城配置，首页和平台信息
 		$shopset = m('common')->getSysset(array('shop', 'wap'));
 		$openid = $_W['openid'];
 		if (($_W['routes'] == 'order.pay_alipay') || ($_W['routes'] == 'creditshop.log.dispatch_complete') || ($_W['routes'] == 'creditshop.detail.creditshop_complete') || ($_W['routes'] == 'order.pay_alipay.recharge_complete') || ($_W['routes'] == 'order.pay_alipay.complete') || ($_W['routes'] == 'newmr.alipay') || ($_W['routes'] == 'newmr.callback.gprs') || ($_W['routes'] == 'newmr.callback.bill') || ($_W['routes'] == 'account.sns')) 
 		{
 			return;
 		}
+        // 条件：开通全网通
 		if ($shopset['wap']['open']) 
 		{
 			if (($shopset['wap']['inh5app'] && is_h5app()) || (empty($shopset['wap']['inh5app']) && empty($openid))) 
@@ -253,12 +259,16 @@ class Member_EweiShopV2Model
 				return;
 			}
 		}
+        // 条件：未登录微信 && 非调试模式
 		if (empty($openid) && !(EWEI_SHOPV2_DEBUG)) 
 		{
 			$diemsg = ((is_h5app() ? 'APP正在维护, 请到公众号中访问' : '请在微信客户端打开链接'));
 			exit('<!DOCTYPE html>' . "\r\n" . '                <html>' . "\r\n" . '                    <head>' . "\r\n" . '                        <meta name=\'viewport\' content=\'width=device-width, initial-scale=1, user-scalable=0\'>' . "\r\n" . '                        <title>抱歉，出错了</title><meta charset=\'utf-8\'><meta name=\'viewport\' content=\'width=device-width, initial-scale=1, user-scalable=0\'><link rel=\'stylesheet\' type=\'text/css\' href=\'https://res.wx.qq.com/connect/zh_CN/htmledition/style/wap_err1a9853.css\'>' . "\r\n" . '                    </head>' . "\r\n" . '                    <body>' . "\r\n" . '                    <div class=\'page_msg\'><div class=\'inner\'><span class=\'msg_icon_wrp\'><i class=\'icon80_smile\'></i></span><div class=\'msg_content\'><h4>' . $diemsg . '</h4></div></div></div>' . "\r\n" . '                    </body>' . "\r\n" . '                </html>');
 		}
+        // 获取用户信息
 		$member = m('member')->getMember($openid);
+
+        // 获取用户粉丝，可能是另一种用户关系
 		$followed = m('user')->followed($openid);
 		$uid = 0;
 		$mc = array();
@@ -311,18 +321,22 @@ class Member_EweiShopV2Model
 				pdo_update('ewei_shop_member', $upgrade, array('id' => $member['id']));
 			}
 		}
+        // 如果有分销应用，检查分销商
 		if (p('commission')) 
 		{
 			p('commission')->checkAgent($openid);
-		}
+        }
+        // 如果有海报应用，检查海报扫描
 		if (p('poster')) 
 		{
 			p('poster')->checkScan($openid);
 		}
+        // 如果用户信息为空，返回false
 		if (empty($member)) 
 		{
 			return false;
 		}
+        // 返回用户id和用户openid
 		return array('id' => $member['id'], 'openid' => $member['openid']);
 	}
 	public function getLevels($all = true) 

@@ -108,7 +108,7 @@ class Shop_EweiShopV2Model
 		$close = $_S['close'];
 		if (!empty($close['flag'])) 
 		{
-			if (!empty($close['url'])) 
+			if (!empty($close['url']))
 			{
 				header('location: ' . $close['url']);
 				exit();

@@ -17,6 +17,7 @@ class Route_EweiShopV2Model
 		}
 		else 
 		{
+            // inc/page_mobile.php::__construct
 			require_once EWEI_SHOPV2_CORE . 'inc/page_mobile.php';
 			require_once EWEI_SHOPV2_CORE . 'inc/page_mobile_login.php';
 		}
@@ -26,6 +27,7 @@ class Route_EweiShopV2Model
 		$method = 'main';
 		$root = (($isweb ? EWEI_SHOPV2_CORE_WEB : EWEI_SHOPV2_CORE_MOBILE));
 		$isMerch = false;
+//        var_dump($_W);exit;
 		if (strexists($_W['siteurl'], 'web/merchant.php')) 
 		{
 			if (empty($r)) 
@@ -40,6 +42,7 @@ class Route_EweiShopV2Model
 		{
 			$isplugin = !empty($r) && is_dir(EWEI_SHOPV2_PLUGIN . $routes[0]);
 		}
+        // 条件：当前页面是插件页面
 		if ($isplugin) 
 		{
 			if ($isweb) 
@@ -65,10 +68,13 @@ class Route_EweiShopV2Model
 			}
 			$segs = count($routes);
 		}
+        // 条件：当前页面是系统配置页
 		else if ($routes[0] == 'system') 
 		{
 			require_once EWEI_SHOPV2_CORE . 'inc/page_system.php';
 		}
+
+        // 页面路由的层级数量
 		switch ($segs) 
 		{
 			case 0: $file = $root . 'index.php';
@@ -184,6 +190,7 @@ class Route_EweiShopV2Model
 			{
 				show_message('控制器 ' . $_W['controller'] . ' 方法 ' . $method . ' 未找到!');
 			}
+
 			$instance->$method();
 			exit();
 	}

@@ -12,11 +12,14 @@ class MobilePage extends Page
 	{
 		global $_W;
 		global $_GPC;
+        // 检查商城是否关闭，如果关闭状态直接返回商城关闭提示页面
 		m('shop')->checkClose();
 		$preview = intval($_GPC['preview']);
 		$wap = m('common')->getSysset('wap');
-		if ($wap['open'] && !(is_weixin()) && empty($preview)) 
+        // 条件：全网通 && 非微信端 && 没搞清楚
+        if ($wap['open'] && !(is_weixin()) && empty($preview))
 		{
+
 			if ($this instanceof MobileLoginPage || $this instanceof PluginMobileLoginPage) 
 			{
 				if (empty($_W['openid'])) 
@@ -31,21 +34,31 @@ class MobilePage extends Page
 		}
 		else 
 		{
+
+            // 条件：没搞懂 && 非微信端
 			if ($preview && !(is_weixin())) 
 			{
 				$_W['openid'] = 'o6tC-wmZovDTswVba3Kg1oAV_dd0';
 			}
+            // 调试模式
 			if (EWEI_SHOPV2_DEBUG) 
 			{
 				$_W['openid'] = 'o6tC-wmZovDTswVba3Kg1oAV_dd0';
 			}
 		}
+
+
+        // 检查会员，如果有会员信息，返回openid和会员id，没有返回false;（这里面检查是根据openid检查的，如果没有openid就直接给出页面）
+        // 全网通非app平台，$member为null；（非全网通用户因为未识别到openid，在checkmember()里面直接展示出页面，但是文案不是很正确）
 		$member = m('member')->checkMember();
+
+        // 判断用户信息有没有mid和mopenid
 		$_W['mid'] = ((!(empty($member)) ? $member['id'] : ''));
 		$_W['mopenid'] = ((!(empty($member)) ? $member['openid'] : ''));
+        // 多商家插件
 		$merch_plugin = p('merch');
 		$merch_data = m('common')->getPluginset('merch');
-		if (!(empty($_GPC['merchid'])) && $merch_plugin && $merch_data['is_openmerch']) 
+		if (!(empty($_GPC['merchid'])) && $merch_plugin && $merch_data['is_openmerch'])
 		{
 			$this->merch_user = pdo_fetch('select * from ' . tablename('ewei_shop_merch_user') . ' where id=:id limit 1', array(':id' => intval($_GPC['merchid'])));
 		}

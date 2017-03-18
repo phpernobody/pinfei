@@ -7,6 +7,7 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 {
 	public function main() 
 	{
+//        exit;
 		global $_W;
 		global $_GPC;
 		$merch_plugin = p('merch');
@@ -16,6 +17,7 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 			include $this->template('merch/member/cart');
 			exit();
 		}
+
 		include $this->template();
 	}
 	public function get_list() 
