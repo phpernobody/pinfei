@@ -359,6 +359,22 @@
 		$('.option_marketprice').each(function (index,item) {
 			option_marketprice.push($(item).val());
 		});
+
+		var option_provinceprice = new Array();
+		$('.option_provinceprice').each(function (index,item) {
+			option_provinceprice.push($(item).val());
+		});
+
+		var option_cityprice = new Array();
+		$('.option_cityprice').each(function (index,item) {
+			option_cityprice.push($(item).val());
+		});
+
+		var option_countyprice = new Array();
+		$('.option_countyprice').each(function (index,item) {
+			option_countyprice.push($(item).val());
+		});
+
 		var option_presellprice = new Array();
 		$('.option_presell').each(function (index,item) {
 			option_presellprice.push($(item).val());
@@ -396,6 +412,9 @@
 				option_title : option_title,
 				option_presellprice : option_presellprice,
 				option_marketprice : option_marketprice,
+				option_provinceprice : option_provinceprice,
+				option_cityprice : option_cityprice,
+				option_countyprice : option_countyprice,
 				option_productprice : option_productprice,
 				option_costprice : option_costprice,
 				option_goodssn : option_goodssn,
