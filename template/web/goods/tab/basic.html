@@ -347,13 +347,13 @@
         </div>
         <div class="input-group" style="margin-top: 10px;">
             <span class="input-group-addon">省代价</span>
-            <input type="text" name="province_price" id="province_price" class="form-control" value="{$item['province_price']}" />
+            <input type="text" name="provinceprice" id="provinceprice" class="form-control" value="{$item['provinceprice']}" />
             <span class="input-group-addon">元 </span>
             <span class="input-group-addon">市代价</span>
-            <input type="text" name="city_price" id="city_price" class="form-control" value="{$item['city_price']}" />
+            <input type="text" name="cityprice" id="cityprice" class="form-control" value="{$item['cityprice']}" />
             <span class="input-group-addon">元 </span>
             <span class="input-group-addon">区代价</span>
-            <input type="text" name="county_price" id="county_price" class="form-control" value="{$item['county_price']}" />
+            <input type="text" name="countyprice" id="countyprice" class="form-control" value="{$item['countyprice']}" />
             <span class="input-group-addon">元</span>
         </div>
         <span class='help-block'>尽量填写完整，有助于于商品销售的数据分析</span>
@@ -458,7 +458,7 @@
         <select id="sel-area" name='area'  class="form-control" style='width:200px;display: inline-block;display:none;' >
             <option value="" selected="true">请选择</option>
         </select>
-		
+
 	<span class='help-block'>商品所在地，显示在详情页面，如果不选择，则显示商城所在地
 	    <script language='javascript'>
             cascdeInit("{$item['province']}","{$item['city']}","");
