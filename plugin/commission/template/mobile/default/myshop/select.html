@@ -29,7 +29,7 @@
 			  <div class='fui-cell'>
 				<div class='fui-cell-label'>选择商品</div>
 				<div class='fui-cell-info'></div>
-				<div class='fui-cell-remark noremark'><a class='btn btn-default-o btn-sm btn-select' href="#myshop-select-goods"><i class="icon icon-add"></i> 选择</a></div>
+				<div class='fui-cell-remark noremark'><a class='btn btn-default-o btn-sm btn-select' style="font-size: 0.3rem;border-radius: 0.6rem;padding: 0;padding-left:0.1rem;padding-right:0.3rem;border:1px solid #989898;color:#989898" href="#myshop-select-goods"><i class="icon icon-add" style="font-size:0.2rem;"></i> 选择</a></div>
 			</div>
 			<div id='goods-container' class='fui-list-group goods-selected-group'>
 				{loop $goods $g}
@@ -52,37 +52,108 @@
 	 
 </div>
 
+<style>
+	.left-title{
+		height:2.35rem;
+		background: #fff;
+		/*  background-image:url('../addons/ewei_shopv2/static/img/sjbg.jpg');
+        background-size: 100% 2.35rem;
+        -moz-background-size:100% 2.35rem; */
+		background-repeat: no-repeat;
+		color: #ED322B;
+		border-bottom:1px solid #dcdcdc;
+	}
+	.searchbar{
+		width: 100%;
+		height: 100%;
+		border-left: 1px solid #dcdcdc;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+	.goodShow{
+		width:94%;
+		/* height:4.5rem; */
+		margin:0 auto;
+		background:#fff;
+		margin-top:10px;
+		padding:10px;
+		display: flex;
+		flex-flow:row;
+		justify-content: space-between;
+	}
+	.goodShow-left{
+		width: 35%;
+		height: 100%;
+	}
+	.goodShow-right{
 
+		width: 63%;
+		display: flex;
+		flex-flow: column;
+		justify-content: space-between;
+		font-size:1em;
+	}
+	.fui-list-group .goods-list-group{
+		width:100%;
+		background: #f2f2f2;
+		overflow-y:auto;
+	}
+	.fui-fullHigh-item .container{
+		width:70%;
+		background: #f2f2f2;
+	}
+	.right-title{
+		height: 2.35rem;
+		width: 100%;
+		background: #fff;
+		border-bottom:1px solid #dcdcdc;
+		padding-top: .3rem;
+		padding-bottom: .3rem
+	}
+	/*.fui-fullHigh-item.menu{*/
+		/*width:30%;*/
+		/*text-align: center;*/
+	/*}*/
+</style>
 <div class="fui-page fui-page page-commission-selectgoods" id="myshop-select-goods">
 	
-    <div class="fui-header">
-        <div class="fui-header-left">
-            <a class="back"></a>
-        </div>
-        <div class="title">选择商品</div>
-		<div class="fui-header-right" onclick='history.back()' >完成</div>
-    </div>
+    <!--<div class="fui-header">-->
+        <!--<div class="fui-header-left">-->
+            <!--<a class="back"></a>-->
+        <!--</div>-->
+        <!--<div class="title">选择商品</div>-->
+		<!--<div class="fui-header-right" onclick='history.back()' >完成</div>-->
+    <!--</div>-->
     <div class="fui-content navbar">
 	<div class="fui-fullHigh-group" >
       
-        <div class="fui-fullHigh-item menu" id="tab">
-            <nav class="on">全部商品</nav>
-	   <nav data-isnew="1">新上宝贝</nav>
-	   <nav data-isrecommand="1">推荐宝贝</nav>
-	   <nav data-istime="1">限时秒杀</nav>
-    	   <nav data-isdiscount="1" >促销宝贝</nav>
-		   {if $_W['shopset']['category']['level']!='-1'}
-		   {loop $category['parent'] $c1}
-		          {if !$c1['enabled']}{php continue;}{/if}
-			<nav data-cate="{$c1['id']}">{$c1['name']}</nav>
+        <div class="fui-fullHigh-item menu" id="tab" style="background: white;text-align: center;">
+			<div class="left-title" >
+				<div style="width:100%;height: 2.35rem;line-height: 2.35rem;font-weight: bold;font-size: .6rem;">
+					全部分类
+				</div>
+			</div>
+            <!--<nav class="on">全部商品</nav>-->
+	   <!--<nav data-isnew="1">新上宝贝</nav>-->
+	   <!--<nav data-isrecommand="1">推荐宝贝</nav>-->
+	   <!--<nav data-istime="1">限时秒杀</nav>-->
+    	   <!--<nav data-isdiscount="1" >促销宝贝</nav>-->
+		   <!--{if $_W['shopset']['category']['level']!='-1'}-->
+		   <!--{loop $category['parent'] $c1}-->
+		          <!--{if !$c1['enabled']}{php continue;}{/if}-->
+			<nav data-cate="{$c1['id']}" style="height:2.35rem;line-height:2.35rem;font-size:0.7rem">{$c1['name']}
+				<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:1rem;margin-right:10px;width:7%" style="height: 100%" ></nav>
 			  {if intval($_W['shopset']['category']['level'])>=2}
 				{loop $category['children'][$c1['id']] $c2}
 				        {if !$c2['enabled']}{php continue;}{/if}
-					<nav data-cate="{$c2['id']}">{$c2['name']}</nav>
+					<nav data-cate="{$c2['id']}" style="height:2.35rem;line-height:2.35rem;font-size:0.7rem">{$c2['name']}
+						<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:1rem;margin-right:10px;width:7%" style="height: 100%" ></nav>
 					 {if intval($_W['shopset']['category']['level'])>=3}
 					 	{loop $category['children'][$c2['id']] $c3}
 						    {if !$c3['enabled']}{php continue;}{/if}
-					             <nav data-cate="{$c3['id']}">{$c3['name']}</nav>
+					             <nav data-cate="{$c3['id']}" style="height:2.35rem;line-height:2.35rem;font-size:0.7rem">{$c3['name']}
+									 <img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:1rem;margin-right:10px;width:7%" style="height: 100%" ></nav>
 					        {/loop}
 					 {/if}
 				{/loop}
@@ -90,43 +161,87 @@
 		   {/loop}
 		   {/if}
         </div>
-        <div class="fui-fullHigh-item container ">
+        <div class="fui-fullHigh-item container " style="padding:0;background: #f2f2f2;">
 	  
 	   <form method="post" action="{php echo mobileUrl('goods')}">
+		   <div class='right-title'>
                 <div class="searchbar" style='margin:0;padding:0'>
-                    <div class="search-input">
-                        <i class="icon icon-search"></i>
-                        <input type="search" id='keywords' name="keywords" placeholder="输入关键字...">
-                    </div>
+					<div class='search-input'>
+						<input type="search" name="keywords" placeholder="请输入商品名称"style="height: 1.5rem;border-radius: 1.5rem">
+					</div>
+					<div class='search-right-pic'>
+						<img src="../addons/ewei_shopv2/static/img/fl_ssimg.png"style="height: 1.3rem;margin-left:.5rem;margin-right: .5rem;vertical-align:middle;"  onclick="document.form1.submit();">
+					</div>
                 </div>
-            </form>
+		   </div>
+	   </form>
 	    <p class='text-center text-cancel empty' style='display: none;'>暂时没有任何商品</p>
-	    <div class='fui-list-group goods-list-group' style='margin-top:0;display: none'></div>
+	    <div class='fui-list-group goods-list-group' style='margin-top:0;display: none;width:100%;overflow-y:auto'></div>
 	    <div class='infinite-loading'><span class='fui-preloader'></span><span class='text'> 正在加载...</span></div>
 	   
         </div> 
     </div>
 </div>
+
 	<script id='tpl_commission_goods_select' type='text/html'>
 		<%each list as g%>
-		<div class='fui-list goods-item' 
-			 data-goodsid='<%g.id%>'
-			 data-title='<%g.title%>'
-			 data-marketprice='<%g.marketprice%>'
-			 data-thumb='<%g.thumb%>'
-			 >
-					<div class='fui-list-media'>
-						<img data-lazy='<%g.thumb%>' class='round' />
+		<!--<a href="{php echo mobileUrl('goods/detail').'&id=<%g.id%>'}">-->
+		<div class='fui-list goods-item' style="background: #f2f2f2;padding: 0;">
+			 <!--data-goodsid='<%g.id%>'-->
+			 <!--data-title='<%g.title%>'-->
+			 <!--data-marketprice='<%g.marketprice%>'-->
+			 <!--data-thumb='<%g.thumb%>'-->
+			 <!--&gt;-->
+					<!--<div class='fui-list-media'>-->
+						<!--<img data-lazy='<%g.thumb%>' class='round' />-->
+					<!--</div>-->
+					<!--<div class='fui-list-inner'>-->
+						<!--<div class='subtitle'><%g.title%></div>-->
+						<!--<div class='text'><span class='text-danger'>￥<%g.marketprice%></span></div>-->
+						<!--<div class='text text-right'><input type='checkbox' class='fui-switch fui-switch-warning fui-switch-small' /></div>-->
+					<!--</div>-->
+
+				 <div class="goodShow">
+                    <div class="goodShow-left">
+                     <img src="<%g.thumb%>" style="width: 100%;vertical-align:middle;">
 					</div>
-					<div class='fui-list-inner'>
-						<div class='subtitle'><%g.title%></div>
-						<div class='text'><span class='text-danger'>￥<%g.marketprice%></span></div>
-						<div class='text text-right'><input type='checkbox' class='fui-switch fui-switch-warning fui-switch-small' /></div>
-					</div>
-				  </div>
+                   <div class="goodShow-right">
+					   <div>
+						   <div class="row" style="height: 2.5em;">
+							   <span style="line-height: 130%;overflow: hidden;top:0px;display: block;color:#000;font-weight:500"><%g.title%></span>
+						   </div>
+						   <div class="row" style="font-size: .8em">
+							   <span style="color: #959595">&nbsp;hahaha
+
+							   </span>
+							   <button style="background:#EA2721;font-size:0.2rem;border:0;color:white;padding:0.1rem" data-toggle="modal" data-target="#myModal">查看详情</button>
+						   </div>
+
+					   </div>
+					   <div class="row" style="display: flex;flex-direction: row;justify-content: space-between;font-size: .8em">
+						   <span style="color: #959595">库存量:<%g.total%></span>
+						   <button style="background:#EA2721;font-size:0.2rem;border:0;color:white;padding:0.1rem">加入库存</button>
+					   </div>
+				   </div>
+				 </div>
+			</div>
+		<!--</a>-->
+		<!--htm +='<a href="{php echo mobileUrl('goods/detail').'&id='}'+v.id-->
+                    <!--htm +='"><div class="goodShow">'-->
+			<!--htm +='<div class="goodShow-left">'-->
+				<!--htm +='<img src="../attachment/'+v.thumb+'" style="width: 100%;vertical-align:middle;"></div>'-->
+			<!--htm +='<div class="goodShow-right"><div>'-->
+				<!--htm +='<div class="row" style="height: 2.5em;">'-->
+					<!--htm +='<span style="line-height: 130%;overflow: hidden;top:0px;display: block;color:#000;font-weight:500">'+v.title+'</span></div>'-->
+				<!--htm +='<div class="row" style="font-size: .8em">'-->
+					<!--htm +='<span style="color: #959595">销量：'+v.salesreal+'&nbsp;件</span></div></div>'-->
+				<!--htm +='<div class="row" style="display: flex;flex-direction: row;justify-content: space-between;font-size: .8em">'-->
+					<!--htm +='<span style="color: #EC3029;">&yen;:'+v.marketprice+'</span>'-->
+					<!--htm +='</div></div></div></a>'-->
 		<%/each%>
 	</script>
-	
+
+
 	<script id='tpl_commission_goods_item' type='text/html'>
 		 
 		<div class='fui-list goods-selected' data-goodsid='<%g.id%>'>
@@ -148,6 +263,12 @@
 	});
 </script>
 
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		</div>
+	</div>
 </div>
 {php $this->footerMenus()}
 {template '_footer'}
