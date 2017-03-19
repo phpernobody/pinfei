@@ -74,7 +74,7 @@ class Pay_EweiShopV2Page extends MobileLoginPage
 		$wechat = array('success' => false);
 		$jie = intval($_GPC['jie']);
 //        var_dump($setting);exit;
-		if (is_weixin()) 
+		if (is_weixin())
 		{
 			$params = array();
 			$params['tid'] = $log['tid'];
