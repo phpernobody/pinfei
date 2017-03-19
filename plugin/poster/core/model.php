@@ -108,11 +108,11 @@ class PosterModel extends PluginModel
 		$url = 'https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=' . $token;
 		$ch1 = curl_init();
 		curl_setopt($ch1, CURLOPT_URL, $url);
-		/*curl_setopt($ch1, CURLOPT_POST, 1);
+		curl_setopt($ch1, CURLOPT_POST, 1);
 		curl_setopt($ch1, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch1, CURLOPT_SSL_VERIFYHOST, false);
-		curl_setopt($ch1, CURLOPT_POSTFIELDS, $bb);*/
+		curl_setopt($ch1, CURLOPT_POSTFIELDS, $bb);
 		$c = curl_exec($ch1);
 		$result = @json_decode($c, true);
 

@@ -13,4 +13,5 @@ class Express_EweiShopV2Model
 		return $data;
 	}
 }
+
 ?>

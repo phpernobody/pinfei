@@ -9,13 +9,13 @@
 </style>
 
 <div class='fui-page  fui-page-current' style="background: #fff;">
-    <div class="fui-header">
-	<div class="fui-header-left">
-	    <a class="back"></a>
-	</div>
-	<div class="title" style="background: #fff;">收货地址</div> 
-	<div class="fui-header-right">&nbsp;</div>
-    </div>
+    <!-- <div class="fui-header">
+    	<div class="fui-header-left">
+    	    <a class="back"></a>
+    	</div>
+    	<div class="title" style="background: #fff;">收货地址</div> 
+    	<div class="fui-header-right">&nbsp;</div>
+    </div> -->
     <div class='fui-content navbar' >
 
 	
@@ -25,7 +25,7 @@
 	</div>
 	
 	{loop $list $address}
-	<div class="fui-list-group address-item" style='margin-top:.6rem;background: #fbfbfb;'
+	<div class="fui-list-group address-item" style='margin-bottom:.6rem;background: #fbfbfb;'
 	     data-addressid="{$address['id']}">
 	    <div  class="fui-list"style="padding: 0rem;" >
 		<div class="fui-list-inner"style="padding-top: 0.5rem; height: 6rem;background: #fbfbfb">
