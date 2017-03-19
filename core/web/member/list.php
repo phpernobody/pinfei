@@ -379,7 +379,8 @@ class List_EweiShopV2Page extends WebPage
 							plog('commission.agent.check', '审核分销商 <br/>分销商信息:  ID: ' . $member['id'] . ' /  ' . $member['openid'] . '/' . $member['nickname'] . '/' . $member['realname'] . '/' . $member['mobile']);
 						}
 						plog('commission.agent.edit', '修改分销商 <br/>分销商信息:  ID: ' . $member['id'] . ' /  ' . $member['openid'] . '/' . $member['nickname'] . '/' . $member['realname'] . '/' . $member['mobile']);
-						pdo_update('ewei_shop_member', $adata, array('id' => $id, 'uniacid' => $_W['uniacid']));
+
+                        pdo_update('ewei_shop_member', $adata, array('id' => $id, 'uniacid' => $_W['uniacid']));
 						if (!(empty($agent_flag))) 
 						{
 							if (!(empty($member['agentid']))) 
@@ -396,6 +397,7 @@ class List_EweiShopV2Page extends WebPage
 							}
 						}
 					}
+
 				}
 			}
 			if ($hasglobonus) 
@@ -493,6 +495,11 @@ class List_EweiShopV2Page extends WebPage
 						}
 						plog('abounus.agent.edit', $log);
 						pdo_update('ewei_shop_member', $aadata, array('id' => $id, 'uniacid' => $_W['uniacid']));
+
+//                        var_dump($aadata);exit;
+                        if(intval($aadata['isaagent']) === 1 && intval($aadata['aagentstatus']) === 1) {
+                            pdo_update('ewei_shop_member', array('agentid' => 0, 'oldagentid' => $member['agentid']), array('id' => $id, 'uniacid' => $_W['uniacid']));
+                        }
 					}
 				}
 			}

@@ -414,8 +414,10 @@ class Common_EweiShopV2Model
 			$wechat['version'] = 1;
 		}
 		$wOpt = array();
+
 		if ($wechat['version'] == 1) 
 		{
+
 			$wOpt['appId'] = $wechat['appid'];
 			$wOpt['timeStamp'] = TIMESTAMP . '';
 			$wOpt['nonceStr'] = random(32);
@@ -499,7 +501,9 @@ class Common_EweiShopV2Model
 		$string1 .= 'key=' . $wechat['signkey'];
 		$package['sign'] = strtoupper(md5($string1));
 		$dat = array2xml($package);
+//        return $package;
 		$response = ihttp_request('https://api.mch.weixin.qq.com/pay/unifiedorder', $dat);
+
 		if (is_error($response)) 
 		{
 			return $response;
