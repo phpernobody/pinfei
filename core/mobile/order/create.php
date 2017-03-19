@@ -157,6 +157,8 @@ class Create_EweiShopV2Page extends MobileLoginPage
                         else {
                             $goods[$k]['marketprice'] = m('order')->caculatePrice($member, $v);
                         }
+                        // 查询库存
+                        $goods[$k]['stock'] = m('order')->caculateStock($member,$v['goodsid'],$v['optionid']);
                         /**
                          * end by yaowk
                          */
@@ -261,7 +263,6 @@ class Create_EweiShopV2Page extends MobileLoginPage
                          */
                         $data['marketprice'] = (((0 < intval($data['ispresell'])) && ((time() < $data['preselltimeend']) || ($data['preselltimeend'] == 0)) ? $option['presellprice'] : m('order')->caculatePrice($member, $option)));
                         $data['virtual'] = $option['virtual'];
-                        $data['stock'] = $option['stock'];
                         if (!(empty($option['weight']))) {
                             $data['weight'] = $option['weight'];
                         }
@@ -276,6 +277,14 @@ class Create_EweiShopV2Page extends MobileLoginPage
                         $this->message('商品' . $data['title'] . '的规格不存在,请重新选择规格!', '', 'error');
                     }
                 }
+                /**
+                 * 查询库存
+                 * by yaowk
+                 */
+                $data['stock'] = m('order')->caculateStock($member,$data['id'],$optionid);
+                /**
+                 * end
+                 */
                 if ($giftid) {
                     $changenum = false;
                 }
@@ -1399,8 +1408,9 @@ class Create_EweiShopV2Page extends MobileLoginPage
             else {
                 $sql_condition = '';
             }
-            $sql = 'SELECT id as goodsid,' . $sql_condition . 'title,type, weight,total,issendfree,isnodiscount, thumb,marketprice,cash,isverify,verifytype,' . ' goodssn,productsn,sales,istime,timestart,timeend,hasoption,isendtime,usetime,endtime,ispresell,presellprice,preselltimeend,' . ' usermaxbuy,minbuy,maxbuy,unit,buylevels,buygroups,deleted,' . ' status,deduct,manydeduct,`virtual`,discounts,deduct2,ednum,edmoney,edareas,diyformtype,diyformid,diymode,' . ' dispatchtype,dispatchid,dispatchprice,merchid,merchsale,cates,' . ' isdiscount,isdiscount_time,isdiscount_discounts, virtualsend,' . ' buyagain,buyagain_islong,buyagain_condition, buyagain_sale' . ' FROM ' . tablename('ewei_shop_goods') . ' where id=:id and uniacid=:uniacid  limit 1';
+            $sql = 'SELECT provinceprice,cityprice,countyprice, id as goodsid,' . $sql_condition . 'title,type, weight,total,issendfree,isnodiscount, thumb,marketprice,cash,isverify,verifytype,' . ' goodssn,productsn,sales,istime,timestart,timeend,hasoption,isendtime,usetime,endtime,ispresell,presellprice,preselltimeend,' . ' usermaxbuy,minbuy,maxbuy,unit,buylevels,buygroups,deleted,' . ' status,deduct,manydeduct,`virtual`,discounts,deduct2,ednum,edmoney,edareas,diyformtype,diyformid,diymode,' . ' dispatchtype,dispatchid,dispatchprice,merchid,merchsale,cates,' . ' isdiscount,isdiscount_time,isdiscount_discounts, virtualsend,' . ' buyagain,buyagain_islong,buyagain_condition, buyagain_sale' . ' FROM ' . tablename('ewei_shop_goods') . ' where id=:id and uniacid=:uniacid  limit 1';
             $data = pdo_fetch($sql, array(':uniacid' => $uniacid, ':id' => $goodsid));
+            $data['marketprice'] = m('order')->caculatePrice($member,$data);
             $data['seckillinfo'] = plugin_run('seckill::getSeckill', $goodsid, $optionid, true, $_W['openid']);
             if ((0 < $data['ispresell']) && (($data['preselltimeend'] == 0) || (time() < $data['preselltimeend']))) {
                 $data['marketprice'] = $data['presellprice'];
@@ -1448,7 +1458,7 @@ class Create_EweiShopV2Page extends MobileLoginPage
                 $ismerch = 1;
             }
             $virtualid = $data['virtual'];
-            $data['stock'] = $data['total'];
+            $data['stock'] = m('order')->caculateStock($member,$data['id']);
             $data['total'] = $goodstotal;
             if ($data['cash'] != 2) {
                 $cash = 0;
@@ -1520,6 +1530,7 @@ class Create_EweiShopV2Page extends MobileLoginPage
                  * by yaowk
                  */
                 $option = pdo_fetch('select provinceprice,cityprice,countyprice, id,title,marketprice,presellprice,goodssn,productsn,stock,`virtual`,weight' . $sql_condition . ' from ' . tablename('ewei_shop_goods_option') . ' where id=:id and goodsid=:goodsid and uniacid=:uniacid  limit 1', array(':uniacid' => $uniacid, ':goodsid' => $goodsid, ':id' => $optionid));
+                $option['stock'] = m('order')->caculateStock($member,$data['id'],$option['id']);
                 /**
                  * end
                  */
