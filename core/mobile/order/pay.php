@@ -14,6 +14,7 @@ class Pay_EweiShopV2Page extends MobileLoginPage
 		$member = m('member')->getMember($openid, true);
 		$orderid = intval($_GPC['id']);
 		$og_array = m('order')->checkOrderGoods($orderid);
+
 		if (!(empty($og_array['flag']))) 
 		{
 			$this->message($og_array['msg'], '', 'error');
@@ -72,6 +73,7 @@ class Pay_EweiShopV2Page extends MobileLoginPage
 		$sec = iunserializer($sec['sec']);
 		$wechat = array('success' => false);
 		$jie = intval($_GPC['jie']);
+//        var_dump($setting);exit;
 		if (is_weixin()) 
 		{
 			$params = array();
@@ -574,6 +576,7 @@ class Pay_EweiShopV2Page extends MobileLoginPage
 			header('location:' . mobileUrl('order/pay/success', array('id' => $order['id'], 'result' => $pay_result)));
 			return;
 		}
+
 		if ($type == 'wechat') 
 		{
 			if (!(is_weixin()) && empty($_W['shopset']['wap']['open'])) 

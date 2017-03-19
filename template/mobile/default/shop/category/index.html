@@ -100,8 +100,8 @@
             font-size:1em;
         }
         </style>
-        <div id="container" style="width:100%;background: #f2f2f2;">
-              </div>
+        <div id="container" style="width:100%;background: #f2f2f2;overflow-y:auto">
+
         </div>
 
     </div>
@@ -183,20 +183,18 @@
             data:{'id':id},
             success:function(data){
                 var htm = '';
-
-
-                $.each(data,function(key,value){
-                    htm +='<a href="./index.php?i=1&amp;c=entry&amp;m=ewei_shopv2&amp;do=mobile&amp;r=goods.detail&amp;mid=1&amp;id='+value.id
+                $.each(data,function(key,v){
+                    htm +='<a href="{php echo mobileUrl('goods/detail').'&id='}'+v.id
                     htm +='"><div class="goodShow">'
                     htm +='<div class="goodShow-left">'
-                    htm +='<img src="../attachment/'+value.thumb+'" style="width: 100%;vertical-align:middle;"></div>'
+                    htm +='<img src="../attachment/'+v.thumb+'" style="width: 100%;vertical-align:middle;"></div>'
                     htm +='<div class="goodShow-right"><div>'
                     htm +='<div class="row" style="height: 2.5em;">'
-                    htm +='<span style="line-height: 130%;overflow: hidden;top:0px;display: block;color:#000;font-weight:500">'+value.title+'</span></div>'
+                    htm +='<span style="line-height: 130%;overflow: hidden;top:0px;display: block;color:#000;font-weight:500">'+v.title+'</span></div>'
                     htm +='<div class="row" style="font-size: .8em">'
-                    htm +='<span style="color: #959595">销量：'+value.salesreal+'&nbsp;件</span></div></div>'
+                    htm +='<span style="color: #959595">销量：'+v.salesreal+'&nbsp;件</span></div></div>'
                     htm +='<div class="row" style="display: flex;flex-direction: row;justify-content: space-between;font-size: .8em">'
-                    htm +='<span style="color: #EC3029;">&yen;:'+value.marketprice+'</span>'
+                    htm +='<span style="color: #EC3029;">&yen;:'+v.marketprice+'</span>'
 //                    htm +='<a href="./index.php?i=1&amp;c=entry&amp;m=ewei_shopv2&amp;do=mobile&amp;r=goods.detail&amp;mid=1&amp;id='+value.id
 //                    htm +='" id="buy"><img src="../addons/ewei_shopv2/static/img/gwc.jpg" style="height: .8em"></a>'
                     htm +='</div></div></div></a>'
@@ -205,9 +203,25 @@
             },
             dataType:'json',
         })
+//        $.ajax({
+//            url:"{php echo mobileUrl('shop/box')}",
+//            data:{'id':id},
+//            dataType:'html',
+//            success:function(htm){
+//                $('#container').html(htm);
+//            },
+//
+//        })
         $(obj).css('background','#f2f2f2');
         $(obj).siblings().css("background", "none");
+
+
+//        var height = $('#container').css('height');
+//        alert(height);
     }
+
+
+
 
 </script>
 <!--<div style="width:94%;height:6rem;margin:0 auto;background:white;margin-top:10px">-->

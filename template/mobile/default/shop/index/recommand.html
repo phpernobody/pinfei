@@ -220,6 +220,7 @@
 	<div class="show_con">
 		<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
 			<img src="../attachment/{$v['thumb']}" style="width:100%;height: 6.5rem">
+
 		</a>
 		<div style="width: 100%;padding-left: .3rem">
 			<div class='con-title'>{$v['title']}</div>
@@ -236,15 +237,18 @@
 	{/loop}
 </div>
 <!--魔方样式-->
+
 <div class="magic">
 	<div class="magic-left">
 		<div class='magic-left1'>
+
 				<img onclick="doNew()" src="../addons/ewei_shopv2/static/img/news.jpg" style="width: 100%;height: 4.275rem">
 		</div>
 		{loop $getIsnew1 $v}
 		<div class='magic-left2'>
 			<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
 				<img src="../attachment/{$v['thumb']}" style="width: 100%;height: 6.2rem">
+
 				<div class="left-cont">
 					<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
 						{$v['title']}
