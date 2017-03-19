@@ -601,6 +601,20 @@ class Detail_EweiShopV2Page extends MobilePage
 				exit();
 			}
 		}
+
+        // 库存展示处理
+        if (intval($member['hagentid']) !== 0) {
+            $agentStock = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_stock') . ' where memberid=:mid', array('mid' => $member['hagentid']));
+
+            $agentGoodsOptions = array();
+            foreach($agentStock as $key =>$value) {
+                if (!empty($value['optionid'])) {
+                    $options_tmp = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option') . ' where id=:id', array('id' => $value['optionid']));
+                    $agentGoodsOptions = array_merge($agentGoodsOptions, $options_tmp);
+                }
+            }
+//            var_dump($agentStock, $agentGoodsOptions);exit;
+        }
 		include $this->template();
 	}
 	public function querygift() 

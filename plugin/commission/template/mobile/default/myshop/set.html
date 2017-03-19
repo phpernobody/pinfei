@@ -27,7 +27,7 @@
 					代理团队信息
 				</div>
 			</div>
-			<div style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem; border-right: 1px solid #ededed;">
+			<div class="tap_select" style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem; border-right: 1px solid #ededed;">
 				<img src="../addons/ewei_shopv2/static/img/2.png" style="margin: .3rem auto; display: block; width:1.1rem; margin-top: .5rem;">
 				<div>
 					商品管理
@@ -84,8 +84,13 @@
 	<script language='javascript'>
 		require(['../addons/ewei_shopv2/plugin/commission/static/js/myshop.js'], function (modal) {
 			modal.initSet();
-	});
-</script>
+		});
+
+		$('.tap_select').click(function() {
+			console.log("{php echo mobileUrl('commission/myshop/select').'#myshop-select-goods'}");
+			window.location.href = "{php echo mobileUrl('commission/myshop/select').'#myshop-select-goods'}";
+		});
+	</script>
 
 </div>
 {php $this->footerMenus()}

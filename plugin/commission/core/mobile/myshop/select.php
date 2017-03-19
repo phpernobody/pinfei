@@ -20,8 +20,6 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
 			if ($_W['ispost']) {
 				show_json(-1, $err);
 			}
-
-
 			$this->message($err, '', 'error');
 		}
 
@@ -79,7 +77,6 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
 				$goods = pdo_fetchall('select id,title,marketprice,thumb from ' . tablename('ewei_shop_goods') . ' where uniacid=:uniacid and id in ( ' . trim($shop['goodsids']) . ')', array(':uniacid' => $_W['uniacid']));
 				$goods = set_medias($goods, 'thumb');
 			}
-
 		}
 
 
@@ -92,6 +89,18 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
 
 		include $this->template();
 	}
+
+    public function getDetail() {
+        global $_W;
+        global $_GPC;
+
+        $member = m('member')->getMember($_W['openid']);
+
+        $goodid = $_GPC['goodid'];
+        $goodoptions = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option') . ' where goodsid='.$goodid);
+
+        show_json($goodoptions);
+    }
 }
 
 
