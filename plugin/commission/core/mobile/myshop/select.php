@@ -97,7 +97,7 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
         $member = m('member')->getMember($_W['openid']);
 
         $goodid = $_GPC['goodid'];
-        $goodoptions = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option') . ' where goodsid='.$goodid);
+        $goodoptions = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option'). ' as gop left join '. tablename('ewei_shop_agent_stock') . ' as ags on gop.goodsid='. $goodid . ' and ags.optionid=gop.id');
 
         show_json($goodoptions);
     }

@@ -34,12 +34,14 @@
       <file leaf-file-name="select.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53072625" vertical-offset="2240" max-vertical-offset="2800">
-              <caret line="101" column="32" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.39478585" vertical-offset="2188" max-vertical-offset="2800">
+              <caret line="96" column="56" selection-start-line="96" selection-start-column="56" selection-end-line="96" selection-end-column="56" />
               <folding>
-                <marker date="1489914616369" expanded="true" signature="717:821" placeholder="select * fro..." />
-                <marker date="1489914616369" expanded="true" signature="1710:1853" placeholder="select id,ti..." />
-                <marker date="1489914616369" expanded="true" signature="2327:2399" placeholder="select * fro..." />
+                <marker date="1489916582901" expanded="true" signature="717:821" placeholder="select * fro..." />
+                <marker date="1489916582901" expanded="true" signature="1710:1853" placeholder="select id,ti..." />
+                <marker date="1489916582901" expanded="true" signature="2327:2465" placeholder="select * fro..." />
+                <marker date="1489916582901" expanded="true" signature="2327:2503" placeholder="select * fro..." />
+                <marker date="1489916582901" expanded="true" signature="2327:2505" placeholder="select * fro..." />
               </folding>
             </state>
           </provider>
@@ -450,6 +452,9 @@
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -457,9 +462,6 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -479,7 +481,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -488,7 +490,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2685325" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27231467" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -526,12 +528,75 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2800">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1489916582901" expanded="true" signature="717:821" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="1710:1853" placeholder="select id,ti..." />
+            <marker date="1489916582901" expanded="true" signature="2327:2465" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="2327:2503" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="2327:2505" placeholder="select * fro..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1772" max-vertical-offset="2475">
+          <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+          <folding>
+            <marker date="1483935152000" expanded="true" signature="787:971" placeholder="select * fro..." />
+            <marker date="1483935152000" expanded="true" signature="1173:1357" placeholder="select id,st..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="14950" max-vertical-offset="18925">
+          <caret line="606" column="156" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3863" max-vertical-offset="17525">
+          <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+          <folding>
+            <marker date="1489912609103" expanded="true" signature="185:305" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="498:620" placeholder="select marke..." />
+            <marker date="1489912609103" expanded="true" signature="5366:5432" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="9939:10144" placeholder="select c.* f..." />
+            <marker date="1489912609103" expanded="true" signature="10616:10707" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="11991:12126" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="12193:12314" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="12383:12505" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="12574:12668" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="13106:13293" placeholder="SELECT id,ni..." />
+            <marker date="1489912609103" expanded="true" signature="13563:13715" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="14074:14211" placeholder="select id,ti..." />
+            <marker date="1489912609103" expanded="true" signature="14781:14910" placeholder="select sum(t..." />
+            <marker date="1489912609103" expanded="true" signature="15186:15298" placeholder="select thumb..." />
+            <marker date="1489912609103" expanded="true" signature="19267:19374" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="19461:19588" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="20907:21036" placeholder="SELECT id,or..." />
+            <marker date="1489912609103" expanded="true" signature="21229:21388" placeholder="SELECT COUNT..." />
+            <marker date="1489912609103" expanded="true" signature="21611:21762" placeholder="SELECT id,go..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2263" max-vertical-offset="2800">
           <caret line="101" column="32" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
           <folding>
-            <marker date="1489914616369" expanded="true" signature="717:821" placeholder="select * fro..." />
-            <marker date="1489914616369" expanded="true" signature="1710:1853" placeholder="select id,ti..." />
-            <marker date="1489914616369" expanded="true" signature="2327:2399" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="717:821" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="1710:1853" placeholder="select id,ti..." />
+            <marker date="1489916582901" expanded="true" signature="2327:2465" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="2327:2503" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="2327:2505" placeholder="select * fro..." />
           </folding>
         </state>
       </provider>
@@ -770,12 +835,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53072625" vertical-offset="2240" max-vertical-offset="2800">
-          <caret line="101" column="32" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.39478585" vertical-offset="2188" max-vertical-offset="2800">
+          <caret line="96" column="56" selection-start-line="96" selection-start-column="56" selection-end-line="96" selection-end-column="56" />
           <folding>
-            <marker date="1489914616369" expanded="true" signature="717:821" placeholder="select * fro..." />
-            <marker date="1489914616369" expanded="true" signature="1710:1853" placeholder="select id,ti..." />
-            <marker date="1489914616369" expanded="true" signature="2327:2399" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="717:821" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="1710:1853" placeholder="select id,ti..." />
+            <marker date="1489916582901" expanded="true" signature="2327:2465" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="2327:2503" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="2327:2505" placeholder="select * fro..." />
           </folding>
         </state>
       </provider>
