@@ -69,6 +69,8 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
             var item = $(this);
             item.siblings().removeClass("on");
             item.addClass("on");
+            // ietm.css('background','#f2f2f2');
+            // item.siblings().css("background", "none");
             $('.goods-list-group').html('');
             modal.params = {
                 isnew: item.data('isnew') || '',

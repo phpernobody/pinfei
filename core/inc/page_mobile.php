@@ -519,6 +519,7 @@ class MobilePage extends Page
 		{
 			$currenturl = $_W['siteroot'] . 'app/index.php?' . $_SERVER['QUERY_STRING'];
 		}
+		
 		$shop = m('common')->getSysset('shop');
 		$shopname = $shop['name'];
 		include $this->template('_wapqrcode');

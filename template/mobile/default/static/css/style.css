@@ -309,7 +309,7 @@ a {
 .page-goods-list .sort {
     position: relative;
     width: 100%;
-    top: 2.2rem;
+    /* top: 2.2rem; */
     -webkit-box-align: center;
     padding: .4rem 0;
     background: #fff;
@@ -1021,7 +1021,7 @@ a {
 .page-goods-detail .basic-block {
     background: inherit;
     position: absolute;
-    top: 2.2rem;
+    /* top: 2.2rem; */
     bottom: 2.5rem;
     z-index: 1;
 }
@@ -1055,7 +1055,7 @@ a {
 .page-goods-detail .param-block {
     background: inherit;
     position: absolute;
-    top: 2.2rem;
+    /* top: 2.2rem; */
     bottom: 2.5rem;
     -webkit-transition-property: -webkit-transform, opacity;
     transition-property: transform, opacity;
@@ -1087,7 +1087,7 @@ a {
 .page-goods-detail .comment-block {
     background: inherit;
     position: absolute;
-    top: 2.2rem;
+    /* top: 2.2rem; */
     bottom: 2.5rem;
     -webkit-transition-property: -webkit-transform, opacity;
     transition-property: transform, opacity;
@@ -1434,7 +1434,7 @@ a {
     background: #f3f3f3;
     margin: 0;
     position: absolute;
-    top: 2.2rem;
+  /*   top: 2.2rem; */
 }
 
 .member-page .headinfo {
@@ -2590,11 +2590,11 @@ a {
 .order-list-page .fui-tab {
     position: absolute;
     width: 100%;
-    top: 2.2rem;
+   /*  top: 2.2rem; */
 }
 
 .order-list-page .fui-content {
-    top: 4.2rem;
+    top: 2.6rem;
 }
 
 .order-list-page .order-list .status {
@@ -3247,7 +3247,7 @@ a {
 
 .order-weixinpay-hidden {
     position: absolute;width:100%;height:100%;
-    top:2.2rem;left:0;
+    /*  top:2.2rem; */left:0;
     background:rgba(255,255,255,1);
 }
 

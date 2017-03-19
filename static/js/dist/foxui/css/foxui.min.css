@@ -532,10 +532,10 @@ a {
 }
 
 .fui-header ~ .fui-content {
-	top:2.2rem;
+	 /* top:2.2rem; */ 
 }
 .fui-header ~ .fui-content.margin {
-	top:2.2rem;
+	/* top:2.2rem; */
 	margin-top:5px;
 }
 
@@ -801,7 +801,7 @@ a {
 .fui-label.fui-label-safety  { background:#07B40A;color:#fff; }
 
 .fui-cell-group {
-	margin-top: 0.5rem;
+	/* margin-top: 0.5rem; */
 	background-color: #fff;
 	line-height: 1.4;
 	font-size: 0.8rem;
@@ -2332,7 +2332,7 @@ a {
 .fui-list-group {
 	background-color: #fff;
 	position: relative;
-	margin-top:.5rem;
+	/* margin-top:.5rem; */
 }
 
 .fui-list-group.fui-list-group-o {

@@ -5,13 +5,13 @@
 	.text{color:#FCD90B;margin-left:38%;font-size:15px;}
 </style>
 <div class="fui-page fui-page-current page-commission-index ">
-	<div class="fui-header">
+	<!-- <div class="fui-header">
 		<div class="fui-header-left">
 			<a class="back" onclick='location.back()'></a>
 		</div>
 		<div class="title">{php echo $this->set['texts']['center']}</div>
 		<div class="fui-header-right"></div>
-	</div>
+	</div> -->
 
 	<div class='fui-content navbar'>
 
@@ -65,7 +65,7 @@
 
 		<a class="fui-block-child" href="{php echo mobileUrl('commission/withdraw')}" style="color:black;">
 			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC">
-				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem;">分销佣金&nbsp;&nbsp;&nbsp;
+				<span style="font-size:0.7rem;margin-left:0.7rem;">分销佣金&nbsp;&nbsp;&nbsp;
 					<span>{php echo number_format($member['commission_total'],2)}</span>
 					{php echo $this->set['texts']['yuan']}
 				</span>
@@ -74,13 +74,13 @@
 		<div style="width:100%;height:0.5rem;"></div>
 		<a class="fui-block-child" href="{php echo mobileUrl('commission/order')}" style="color:black;">
 			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
-				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">佣金明细<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+				<span style="font-size:0.7rem;margin-left:0.7rem">佣金明细<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
 			</div>
 		</a>
 		<div style="width:100%;height:0.5rem;"></div>
 		<a class="fui-block-child" href="{php echo mobileUrl('commission/log')}" style="color:black;">
 			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
-				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">提现明细<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+				<span style="font-size:0.7rem;margin-left:0.7rem">提现明细<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
 			</div>
 		</a>
 
@@ -88,7 +88,7 @@
 		{if $hasglobonus}
 		<a class="fui-block-child" href="{php echo mobileUrl('globonus')}" style="color:black;">
 			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
-				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">我的下线<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+				<span style="font-size:0.7rem;margin-left:0.7rem">我的下线<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
 			</div>
 		</a>
 		{/if}
@@ -96,7 +96,7 @@
 		{if !$this->set['closed_qrcode']}
 		<a class="fui-block-child" href="{php echo mobileUrl('commission/qrcode')}" style="color:black;">
 			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
-				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">推广二维码<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+				<span style="font-size:0.7rem;margin-left:0.7rem">推广二维码<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
 			</div>
 		</a>
 		{/if}
@@ -105,7 +105,7 @@
 		<div style="width:100%;height:0.5rem;"></div>
 		<a class="fui-block-child" href="{php echo mobileUrl('commission/down')}" style="color:black;">
 			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
-				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">分销成员<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+				<span style="font-size:0.7rem;margin-left:0.7rem">分销成员<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
 			</div>
 		</a>
 
@@ -113,7 +113,7 @@
 		{if empty($this->set['closemyshop'])}
 		<a class="fui-block-child" href="{php echo mobileUrl('commission/myshop/set')}" style="color:black;">
 			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
-				<span style="font-size:0.7rem;font-weight: 500;margin-left:0.7rem">我是店长<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
+				<span style="font-size:0.7rem;margin-left:0.7rem">我是店长<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>
 			</div>
 		</a>
 		{/if}
