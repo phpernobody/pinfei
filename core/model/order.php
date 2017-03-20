@@ -13,29 +13,50 @@ class Order_EweiShopV2Model
          */
         $member = m('member')->getMember($order['openid']);
         $data = array();
-        $up1 = 0.02;
-        $up2 = 0.01;
-        if (!empty($member['hagentid'])) { // 上级代理商不是平台
-            $order_goods = pdo_fetchall('select g.countyprice,g.cityprice,g.provinceprice,og.goodsid,og.optionid, g.id,g.title,og.total,og.realprice,og.price,og.optionname as optiontitle,g.noticeopenid,g.noticetype,og.commission1,og.commissions from ' . tablename('ewei_shop_order_goods') . ' og ' . ' left join ' . tablename('ewei_shop_goods') . ' g on g.id=og.goodsid ' . ' where og.uniacid=:uniacid and og.orderid=:orderid ', array(':uniacid' => $order['uniacid'], ':orderid' => $order['id']));
-            $commission_total1 = 0;
-            $commission_total2 = 0;
-            $commission_total3 = 0;
-            $basePrice = 0; // 进货成本
-            foreach ($order_goods as $og) {
-                $commissions = iunserializer($og['commissions']);
-                $commission_total1 += ((isset($commissions['level1']) ? floatval($commissions['level1']) : 0));
-                $commission_total2 += ((isset($commissions['level2']) ? floatval($commissions['level2']) : 0));
-                $commission_total3 += ((isset($commissions['level3']) ? floatval($commissions['level3']) : 0));
-                if (empty($og['optionid'])) {
-                    $basePrice += $this->caculatePrice($member, $og);
+        $set = m('common')->getPluginset('abonus');
+        $up1 = floatval($set['up1']) / 100;
+        $up2 = floatval($set['up2']) / 100;
+        if (!empty($member['hagentid']))
+            $parentaagent = m('member')->getMember($member['hagentid']);
+
+        $order_goods = pdo_fetchall('select g.countyprice,g.cityprice,g.provinceprice,og.goodsid,og.optionid, g.id,g.title,og.total,og.realprice,og.price,og.optionname as optiontitle,g.noticeopenid,g.noticetype,og.commission1,og.commissions from ' . tablename('ewei_shop_order_goods') . ' og ' . ' left join ' . tablename('ewei_shop_goods') . ' g on g.id=og.goodsid ' . ' where og.uniacid=:uniacid and og.orderid=:orderid ', array(':uniacid' => $order['uniacid'], ':orderid' => $order['id']));
+        $commission_total1 = 0;
+        $commission_total2 = 0;
+        $commission_total3 = 0;
+        $basePrice = 0; // 进货成本
+        foreach ($order_goods as $og) {
+            $commissions = iunserializer($og['commissions']);
+            $commission_total1 += ((isset($commissions['level1']) ? floatval($commissions['level1']) : 0));
+            $commission_total2 += ((isset($commissions['level2']) ? floatval($commissions['level2']) : 0));
+            $commission_total3 += ((isset($commissions['level3']) ? floatval($commissions['level3']) : 0));
+            $param1 = array();
+            if (empty($og['optionid'])) {
+                $basePrice += $this->caculatePrice($member, $og);
+                $param1['goodsid'] = $og['goodsid'];
+            }
+            else {
+                $option = m('goods')->getOption($og['goodsid'], $og['optionid']);
+                $basePrice += $this->caculatePrice($member, $option);
+                $param1['optionid'] = $option['id'];
+            }
+            if (!empty($parentaagent)) {
+                pdo_update('ewei_shop_agent_stock', array('stock -=' => $og['total']), array_merge($param1, array('memberid' => $parentaagent['id'])));
+            }
+            if (!empty($member['isaagent'])) {
+                // 本身是代理商，增加库存
+                $param = array_merge($param1, array('memberid' => $member['id']));
+                $result = pdo_get('ewei_shop_agent_stock', $param);
+                // 本身是代理商，扣除上级代理商真实库存，增加本身真实库存
+                if (empty($result)) {
+                    pdo_insert('ewei_shop_agent_stock', array_merge($param, array('stock' => $og['total'], 'vstock' => $og['total'])));
                 }
                 else {
-                    $option = m('goods')->getOption($og['goodsid'], $og['optionid']);
-                    $basePrice += $this->caculatePrice($member, $option);
+                    pdo_update('ewei_shop_agent_stock', array('stock +=' => $og['total']), $param);
                 }
             }
+        }
+        if (!empty($member['hagentid'])) { // 上级代理商不是平台
             if (empty($member['isaagent'])) { // 不是代理商
-                $parentaagent = m('member')->getMember($member['hagentid']);
                 if (!empty($parentaagent) && !empty($parentaagent['oldagentid'])) { // 上级代理曾有上级分销商
                     $oldagent1 = m('member')->getMember($parentaagent['oldagentid']);
                     if (!empty($oldagent1['isaagent']) && !empty($oldagent1['oldagentid'])) { // 上级1也是代理商但是曾有上级分销商
@@ -79,16 +100,15 @@ class Order_EweiShopV2Model
                     $resultPrice -= $oldagent2Money;
                 }
                 $data['resultprice'] = $resultPrice;
-                $data['createtime'] = time();
-                m('member')->setCredit($parentaagent['openid'],'credit2',$resultPrice);
-                pdo_insert('ewei_shop_agent_order_finish',$data);
+                $data['createtime'] = date('yyyy-MM-dd HH-mm-ss');
+                m('member')->setCredit($parentaagent['openid'], 'credit2', $resultPrice);
+                pdo_insert('ewei_shop_agent_order_finish', $data);
             }
             else {
                 $parentaagent = m('member')->getMember($member['hagentid']);
-                m('member')->setCredit($parentaagent['openid'],'credit2',$basePrice);
+                m('member')->setCredit($parentaagent['openid'], 'credit2', $basePrice);
             }
         }
-
     }
 
     /**
@@ -391,16 +411,16 @@ class Order_EweiShopV2Model
                  */
                 if (!empty($member['hagentid'])) {
                     if (!empty($g['optionid'])) {
-                        $data = pdo_get('ewei_shop_goods_agent_stock', array('optionid' => $g['optionid'], 'memberid' => $member['hagentid']), 'vstock');
+                        $data = pdo_get('ewei_shop_agent_stock', array('optionid' => $g['optionid'], 'memberid' => $member['hagentid']));
                         $stock = $data['vstock'] - $g['total'];
                         ($stock <= 0) && ($stock = 0);
-                        pdo_update('ewei_shop_goods_agent_stock', array('vstock' => $stock), array('optionid' => $g['optionid'], 'memberid' => $member['hagentid']));
+                        pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('optionid' => $g['optionid'], 'memberid' => $member['hagentid']));
                     }
                     else {
-                        $data = pdo_get('ewei_shop_goods_agent_stock', array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']), 'vstock');
+                        $data = pdo_get('ewei_shop_agent_stock', array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']));
                         $stock = $data['vstock'] - $g['total'];
                         ($stock <= 0) && ($stock = 0);
-                        pdo_update('ewei_shop_goods_agent_stock', array('vstock' => $stock), array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']));
+                        pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']));
                     }
                 }
                 /**

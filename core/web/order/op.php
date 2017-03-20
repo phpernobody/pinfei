@@ -29,6 +29,7 @@ class Op_EweiShopV2Page extends WebPage
 			}
 			$this->message('未找到订单!', '', 'error');
 		}
+
 		return array('id' => $id, 'item' => $item);
 	}
 	public function changeprice() 
@@ -291,6 +292,7 @@ class Op_EweiShopV2Page extends WebPage
 				p('lottery')->getLotteryList($item['openid']);
 			}
 		}
+		m('order')->orderFinish($item);
 		plog('order.op.finish', '订单完成 ID: ' . $item['id'] . ' 订单号: ' . $item['ordersn']);
 		show_json(1);
 	}

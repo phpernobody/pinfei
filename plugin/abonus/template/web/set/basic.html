@@ -24,3 +24,16 @@
 	</div>
 </div>
 
+<div class="form-group">
+	<label class="col-sm-2 control-label">上级分红</label>
+	<div class="col-sm-9 col-xs-12">
+		{ifp 'commission.set.edit'}
+		<div class="input-group"><span class="input-group-addon">上一级</span><input type="text" class="form-control valid" aria-invalid="false"  name="data[up1]" value="{$data[up1]}"  /> <span class="input-group-addon">%</span>
+		<span class="input-group-addon">上二级</span><input type="text" class="form-control valid" aria-invalid="false"  name="data[up2]" value="{$data[up2]}"  /> <span class="input-group-addon">%</span></div>
+		<span class='help-block'>代理商上级分销商分红</span>
+		{else}
+		{if $data['selfbuy'] ==0}关闭{else}开启{/if}
+		{/if}
+	</div>
+</div>
+

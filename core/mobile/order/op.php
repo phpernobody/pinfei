@@ -75,6 +75,7 @@ class Op_EweiShopV2Page extends MobileLoginPage
 		{
 			p('commission')->checkOrderFinish($orderid);
 		}
+		m('order')->orderFinish($order);
 		show_json(1);
 	}
 	public function delete() 

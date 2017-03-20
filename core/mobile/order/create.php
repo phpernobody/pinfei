@@ -1458,7 +1458,7 @@ class Create_EweiShopV2Page extends MobileLoginPage
                 $ismerch = 1;
             }
             $virtualid = $data['virtual'];
-            $data['stock'] = m('order')->caculateStock($member,$data['id']);
+            $data['stock'] = m('order')->caculateStock($member,$goodsid,$optionid);
             $data['total'] = $goodstotal;
             if ($data['cash'] != 2) {
                 $cash = 0;
