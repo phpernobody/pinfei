@@ -100,6 +100,7 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
         $goodoptions = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option'). ' as gop left join '. tablename('ewei_shop_agent_stock') . ' as ags on gop.goodsid='. $goodid . ' and ags.optionid=gop.id');
 
         show_json($goodoptions);
+//		include $this->template('myshop/box');
     }
 }
 
