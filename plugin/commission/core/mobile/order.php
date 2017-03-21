@@ -356,7 +356,7 @@ class Order_EweiShopV2Page extends CommissionMobileLoginPage {
 			});
 
 		$pindex = max(1, intval($_GPC['page']));
-		$psize = 20;
+		$psize = 10;
 		$orders1 = array_slice($orders, ($pindex - 1) * $psize, $psize);
 		$orderids = array();
 		foreach ($orders1 as $o) {

@@ -24,10 +24,20 @@
 				<div class="row" style="color: #fff; font-size: .65rem; text-align: center; margin-top: .6rem; height: 1rem; line-height: 1rem;">
 						用户名：{$member['nickname']}
 				</div>
-				<div style="font-size: .5rem; text-align: center; color: #fffc00;">
+<!-- 				<div style="font-size: .5rem; text-align: center; color: #fffc00;">
 						等级：
 						{if $this->set['levelurl']!=''}onclick='location.href="{php echo $this->set['levelurl']}"'{/if}
 						{php echo empty($level) ? ( empty($this->set['levelname'])?'代理':$this->set['levelname'] ) : $level['levelname']}
+						&nbsp;&nbsp;&nbsp;
+						{if $this->set['levelurl']!=''}{/if}
+						{php echo $this->set['texts']['up']}: {if empty($up)}
+						总店
+						{else}
+						{$up['nickname']}
+						{/if}
+				</div> -->
+				<div style="font-size: .5rem; text-align: center; color: #fffc00;">
+						等级：{php echo $userLevel}
 						&nbsp;&nbsp;&nbsp;
 						{if $this->set['levelurl']!=''}{/if}
 						{php echo $this->set['texts']['up']}: {if empty($up)}

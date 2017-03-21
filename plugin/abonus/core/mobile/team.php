@@ -4,32 +4,41 @@ if (!defined('IN_IA')) {
 	exit('Access Denied');
 }
 
-
 require EWEI_SHOPV2_PLUGIN . 'commission/core/page_login_mobile.php';
-class Down_EweiShopV2Page extends CommissionMobileLoginPage
+class Team_EweiShopV2Page extends CommissionMobileLoginPage
 {
 	public function main()
 	{
 		global $_W;
 		global $_GPC;
 		$member = $this->model->getInfo($_W['openid']);
-		$levelcount1 = $member['level1'];
-		$levelcount2 = $member['level2'];
-		$levelcount3 = $member['level3'];
-		$level1 = $level2 = $level3 = 0;
-		$level1 = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_member') . ' where agentid=:agentid and uniacid=:uniacid limit 1', array(':agentid' => $member['id'], ':uniacid' => $_W['uniacid']));
-
-		if ((2 <= $this->set['level']) && (0 < $levelcount1)) {
-			$level2 = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_member') . ' where agentid in( ' . implode(',', array_keys($member['level1_agentids'])) . ') and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid']));
-		}
 
 
-		if ((3 <= $this->set['level']) && (0 < $levelcount2)) {
-			$level3 = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_member') . ' where agentid in( ' . implode(',', array_keys($member['level2_agentids'])) . ') and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid']));
-		}
+        $list = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where uniacid = ' . $_W['uniacid'] . ' and isaagent = 1 and hagentid='. $member['id'] . '  ORDER BY id desc');
 
+        foreach($list as $k => $v) {
+            $downList = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where uniacid = ' . $_W['uniacid'] . ' and isaagent = 1 and hagentid='. $v['id'] . '  ORDER BY id desc');
+            $list[$k]['downList'] = $downList;
+        }
 
-		$total = $level1 + $level2 + $level3;
+//        var_dump($list);exit;
+//		$levelcount1 = $member['level1'];
+//		$levelcount2 = $member['level2'];
+//		$levelcount3 = $member['level3'];
+//		$level1 = $level2 = $level3 = 0;
+//		$level1 = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_member') . ' where agentid=:agentid and uniacid=:uniacid limit 1', array(':agentid' => $member['id'], ':uniacid' => $_W['uniacid']));
+//
+//		if ((2 <= $this->set['level']) && (0 < $levelcount1)) {
+//			$level2 = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_member') . ' where agentid in( ' . implode(',', array_keys($member['level1_agentids'])) . ') and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid']));
+//		}
+//
+//
+//		if ((3 <= $this->set['level']) && (0 < $levelcount2)) {
+//			$level3 = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_member') . ' where agentid in( ' . implode(',', array_keys($member['level2_agentids'])) . ') and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid']));
+//		}
+//
+//
+//		$total = $level1 + $level2 + $level3;
 		include $this->template();
 	}
 
