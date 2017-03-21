@@ -69,6 +69,20 @@ class Index_EweiShopV2Page extends CommissionMobileLoginPage
 				$team_money = $plugin_author->getTeamPay($member['id']);
 			}
 		}
+//        var_dump($member);exit;
+
+        // 用户等级展示
+        $aagenttype = $member['aagenttype'];
+        if (intval($aagenttype) === 3) {
+            $userLevel = '区级代理商';
+        } elseif(intval($aagenttype) === 2) {
+            $userLevel = '市级代理商';
+        } elseif(intval($aagenttype) === 1) {
+            $userLevel = '省级代理商';
+        } else {
+            $userLevel = '分销商';
+        }
+
 		include $this->template();
 	}
 }

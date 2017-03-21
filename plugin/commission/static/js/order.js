@@ -70,8 +70,10 @@ define(['core', 'tpl'], function (core, tpl) {
         }, function (ret) {
             console.log(ret.result);
             var result = ret.result;
-            if (result.list.length <= 0) {
+            if (modal.page == 1 && result.list.length) {
                 $('.content-empty').show();
+            }
+            if (result.list.length <= 0) {
                 $('.fui-content').infinite('stop')
             } else {
                 $('.content-empty').hide();

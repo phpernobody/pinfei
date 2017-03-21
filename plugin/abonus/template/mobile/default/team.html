@@ -1,0 +1,109 @@
+{template '_header'}
+{template 'commission/common'}
+<div class="fui-page fui-page-current page-commission-down" style="background: #F8F8F8">
+<!--     <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back"></a>
+        </div>
+        <div class="title">{php echo $this->set['texts']['mydown']}({$total})</div>
+    </div> -->
+    <div>
+        <img src="../public/images/down_header.png" alt="" style="width: 100%; display: block;">
+    </div>
+    <div class="fui-content navbar" style="position: relative; display: none;">
+        {if $this->set['level']>=2}
+        <div class="fui-tab fui-tab-warning" id="tab">
+            <a class="active" href="javascript:void(0)" data-tab='level1'>{php echo $this->set['texts']['c1']}({$level1})</a>
+            {if $this->set['level']>=2}<a href="javascript:void(0)" data-tab='level2'>{php echo $this->set['texts']['c2']}({$level2})</a>{/if}
+            {if $this->set['level']>=3}<a href="javascript:void(0)" data-tab='level3'>{php echo $this->set['texts']['c3']}({$level3})</a>{/if}
+        </div>
+        {/if}
+
+<!--         <div class="fui-list-group" id="container"></div>
+        <div class='infinite-loading'><span class='fui-preloader'></span><span class='text'> 正在加载...</span></div>
+
+		<div class='content-empty' style='display:none;'>
+			<i class='icon icon-group'></i><br/>暂时没有任何数据
+		</div> -->
+
+    </div>
+
+
+    <div style="background: #F8F8F8">
+        {loop $list $l}
+        <div class="se-table-body" style="border-left: 2px solid #EC3028; display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #fff;">
+            {if $l['avatar']}
+            <img src="{$l['avatar']}" style="width: 3.3rem; height: 3.3rem; margin-left: 0.65rem">
+            {else}
+            <img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png" style="width: 3.3rem; height: 3.3rem; margin-left: 0.65rem">
+            {/if}
+            <div style="font-size: .45rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span style="color: #ff5d15; width: 3rem; display: inline-block;">姓名：</span>
+                    {if $l['nickname']}{$l['nickname']}{else}未获取{/if}
+                </div>
+                <div>
+                    <span style="color: #ff5d15; width: 3rem; display: inline-block;">入住时间：</span>
+                    {php echo date("Y-m-d",$l['agenttime'])}
+                </div>
+                <div>
+                    <span style="color: #ff5d15; width: 3rem; display: inline-block;">消费金额：</span>
+                    {$l['moneycount']}{php echo $this->set['texts']['yuan']}
+                </div>
+                <div>
+                    <span style="color: #ff5d15; width: 3rem; display: inline-block;">佣金：</span>
+                    {$l['mobile']}{php echo $this->set['texts']['yuan']}
+                </div>
+            </div>
+            <div style="width: 80px; height: 70px; display: flex; flex-direction: column; justify-content: center; float: right; align-items: center;">
+                <div style="font-size: 9px; width: 50px; height: 20px; border-radius: 5px; background: #ff5d15; color: #fff; line-height: 20px; margin: 5px 0;">成员</div>
+                <div style="font-size: 9px; width: 50px; height: 20px; border-radius: 5px; background: #ff5d15; color: #fff; line-height: 20px; margin: 5px 0;">明细</div>
+            </div>
+        </div>
+
+        <!-- 下线 -->
+        {if !empty($l['downList'])}
+            <img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/bottom.png" alt="" style="width: 0.75rem;margin: auto; display: block; ">
+            {loop $l['downList'] $dl}
+            <div class="se-table-body" style="display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #F1F1F1;">
+                {if $dl['avatar']}
+                <img src="{$dl['avatar']}" style="width: 3.3rem; height: 3.3rem; margin-left: 0.65rem">
+                {else}
+                <img src="../public/images/avatar.png" style="width: 3.3rem; height: 3.3rem; margin-left: 0.65rem">
+                {/if}
+                <div style="font-size: .45rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <span style="color: #ff5d15; width: 3rem; display: inline-block;">姓名：</span>
+                        {if $dl['nickname']}{$dl['nickname']}{else}未获取{/if}
+                    </div>
+                    <div>
+                        <span style="color: #ff5d15; width: 3rem; display: inline-block;">入住时间：</span>
+                        {php echo date("Y-m-d",$dl['agenttime'])}
+                    </div>
+                    <div>
+                        <span style="color: #ff5d15; width: 3rem; display: inline-block;">消费金额：</span>
+                        {$dl['moneycount']}{php echo $this->set['texts']['yuan']}
+                    </div>
+                    <div>
+                        <span style="color: #ff5d15; width: 3rem; display: inline-block;">佣金：</span>
+                        {$dl['mobile']}{php echo $this->set['texts']['yuan']}
+                    </div>
+                </div>
+                <div style="width: 80px; height: 70px; display: flex; flex-direction: column; justify-content: center; float: right; align-items: center;">
+                    <div style="font-size: 9px; width: 50px; height: 20px; border-radius: 5px; background: #ff5d15; color: #fff; line-height: 20px; margin: 5px 0;">成员</div>
+                    <div style="font-size: 9px; width: 50px; height: 20px; border-radius: 5px; background: #ff5d15; color: #fff; line-height: 20px; margin: 5px 0;">明细</div>
+                </div>
+            </div>
+            {/loop}
+        {/if}
+        {/loop}
+    </div>
+
+	<script language='javascript'>
+		require(['../addons/ewei_shopv2/plugin/commission/static/js/down.js'], function (modal) {
+			modal.init({fromDetail: true});
+		});
+	</script>
+</div>
+{php $this->footerMenus()}
+{template '_footer'}

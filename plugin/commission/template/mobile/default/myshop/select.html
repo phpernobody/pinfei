@@ -7,7 +7,7 @@
 	        </div>
 	        <div class="title">自选商品</div>
 	    </div> -->
-	<div class='fui-content navbar'>
+	<div class='fui-content navbar' style="display: none;">
 		<div class='fui-cell-group'>
 			<div class='fui-cell'>
 				<div class='fui-cell-label'>开启自选</div>
@@ -182,67 +182,74 @@
         </div>
     </div>
 </div>
-	<div class="getAlert" style="display:none;position: fixed;width:16rem;height:18rem;background: white;top:50%;overflow: auto"></div>
+<div class="se-modal" style="width: 100%;height: 100%; background: rgba(0,0,0,0.8);position: fixed;top: 0;left: 0;">
+	<div style="width: 12rem; height: 12rem; position: fixed; top: 40%; left: 50%; transform: translate(-50%, -50%); background: #fff; border-radius: 0.5rem;">
+		<div style="width: 100%;">
+			
+		</div>
+		<div>
+			<div>省代价:</div>
+			<div>市代价:</div>
+			<div>区代价:</div>
+			<div>商场价:</div>
+			<div>库存</div>
+		</div>
+		<div style="width: 100%; height: 1.6rem; line-height: 1.6rem; position: absolute; bottom: 0; border-top: 1px solid #999;text-align: center;  font-size: 0.5rem;">保存</div>
+	</div>
+</div>
+<script id='tpl_commission_goods_select' type='text/html'>
+	<%each list as g%>
+	<!--<a href="{php echo mobileUrl('goods/detail').'&id=<%g.id%>'}">-->
+	<div class='fui-list goods-item' style="background: #f2f2f2;padding: 0;">
+		 <!--data-goodsid='<%g.id%>'-->
+		 <!--data-title='<%g.title%>'-->
+		 <!--data-marketprice='<%g.marketprice%>'-->
+		 <!--data-thumb='<%g.thumb%>'-->
+		 <!--&gt;-->
+				<!--<div class='fui-list-media'>-->
+					<!--<img data-lazy='<%g.thumb%>' class='round' />-->
+				<!--</div>-->
+				<!--<div class='fui-list-inner'>-->
+					<!--<div class='subtitle'><%g.title%></div>-->
+					<!--<div class='text'><span class='text-danger'>￥<%g.marketprice%></span></div>-->
+					<!--<div class='text text-right'><input type='checkbox' class='fui-switch fui-switch-warning fui-switch-small' /></div>-->
+				<!--</div>-->
 
-
-	<script id='tpl_commission_goods_select' type='text/html'>
-		<%each list as g%>
-		<!--<a href="{php echo mobileUrl('goods/detail').'&id=<%g.id%>'}">-->
-		<div class='fui-list goods-item' style="background: #f2f2f2;padding: 0;">
-			 <!--data-goodsid='<%g.id%>'-->
-			 <!--data-title='<%g.title%>'-->
-			 <!--data-marketprice='<%g.marketprice%>'-->
-			 <!--data-thumb='<%g.thumb%>'-->
-			 <!--&gt;-->
-					<!--<div class='fui-list-media'>-->
-						<!--<img data-lazy='<%g.thumb%>' class='round' />-->
-					<!--</div>-->
-					<!--<div class='fui-list-inner'>-->
-						<!--<div class='subtitle'><%g.title%></div>-->
-						<!--<div class='text'><span class='text-danger'>￥<%g.marketprice%></span></div>-->
-						<!--<div class='text text-right'><input type='checkbox' class='fui-switch fui-switch-warning fui-switch-small' /></div>-->
-					<!--</div>-->
-
-				 <div class="goodShow">
-                    <div class="goodShow-left">
-                     <img src="<%g.thumb%>" style="width: 100%;vertical-align:middle;">
-					</div>
-                    <div class="goodShow-right">
-					   <div>
-						   <div class="row" style="height: 2.5em;">
-							   <span style="line-height: 130%;overflow: hidden;top:0px;display: block;color:#000;font-weight:500"><%g.title%></span>
-						   </div>
-						   <div class="row" style="font-size: .8em">
-							   <span style="color: #959595">&nbsp;hahaha
-
-							   </span>
-							   <button onclick="doAlert(this)" a="<%g.id%>" style="background:#EA2721;font-size:0.2rem;border:0;color:white;padding:0.1rem">查看详情</button>
-
-						   </div>
-
+			 <div class="goodShow">
+                <div class="goodShow-left">
+                 <img src="<%g.thumb%>" style="width: 100%;vertical-align:middle;">
+				</div>
+                <div class="goodShow-right">
+				   <div>
+					   <div class="row" style="height: 2.5em;">
+						   <span style="line-height: 130%;overflow: hidden;top:0px;display: block;color:#000;font-weight:500"><%g.title%></span>
 					   </div>
-					   <div class="row" style="display: flex;flex-direction: row;justify-content: space-between;font-size: .8em">
-						   <span style="color: #959595">库存量:<%g.total%></span>
-						   <button id="js_confirm" style="background:#EA2721;font-size:0.2rem;border:0;color:white;padding:0.1rem">加入库存</button>
+					   <div class="row" style="font-size: .8em">
+						   <div class="se-modal-btn" style="background: red; color: #fff;float: right; ">查看详情</div>
 					   </div>
 				   </div>
-				 </div>
-			</div>
-		<!--</a>-->
-		<!--htm +='<a href="{php echo mobileUrl('goods/detail').'&id='}'+v.id-->
-                    <!--htm +='"><div class="goodShow">'-->
-			<!--htm +='<div class="goodShow-left">'-->
-				<!--htm +='<img src="../attachment/'+v.thumb+'" style="width: 100%;vertical-align:middle;"></div>'-->
-			<!--htm +='<div class="goodShow-right"><div>'-->
-				<!--htm +='<div class="row" style="height: 2.5em;">'-->
-					<!--htm +='<span style="line-height: 130%;overflow: hidden;top:0px;display: block;color:#000;font-weight:500">'+v.title+'</span></div>'-->
-				<!--htm +='<div class="row" style="font-size: .8em">'-->
-					<!--htm +='<span style="color: #959595">销量：'+v.salesreal+'&nbsp;件</span></div></div>'-->
-				<!--htm +='<div class="row" style="display: flex;flex-direction: row;justify-content: space-between;font-size: .8em">'-->
-					<!--htm +='<span style="color: #EC3029;">&yen;:'+v.marketprice+'</span>'-->
-					<!--htm +='</div></div></div></a>'-->
-		<%/each%>
-	</script>
+<!-- 				   <div class="row" style="display: flex;flex-direction: row;justify-content: space-between;font-size: .8em">
+					   <span style="color: #959595">库存量:<%g.total%></span>
+					   <button id="js_confirm" style="background:#EA2721;font-size:0.2rem;border:0;color:white;padding:0.1rem">加入库存</button>
+				   </div> -->
+			   </div>
+			 </div>
+		</div>
+	<!--</a>-->
+	<!--htm +='<a href="{php echo mobileUrl('goods/detail').'&id='}'+v.id-->
+                <!--htm +='"><div class="goodShow">'-->
+		<!--htm +='<div class="goodShow-left">'-->
+			<!--htm +='<img src="../attachment/'+v.thumb+'" style="width: 100%;vertical-align:middle;"></div>'-->
+		<!--htm +='<div class="goodShow-right"><div>'-->
+			<!--htm +='<div class="row" style="height: 2.5em;">'-->
+				<!--htm +='<span style="line-height: 130%;overflow: hidden;top:0px;display: block;color:#000;font-weight:500">'+v.title+'</span></div>'-->
+			<!--htm +='<div class="row" style="font-size: .8em">'-->
+				<!--htm +='<span style="color: #959595">销量：'+v.salesreal+'&nbsp;件</span></div></div>'-->
+			<!--htm +='<div class="row" style="display: flex;flex-direction: row;justify-content: space-between;font-size: .8em">'-->
+				<!--htm +='<span style="color: #EC3029;">&yen;:'+v.marketprice+'</span>'-->
+				<!--htm +='</div></div></div></a>'-->
+	<%/each%>
+</script>
 
 
 	<script id='tpl_commission_goods_item' type='text/html'>
@@ -263,32 +270,35 @@
 	<script language='javascript'>
 		require(['../addons/ewei_shopv2/plugin/commission/static/js/myshop.js'], function (modal) {
 			modal.initSelect();
-	});
+		});
 
 	</script>
 
 	<script>
 
-		function doAlert(obj){
-			var id = $(obj).attr('a');
-			$('.getAlert').show();
-			$.ajax({
-				type:'post',
-				url:"{php echo mobileUrl('commission/myshop/box')}",
-				data:{'goodid':id},
-				success:function(htm){
 
-					$('.getAlert').html(htm);
 
-				},
-				dataType:'html',
-			})
 
-		}
+		// function doAlert(obj){
+		// 	var id = $(obj).attr('a');
+		// 	$('.getAlert').show();
+		// 	$.ajax({
+		// 		type:'post',
+		// 		url:"{php echo mobileUrl('commission/myshop/box')}",
+		// 		data:{'goodid':id},
+		// 		success:function(htm){
 
-		$('.getAlert').blur(function(){
-			$('.getAlert').hide();
-		})
+		// 			$('.getAlert').html(htm);
+
+		// 		},
+		// 		dataType:'html',
+		// 	})
+
+		// }
+
+		// $('.getAlert').blur(function(){
+		// 	$('.getAlert').hide();
+		// })
 
 	</script>
 </div>

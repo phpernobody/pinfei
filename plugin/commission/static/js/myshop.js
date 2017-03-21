@@ -225,6 +225,11 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
         	console.log('close');
         	$('.se-confirm').remove();
         });
+
+        // 点击查看详情
+        $('.se-modal-btn').click(function() {
+            $('.se-modal').css('display', 'block');
+        });
     };
     modal.bindSelectedEvents = function () {
         $('.goods-selected-group .btn-delete').click(function () {

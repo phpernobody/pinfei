@@ -21,7 +21,7 @@
 			</div>
 		</div>
 		<div style="height: 3.1rem; border-bottom: 1px solid #ededed; border-top: 1px solid #ededed; display: flex;margin-top: .5rem;">
-			<div style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem; border-right: 1px solid #ededed;">
+			<div class="tap_team" style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem; border-right: 1px solid #ededed;">
 				<img src="../addons/ewei_shopv2/static/img/1.png" style="margin: .3rem auto; display: block; width:1.1rem; margin-top: .5rem;">
 				<div>
 					代理团队信息
@@ -87,8 +87,12 @@
 		});
 
 		$('.tap_select').click(function() {
-			console.log("{php echo mobileUrl('commission/myshop/select').'#myshop-select-goods'}");
 			window.location.href = "{php echo mobileUrl('commission/myshop/select').'#myshop-select-goods'}";
+		});
+
+		$('.tap_team').click(function() {
+			console.log("{php echo mobileUrl('abonus.team')}")
+			window.location.href = "{php echo mobileUrl('abonus.team')}";
 		});
 	</script>
 
