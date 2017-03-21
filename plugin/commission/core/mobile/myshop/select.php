@@ -94,13 +94,29 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
         global $_W;
         global $_GPC;
 
+//        show_json(1, ['member' => $_W['shopset']['commission']]);
+
         $member = m('member')->getMember($_W['openid']);
 
         $goodid = $_GPC['goodid'];
-        $goodoptions = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option'). ' as gop left join '. tablename('ewei_shop_agent_stock') . ' as ags on gop.goodsid='. $goodid . ' and ags.optionid=gop.id');
+        $goodid = 2;
+        $goodoptions = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option'). ' as gop inner join '. tablename('ewei_shop_agent_stock') . ' as ags on ags.optionid=gop.id ' . ' where gop.goodsid=' . $goodid);
+        $commission = $_W['shopset']['commission'];
+        show_json(1, ['options' => $goodoptions, 'commission' => $commission]);
+    }
 
-        show_json($goodoptions);
-//		include $this->template('myshop/box');
+    public  function setStock() {
+        global $_W;
+        global $_GPC;
+
+        $res = pdo_update('ewei_shop_agent_stock', array("vstock" => intval($_GPC['joinStock'])) , array('id' => $_GPC['optionid']));
+
+        if($res === 1) {
+            show_json(1, 'success');
+        } else {
+            show_json(0, 'fail');
+        }
+
     }
 }
 

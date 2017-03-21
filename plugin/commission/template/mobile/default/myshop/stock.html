@@ -1,0 +1,213 @@
+{template '_header'}
+<style>
+    .left-con{
+        width: 5.5rem;
+        text-align: center;
+    }
+    .right-con{
+        width: calc(100% - 5.5rem);
+        background: #f2f2f2
+    }
+    .left-title{
+        height: 1.9rem;
+        line-height: 1.9rem;
+        background: #fff;
+        color: #ED322B;
+        border-bottom:1px solid #dcdcdc;
+        font-size: .7rem;
+        display: flex;
+        align-items: center;
+    }
+    .right-title{
+        height: 1.9rem;
+        width: 100%;
+        background: #fff;
+        border-bottom:1px solid #dcdcdc;
+    }
+    .searchbar{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .active {
+        background: #f2f2f2;
+    }
+</style>
+<div class="se-modal" style="width: 100%;height: 100%; background: rgba(255,255,255,0.75);position: fixed;top: 0;left: 0;z-index: 999999; display: none;">
+	<div style="width: 16.3rem; left: 50%; transform: translate(-50%, 0); top: 2rem; position: fixed; background: #fff; border: 1px solid #e9e9e9;">
+
+		<div style="padding: .6rem;">标题</div>
+		<div style="margin: 0 .6rem; position: relative;">
+			<img style="width: 100%; height: 12rem; display: block;" src="../addons/ewei_shopv2/static/images/merch.jpg" alt="">
+			<div style="position: absolute; bottom: 0; width: 100%; height: 1.55rem; line-height: 1.55rem; color: #cbcbcb; font-size: .6rem; background: rgba(0,0,0,0.7);display: flex;justify-content: space-between; padding: 0 .4rem;">
+				<div>商品原价:<span class="se-marketprice">0</span>元</div>
+				<div>库存量:<span class="se-vstock">0</span>件</div>
+			</div>
+		</div>
+
+		<div style="width: 100%; font-size: .6rem; padding-left: .6rem;">
+			<div style="color: #222; padding: .4rem 0;">商品规格：</div>
+			<div class="se-options-box" style="width: 100%; display: flex; justify-content: flex-start; flex-wrap: wrap; border-bottom: 1px solid #e9e9e9;">
+				<!-- <div style="width: 4.6rem; text-align: center; color: #959595; height: 1.4rem; line-height: 1.4rem; border: .2rem; border: 1px solid #e9e9e9; margin-bottom: .4rem; margin-right: .6rem">33</div> -->
+			</div>
+		</div>
+		<div style="width: 100%; font-size: .6rem; padding-left: .6rem;">
+			<div style="color: #222; padding: .4rem 0;">商品价格：</div>
+			<div style="width: 100%; font-size: .5rem; display: flex; justify-content: flex-start; flex-wrap: wrap;">
+				<div style="width: 4.6rem; text-align: center; color: #959595; height: 1.4rem; line-height: 1.4rem; border: .2rem; border: 1px solid #e9e9e9; margin-bottom: .4rem; margin-right: .6rem">省级代理:<span class="se-provinceprice">0</span>元</div>
+				<div style="width: 4.6rem; text-align: center; color: #959595; height: 1.4rem; line-height: 1.4rem; border: .2rem; border: 1px solid #e9e9e9; margin-bottom: .4rem; margin-right: .6rem">市级代理:<span class="se-cityprice">0</span>元</div>
+				<div style="width: 4.6rem; text-align: center; color: #959595; height: 1.4rem; line-height: 1.4rem; border: .2rem; border: 1px solid #e9e9e9; margin-bottom: .4rem; margin-right: .6rem">区级代理:<span class="se-countyprice">0</span>元</div>
+				<div style="width: 4.6rem; text-align: center; color: #959595; height: 1.4rem; line-height: 1.4rem; border: .2rem; border: 1px solid #e9e9e9; margin-bottom: .4rem; margin-right: .6rem">一级代理:<span class="se-commission1">0</span>元</div>
+				<div style="width: 4.6rem; text-align: center; color: #959595; height: 1.4rem; line-height: 1.4rem; border: .2rem; border: 1px solid #e9e9e9; margin-bottom: .4rem; margin-right: .6rem">二级代理:<span class="se-commission2">0</span>元</div>
+				<div style="width: 4.6rem; text-align: center; color: #959595; height: 1.4rem; line-height: 1.4rem; border: .2rem; border: 1px solid #e9e9e9; margin-bottom: .4rem; margin-right: .6rem">钻石会员:<span class="se-commission3">0</span>元</div>
+			</div>
+		</div>
+		<div style="width: 100%;height: 2rem; line-height: 2rem; font-size: 0.65rem;text-align: center;overflow: hidden;">
+			<div style="float: left; width: calc(100% - 5.3rem); background: #f5f5f5; color: #757575;">
+				库存设置: <input class="se-join-stock" style="width: 2.3rem; border: none; border-bottom: 1px solid #757575; background: none; text-align: center;" type="text"> 件
+			</div>
+			<div class="se-confirm" style="width: 5.30rem; background: #ec3028; color: #fff; float: right;">确认</div>
+		</div>
+		<div class="se-cancel" style="position: absolute; width: 2rem; height: 2rem; border-radius: 1rem; border: 1px solid #959595;color: #757575; background: #f5f5f5; font-size: 2rem; text-align: center; line-height: 1.8rem; bottom: -3rem; left: 50%; transform: translate(-50%, 0);">×</div>
+	</div>
+</div>
+
+<div class="fui-page fui-page-current page-shop-goods_category" style="width: 100%;display:flex;flex-direction: row;">
+    <div class="left-con">
+        <div class="left-title" >
+            <div style="width: 100%; height: 1.3rem; line-height: 1.3rem; border-right: 1px solid #dcdcdc;">
+                全部分类
+            </div>
+        </div>
+        <div class="navbar" style='background: #fff'>
+            {loop $getCategory $value}
+            <nav class="category" a="{$value['id']}" style="height:2rem;line-height:2rem;font-size:0.6rem; text-align: center;position: relative;">{$value['name']}
+                <img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="position: absolute; top: 50%; transform: translate(0, -50%);right: .6rem;width: .3rem;">
+            </nav>
+            {/loop}
+        </div>
+    </div>
+    <div class="right-con">
+    <form method="post" action="{php echo mobileUrl('goods')}" name="form1">
+        <div class='right-title'>
+            <div class='searchbar'>
+                <div class='search-input'>
+                    <input type="search" name="keywords" placeholder="请输入商品名称" style="width: 8.3rem; height: 1.1rem; line-height: 1.1rem; border-radius: .55rem; font-size: .7rem;">
+                </div>
+                <div class='search-right-pic' style="display: flex; align-items: center;">
+                    <img src="../addons/ewei_shopv2/static/img/fl_ssimg.png" style="width: 1.1rem; height: 1.1rem; margin: 0 .3rem;"  onclick="document.form1.submit();">
+                </div>
+            </div>
+        </div>
+        </form>
+        <!-- <div id="container" style="width:100%;background: #f2f2f2;">
+        </div> -->
+        <style>
+        .goodShow{
+            width:94%;
+            /* height:4.5rem; */
+            margin:0 auto;
+            background:#fff;
+            margin-top:10px;
+            padding:10px;
+            display: flex;
+            flex-flow:row;
+            justify-content: space-between;
+        }
+        .goodShow-left{
+            width: 35%;
+            height: 100%;
+        }
+        .goodShow-right{
+
+            width: 63%;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+            font-size:1em;
+        }
+        </style>
+        <div id="container" style="width:100%; height: calc(100% - 1.9rem);background: #f2f2f2;overflow-y:auto;padding-bottom: 3rem;">
+			<script id='tpl_commission_goods_select' type='text/html'>
+				<div style="width: 12.25rem; height: 4.8rem; padding: .3rem; margin-top: .5rem; background: #fff; overflow: hidden;">
+				    <img style="display: block; float: left; width: 4.2rem; height: 4.2rem;" src="" alt="">
+				    <div style="position: relative; width: calc(100% - 4.5rem); height: 100%; float: right; font-size: 0.45rem;">
+				        <div style="font-size: .55rem;">标题</div>
+				        <div style="color: #959595; margin-top: .2rem;">月销: 件</div>
+				        <div style="font-size: .5rem; position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;">
+				            <div style="color: #ec3028;">¥: 200</div>
+				            <div style="font-size: .4rem; color: #fff; background: #ec3028; width: 2.5rem; height: .6rem; line-height: .6rem; border-radius: .1rem;">加入购物车</div>
+				        </div>
+				    </div>
+				</div>
+
+				<!-- <%each list as g%>
+				<div class='fui-list goods-item' style="background: #f2f2f2;padding: 0;">
+						 <div class="goodShow">
+			                <div class="goodShow-left">
+			                	<img src="<%g.thumb%>" style="width: 100%;vertical-align:middle;">
+							</div>
+			                <div class="goodShow-right">
+							   <div>
+								   <div class="row" style="height: 2.5em;">
+									   <span style="line-height: 130%;overflow: hidden;top:0px;display: block;color:#000;font-weight:500"><%g.title%></span>
+								   </div>
+								   <div class="row" style="font-size: .8em">
+									   <div class="se-modal-btn" data-thumb="<%g.thumb%>" data-title="<%g.title%>" style="background: red; color: #fff;float: right; ">查看详情</div>
+								   </div>
+							   </div>
+						   </div>
+						 </div>
+					</div>
+				<%/each%> -->
+			</script>
+        </div>
+
+    </div>
+</div>
+<script>
+    // 获取分类内容
+    function getCateGoods(id) {
+        $.ajax({
+            type: 'post',
+            url: "{php echo mobileUrl('shop/category/getGoods')}",
+            data: {
+                'id': id
+            },
+            dataType:'json',
+            success: function(data) {
+                console.log(data);
+                var html = '';
+                $.each(data, function(key,v) {
+                    html += '<div style="margin: auto; width: 12.25rem; height: 4.8rem; padding: .3rem; margin-top: .5rem; background: #fff; overflow: hidden;"><img style="display: block; float: left; width: 4.2rem; height: 4.2rem;" src="../attachment/';
+                    html += v.thumb;
+                    html += '" alt=""><div style="position: relative; width: calc(100% - 4.5rem); height: 100%; float: right; font-size: 0.45rem;"><div style="font-size: .7rem;">';
+                    html += v.title; 
+                    html += '</div><div style="font-size: .6rem; position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;"><a class="se-modal-btn" style="font-size: .5rem; color: #fff; background: #ec3028; width: 3rem; height: 1rem; line-height: 1rem; border-radius: .1rem; text-align: center; display: block;">查看详情</a></div></div></div>';
+                });
+                $('#container').html(html);
+            }
+        });
+    }
+
+    $('.category').click(function() {
+        var id = $(this).attr('a');
+        $(this).siblings('.category').removeClass('active');
+        $(this).addClass('active');
+        getCateGoods(id);
+    });
+
+    var firstCate = $('.navbar').children('.category:first-child');
+    firstCate.addClass('active');
+    getCateGoods(firstCate.attr('a'));
+</script>
+
+<script language='javascript'>
+	require(['../addons/ewei_shopv2/plugin/commission/static/js/myshop.js'], function (modal) {
+		modal.initSelect();
+	});
+</script>
+{php $this->footerMenus()}
+{template '_footer'}

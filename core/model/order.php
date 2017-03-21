@@ -48,7 +48,7 @@ class Order_EweiShopV2Model
                 $result = pdo_get('ewei_shop_agent_stock', $param);
                 // 本身是代理商，扣除上级代理商真实库存，增加本身真实库存
                 if (empty($result)) {
-                    pdo_insert('ewei_shop_agent_stock', array_merge($param, array('stock' => $og['total'], 'vstock' => $og['total'])));
+                    pdo_insert('ewei_shop_agent_stock', array_merge($param, array('stock' => $og['total'], 'vstock' => 0)));
                 }
                 else {
                     pdo_update('ewei_shop_agent_stock', array('stock +=' => $og['total']), $param);

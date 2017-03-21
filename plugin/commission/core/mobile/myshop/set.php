@@ -10,6 +10,10 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
 {
 	public function main()
 	{
+//        $data = $this->count_data();
+//        var_dump($data);
+//        exit;
+
 		global $_W;
 		global $_GPC;
 		$member = m('member')->getMember($_W['openid']);
@@ -48,6 +52,18 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
 		$shop['openselect'] = $openselect;
 		include $this->template('commission/myshop/set');
 	}
+
+    // 统计数据
+    public function count_data()
+    {
+        global $_W;
+        global $_GPC;
+        $member = m('member')->getMember($_W['openid']);
+        $viewLog = pdo_fetch('select count(*) from ' . tablename('ewei_shop_member_history') . ' hs left join ' . tablename('ewei_shop_member') . ' mb on mb.openid=hs.openid' . ' where mb.hagentid=' . $member['id']);
+
+
+        return $viewLog;
+    }
 }
 
 

@@ -6,33 +6,43 @@ define(['core', 'tpl'], function (core, tpl) {
         level: ''
     };
     modal.init = function () {
-        $('.fui-content').infinite({
-            onLoading: function () {
-                modal.getList()
-            }
+        $('.se-box').find('.se-down-member').click(function() {
+            var dom = $(this).parent().parent('.se-table-body');
+            modal.getDownList(dom.attr('data-openid'), dom.next(), dom.attr('data-link'));
         });
-        if (modal.page == 1) {
-            modal.getList()
-        }
-        FoxUI.tab({
-            container: $('#tab'),
-            handlers: {
-                level1: function () {
-                    modal.changeTab(1)
-                },
-                level2: function () {
-                    // modal.changeTab(2)
-                    modal.getAgentList();
-                },
-                level3: function () {
-                    modal.changeTab(3)
-                }
-            }
-        });
+    };
 
-        $(document).on('click', '.change-tab', function() {
-            modal.getAgentList();
-        });
+    modal.getDownList = function(openid, next, link) {
+        core.json('commission/down/get_down_ajax', {
+            openid: openid
+        }, function (ret) {
+            var list = ret.result.list;
+            if (list.length > 0) {
+                var html = '<img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/bottom.png" alt="" style="width: 0.75rem;margin: auto; display: block; ">';
+                for (var i = list.length - 1; i >= 0; i--) {
+                    html += '<div class="se-table-body" data-openid="';
+                    html += list[i]['openid'];
+                    html += '" style="display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #F1F1F1;"><div style="position: relative;">';
+                    html += '<img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png" style="width: 3.3rem; height: 3.3rem; margin-left: .5rem">';
+                    html += '</div><div style="width: calc(100% - 7.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;"><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>';
+                    html += list[i]['nickname'];
+                    html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">入住时间：</span>';
+                    html += list[i]['agenttime'].split(' ')[0];
+                    html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">消费金额：</span>';
+                    html += list[i]['moneycount'];
+                    html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">佣金：</span>';
+                    html += list[i]['commission_total'];
+                    html += '</div></div><div style="width: 3rem;"><a href="';
+                    html += link + list[i]['id'];
+                    html += '" style="width: 1.8rem; height: 1rem; line-height: 1.2rem; border-radius: .2rem; font-size: .45rem; text-align: center; background: #ec3028; color: #fff; display: block; margin-top: .3rem;">明细</a></div></div>';
+                }   
+
+                next.html(html);     
+            } else {
+                alert('no member');
+            }
+            
+        })
     };
     modal.changeTab = function (level, agentid) {
         $('.fui-content').infinite('init');
@@ -49,9 +59,9 @@ define(['core', 'tpl'], function (core, tpl) {
         $('.infinite-loading').show(),
         $('#container').html('');
 
-        core.json('commission/down/get_agent_list', {
+        core.json('commission/down/get_list', {
             page: modal.page,
-            level: modal.level
+            level: 2
         }, function (ret) {
             var result = ret.result;
 
@@ -70,13 +80,13 @@ define(['core', 'tpl'], function (core, tpl) {
             modal.page++;
             console.log(result)
             result.disLevel = 2;
-            core.tpl('#container', 'tpl_commission_down_list', result, modal.page > 1)
+            core.tpl('#container', 'tpl_commission_inner_down_list', result, modal.page > 1)
         })
     };
     modal.getList = function () {
         core.json('commission/down/get_list', {
             page: modal.page,
-            level: modal.level
+            level: 1
         }, function (ret) {
             var result = ret.result;
 

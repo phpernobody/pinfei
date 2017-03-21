@@ -8,7 +8,7 @@
         <div class="title">{php echo $this->set['texts']['mydown']}({$total})</div>
     </div> -->
     <div>
-        <img src="../public/images/down_header.png" alt="" style="width: 100%; display: block;">
+        <img src="../addons/ewei_shopv2/plugin/abonus/static/images/abonus.png" alt="" style="width: 100%; display: block;">
     </div>
     <div class="fui-content navbar" style="position: relative; display: none;">
         {if $this->set['level']>=2}
@@ -31,33 +31,35 @@
 
     <div style="background: #F8F8F8">
         {loop $list $l}
-        <div class="se-table-body" style="border-left: 2px solid #EC3028; display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #fff;">
+        <div class="se-table-body" style="border-left: 2px solid #EC3028; display: flex; justify-content: space-between; height: 4.60rem; align-items: center; margin-top: .5rem; background: #fff;">
+            <div style="position: relative;">
             {if $l['avatar']}
             <img src="{$l['avatar']}" style="width: 3.3rem; height: 3.3rem; margin-left: 0.65rem">
             {else}
-            <img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png" style="width: 3.3rem; height: 3.3rem; margin-left: 0.65rem">
+            <img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png" style="width: 3.3rem; height: 3.3rem; margin-left: .5rem">
             {/if}
-            <div style="font-size: .45rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="position: absolute; width: 3.3rem; margin-left: .5rem; font-size: 0.45rem; text-align: center;
+            height: .9rem; line-height: .9rem; bottom: 0; background: rgba(0,0,0,0.7); color: #fff">
+                {if intval($l['aagenttype']) === 2}市{else}区{/if}代理
+            </div>
+            </div>
+            <div style="width: calc(100% - 4.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;">
                 <div>
-                    <span style="color: #ff5d15; width: 3rem; display: inline-block;">姓名：</span>
+                    <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>
                     {if $l['nickname']}{$l['nickname']}{else}未获取{/if}
                 </div>
                 <div>
-                    <span style="color: #ff5d15; width: 3rem; display: inline-block;">入住时间：</span>
+                    <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">入住时间：</span>
                     {php echo date("Y-m-d",$l['agenttime'])}
                 </div>
                 <div>
-                    <span style="color: #ff5d15; width: 3rem; display: inline-block;">消费金额：</span>
+                    <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">获取利润：</span>
                     {$l['moneycount']}{php echo $this->set['texts']['yuan']}
                 </div>
                 <div>
-                    <span style="color: #ff5d15; width: 3rem; display: inline-block;">佣金：</span>
-                    {$l['mobile']}{php echo $this->set['texts']['yuan']}
+                    <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">分销人数：</span>
+                    {$l['total_commission']}{php echo $this->set['texts']['yuan']}
                 </div>
-            </div>
-            <div style="width: 80px; height: 70px; display: flex; flex-direction: column; justify-content: center; float: right; align-items: center;">
-                <div style="font-size: 9px; width: 50px; height: 20px; border-radius: 5px; background: #ff5d15; color: #fff; line-height: 20px; margin: 5px 0;">成员</div>
-                <div style="font-size: 9px; width: 50px; height: 20px; border-radius: 5px; background: #ff5d15; color: #fff; line-height: 20px; margin: 5px 0;">明细</div>
             </div>
         </div>
 
@@ -65,7 +67,41 @@
         {if !empty($l['downList'])}
             <img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/bottom.png" alt="" style="width: 0.75rem;margin: auto; display: block; ">
             {loop $l['downList'] $dl}
-            <div class="se-table-body" style="display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #F1F1F1;">
+            <div class="se-table-body" style="position: relative;display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #F1F1F1;">
+                {if $dl['avatar']}
+                <img src="{$l['avatar']}" style="width: 3.3rem; height: 3.3rem; margin-left: 0.65rem">
+                {else}
+                <img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png" style="width: 3.3rem; height: 3.3rem; margin-left: .5rem">
+                {/if}
+                <div style="position: absolute; width: 3.3rem; margin-left: .5rem; font-size: 0.45rem; text-align: center;
+                height: .9rem; line-height: .9rem; bottom: 0; background: rgba(0,0,0,0.7); color: #fff">
+                    {if intval($dl['aagenttype']) === 2}市{else}区{/if}代理
+                </div>
+                <div style="width: calc(100% - 4.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;">
+                    <div>
+                        <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>
+                        {if $dl['nickname']}{$dl['nickname']}{else}未获取{/if}
+                    </div>
+                    <div>
+                        <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">入住时间：</span>
+                        {php echo date("Y-m-d",$dl['agenttime'])}
+                    </div>
+                    <div>
+                        <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">获取利润：</span>
+                        {$dl['moneycount']}{php echo $this->set['texts']['yuan']}
+                    </div>
+                    <div>
+                        <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">分销人数：</span>
+                        {$dl['total_commission']}{php echo $this->set['texts']['yuan']}
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- <div class="se-table-body" style="display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #F1F1F1;">
                 {if $dl['avatar']}
                 <img src="{$dl['avatar']}" style="width: 3.3rem; height: 3.3rem; margin-left: 0.65rem">
                 {else}
@@ -93,14 +129,14 @@
                     <div style="font-size: 9px; width: 50px; height: 20px; border-radius: 5px; background: #ff5d15; color: #fff; line-height: 20px; margin: 5px 0;">成员</div>
                     <div style="font-size: 9px; width: 50px; height: 20px; border-radius: 5px; background: #ff5d15; color: #fff; line-height: 20px; margin: 5px 0;">明细</div>
                 </div>
-            </div>
+            </div> -->
             {/loop}
         {/if}
         {/loop}
     </div>
 
 	<script language='javascript'>
-		require(['../addons/ewei_shopv2/plugin/commission/static/js/down.js'], function (modal) {
+		require(['../addons/ewei_shopv2/plugin/abonus/static/js/team.js'], function (modal) {
 			modal.init({fromDetail: true});
 		});
 	</script>

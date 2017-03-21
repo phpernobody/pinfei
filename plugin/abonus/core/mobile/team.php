@@ -15,11 +15,12 @@ class Team_EweiShopV2Page extends CommissionMobileLoginPage
 
 
         $list = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where uniacid = ' . $_W['uniacid'] . ' and isaagent = 1 and hagentid='. $member['id'] . '  ORDER BY id desc');
-
         foreach($list as $k => $v) {
             $downList = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where uniacid = ' . $_W['uniacid'] . ' and isaagent = 1 and hagentid='. $v['id'] . '  ORDER BY id desc');
             $list[$k]['downList'] = $downList;
         }
+
+//        var_dump($member);exit;
 
 //        var_dump($list);exit;
 //		$levelcount1 = $member['level1'];
@@ -41,6 +42,11 @@ class Team_EweiShopV2Page extends CommissionMobileLoginPage
 //		$total = $level1 + $level2 + $level3;
 		include $this->template();
 	}
+
+    public function countInfo()
+    {
+
+    }
 
 	public function get_agent_list()
 	{

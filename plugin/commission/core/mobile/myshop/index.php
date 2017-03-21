@@ -77,6 +77,7 @@ class Index_EweiShopV2Page extends PluginMobilePage
 		$_W['shopshare'] = array('title' => $shop['name'], 'imgUrl' => $shop['logo'], 'desc' => $shop['desc'], 'link' => mobileUrl('commission/myshop', array('mid' => $shareid), true));
 		include $this->template();
 	}
+
 	public function get_goods() 
 	{
 		global $_W;
