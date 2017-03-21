@@ -101,6 +101,8 @@ class Order_EweiShopV2Model
                 }
                 $data['resultprice'] = $resultPrice;
                 $data['createtime'] = date('yyyy-MM-dd HH-mm-ss');
+                $data['memberid'] = $member['id'];
+                $data['orderid'] = $order['id'];
                 m('member')->setCredit($parentaagent['openid'], 'credit2', $resultPrice);
                 pdo_insert('ewei_shop_agent_order_finish', $data);
             }
