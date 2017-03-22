@@ -20,7 +20,8 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
         indexPage: 1,
         indexStop: false,
         options: [],
-        optionIndex: 0
+        optionIndex: 0,
+        goodDetail: {}
     };
     modal.initSet = function () {
         $('.fui-uploader').uploader({
@@ -230,61 +231,102 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
 
         // 参数改变
         function changeParams() {
-            var option = modal.options[modal.optionIndex];
-            var commission = modal.commission;
-            $('.se-marketprice').html(parseInt(option.marketprice));
-            $('.se-vstock').html(parseInt(option.vstock));
-            $('.se-provinceprice').html(parseInt(option.provinceprice));
-            $('.se-cityprice').html(parseInt(option.cityprice));
-            $('.se-countyprice').html(parseInt(option.countyprice));
-            $('.se-commission1').html(parseInt(option.countyprice*commission.commission1/100));
-            $('.se-commission2').html(parseInt(option.countyprice*commission.commission2/100));
-            $('.se-commission3').html(parseInt(option.countyprice*commission.commission3/100));
+            if (modal.hasOptions) {
+                var option = modal.options[modal.optionIndex];
+                var commission = modal.commission;
+                var goodDetail = modal.goodDetail;
+                $('.se-marketprice').html(parseInt(option.marketprice));
+                $('.se-vstock').html(parseInt(option.vstock));
+                $('.se-provinceprice').html(parseInt(option.provinceprice));
+                $('.se-cityprice').html(parseInt(option.cityprice));
+                $('.se-countyprice').html(parseInt(option.countyprice));
+                $('.se-commission1').html(parseInt(option.countyprice*commission.commission1/100));
+                $('.se-commission2').html(parseInt(option.countyprice*commission.commission2/100));
+                $('.se-commission3').html(parseInt(option.countyprice*commission.commission3/100));
+                $('.se-title').html(goodDetail.title);
+            } else {
+                var goodDetail = modal.goodDetail;
+                var commission = modal.commission;
+                $('.se-marketprice').html(parseInt(goodDetail.marketprice));
+                $('.se-vstock').html(parseInt(goodDetail.vstock));
+                $('.se-provinceprice').html(parseInt(goodDetail.provinceprice));
+                $('.se-cityprice').html(parseInt(goodDetail.cityprice));
+                $('.se-countyprice').html(parseInt(goodDetail.countyprice));
+                $('.se-commission1').html(parseInt(goodDetail.countyprice*commission.commission1/100));
+                $('.se-commission2').html(parseInt(goodDetail.countyprice*commission.commission2/100));
+                $('.se-commission3').html(parseInt(goodDetail.countyprice*commission.commission3/100));
+                $('.se-confirm').attr('data-goodid', goodDetail.goodsid);
+                $('.se-title').html(goodDetail.title);
+            }
         }
 
         // 点击查看详情
         $('.se-modal-btn').click(function() {
             var title = $(this).attr('data-title');
             var thumb = $(this).attr('data-thumb');
+            var goodid = $(this).attr('data-goodid');
 
-            core.json('commission/myshop/select/getDetail', { }, function (res) {
+            core.json('commission/myshop/select/getDetail', {
+               goodid: goodid
+            }, function (res) {
                 console.info(res);
                 var html = '';
                 modal.options = res.result.options;
                 modal.commission = res.result.commission;
-                for (var i = 0; i < modal.options.length; i++) {
-                    html += '<div class="se-select';
-                    if (i === 0) html += ' active';
-                    html += '" style="width: 4.6rem; text-align: center; color: #959595; height: 1.4rem; line-height: 1.4rem; border: .2rem; border: 1px solid #e9e9e9; margin-bottom: .4rem; margin-right: .6rem">' + modal.options[i].title + '</div>';                    
+                modal.hasOptions = res.result.hasOptions;
+                modal.goodDetail = res.result.goodDetail;
+
+                if (modal.hasOptions) {
+                    $('.se-options-wrap').show();
+                    for (var i = 0; i < modal.options.length; i++) {
+                        html += '<div class="se-select';
+                        if (i === 0) html += ' active';
+                        html += '" style="width: 4.6rem; text-align: center; color: #959595; height: 1.4rem; line-height: 1.4rem; border: .2rem; border: 1px solid #e9e9e9; margin-bottom: .4rem; margin-right: .6rem">' + modal.options[i].title + '</div>';                    
+                    }
+                    $('.se-options-box').html(html);
+
+                    // 点击切换参数
+                    $('.se-select').click(function() {
+                        $(this).siblings().removeClass('active');
+                        $(this).addClass('active');
+                        modal.optionIndex = $(this).index();
+                        changeParams();
+                    });
+                } else {
+                    $('.se-options-wrap').hide();
                 }
 
-                $('.se-options-box').html(html);
-
-                // 点击切换参数
-                $('.se-select').click(function() {
-                    $(this).siblings().removeClass('active');
-                    $(this).addClass('active');
-                    modal.optionIndex = $(this).index();
-                    changeParams();
-                });
 
                 changeParams();
-                console.log(res.result)
                 $('.se-modal').show();
             });
         });
 
         // 点击修改库存
         $('.se-confirm').click(function() {
+            var goodid = $(this).attr('data-goodid');   
             var joinStock = $('.se-join-stock').val();
             if (joinStock) {
-                core.json('commission/myshop/select/setStock', {
-                    optionid: modal.options[modal.optionIndex].id || 0,
-                    joinStock: joinStock
-                }, function (res) {
-                    console.log(res);
-                    $('.se-modal').hide();
-                })
+                if (modal.hasOptions) {
+                    core.json('commission/myshop/select/setStock', {
+                        stockOptionId: modal.options[modal.optionIndex].id || 0,
+                        joinStock: joinStock,
+                        hasOptions: true
+                    }, function (res) {
+                        console.log(res);
+                        $('.se-modal').hide();
+                    })
+                } else {
+                    core.json('commission/myshop/select/setStock', {
+                        goodid: goodid,
+                        joinStock: joinStock,
+                        hasOptions: false
+                    }, function (res) {
+                        console.log(res);
+                        $('.se-modal').hide();
+                    })
+                }
+
             } else {
                 alert('请设置库存件数');
             }
@@ -296,9 +338,6 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
             $('.se-join-stock').html('0');
             $('.se-modal').hide();
         });
-
-
-
     };
     modal.bindSelectedEvents = function () {
         $('.goods-selected-group .btn-delete').click(function () {

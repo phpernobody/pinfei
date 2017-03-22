@@ -61,6 +61,7 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
         $member = m('member')->getMember($_W['openid']);
         $viewLog = pdo_fetch('select count(*) from ' . tablename('ewei_shop_member_history') . ' hs left join ' . tablename('ewei_shop_member') . ' mb on mb.openid=hs.openid' . ' where mb.hagentid=' . $member['id']);
 
+//        $payOrder = pdo_fetch();
 
         return $viewLog;
     }
