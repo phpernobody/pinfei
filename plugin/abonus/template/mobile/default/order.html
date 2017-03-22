@@ -82,7 +82,7 @@
                         <img data-lazy="<%g.thumb%>" class="round" style="width:5rem;height:5rem">
                     </div>
                     <div class="fui-list-inner"style="height:5rem;">
-                        <div class="text goodstitle" ><%if g.seckill_task%><span class="fui-label fui-label-danger"><%g.seckill_task.tag%></span><%/if%><%g.title%></div>
+                        <div class="text goodstitle"  style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"><%if g.seckill_task%><span class="fui-label fui-label-danger"><%g.seckill_task.tag%></span><%/if%><%g.title%></div>
                          <%if g.status==2%><span class="fui-label fui-label-danger">赠品</span><%/if%>
                         <%if g.optionid!='0'%><div class='subtitle'><%g.optiontitle%></div><%/if%>
                         <div style="position:absolute; bottom:1rem;">
