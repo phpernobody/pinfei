@@ -33,7 +33,7 @@
 					商品管理
 				</div>
 			</div>
-			<div style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem;">
+			<div class="tap_order" style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem;">
 				<img src="../addons/ewei_shopv2/static/img/3.png" style="margin: .3rem auto; display: block; width:1.1rem; margin-top: .5rem;">
 				<div>
 					订单管理
@@ -93,6 +93,11 @@
 		$('.tap_team').click(function() {
 			console.log("{php echo mobileUrl('abonus.team')}")
 			window.location.href = "{php echo mobileUrl('abonus.team')}";
+		});
+
+		$('.tap_order').click(function() {
+			console.log("{php echo mobileUrl('abonus.order')}")
+			window.location.href = "{php echo mobileUrl('abonus.order')}";
 		});
 	</script>
 

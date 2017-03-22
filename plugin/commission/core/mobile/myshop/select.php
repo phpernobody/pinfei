@@ -31,13 +31,10 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
 				if ($_W['ispost']) {
 					show_json(-1, $err);
 				}
-
-
 				$this->message($err, '', 'error');
 			}
 
 		}
-
 
 		$shop = pdo_fetch('select * from ' . tablename('ewei_shop_commission_shop') . ' where uniacid=:uniacid and mid=:mid limit 1', array(':uniacid' => $_W['uniacid'], ':mid' => $member['id']));
 
@@ -51,11 +48,9 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
 				$shopdata['goodsids'] = implode(',', $_GPC['goodsids']);
 			}
 
-
 			if (!empty($shopdata['selectgoods']) && !is_array($_GPC['goodsids'])) {
 				show_json(0, '请选择商品!');
 			}
-
 
 			if (empty($shop['id'])) {
 				pdo_insert('ewei_shop_commission_shop', $shopdata);
@@ -66,8 +61,6 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
 
 			show_json(1);
 		}
-
-
 		$goods = array();
 
 		if (!empty($shop['selectgoods'])) {
@@ -79,13 +72,11 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
 			}
 		}
 
-
 		$set = m('common')->getSysset('shop');
 
 		if ($_W['shopset']['category']['level'] != -1) {
 			$category = m('shop')->getCategory();
 		}
-
 
 		include $this->template();
 	}
@@ -100,16 +91,32 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
 
         $goodid = $_GPC['goodid'];
         $goodid = 2;
-        $goodoptions = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option'). ' as gop inner join '. tablename('ewei_shop_agent_stock') . ' as ags on ags.optionid=gop.id ' . ' where gop.goodsid=' . $goodid);
+        $goodoptions = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option'). ' where goodsid=' . $goodid);
+
+        foreach($goodoptions as $k => $v) {
+            $stock = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_stock'). ' where optionid=' . $v['id'] .' and memberid=' . $member['id']);
+            if (!empty($stock)) {
+                $goodoptions[$k] = array_merge($v, $stock[0]);
+            } else {
+                $data = array(
+                    'memberid' => $member['id'],
+                    'optionid' => $v['id'],
+                    'goodsid' => $goodid,
+                    'vstock' => "0"
+                );
+                pdo_insert('ewei_shop_agent_stock', $data);
+                $goodoptions[$k] = array_merge($v, $data);
+            }
+        }
         $commission = $_W['shopset']['commission'];
-        show_json(1, ['options' => $goodoptions, 'commission' => $commission]);
+        show_json(1, ['options' => $goodoptions, 'commission' => $commission, 'member' => $stock]);
     }
 
     public  function setStock() {
         global $_W;
         global $_GPC;
-
-        $res = pdo_update('ewei_shop_agent_stock', array("vstock" => intval($_GPC['joinStock'])) , array('id' => $_GPC['optionid']));
+        $member = m('member')->getMember($_W['openid']);
+        $res = pdo_update('ewei_shop_agent_stock', array("vstock" => intval($_GPC['joinStock'])) , array('id' => $_GPC['optionid'], 'memberid' => $member['id']));
 
         if($res === 1) {
             show_json(1, 'success');

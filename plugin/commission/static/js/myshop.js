@@ -279,7 +279,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
             var joinStock = $('.se-join-stock').val();
             if (joinStock) {
                 core.json('commission/myshop/select/setStock', {
-                    optionid: modal.options[modal.optionIndex].id,
+                    optionid: modal.options[modal.optionIndex].id || 0,
                     joinStock: joinStock
                 }, function (res) {
                     console.log(res);
@@ -292,6 +292,8 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
         });
         // 点击取消
         $('.se-cancel').click(function() {
+            $('.se-vstock').html('0');
+            $('.se-join-stock').html('0');
             $('.se-modal').hide();
         });
 
