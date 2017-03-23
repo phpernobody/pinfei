@@ -1122,6 +1122,7 @@ if (!(class_exists('CommissionModel')))
 				require IA_ROOT . '/framework/library/qrcode/phpqrcode.php';
 				QRcode::png($url, $qr_file, QR_ECLEVEL_H, 4);
 			}
+			
 			return $_W['siteroot'] . 'addons/ewei_shopv2/data/qrcode/' . $_W['uniacid'] . '/' . $file;
 		}
 		private function createImage($url) 

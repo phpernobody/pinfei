@@ -274,7 +274,32 @@ class PosterModel extends PluginModel
 		imagedestroy($img);
 		return $target;
 	}
-
+	public function mergeImageYuan($target, $data, $imgurl){
+		$src_img = $this->mergeImage($target, $data, $imgurl);
+		$w = imagesx($src_img);
+		$h = imagesy($src_img);
+		$w=min($w, $h);
+		$h=$w;
+		$img = imagecreatetruecolor($w, $h);
+		//这一句一定要有
+		imagesavealpha($img, true);
+		//拾取一个完全透明的颜色,最后一个参数127为全透明
+		$bgi = imagecolorallocatealpha($img, 255, 255, 255, 127);
+		imagefill($img, 0, 0, $bgi);
+		$r   = $w / 2; //圆半径
+		$y_x = $r; //圆心X坐标
+		$y_y = $r; //圆心Y坐标
+		for ($x = 0; $x < $w; $x++) {
+			for ($y = 0; $y < $h; $y++) {
+				$rgbColor = imagecolorat($src_img, $x, $y);
+				if (((($x - $r) * ($x - $r) + ($y - $r) * ($y - $r)) < ($r * $r))) {
+					imagesetpixel($img, $x, $y, $rgbColor);
+				}
+			}
+		}
+		imagedestroy($src_img);
+		return $img;
+	}
 	public function mergeText($target, $data, $text)
 	{
 		$font = IA_ROOT . '/addons/ewei_shopv2/static/fonts/msyh.ttf';

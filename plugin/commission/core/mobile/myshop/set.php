@@ -34,7 +34,6 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
 			show_json(1);
 		}
 
-
 		$shop = set_medias($shop, array('img', 'logo'));
 		$openselect = false;
 
@@ -47,8 +46,22 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
 		 else if ($member['agentselectgoods'] == 2) {
 			$openselect = true;
 		}
-
-
+		//二维码url
+		$url = mobileUrl('', array('mid' => $member['id']), true);
+		
+		$posterid = pdo_fetch('select id from ' . tablename('ewei_shop_poster') . 'where isdefault=1 and type=2')['id'];
+		if (!(empty($posterid))) 
+			{
+				$url .= '&posterid=' . $posterid;
+		}
+		
+		//*echo $url;
+		//echo '<br/>';
+		//$qrimg= pdo_fetch('select * from ' . tablename('ewei_shop_poster_qr') . ' where openid=' . $member['openid']);
+		//图片地址
+		$qrimg = pdo_fetch('select qrimg from' . tablename('ewei_shop_poster_qr') . 'where openid="' . $member['openid'].'"')['qrimg'];
+		//var_dump($qrimg);
+		//echo $member['openid'];
 		$shop['openselect'] = $openselect;
 		include $this->template('commission/myshop/set');
 	}
