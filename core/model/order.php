@@ -24,11 +24,13 @@ class Order_EweiShopV2Model
         $commission_total2 = 0;
         $commission_total3 = 0;
         $basePrice = 0; // 进货成本
+        $goodstotal = 0;
         foreach ($order_goods as $og) {
             $commissions = iunserializer($og['commissions']);
             $commission_total1 += ((isset($commissions['level1']) ? floatval($commissions['level1']) : 0));
             $commission_total2 += ((isset($commissions['level2']) ? floatval($commissions['level2']) : 0));
             $commission_total3 += ((isset($commissions['level3']) ? floatval($commissions['level3']) : 0));
+            $goodstotal += $og['total'];
             $param1 = array();
             if (empty($og['optionid'])) {
                 if (!empty($parentaagent)) {
@@ -55,11 +57,12 @@ class Order_EweiShopV2Model
                     pdo_insert('ewei_shop_agent_stock', array_merge($param, array('stock' => $og['total'], 'vstock' => 0)));
                 }
                 else {
-                    pdo_update('ewei_shop_agent_stock', array('stock +=' => $og['total'],'vstock +=' => $og['total']), $param);
+                    pdo_update('ewei_shop_agent_stock', array('stock +=' => $og['total'], 'vstock +=' => $og['total']), $param);
                 }
             }
         }
         $data = array();
+        $data['goodsnumber'] = $goodstotal;
         if (!empty($member['hagentid'])) { // 上级代理商不是平台
             if (empty($member['isaagent'])) { // 不是代理商
                 if (!empty($parentaagent) && !empty($parentaagent['oldagentid'])) { // 上级代理曾有上级分销商
@@ -524,7 +527,7 @@ class Order_EweiShopV2Model
     }
 
     public
-    function getTotals($merch = 0)
+    function getTotals($merch = 0, $id = 0)
     {
         global $_W;
         $paras = array(':uniacid' => $_W['uniacid']);
@@ -532,6 +535,10 @@ class Order_EweiShopV2Model
         $condition = ' and isparent=0';
         if ($merch < 0) {
             $condition .= ' and merchid=0';
+        }
+        if (!empty($id)) {
+            $sql1 = $this->getCommissionOpenIds($id);
+            $condition .= ' and ' . $sql1;
         }
         $totals['all'] = pdo_fetchcolumn('SELECT COUNT(1) FROM ' . tablename('ewei_shop_order') . '' . ' WHERE uniacid = :uniacid ' . $condition . ' and ismr=0 and deleted=0', $paras);
         $totals['status_1'] = pdo_fetchcolumn('SELECT COUNT(1) FROM ' . tablename('ewei_shop_order') . '' . ' WHERE uniacid = :uniacid ' . $condition . ' and ismr=0 and status=-1 and refundtime=0 and deleted=0', $paras);
@@ -542,6 +549,31 @@ class Order_EweiShopV2Model
         $totals['status4'] = pdo_fetchcolumn('SELECT COUNT(1) FROM ' . tablename('ewei_shop_order') . '' . ' WHERE uniacid = :uniacid ' . $condition . ' and ismr=0  and refundstate>0 and refundid<>0 and deleted=0', $paras);
         $totals['status5'] = pdo_fetchcolumn('SELECT COUNT(1) FROM ' . tablename('ewei_shop_order') . '' . ' WHERE uniacid = :uniacid ' . $condition . ' and ismr=0 and refundtime<>0 and deleted=0', $paras);
         return $totals;
+    }
+
+    public function getCommissionOpenIds($id)
+    {
+        $member = m('member')->getMember($id);
+        if (!empty($member['isaagent'])) {
+            $child1 = pdo_getall('ewei_shop_member', array('agentid' => $member['id']));
+            if (!empty($child1)) {
+                $condition = ' openid in (';
+            }
+            foreach ($child1 as $value) {
+                $condition .= '\'' . $value['openid'] . '\' , ';
+                $child2 = pdo_getall('ewei_shop_member', array('agentid' => $value['id']));
+                foreach ($child2 as $value2) {
+                    $condition .= '\'' . $value2['openid'] . '\' , ';
+                }
+            }
+            if (!empty($child1)) {
+                $condition = substr($condition, 0, strlen($condition) - 2) . ')';
+            }else{
+                $condition = ' 1=2 ';
+            }
+            return $condition;
+        }
+        return ' 1=2 ';
     }
 
     public
