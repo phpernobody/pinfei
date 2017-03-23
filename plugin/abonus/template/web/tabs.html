@@ -2,8 +2,8 @@
 
 {ifp 'abonus.partner|abonus.level'}
 <ul>
-<!--     {ifp 'abonus.partner'}<li {if $_W['routes']=='abonus.agent'}class="active"{/if}><a href="{php echo webUrl('abonus/agent')}">代理商管理</a></li>{/if} -->
-    {ifp 'abonus.level'}<li {if $_W['routes']=='abonus.level'}class="active"{/if}><a href="{php echo webUrl('abonus/level')}">代理商等级</a></li>{/if}
+    {ifp 'abonus.partner'}<li {if $_W['routes']=='abonus.agent'}class="active"{/if}><a href="{php echo webUrl('abonus/agent')}">代理商管理</a></li>{/if}
+<!--    {ifp 'abonus.level'}<li {if $_W['routes']=='abonus.level'}class="active"{/if}><a href="{php echo webUrl('abonus/level')}">代理商等级</a></li>{/if} -->
 </ul>
 {/if}
 
@@ -15,6 +15,7 @@
         float:right;margin-right:20px;
     }
 </style>
+<!--
 {ifp 'abonus.bonus.status0|abonus.bonus.status1|abonus.bonus.status2|abonus.bonus.build'}
 
 
@@ -28,7 +29,7 @@
     {ifp 'abonus.bonus.build'}<li {if $_W['routes']=='abonus.bonus.build'}class="active"{/if}><a href="{php echo webUrl('abonus/bonus/build')}">创建结算单</a></li>{/if}
 </ul>
 {/if}
-
+-->
 {ifp 'abonus.cover|abonus.notice|abonus.set'}
 <div class="menu-header">设置</div>
 <ul>

@@ -1593,7 +1593,7 @@ class Create_EweiShopV2Page extends MobileLoginPage
                 }
             }
             else if ($data['stock'] != -1) {
-                if (empty($data['stock'])) {
+                if (empty($data['stock']) || $data['stock'] < $goodstotal) {
                     show_json(0, $data['title'] . '<br/>库存不足!');
                 }
             }

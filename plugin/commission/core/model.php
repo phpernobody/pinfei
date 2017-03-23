@@ -1547,7 +1547,7 @@ if (!(class_exists('CommissionModel')))
 			}
 			$openid = $order['openid'];
 			$member = m('member')->getMember($openid);
-			if (empty($member)) 
+			if (empty($member) || $member['isaagent'])
 			{
 				return;
 			}
