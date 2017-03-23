@@ -10,7 +10,7 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
 {
 	public function main()
 	{
-//        $data = $this->count_data();
+        $count = $this->count_data();
 //        var_dump($data);
 //        exit;
 
@@ -72,11 +72,32 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
         global $_W;
         global $_GPC;
         $member = m('member')->getMember($_W['openid']);
-        $viewLog = pdo_fetch('select count(*) from ' . tablename('ewei_shop_member_history') . ' hs left join ' . tablename('ewei_shop_member') . ' mb on mb.openid=hs.openid' . ' where mb.hagentid=' . $member['id']);
+        $viewLog = pdo_fetchall('select * from ' . tablename('ewei_shop_member_history') . ' hs left join ' . tablename('ewei_shop_member') . ' mb on mb.openid=hs.openid' . ' where mb.hagentid=' . $member['id']);
 
-//        $payOrder = pdo_fetch();
+        $totalOrder = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_order_finish') . ' where hagentid=' . $member['id']);
 
-        return $viewLog;
+        $payOrder = 0;
+        $todayTotalPrice = 0.00;
+        $totalGoods = 0;
+
+        $today = explode(' ', date("Y-m-d H:i:s",time()))[0];
+        if ($totalOrder) {
+            foreach($totalOrder as $k => $v) {
+                if (explode(' ', $v['createtime'])[0] == $today) {
+                    $todayTotalPrice += round($v['buyingprice'], 2);
+                }
+                $payOrder += 1;
+                $totalGoods += intval($v['goodsnumber']);
+            }
+        }
+
+        $data = array(
+            'payOrder' => $payOrder,
+            'todayTotalPrice' => round($todayTotalPrice, 2),
+            'totalGoods' => $totalGoods,
+            'viewLog' => count($viewLog)
+        );
+        return $data;
     }
 }
 
