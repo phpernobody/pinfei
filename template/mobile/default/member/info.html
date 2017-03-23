@@ -44,7 +44,17 @@
 						用户昵称{else}用户:{$member['nickname']}
 					{/if}
 				</div>
-				<div style="text-align: center;font-size: 0.6rem;color:#fffc00;font-family:'微软雅黑',sans-serif;overflow: hidden;line-height: 1rem;height: 1rem">等级：一级代理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;推荐人: 市级代理</div>
+				<div style="text-align: center;font-size: 0.6rem;color:#fffc00;font-family:'微软雅黑',sans-serif;overflow: hidden;line-height: 1rem;height: 1rem">
+					
+					等级：{php echo $userLevel}
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						{if $this->set['levelurl']!=''}{/if}
+						{php echo $this->set['texts']['up']}: {if empty($up)}
+						总店
+						{else}
+						{$up['nickname']}
+						{/if}
+				</div>
 			</div>		
 		</div>
 		{if empty($template_flag)}
