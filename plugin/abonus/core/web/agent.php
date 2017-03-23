@@ -93,20 +93,15 @@ class Agent_EweiShopV2Page extends PluginWebPage
             }
             // 计算分销金额
             foreach ($orderFinishs as $value) {
-                if (empty($orderFinish[$value['memberid']])) {
-                    $orderFinish[$value['memberid']]['totalcommision'] = 0;
-                    $orderFinish[$value['memberid']]['totalresultprice'] = 0;
-                    $orderFinish[$value['memberid']]['totalagent'] = 0;
-                }
-                $orderFinish[$value['memberid']]['totalresultprice'] += $value['resultprice'];
+                $orderFinish[$value['hagentid']]['totalresultprice'] += $value['resultprice'];
                 if (!empty($value['commission3'])) {
-                    $orderFinish[$value['memberid']]['totalcommision'] += $value['commission3'];
+                    $orderFinish[$value['hagentid']]['totalcommision'] += $value['commission3'];
                 }
                 else if (!empty($value['commission2'])) {
-                    $orderFinish[$value['memberid']]['totalcommision'] += $value['commission2'];
+                    $orderFinish[$value['hagentid']]['totalcommision'] += $value['commission2'];
                 }
                 else {
-                    $orderFinish[$value['memberid']]['totalcommision'] += $value['commission1'];
+                    $orderFinish[$value['hagentid']]['totalcommision'] += $value['commission1'];
                 }
             }
 
