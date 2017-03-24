@@ -85,11 +85,12 @@
                         <img data-lazy="<%g.thumb%>" class="round" style="width:5rem;height:5rem">
                     </div>
                     <div class="fui-list-inner"style="height:5rem;">
-                        <div class="text goodstitle" ><%if g.seckill_task%><span class="fui-label fui-label-danger"><%g.seckill_task.tag%></span><%/if%><%g.title%></div>
+                        <div class="text goodstitle" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"><%if g.seckill_task%><span class="fui-label fui-label-danger"><%g.seckill_task.tag%></span><%/if%><%g.title%></div>
                          <%if g.status==2%><span class="fui-label fui-label-danger">赠品</span><%/if%>
                         <%if g.optionid!='0'%><div class='subtitle'><%g.optiontitle%></div><%/if%>
                         <div style="position:absolute; bottom:1rem;">
-                            <span style="font-size:.65rem;color: #7d7c7c;">订单日期:{php echo date('Y-m-d H:i:s',$order['createtime'])}</span>
+                            <span style="font-size:.65rem;color: #7d7c7c;">订单日期:<%order.paytime%></span>
+                            <!-- <span style="font-size:.65rem;color: #7d7c7c;">订单日期:{php echo date('Y-m-d H:i:s',$order['createtime']*1000)}</span> -->
                         </div>
                         
                         <div style="width: 100%;font-size: 0.65rem;font-family:'微软雅黑',sans-serif;color:#949494;position:absolute; bottom:0;padding-right: 0.5rem">

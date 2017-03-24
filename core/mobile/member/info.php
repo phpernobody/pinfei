@@ -58,11 +58,15 @@ class Info_EweiShopV2Page extends MobileLoginPage
             $agent = '总店';
         }
 
-        switch(intval($member['isaagent'])) {
-            case 1: $level = '省级代理商';break;
-            case 2: $level = '市级代理商';break;
-            case 3: $level = '区级代理商';break;
-            default: $level = '分销商';break;
+        if (intval($member['isaagent']) === 1 && intval($member['aagentstatus']) === 1) {
+            switch(intval($member['aagenttype'])) {
+                case 1: $level = '省级代理商';break;
+                case 2: $level = '市级代理商';break;
+                case 3: $level = '区级代理商';break;
+                default: $level = '分销商';break;
+            }
+        } else {
+            $level = '分销商';
         }
 
         $memberRelative = array(

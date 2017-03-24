@@ -32,9 +32,11 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 		$total = 0;
 		$totalprice = 0;
 		$ischeckall = true;
+        $member = m('member')->getMember($_W['openid']);
 		$level = m('member')->getLevel($openid);
 		$sql = 'SELECT f.id,f.total,f.goodsid,g.total as stock,g.preselltimeend,g.presellprice as gpprice,g.hasoption, o.stock as optionstock,g.presellprice,g.ispresell, g.maxbuy,g.title,g.thumb,ifnull(o.marketprice, g.marketprice) as marketprice,' . ' g.productprice,o.title as optiontitle,o.presellprice,f.optionid,o.specs,g.minbuy,g.maxbuy,g.unit,f.merchid,g.checked,g.isdiscount_discounts,g.isdiscount,g.isdiscount_time,g.isnodiscount,g.discounts,g.merchsale' . ' ,f.selected FROM ' . tablename('ewei_shop_member_cart') . ' f ' . ' left join ' . tablename('ewei_shop_goods') . ' g on f.goodsid = g.id ' . ' left join ' . tablename('ewei_shop_goods_option') . ' o on f.optionid = o.id ' . ' where 1 ' . $condition . ' ORDER BY `id` DESC ';
 		$list = pdo_fetchall($sql, $params);
+
 		foreach ($list as &$g ) 
 		{
 			if ((0 < $g['ispresell']) && (($g['preselltimeend'] == 0) || (time() < $g['preselltimeend']))) 
@@ -54,7 +56,9 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 						$g['thumb'] = tomedia($thumb);
 					}
 				}
-			}
+			} else {
+
+            }
 			if ($g['selected']) 
 			{
 				$prices = m('order')->getGoodsDiscountPrice($g, $level, 1);
@@ -99,7 +103,7 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 			}
 			else 
 			{
-				if (0 < $g['maxbuy']) 
+				if (0 < $g['maxbuy'])
 				{
 					if ($totalmaxbuy != -1) 
 					{
@@ -113,7 +117,7 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 						$totalmaxbuy = $g['maxbuy'];
 					}
 				}
-				if (0 < $g['usermaxbuy']) 
+				if (0 < $g['usermaxbuy'])
 				{
 					$order_goodscount = pdo_fetchcolumn('select ifnull(sum(og.total),0)  from ' . tablename('ewei_shop_order_goods') . ' og ' . ' left join ' . tablename('ewei_shop_order') . ' o on og.orderid=o.id ' . ' where og.goodsid=:goodsid and  o.status>=1 and o.openid=:openid  and og.uniacid=:uniacid ', array(':goodsid' => $g['goodsid'], ':uniacid' => $uniacid, ':openid' => $openid));
 					$last = $g['usermaxbuy'] - $order_goodscount;
@@ -148,8 +152,11 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 				$ischeckall = false;
 			}
 		}
+
+
 		unset($g);
 		$list = set_medias($list, 'thumb');
+
 		$merch_user = array();
 		$merch = array();
 		$merch_plugin = p('merch');
@@ -164,6 +171,7 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 		{
 			$list = array();
 		}
+
 		show_json(1, array('ischeckall' => $ischeckall, 'list' => $list, 'total' => $total, 'totalprice' => round($totalprice, 2), 'merch_user' => $merch_user, 'merch' => $merch));
 	}
 	public function select() 
@@ -224,7 +232,7 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 		$total = intval($_GPC['total']);
 		($total <= 0) && ($total = 1);
 		$optionid = intval($_GPC['optionid']);
-		
+        $member = m('member')->getMember($_W['openid']);
 		$optionidarr = pdo_fetchall("SELECT id FROM ".tablename('ewei_shop_goods_option')." WHERE goodsid = ".$id);
 		
 		$ver = 0;
@@ -294,6 +302,12 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 		$data = pdo_fetch('select id,total,diyformid from ' . tablename('ewei_shop_member_cart') . ' where goodsid=:id and openid=:openid and   optionid=:optionid  and deleted=0 and  uniacid=:uniacid   limit 1', array(':uniacid' => $_W['uniacid'], ':openid' => $_W['openid'], ':optionid' => $optionid, ':id' => $id));
 		if (empty($data)) 
 		{
+            // 插入库存处理
+            if (intval($member['hagentid']) !== 0) {
+                $maxBuying = $this->getMaxBuying($member, $id, $optionid);
+                if ($total > $maxBuying) $total = $maxBuying;
+            }
+
 			$data = array('uniacid' => $_W['uniacid'], 'merchid' => $goods['merchid'], 'openid' => $_W['openid'], 'goodsid' => $id, 'optionid' => $optionid, 'marketprice' => $goods['marketprice'], 'total' => $total, 'selected' => 1, 'diyformid' => $diyformid, 'diyformdata' => $diyformdata, 'diyformfields' => $diyformfields, 'createtime' => time());
 			pdo_insert('ewei_shop_member_cart', $data);
 		}
@@ -303,11 +317,59 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 			$data['diyformdata'] = $diyformdata;
 			$data['diyformfields'] = $diyformfields;
 			$data['total'] += $total;
+
+            // 插入库存处理
+            if (intval($member['hagentid']) !== 0) {
+                $maxBuying = $this->getMaxBuying($member, $id, $optionid);
+                if ($data['total'] > $maxBuying) $data['total'] = $maxBuying;
+            }
+
 			pdo_update('ewei_shop_member_cart', $data, array('id' => $data['id']));
 		}
 		$cartcount = pdo_fetchcolumn('select sum(total) from ' . tablename('ewei_shop_member_cart') . ' where openid=:openid and deleted=0 and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':openid' => $_W['openid']));
 		show_json(1, array('isnew' => false, 'cartcount' => $cartcount));
 	}
+
+    // 获取最大数量
+    public function getMaxBuying($member, $goodsid, $optionid)
+    {
+        if (intval($optionid) !== 0) {
+            // 虚拟库存处理
+            $agentOption = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $g['optionid'] . ' and memberid=' . $member['hagentid']);
+            if (empty($agentOption)) {
+                $agentOptionData = array(
+                    'memberid' => $member['hagentid'],
+                    'optionid' => $optionid,
+                    'goodsid' => $goodsid,
+                    'stock' => '0',
+                    'vstock' => '0'
+                );
+                pdo_insert('ewei_shop_agent_stock', $agentOptionData);
+                $agentOptionVstock = '0';
+            } else {
+                $agentOptionVstock = $agentOption['vstock'];
+            }
+            return $agentOptionVstock;
+        } else {
+            // 虚拟库存处理
+            $agentGoods = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $goodsid . ' and memberid=' . $member['hagentid']);
+            if (empty($agentGoods)) {
+                $agentGoodsData = array(
+                    'memberid' => $member['hagentid'],
+                    'optionid' => '0',
+                    'goodsid' => $goodsid,
+                    'stock' => '0',
+                    'vstock' => '0'
+                );
+                pdo_insert('ewei_shop_agent_stock', $agentGoodsData);
+                $agentGoodsVstock = '0';
+            } else {
+                $agentGoodsVstock = $agentGoods['vstock'];
+            }
+            return $agentGoodsVstock;
+        }
+    }
+
 	public function del()
 	{
 		global $_W;

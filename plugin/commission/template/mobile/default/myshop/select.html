@@ -123,7 +123,7 @@
 	<div class="fui-fullHigh-group" >
         <div class="fui-fullHigh-item menu" id="tab" style="background: white;text-align: center; width: 5.5rem;">
 			<div class="left-title" >
-				<div style="width: 100%; height: 1.3rem; line-height: 1.3rem; border-right: 1px solid #dcdcdc;">
+				<div style="width: 100%; height: 1.3rem; line-height: 1.3rem; border-right: 1px solid #dcdcdc; z-index: 301">
 					全部分类
 				</div>
 			</div>
@@ -144,20 +144,22 @@
 		   {/loop}
 		   <!-- {/if} -->
         </div>
-        <div class="fui-fullHigh-item container " style="padding:0;background: #f2f2f2;">
 
-	   <form method="post" action="{php echo mobileUrl('goods')}">
+        <div class="fui-fullHigh-item container " style="padding:0;background: #f2f2f2;">
+        	<div style="width: 100%; height: 1.9rem; position: fixed; top: 0; right: 0; background: #fff; z-index: 300;"></div>
+<!-- 	   <form method="post" action="{php echo mobileUrl('goods')}">
 		   <div class='right-title'>
                 <div class="searchbar">
 					<div class='search-input'>
-						<!-- <input type="search" name="keywords" placeholder="请输入商品名称" style="width: 8.3rem; height: 1.1rem; line-height: 1.1rem; border-radius: .55rem; font-size: .7rem;"> -->
+						<input type="search" name="keywords" placeholder="请输入商品名称" style="width: 8.3rem; height: 1.1rem; line-height: 1.1rem; border-radius: .55rem; font-size: .7rem;">
 					</div>
 					<div class='search-right-pic'>
-						<!-- <img src="../addons/ewei_shopv2/static/img/fl_ssimg.png"  style="width: 1.1rem; height: 1.1rem; margin: 0 .3rem;"  onclick="document.form1.submit();"> -->
+						<img src="../addons/ewei_shopv2/static/img/fl_ssimg.png"  style="width: 1.1rem; height: 1.1rem; margin: 0 .3rem;"  onclick="document.form1.submit();">
 					</div>
                 </div>
 		   </div>
-	   </form>
+	   </form> -->
+
 	    <p class='text-center text-cancel empty' style='display: none;'>暂时没有任何商品</p>
 	    <div class='fui-list-group goods-list-group' style='margin-top:0;display: none;width:100%;overflow-y:auto'></div>
 	    <div class='infinite-loading'><span class='fui-preloader'></span><span class='text'> 正在加载...</span></div>
@@ -206,7 +208,7 @@
 
 	
 <script id='tpl_commission_goods_select' type='text/html'>
-<div style="width:100%; height: calc(100% - 1.9rem);background: #f2f2f2;overflow-y:auto;padding-bottom: 3rem;">
+<div style="width:100%; height: calc(100% - 1.9rem);background: #f2f2f2;overflow-y:auto;padding-bottom: 3rem; padding-top: 2.3rem;">
 	<%each list as g%>
     <div style="margin: auto; width: 13rem; height: 4.8rem; padding: .3rem; margin-top: .5rem; background: #fff; overflow: hidden;">
         <img style="display: block; float: left; width: 4.2rem; height: 4.2rem;" src="<%g.thumb%>" alt="">

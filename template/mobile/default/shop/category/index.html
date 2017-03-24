@@ -110,9 +110,11 @@
                 console.log(data);
                 var html = '';
                 $.each(data, function(key,v) {
-                    html += '<div style="margin: auto; width: 12.25rem; height: 4.8rem; padding: .3rem; margin-top: .5rem; background: #fff; overflow: hidden;"><img style="display: block; float: left; width: 4.2rem; height: 4.2rem;" src="../attachment/';
+                    html += '<div style="margin: auto; width: 12.25rem; height: 4.8rem; padding: .3rem; margin-top: .5rem; background: #fff; overflow: hidden;"><a href="';
+                    html += "{php echo mobileUrl('goods.detail').'&id='}" + v.id;
+                    html += '"><img style="display: block; float: left; width: 4.2rem; height: 4.2rem;" src="../attachment/';
                     html += v.thumb;
-                    html += '" alt=""><div style="position: relative; width: calc(100% - 4.5rem); height: 100%; float: right; font-size: 0.45rem;"><div style="font-size: .7rem;display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">';
+                    html += '" alt=""></a><div style="position: relative; width: calc(100% - 4.5rem); height: 100%; float: right; font-size: 0.45rem;"><div style="font-size: .7rem;display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">';
                     html += v.title; 
                     html += '</div><div style="color: #959595; margin-top: .2rem;">月销: '
                     html += v.salesreal;

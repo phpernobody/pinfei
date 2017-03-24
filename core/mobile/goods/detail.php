@@ -14,6 +14,7 @@ class Detail_EweiShopV2Page extends MobilePage
 		$id = intval($_GPC['id']);
 		$rank = intval($_GPC['rank']);
 		$join_id = intval($_GPC['join_id']);
+        $member = m('member')->getMember($openid);
 		if (!(empty($join_id))) 
 		{
 			$_SESSION[$id . '_rank'] = $rank;
@@ -53,7 +54,23 @@ class Detail_EweiShopV2Page extends MobilePage
 			}
 		}
 		$goods = pdo_fetch('select * from ' . tablename('ewei_shop_goods') . ' where id=:id and uniacid=:uniacid limit 1', array(':id' => $id, ':uniacid' => $_W['uniacid']));
-		if ((0 < $goods['ispresell']) && (((0 < $goods['presellend']) && (time() < $goods['preselltimeend'])) || ($goods['preselltimeend'] == 0))) 
+
+        // 代理商价格展示
+        if ( intval($member['isaagent']) !== 0 && intval($member['aagentstatus']) !== 0) {
+            switch($member['aagenttype']) {
+                case 1: $agentLevel = 'provinceprice';break;
+                case 2: $agentLevel = 'cityprice';break;
+                case 3: $agentLevel = 'countyprice';break;
+            }
+
+            $agentPrice = array(
+                'maxprice' => $goods[$agentLevel],
+                'minprice' => $goods[$agentLevel]
+            );
+        }
+
+
+        if ((0 < $goods['ispresell']) && (((0 < $goods['presellend']) && (time() < $goods['preselltimeend'])) || ($goods['preselltimeend'] == 0)))
 		{
 			$goods['minprice'] = $goods['presellprice'];
 			if ($goods['hasoption'] == 0) 
@@ -79,7 +96,7 @@ class Detail_EweiShopV2Page extends MobilePage
 			include $this->template('goods/detail');
 			exit();
 		}
-		$member = m('member')->getMember($openid);
+
 		$showgoods = m('goods')->visit($goods, $member);
 		if (empty($goods) || empty($showgoods)) 
 		{
@@ -195,9 +212,33 @@ class Detail_EweiShopV2Page extends MobilePage
 		$goods['canbuy'] = ($goods['status'] == 1) && empty($goods['deleted']);
 		if (!(empty($goods['hasoption']))) 
 		{
-			$options = pdo_fetchall('select id,stock from ' . tablename('ewei_shop_goods_option') . ' where goodsid=:goodsid and uniacid=:uniacid order by displayorder asc', array(':goodsid' => $goods['id'], ':uniacid' => $_W['uniacid']), 'stock');
+//			$options = pdo_fetchall('select id,stock from ' . tablename('ewei_shop_goods_option') . ' where goodsid=:goodsid and uniacid=:uniacid order by displayorder asc', array(':goodsid' => $goods['id'], ':uniacid' => $_W['uniacid']), 'stock');
+            $options = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option') . ' where goodsid=:goodsid and uniacid=:uniacid order by displayorder asc', array(':goodsid' => $goods['id'], ':uniacid' => $_W['uniacid']), 'stock');
 			$options_stock = array_keys($options);
-		}
+
+            // 代理商价格展示
+            if ( intval($member['isaagent']) !== 0 && intval($member['aagentstatus']) !== 0) {
+                $agentPrice = array(
+                    'maxprice' => 0,
+                    'minprice' => 9999999999999
+                );
+
+                switch($member['aagenttype']) {
+                    case 1: $agentLevel = 'provinceprice';break;
+                    case 2: $agentLevel = 'cityprice';break;
+                    case 3: $agentLevel = 'countyprice';break;
+                }
+
+                foreach($options as $k => $v) {
+                    if ($agentPrice['maxprice'] < $v[$agentLevel]) {
+                        $agentPrice['maxprice'] = $v[$agentLevel];
+                    }
+                    if ($agentPrice['minprice'] > $v[$agentLevel]) {
+                        $agentPrice['minprice'] = $v[$agentLevel];
+                    }
+                }
+            }
+        }
 		if ($goods['total'] <= 0) 
 		{
 			$goods['canbuy'] = false;
@@ -613,8 +654,9 @@ class Detail_EweiShopV2Page extends MobilePage
                     $agentGoodsOptions = array_merge($agentGoodsOptions, $options_tmp);
                 }
             }
-//            var_dump($agentStock, $agentGoodsOptions);exit;
         }
+
+//        var_dump($goods);exit;
 		include $this->template();
 	}
 	public function querygift() 

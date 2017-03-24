@@ -34,7 +34,7 @@ class Picker_EweiShopV2Page extends MobilePage
 				}
 			}
 		}
-		$goods = pdo_fetch('select id,thumb,title,marketprice,total,maxbuy,minbuy,unit,hasoption,showtotal,diyformid,diyformtype,diyfields,isdiscount,presellprice,' . "\n" . '                isdiscount_time,isdiscount_discounts, needfollow, followtip, followurl, `type`, isverify, maxprice, minprice, merchsale,ispresell,preselltimeend' . "\n" . '                from ' . tablename('ewei_shop_goods') . ' where id=:id and uniacid=:uniacid limit 1', array(':id' => $id, ':uniacid' => $_W['uniacid']));
+		$goods = pdo_fetch('select provinceprice,cityprice,countyprice,id,thumb,title,marketprice,total,maxbuy,minbuy,unit,hasoption,showtotal,diyformid,diyformtype,diyfields,isdiscount,presellprice,' . "\n" . '                isdiscount_time,isdiscount_discounts, needfollow, followtip, followurl, `type`, isverify, maxprice, minprice, merchsale,ispresell,preselltimeend' . "\n" . '                from ' . tablename('ewei_shop_goods') . ' where id=:id and uniacid=:uniacid limit 1', array(':id' => $id, ':uniacid' => $_W['uniacid']));
 		if (empty($goods)) 
 		{
 			show_json(0);
@@ -96,8 +96,46 @@ class Picker_EweiShopV2Page extends MobilePage
 			}
 			unset($spec);
 			$options = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option') . ' where goodsid=:goodsid and uniacid=:uniacid order by displayorder asc', array(':goodsid' => $id, ':uniacid' => $_W['uniacid']));
-		}
-		if ($seckillinfo && ($seckillinfo['status'] == 0)) 
+
+            // 分销商的库存处理
+            if (intval($member['hagentid']) !== 0) {
+                foreach($options as $k => $v) {
+                    $agentOption = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock'). ' where optionid=' . $v['id'] . ' and memberid=' . $member['hagentid']);
+                    if (empty($agentOption)) {
+                        $agentOptionData = array(
+                            'memberid' => $member['hagentid'],
+                            'optionid' => $v['id'],
+                            'goodsid' => $goods['id'],
+                            'stock' => '0',
+                            'vstock' => '0'
+                        );
+                        pdo_insert('ewei_shop_agent_stock', $agentOptionData);
+                        $agentOptionVstock = '0';
+                    } else {
+                        $agentOptionVstock = $agentOption['vstock'];
+                    }
+                    $options[$k]['vstock'] = $agentOptionVstock;
+                }
+            }
+        } else {
+            $agentGood = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock'). ' where goodsid=' . $goods['id'] . ' and memberid=' . $member['hagentid']);
+
+            if (empty($agentGood)) {
+                $agentGoodData = array(
+                    'memberid' => $member['hagentid'],
+                    'optionid' => '0',
+                    'goodsid' => $goods['id'],
+                    'stock' => '0',
+                    'vstock' => '0'
+                );
+                pdo_insert('ewei_shop_agent_stock', $agentGoodData);
+                $agentGoodVstock = '0';
+            } else {
+                $agentGoodVstock = $agentGood['vstock'];
+            }
+            $goods['vstock'] = $agentGoodVstock;
+        }
+		if ($seckillinfo && ($seckillinfo['status'] == 0))
 		{
 			$minprice = $maxprice = $goods['marketprice'] = $seckillinfo['price'];
 			if ((0 < count($seckillinfo['options'])) && !(empty($options))) 
@@ -252,7 +290,46 @@ class Picker_EweiShopV2Page extends MobilePage
 		{
 			$goods['canAddCart'] = false;
 		}
-		show_json(1, array('goods' => $goods, 'seckillinfo' => $seckillinfo, 'specs' => $specs, 'options' => $options, 'diyformhtml' => $diyformhtml));
+
+        // 代理商信息
+        if (intval($member['isaagent']) !== 0 && intval($member['aagentstatus']) !== 0) {
+            switch($member['aagenttype']) {
+                case 1: $agentLevel = 'provinceprice';break;
+                case 2: $agentLevel = 'cityprice';break;
+                case 3: $agentLevel = 'countyprice';break;
+            }
+
+            $agentInfo = array(
+                'maxprice' => 0,
+                'minprice' => 9999999999999,
+                'isagent' => true,
+                'agentlevel' => $agentLevel
+            );
+
+            if ($options) {
+                foreach($options as $k => $v) {
+                    if ($agentInfo['maxprice'] < $v[$agentLevel]) {
+                        $agentInfo['maxprice'] = $v[$agentLevel];
+                    }
+                    if ($agentInfo['minprice'] > $v[$agentLevel]) {
+                        $agentInfo['minprice'] = $v[$agentLevel];
+                    }
+                }
+            } else {
+                $agentInfo['maxprice'] = $goods[$agentLevel];
+                $agentInfo['minprice'] = $goods[$agentLevel];
+            }
+        } else {
+            $agentInfo = array(
+                'maxprice' => 0,
+                'minprice' => 9999999999999,
+                'isagent' => false
+            );
+        }
+
+
+
+		show_json(1, array('goods' => $goods, 'seckillinfo' => $seckillinfo, 'specs' => $specs, 'options' => $options, 'diyformhtml' => $diyformhtml, 'agentInfo' => $agentInfo));
 	}
 }
 ?>

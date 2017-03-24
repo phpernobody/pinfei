@@ -166,22 +166,55 @@
     {/if}
 
     {if empty($seckillinfo)}
+
+    <!-- 按照是否有上级代理商做不同展示 -->
+    {if intval($member['isaagent']) !== 0 && intval($member['aagentstatus']) !== 0}
+    <div class="fui-cell">
+        <div class="fui-cell-text price">
+            <span class="text-danger">
+            ￥
+            {if $goods['ispresell']>0 && ($goods['preselltimeend'] == 0 || $goods['preselltimeend'] > time())}
+                {$goods['presellprice']}
+            {else}
+                {if $agentPrice['minprice']==$agentPrice['maxprice']}
+                    {$agentPrice['minprice']}
+                {else}
+                    {$agentPrice['minprice']}~{$agentPrice['maxprice']}
+                {/if}
+            {/if}
+            {if $goods['isdiscount'] && $goods['isdiscount_time']>=time()}
+                 <span class="original">￥{$goods['productprice']}</span>
+            {else}
+                {if $goods['productprice']>0}
+                    <span  class="original">￥{$goods['productprice']}</span>
+                {/if}
+            {/if}
+            </span>
+        </div>
+    </div>
+    {else}
     <div class="fui-cell">
         <div class="fui-cell-text price">
 			<span class="text-danger">
-			￥{if $goods['ispresell']>0 && ($goods['preselltimeend'] == 0 || $goods['preselltimeend'] > time())}{$goods['presellprice']}
-                {else}
-                    {if $goods['minprice']==$goods['maxprice']}{$goods['minprice']}{else}{$goods['minprice']}~{$goods['maxprice']}{/if}
+			￥
+            {if $goods['ispresell']>0 && ($goods['preselltimeend'] == 0 || $goods['preselltimeend'] > time())}
+                {$goods['presellprice']}
+            {else}
+                {if $goods['minprice']==$goods['maxprice']}
+                    {$goods['minprice']}{else}{$goods['minprice']}~{$goods['maxprice']}
                 {/if}
+            {/if}
 			{if $goods['isdiscount'] && $goods['isdiscount_time']>=time()}
 			     <span class="original">￥{$goods['productprice']}</span>
 			{else}
-			{if $goods['productprice']>0}<span  class="original">￥{$goods['productprice']}</span>{/if}
+    			{if $goods['productprice']>0}
+                    <span  class="original">￥{$goods['productprice']}</span>
+                {/if}
 			{/if}
 			</span>
         </div>
     </div>
-
+    {/if}
 
 
     {if $goods['isdiscount'] && $goods['isdiscount_time']>=time()}
