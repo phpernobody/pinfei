@@ -245,6 +245,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                 $('.se-commission3').html(parseInt(option.countyprice*commission.commission3/100));
                 $('.se-title').html(goodDetail.title);
                 $('.se-goods-thumb').attr('src', '../attachment/'+goodDetail.thumb);
+                $('.se-join-stock').val(parseInt(option.vstock));
             } else {
                 var goodDetail = modal.goodDetail;
                 var commission = modal.commission;
@@ -259,6 +260,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                 $('.se-confirm').attr('data-goodid', goodDetail.goodsid);
                 $('.se-title').html(goodDetail.title);
                 $('.se-goods-thumb').attr('src', '../attachment/'+goodDetail.thumb);
+                $('.se-join-stock').val(parseInt(goodDetail.vstock));
             }
         }
 

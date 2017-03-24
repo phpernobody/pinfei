@@ -72,11 +72,14 @@ class Index_EweiShopV2Page extends CommissionMobileLoginPage
 //        var_dump($member);exit;
 
         // 用户关系展示
-        if (intval($member['agentid']) === 0) {
-            $agent = '总店';
-        } else {
+        if (intval($member['oldagentid']) !== 0) {
+            $agentInfo = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where id=' . $member['oldagentid']);
+            $agent = $agentInfo['nickname'];
+        } else if (intval($member['agentid']) !== 0) {
             $agentInfo = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where id=' . $member['agentid']);
             $agent = $agentInfo['nickname'];
+        } else {
+            $agent = '总店';
         }
 
         switch(intval($member['isaagent'])) {
