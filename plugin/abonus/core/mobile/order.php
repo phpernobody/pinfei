@@ -48,9 +48,9 @@ class Order_EweiShopV2Page extends MobileLoginPage
 		$merchdata = $this->merchData();
 		extract($merchdata);
 		$condition .= ' and merchshow=0 ';
-//        $member = $this->model->getInfo($_W['openid']);
-		show_json(1, $this);
-		if($show_status == ""){
+        $member = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where openid="' . $_W['openid'] . '"');
+
+        if($show_status == ""){
 			$show_status = 6;
 		}else{
 			$show_status = intval($show_status);
@@ -77,9 +77,12 @@ class Order_EweiShopV2Page extends MobileLoginPage
 			}
 
             // 限制上级代理商
-            $condition = ' and hagentid=' . $member['id'];
+//            $condition = ' and hagentid=' . $member['id'];
 
 			$com_verify = com('verify');
+//            $list = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_order_finish') . ' aof left join ' . tablename('ewei_shop_order') . ' eso on eso.id=aof.orderid ' . ' where aof.hagentid=5');
+
+//        show_json(1, $list);
 			$list = pdo_fetchall('select id,addressid,ordersn,price,dispatchprice,status,iscomment,isverify,verifyendtime,' . "\n" . 'verified,verifycode,verifytype,iscomment,refundid,expresscom,express,expresssn,finishtime,`virtual`,sendtype,' . "\n" . 'paytype,expresssn,refundstate,dispatchtype,verifyinfo,merchid,isparent,userdeleted' . $s_string . "\n" . ' from ' . tablename('ewei_shop_order') . ' where 1 ' . $condition . ' order by createtime desc LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize, $params);
 			$total = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_order') . ' where 1 ' . $condition, $params);
 			$refunddays = intval($_W['shopset']['trade']['refunddays']);

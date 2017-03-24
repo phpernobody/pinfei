@@ -12,9 +12,9 @@ define(['core', 'tpl'], function (core, tpl) {
                 modal.getList()
             }
         });
-        console.log('init' )
+        console.log('init', modal )
         if (modal.page == 1) {
-            modal.getList()
+            modal.getList();
         }
         FoxUI.tab({
             container: $('#tab'),
@@ -70,15 +70,15 @@ define(['core', 'tpl'], function (core, tpl) {
         }, function (ret) {
             console.log(ret.result);
             var result = ret.result;
-            if (modal.page == 1 && result.list.length) {
+            if (modal.page == 1 && result.list && result.list.length) {
                 $('.content-empty').show();
             }
-            if (result.list.length <= 0) {
+            if (result.list && result.list.length <= 0) {
                 $('.fui-content').infinite('stop')
             } else {
                 $('.content-empty').hide();
                 $('.fui-content').infinite('init');
-                if (result.list.length <= 0 || result.list.length < result.pagesize) {
+                if (result.list && result.list.length <= 0 || result.list.length < result.pagesize) {
                     $('.fui-content').infinite('stop')
                 }
             }

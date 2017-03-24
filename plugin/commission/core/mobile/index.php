@@ -71,17 +71,25 @@ class Index_EweiShopV2Page extends CommissionMobileLoginPage
 		}
 //        var_dump($member);exit;
 
-        // 用户等级展示
-        $aagenttype = $member['aagenttype'];
-        if (intval($aagenttype) === 3) {
-            $userLevel = '区级代理商';
-        } elseif(intval($aagenttype) === 2) {
-            $userLevel = '市级代理商';
-        } elseif(intval($aagenttype) === 1) {
-            $userLevel = '省级代理商';
+        // 用户关系展示
+        if (intval($member['agentid']) === 0) {
+            $agent = '总店';
         } else {
-            $userLevel = '分销商';
+            $agentInfo = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where id=' . $member['agentid']);
+            $agent = $agentInfo['nickname'];
         }
+
+        switch(intval($member['isaagent'])) {
+            case 1: $level = '省级代理商';break;
+            case 2: $level = '市级代理商';break;
+            case 3: $level = '区级代理商';break;
+            default: $level = '分销商';break;
+        }
+
+        $memberRelative = array(
+            'agent' => $agent,
+            'level' => $level
+        );
 
 		include $this->template();
 	}

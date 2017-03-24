@@ -45,15 +45,17 @@
 					{/if}
 				</div>
 				<div style="text-align: center;font-size: 0.6rem;color:#fffc00;font-family:'微软雅黑',sans-serif;overflow: hidden;line-height: 1rem;height: 1rem">
-					
-					等级：{php echo $userLevel}
+					等级：{$memberRelative['level']}
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					推荐人：{$memberRelative['agent']}
+<!-- 					等级：{php echo $userLevel}
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						{if $this->set['levelurl']!=''}{/if}
 						{php echo $this->set['texts']['up']}: {if empty($up)}
 						总店
 						{else}
 						{$up['nickname']}
-						{/if}
+						{/if} -->
 				</div>
 			</div>		
 		</div>
