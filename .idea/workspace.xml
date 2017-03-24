@@ -30,77 +30,7 @@
     <favorites_list name="ewei_shopv2" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="select.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39478585" vertical-offset="2188" max-vertical-offset="2800">
-              <caret line="96" column="56" selection-start-line="96" selection-start-column="56" selection-end-line="96" selection-end-column="56" />
-              <folding>
-                <marker date="1489916582901" expanded="true" signature="717:821" placeholder="select * fro..." />
-                <marker date="1489916582901" expanded="true" signature="1710:1853" placeholder="select id,ti..." />
-                <marker date="1489916582901" expanded="true" signature="2327:2465" placeholder="select * fro..." />
-                <marker date="1489916582901" expanded="true" signature="2327:2503" placeholder="select * fro..." />
-                <marker date="1489916582901" expanded="true" signature="2327:2505" placeholder="select * fro..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1772" max-vertical-offset="2475">
-              <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
-              <folding>
-                <marker date="1483935152000" expanded="true" signature="787:971" placeholder="select * fro..." />
-                <marker date="1483935152000" expanded="true" signature="1173:1357" placeholder="select id,st..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="detail.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="14950" max-vertical-offset="18925">
-              <caret line="606" column="156" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="goods.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/model/goods.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3863" max-vertical-offset="17525">
-              <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
-              <folding>
-                <marker date="1489912609103" expanded="true" signature="185:305" placeholder="select * fro..." />
-                <marker date="1489912609103" expanded="true" signature="498:620" placeholder="select marke..." />
-                <marker date="1489912609103" expanded="true" signature="5366:5432" placeholder="select count..." />
-                <marker date="1489912609103" expanded="true" signature="9939:10144" placeholder="select c.* f..." />
-                <marker date="1489912609103" expanded="true" signature="10616:10707" placeholder="select * fro..." />
-                <marker date="1489912609103" expanded="true" signature="11991:12126" placeholder="select count..." />
-                <marker date="1489912609103" expanded="true" signature="12193:12314" placeholder="select count..." />
-                <marker date="1489912609103" expanded="true" signature="12383:12505" placeholder="select count..." />
-                <marker date="1489912609103" expanded="true" signature="12574:12668" placeholder="select count..." />
-                <marker date="1489912609103" expanded="true" signature="13106:13293" placeholder="SELECT id,ni..." />
-                <marker date="1489912609103" expanded="true" signature="13563:13715" placeholder="select count..." />
-                <marker date="1489912609103" expanded="true" signature="14074:14211" placeholder="select id,ti..." />
-                <marker date="1489912609103" expanded="true" signature="14781:14910" placeholder="select sum(t..." />
-                <marker date="1489912609103" expanded="true" signature="15186:15298" placeholder="select thumb..." />
-                <marker date="1489912609103" expanded="true" signature="19267:19374" placeholder="select * fro..." />
-                <marker date="1489912609103" expanded="true" signature="19461:19588" placeholder="select * fro..." />
-                <marker date="1489912609103" expanded="true" signature="20907:21036" placeholder="SELECT id,or..." />
-                <marker date="1489912609103" expanded="true" signature="21229:21388" placeholder="SELECT COUNT..." />
-                <marker date="1489912609103" expanded="true" signature="21611:21762" placeholder="SELECT id,go..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -122,8 +52,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -157,278 +87,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="default" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="default" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="goods" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commission" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myshop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -436,6 +94,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../wxdev.cccwei.com" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -452,9 +111,6 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -462,6 +118,9 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -480,8 +139,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -490,19 +149,19 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27231467" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2750533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -531,11 +190,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2800">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1489916582901" expanded="true" signature="717:821" placeholder="select * fro..." />
-            <marker date="1489916582901" expanded="true" signature="1710:1853" placeholder="select id,ti..." />
-            <marker date="1489916582901" expanded="true" signature="2327:2465" placeholder="select * fro..." />
-            <marker date="1489916582901" expanded="true" signature="2327:2503" placeholder="select * fro..." />
-            <marker date="1489916582901" expanded="true" signature="2327:2505" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select id,ti..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
           </folding>
         </state>
       </provider>
@@ -545,8 +204,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1772" max-vertical-offset="2475">
           <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
           <folding>
-            <marker date="1483935152000" expanded="true" signature="787:971" placeholder="select * fro..." />
-            <marker date="1483935152000" expanded="true" signature="1173:1357" placeholder="select id,st..." />
+            <marker date="1483935152000" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1483935152000" expanded="true" signature="-1:-1" placeholder="select id,st..." />
           </folding>
         </state>
       </provider>
@@ -564,25 +223,86 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3863" max-vertical-offset="17525">
           <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
           <folding>
-            <marker date="1489912609103" expanded="true" signature="185:305" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="498:620" placeholder="select marke..." />
-            <marker date="1489912609103" expanded="true" signature="5366:5432" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="9939:10144" placeholder="select c.* f..." />
-            <marker date="1489912609103" expanded="true" signature="10616:10707" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="11991:12126" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="12193:12314" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="12383:12505" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="12574:12668" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="13106:13293" placeholder="SELECT id,ni..." />
-            <marker date="1489912609103" expanded="true" signature="13563:13715" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="14074:14211" placeholder="select id,ti..." />
-            <marker date="1489912609103" expanded="true" signature="14781:14910" placeholder="select sum(t..." />
-            <marker date="1489912609103" expanded="true" signature="15186:15298" placeholder="select thumb..." />
-            <marker date="1489912609103" expanded="true" signature="19267:19374" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="19461:19588" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="20907:21036" placeholder="SELECT id,or..." />
-            <marker date="1489912609103" expanded="true" signature="21229:21388" placeholder="SELECT COUNT..." />
-            <marker date="1489912609103" expanded="true" signature="21611:21762" placeholder="SELECT id,go..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select marke..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select c.* f..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,ni..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select id,ti..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select sum(t..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select thumb..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,or..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,go..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2800">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select id,ti..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1772" max-vertical-offset="2475">
+          <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+          <folding>
+            <marker date="1483935152000" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1483935152000" expanded="true" signature="-1:-1" placeholder="select id,st..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="14950" max-vertical-offset="18925">
+          <caret line="606" column="156" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3863" max-vertical-offset="17525">
+          <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+          <folding>
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select marke..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select c.* f..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,ni..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select id,ti..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select sum(t..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select thumb..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,or..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,go..." />
           </folding>
         </state>
       </provider>
@@ -592,11 +312,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2263" max-vertical-offset="2800">
           <caret line="101" column="32" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
           <folding>
-            <marker date="1489916582901" expanded="true" signature="717:821" placeholder="select * fro..." />
-            <marker date="1489916582901" expanded="true" signature="1710:1853" placeholder="select id,ti..." />
-            <marker date="1489916582901" expanded="true" signature="2327:2465" placeholder="select * fro..." />
-            <marker date="1489916582901" expanded="true" signature="2327:2503" placeholder="select * fro..." />
-            <marker date="1489916582901" expanded="true" signature="2327:2505" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select id,ti..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
           </folding>
         </state>
       </provider>
@@ -606,8 +326,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1772" max-vertical-offset="2475">
           <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
           <folding>
-            <marker date="1483935152000" expanded="true" signature="787:971" placeholder="select * fro..." />
-            <marker date="1483935152000" expanded="true" signature="1173:1357" placeholder="select id,st..." />
+            <marker date="1483935152000" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1483935152000" expanded="true" signature="-1:-1" placeholder="select id,st..." />
           </folding>
         </state>
       </provider>
@@ -625,25 +345,25 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3863" max-vertical-offset="17525">
           <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
           <folding>
-            <marker date="1489912609103" expanded="true" signature="185:305" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="498:620" placeholder="select marke..." />
-            <marker date="1489912609103" expanded="true" signature="5366:5432" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="9939:10144" placeholder="select c.* f..." />
-            <marker date="1489912609103" expanded="true" signature="10616:10707" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="11991:12126" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="12193:12314" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="12383:12505" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="12574:12668" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="13106:13293" placeholder="SELECT id,ni..." />
-            <marker date="1489912609103" expanded="true" signature="13563:13715" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="14074:14211" placeholder="select id,ti..." />
-            <marker date="1489912609103" expanded="true" signature="14781:14910" placeholder="select sum(t..." />
-            <marker date="1489912609103" expanded="true" signature="15186:15298" placeholder="select thumb..." />
-            <marker date="1489912609103" expanded="true" signature="19267:19374" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="19461:19588" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="20907:21036" placeholder="SELECT id,or..." />
-            <marker date="1489912609103" expanded="true" signature="21229:21388" placeholder="SELECT COUNT..." />
-            <marker date="1489912609103" expanded="true" signature="21611:21762" placeholder="SELECT id,go..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select marke..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select c.* f..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,ni..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select id,ti..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select sum(t..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select thumb..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,or..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,go..." />
           </folding>
         </state>
       </provider>
@@ -652,7 +372,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="17125">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -660,7 +379,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16950">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -682,7 +400,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4007" max-vertical-offset="16425">
           <caret line="310" column="45" selection-start-line="310" selection-start-column="35" selection-end-line="310" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -704,7 +421,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.337058" vertical-offset="6825" max-vertical-offset="25475">
           <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -733,7 +449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.443203" vertical-offset="7563" max-vertical-offset="17125">
           <caret line="355" column="12" selection-start-line="355" selection-start-column="12" selection-end-line="355" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -741,7 +456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.294118" vertical-offset="12182" max-vertical-offset="30575">
           <caret line="504" column="18" selection-start-line="504" selection-start-column="18" selection-end-line="504" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -749,7 +463,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.8621974" vertical-offset="1700" max-vertical-offset="19525">
           <caret line="108" column="13" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -757,7 +470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5425">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -765,9 +477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.8398511" vertical-offset="2475" max-vertical-offset="3725">
           <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -782,24 +491,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="5.167598" vertical-offset="150" max-vertical-offset="6575">
           <caret line="117" column="13" selection-start-line="117" selection-start-column="13" selection-end-line="117" selection-end-column="13" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8091873" vertical-offset="1938" max-vertical-offset="2800">
+          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <folding>
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select id,ti..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489916582901" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1772" max-vertical-offset="2475">
+        <state vertical-scroll-proportion="0.70553595" vertical-offset="1626" max-vertical-offset="2475">
           <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
           <folding>
-            <marker date="1483935152000" expanded="true" signature="787:971" placeholder="select * fro..." />
-            <marker date="1483935152000" expanded="true" signature="1173:1357" placeholder="select id,st..." />
+            <marker date="1483935152000" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1483935152000" expanded="true" signature="-1:-1" placeholder="select id,st..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="14950" max-vertical-offset="18925">
+        <state vertical-scroll-proportion="0.23557127" vertical-offset="14950" max-vertical-offset="18925">
           <caret line="606" column="156" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
           <folding />
         </state>
@@ -807,42 +529,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/model/goods.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3863" max-vertical-offset="17525">
+        <state vertical-scroll-proportion="0.27915195" vertical-offset="3863" max-vertical-offset="17525">
           <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
           <folding>
-            <marker date="1489912609103" expanded="true" signature="185:305" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="498:620" placeholder="select marke..." />
-            <marker date="1489912609103" expanded="true" signature="5366:5432" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="9939:10144" placeholder="select c.* f..." />
-            <marker date="1489912609103" expanded="true" signature="10616:10707" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="11991:12126" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="12193:12314" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="12383:12505" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="12574:12668" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="13106:13293" placeholder="SELECT id,ni..." />
-            <marker date="1489912609103" expanded="true" signature="13563:13715" placeholder="select count..." />
-            <marker date="1489912609103" expanded="true" signature="14074:14211" placeholder="select id,ti..." />
-            <marker date="1489912609103" expanded="true" signature="14781:14910" placeholder="select sum(t..." />
-            <marker date="1489912609103" expanded="true" signature="15186:15298" placeholder="select thumb..." />
-            <marker date="1489912609103" expanded="true" signature="19267:19374" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="19461:19588" placeholder="select * fro..." />
-            <marker date="1489912609103" expanded="true" signature="20907:21036" placeholder="SELECT id,or..." />
-            <marker date="1489912609103" expanded="true" signature="21229:21388" placeholder="SELECT COUNT..." />
-            <marker date="1489912609103" expanded="true" signature="21611:21762" placeholder="SELECT id,go..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39478585" vertical-offset="2188" max-vertical-offset="2800">
-          <caret line="96" column="56" selection-start-line="96" selection-start-column="56" selection-end-line="96" selection-end-column="56" />
-          <folding>
-            <marker date="1489916582901" expanded="true" signature="717:821" placeholder="select * fro..." />
-            <marker date="1489916582901" expanded="true" signature="1710:1853" placeholder="select id,ti..." />
-            <marker date="1489916582901" expanded="true" signature="2327:2465" placeholder="select * fro..." />
-            <marker date="1489916582901" expanded="true" signature="2327:2503" placeholder="select * fro..." />
-            <marker date="1489916582901" expanded="true" signature="2327:2505" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select marke..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select c.* f..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,ni..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select count..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select id,ti..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select sum(t..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select thumb..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="select * fro..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,or..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+            <marker date="1489912609103" expanded="true" signature="-1:-1" placeholder="SELECT id,go..." />
           </folding>
         </state>
       </provider>
