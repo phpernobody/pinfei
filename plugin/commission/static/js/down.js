@@ -16,6 +16,7 @@ define(['core', 'tpl'], function (core, tpl) {
         core.json('commission/down/get_down_ajax', {
             openid: openid
         }, function (ret) {
+
             var list = ret.result.list;
             if (list.length > 0) {
                 var html = '<img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/bottom.png" alt="" style="width: 0.75rem;margin: auto; display: block; ">';
@@ -23,7 +24,13 @@ define(['core', 'tpl'], function (core, tpl) {
                     html += '<div class="se-table-body" data-openid="';
                     html += list[i]['openid'];
                     html += '" style="display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #F1F1F1;"><div style="position: relative;">';
-                    html += '<img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png" style="width: 3.3rem; height: 3.3rem; margin-left: .5rem">';
+                    html += '<img src="';
+                    if (list[i]['avatar']) {
+                        html += list[i][''];
+                    } else {
+                        html += '../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png';
+                    }
+                    html += '" style="width: 3.3rem; height: 3.3rem; margin-left: .5rem">';
                     html += '</div><div style="width: calc(100% - 7.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;"><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>';
                     html += list[i]['nickname'];
                     html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">入住时间：</span>';

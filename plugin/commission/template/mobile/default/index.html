@@ -38,14 +38,18 @@
 						{/if}
 				</div> -->
 				<div style="font-size: .5rem; text-align: center; color: #fffc00;">
-						等级：{php echo $userLevel}
+<!-- 						等级：{php echo $userLevel}
 						&nbsp;&nbsp;&nbsp;
 						{if $this->set['levelurl']!=''}{/if}
 						{php echo $this->set['texts']['up']}: {if empty($up)}
 						总店
 						{else}
 						{$up['nickname']}
-						{/if}
+						{/if} -->
+
+					等级：{$memberRelative['level']}
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					推荐人：{$memberRelative['agent']}
 				</div>
 			</div>
 		</div>

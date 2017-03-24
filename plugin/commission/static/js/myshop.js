@@ -244,6 +244,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                 $('.se-commission2').html(parseInt(option.countyprice*commission.commission2/100));
                 $('.se-commission3').html(parseInt(option.countyprice*commission.commission3/100));
                 $('.se-title').html(goodDetail.title);
+                $('.se-goods-thumb').attr('src', '../attachment/'+goodDetail.thumb);
             } else {
                 var goodDetail = modal.goodDetail;
                 var commission = modal.commission;
@@ -257,6 +258,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                 $('.se-commission3').html(parseInt(goodDetail.countyprice*commission.commission3/100));
                 $('.se-confirm').attr('data-goodid', goodDetail.goodsid);
                 $('.se-title').html(goodDetail.title);
+                $('.se-goods-thumb').attr('src', '../attachment/'+goodDetail.thumb);
             }
         }
 
@@ -314,6 +316,8 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                         hasOptions: true
                     }, function (res) {
                         console.log(res);
+                        modal.optionIndex = 0;
+                        $('.se-join-stock').val('');
                         $('.se-modal').hide();
                     })
                 } else {
@@ -323,6 +327,8 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                         hasOptions: false
                     }, function (res) {
                         console.log(res);
+                        modal.optionIndex = 0;
+                        $('.se-join-stock').val('');
                         $('.se-modal').hide();
                     })
                 }
@@ -334,8 +340,8 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
         });
         // 点击取消
         $('.se-cancel').click(function() {
-            $('.se-vstock').html('0');
-            $('.se-join-stock').html('0');
+            modal.optionIndex = 0;
+            $('.se-join-stock').val('');
             $('.se-modal').hide();
         });
     };
