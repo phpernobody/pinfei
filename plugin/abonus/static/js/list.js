@@ -146,14 +146,35 @@ define(['core', 'tpl', 'biz/order/op'], function (core, tpl, op) {
                     expresscom = expressData.name;
                 }
             }
+
+            var goods = modal.orderDetail.goods[0].goods;
+            var goodsids = '';
+            var optionids = '';
+            var goodsnumber = '';
+            for (var i = goods.length - 1; i >= 0; i--) {
+                if (goodsids) {
+                    goodsids += ',';
+                    optionids += ',';
+                    goodsnumber += ',';
+                }
+                goodsids += goods[i].goodsid;
+                optionids += goods[i].optionid;
+                goodsnumber += goods[i].total;
+            }
+
+
             core.json('abonus/order/sendConfirm', {
                 express: express,
                 expresscom: expresscom,
                 expresssn: expresssn,
-                orderid: modal.orderDetail.id
+                orderid: modal.orderDetail.id,
+                memberid: modal.orderDetail.memberid,
+                goodsids: goodsids,
+                optionids: optionids,
+                goodsnumber: goodsnumber
             }, function (ret) { 
                 console.log(ret) 
-                window.location.reload();
+                // window.location.reload();
             })
 
         });

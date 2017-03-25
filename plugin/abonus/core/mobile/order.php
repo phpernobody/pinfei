@@ -318,8 +318,40 @@ class Order_EweiShopV2Page extends MobileLoginPage
         global $_W;
         global $_GPC;
 
-        $res = pdo_update('ewei_shop_order', array('status' => 2, 'express' => trim($_GPC['express']), 'expresscom' => trim($_GPC['expresscom']), 'expresssn' => trim($_GPC['expresssn']), 'sendtime' => time()), array('id' => $_GPC['orderid'], 'uniacid' => $_W['uniacid']));
-        show_json(1, $res);
+//        $res = pdo_update('ewei_shop_order', array('status' => 2, 'express' => trim($_GPC['express']), 'expresscom' => trim($_GPC['expresscom']), 'expresssn' => trim($_GPC['expresssn']), 'sendtime' => time()), array('id' => $_GPC['orderid'], 'uniacid' => $_W['uniacid']));
+
+        $member = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where id=' . $_GPC['memberid']);
+        $optionids = explode(',', $_GPC['optionids']);
+        $goodsids = explode(',', $_GPC['goodsids']);
+        $goodsnumber = explode(',', $_GPC['goodsnumber']);
+
+        // 检查是否数量够
+        foreach ($optionids as $k => $v) {
+            if (intval($v) !== 0) {
+                $stock = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $v . ' and memberid=' . $member['hagentid']);
+            } else {
+                $stock = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $goodsids[$k] . ' and memberid=' . $member['hagentid']);
+            }
+
+            if ($stock['stock'] < intval($goodsnumber[$k])) show_json(0, '商品库存不足，请及时补货');
+        }
+
+        foreach ($optionids as $k => $v) {
+            if (intval($v) !== 0) {
+                $stock = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $v . ' and memberid=' . $member['hagentid']);
+            } else {
+                $stock = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $goodsids[$k] . ' and memberid=' . $member['hagentid']);
+            }
+
+            if ($stock['vstock'] < intval($goodsnumber[$k])) {
+                $setVstock = 0;
+            } else {
+                $setVstock = intval($stock['vstock']) - intval($goodsnumber[$k]);
+            }
+            pdo_update('ewei_shop_agent_stock', array('vstock' => $setVstock, 'stock' => (intval($stock['stock']) - intval($goodsnumber[$k]))), array('id' => $stock['id']));
+        }
+
+        show_json(1);
     }
 	public function alipay() 
 	{
