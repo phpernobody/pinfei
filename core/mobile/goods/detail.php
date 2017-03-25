@@ -55,6 +55,26 @@ class Detail_EweiShopV2Page extends MobilePage
 		}
 		$goods = pdo_fetch('select * from ' . tablename('ewei_shop_goods') . ' where id=:id and uniacid=:uniacid limit 1', array(':id' => $id, ':uniacid' => $_W['uniacid']));
 
+        $totalVstock = 0;
+        // 虚拟库存处理
+        if (intval($member['hagentid']) !== 0) {
+            $agentGoods = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and memberid=' . $member['hagentid']);
+            if (empty($agentGoods)) {
+                $agentGoodsData = array(
+                    'memberid' => $member['hagentid'],
+                    'optionid' => '0',
+                    'goodsid' => $goodsid,
+                    'stock' => '0',
+                    'vstock' => '0'
+                );
+                pdo_insert('ewei_shop_agent_stock', $agentGoodsData);
+                $agentGoodsVstock = '0';
+            } else {
+                $agentGoodsVstock = $agentGoods['vstock'];
+            }
+            $totalVstock += $agentGoodsVstock;
+        }
+
         // 代理商价格展示
         if ( intval($member['isaagent']) !== 0 && intval($member['aagentstatus']) !== 0) {
             switch($member['aagenttype']) {
@@ -215,6 +235,27 @@ class Detail_EweiShopV2Page extends MobilePage
 //			$options = pdo_fetchall('select id,stock from ' . tablename('ewei_shop_goods_option') . ' where goodsid=:goodsid and uniacid=:uniacid order by displayorder asc', array(':goodsid' => $goods['id'], ':uniacid' => $_W['uniacid']), 'stock');
             $options = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option') . ' where goodsid=:goodsid and uniacid=:uniacid order by displayorder asc', array(':goodsid' => $goods['id'], ':uniacid' => $_W['uniacid']), 'stock');
 			$options_stock = array_keys($options);
+
+            // 分销商的库存处理
+            if (intval($member['hagentid']) !== 0) {
+                foreach ($options as $k => $v) {
+                    $agentOption = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock'). ' where optionid=' . $v['id'] . ' and memberid=' . $member['hagentid']);
+                    if (empty($agentOption)) {
+                        $agentOptionData = array(
+                            'memberid' => $member['hagentid'],
+                            'optionid' => $v['id'],
+                            'goodsid' => $goods['id'],
+                            'stock' => '0',
+                            'vstock' => '0'
+                        );
+                        pdo_insert('ewei_shop_agent_stock', $agentOptionData);
+                        $agentOptionVstock = '0';
+                    } else {
+                        $agentOptionVstock = $agentOption['vstock'];
+                    }
+                    $totalVstock += $agentOptionVstock;
+                }
+            }
 
             // 代理商价格展示
             if ( intval($member['isaagent']) !== 0 && intval($member['aagentstatus']) !== 0) {
@@ -643,22 +684,10 @@ class Detail_EweiShopV2Page extends MobilePage
 			}
 		}
 
-        // 库存展示处理
-        if (intval($member['hagentid']) !== 0) {
-            $agentStock = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_stock') . ' where memberid=:mid', array('mid' => $member['hagentid']));
 
-            $agentGoodsOptions = array();
-            foreach($agentStock as $key =>$value) {
-                if (!empty($value['optionid'])) {
-                    $options_tmp = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option') . ' where id=:id', array('id' => $value['optionid']));
-                    $agentGoodsOptions = array_merge($agentGoodsOptions, $options_tmp);
-                }
-            }
-        }
-
-//        var_dump($goods);exit;
 		include $this->template();
 	}
+
 	public function querygift() 
 	{
 		global $_W;

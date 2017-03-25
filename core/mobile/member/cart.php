@@ -335,7 +335,7 @@ class Cart_EweiShopV2Page extends MobileLoginPage
     {
         if (intval($optionid) !== 0) {
             // 虚拟库存处理
-            $agentOption = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $g['optionid'] . ' and memberid=' . $member['hagentid']);
+            $agentOption = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $optionid . ' and memberid=' . $member['hagentid']);
             if (empty($agentOption)) {
                 $agentOptionData = array(
                     'memberid' => $member['hagentid'],
