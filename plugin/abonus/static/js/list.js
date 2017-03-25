@@ -5,7 +5,9 @@ define(['core', 'tpl', 'biz/order/op'], function (core, tpl, op) {
     var modal = {
         page: 1,
         status: '',
-        merchid: 0
+        merchid: 0,
+        orderList: [],
+        express: {}
     };
     modal.init = function (params) {
         modal.status = params.status;
@@ -51,8 +53,112 @@ define(['core', 'tpl', 'biz/order/op'], function (core, tpl, op) {
         });
         $(".container .fui-list").click(function () {
             modal.toGoods = true
-        })
+        });
+
+
     };
+
+
+    // 发货详情信息
+    modal.setOrderDetail = function() {
+        var orderDetail = modal.orderDetail;
+        console.log(modal)
+        var goods = orderDetail.goods[0].goods;
+        var address = orderDetail.address;
+        var express = modal.express;
+        html = '';
+        for (var i = goods.length - 1; i >= 0; i--) {
+            html += '<img src="';
+            html += goods[i].thumb;
+            html += '" alt="" style="width: 3.5rem; height: 3.5rem; display: block; float: left;"><div style="position: relative; height: 3.5rem;float: right; width: calc(100% - 4.5rem); font-size: .5rem;"><div style="width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: .8rem;">';
+            html += goods[i].title;
+            html += '</div><div style="width: 100%; color: #7d7c7c; height: 1rem; line-height: 1rem;">订单日期： <span class="se-order-time">';
+            html += orderDetail.paytime;
+            html += '</span></div><div style="width: 100%; display: flex; justify-content: space-between; position: absolute; bottom: 0;"><div style="color: red;">共';
+            html += goods[i].total;
+            html += '件商品：¥<span class="se-order-total">';
+            html += goods[i].price;
+            html += '</span></div><div style="color: #949494;">数量：<span class="se-order-count">';
+            html += goods[i].total;
+            html += '</span>件</div></div></div>'
+        }
+
+        $('.se-status').html(orderDetail.statusstr);
+        $('.se-order-sn').html(orderDetail.ordersn);
+        $('.se-order-address-user').html(address.realname);
+        $('.se-order-address-phone').html(address.mobile);
+        $('.se-order-address-address').html(address.province+address.city+address.area+address.address);
+
+        $('.se-order-goods').html(html);
+
+        var op = '<option value="0">其他快递</option>';
+        for (var i = 0; i < express.length; i++) {
+            op += '<option value="';
+            op += (i + 1);
+            op += '">';
+            op += express[i].name;
+            op += '</option>';
+        }
+
+        $('#se-plugin-express').html(op);
+    };
+
+    // 发货modal
+    modal.sendModal = function () {
+
+
+        // 点击发货
+        $(".se-send-btn").click(function() {
+            var id = $(this).attr('data-id');
+
+            for (var i = modal.orderList.length - 1; i >= 0; i--) {
+                if (id == modal.orderList[i].id) modal.orderDetail = modal.orderList[i];
+            }
+
+
+            modal.setOrderDetail();
+            $('.se-send').show();
+        });
+
+        // 点击返回
+        $(".se-order-cancel").click(function() {
+            $('.se-send').hide();
+        });
+
+        // 点击确认发货
+        $('.se-order-confirm').click(function() {
+            console.log(modal);
+            var expresssn = $('.se-express-sn').val();
+
+            if (!expresssn) {
+                alert('请填写快递单号!'); 
+                return;
+            }
+
+            var expressVal = $('#se-plugin-express_dummy').val();
+            var expressData = modal.express;
+            var express = '';
+            var expresscom = '';
+
+            for (var i = expressData.length - 1; i >= 0; i--) {
+                if (expressData[i].name == expressVal) {
+                    express = expressData.express;
+                    expresscom = expressData.name;
+                }
+            }
+            core.json('abonus/order/sendConfirm', {
+                express: express,
+                expresscom: expresscom,
+                expresssn: expresssn,
+                orderid: modal.orderDetail.id
+            }, function (ret) { 
+                console.log(ret) 
+                window.location.reload();
+            })
+
+        });
+    };
+
     modal.changeTab = function (status) {
         if (status == 5) {
             $('.icon-delete').css('color', 'red')
@@ -75,7 +181,7 @@ define(['core', 'tpl', 'biz/order/op'], function (core, tpl, op) {
             page: modal.page,
             status: modal.status,
             merchid: modal.merchid
-        }, function (ret) {
+        }, function (ret) { 
             var result = ret.result;
             if (result.total <= 0) {
                 $('.content-empty').show();
@@ -87,9 +193,15 @@ define(['core', 'tpl', 'biz/order/op'], function (core, tpl, op) {
                     $('.fui-content').infinite('stop')
                 }
             }
+            modal.orderList = modal.orderList.concat(result.list);
+            modal.express = result.express;
             modal.page++;
             core.tpl('.container', 'tpl_order_index_list', result, modal.page > 1);
             op.init()
+
+            // 调用发货modal
+            modal.sendModal();
+
         })
     };
     return modal

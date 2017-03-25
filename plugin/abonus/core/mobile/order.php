@@ -43,11 +43,11 @@ class Order_EweiShopV2Page extends MobileLoginPage
 		$psize = 50;
 		$show_status = $_GPC['status'];
 		$r_type = array('退款', '退货退款', '换货');
-		$condition = ' and openid=:openid and ismr=0 and deleted=0 and uniacid=:uniacid ';
-		$params = array(':uniacid' => $uniacid, ':openid' => $openid);
+		$condition = ' and eso.ismr=0 and eso.deleted=0 and eso.uniacid=:uniacid ';
+		$params = array(':uniacid' => $uniacid);
 		$merchdata = $this->merchData();
 		extract($merchdata);
-		$condition .= ' and merchshow=0 ';
+		$condition .= ' and eso.merchshow=0 ';
         $member = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where openid="' . $_W['openid'] . '"');
 
         if($show_status == ""){
@@ -57,34 +57,34 @@ class Order_EweiShopV2Page extends MobileLoginPage
 		}
 		switch ($show_status) 
 		{
-			case 0: $condition .= ' and status=0 and paytype!=3';
+			case 0: $condition .= ' and eso.status=0 and eso.paytype!=3';
 			break;
-			case 2: $condition .= ' and (status=2 or status=0 and paytype=3)';
+			case 2: $condition .= ' and (eso.status=2 or eso.status=0 and eso.paytype=3)';
 			break;
-			case 4: $condition .= ' and refundstate>0';
+			case 4: $condition .= ' and eso.refundstate>0';
 			break;
-			case 5: $condition .= ' and userdeleted=1 ';
+			case 5: $condition .= ' and eso.userdeleted=1 ';
 			break;
-			case 6: $condition .= ' and userdeleted=0 ';
+			case 6: $condition .= ' and eso.userdeleted=0 ';
 			break;
-			default: $condition .= ' and status=' . intval($show_status);
+			default: $condition .= ' and eso.status=' . intval($show_status);
 		}
 			
 			if ($show_status != 5) 
 			{
 				
-				$condition .= ' and userdeleted=0 ';
+				$condition .= ' and eso.userdeleted=0 ';
 			}
-
-            // 限制上级代理商
-//            $condition = ' and hagentid=' . $member['id'];
-
 			$com_verify = com('verify');
-//            $list = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_order_finish') . ' aof left join ' . tablename('ewei_shop_order') . ' eso on eso.id=aof.orderid ' . ' where aof.hagentid=5');
 
+
+//			$list = pdo_fetchall('select id,addressid,ordersn,price,dispatchprice,status,iscomment,isverify,verifyendtime,' . "\n" . 'verified,verifycode,verifytype,iscomment,refundid,expresscom,express,expresssn,finishtime,`virtual`,sendtype,' . "\n" . 'paytype,expresssn,refundstate,dispatchtype,verifyinfo,merchid,isparent,userdeleted' . $s_string . "\n" . ' from ' . tablename('ewei_shop_order') . ' where 1 ' . $condition . ' order by createtime desc LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize, $params);
+
+        $condition .= ' and esm.hagentid=' . $member['id'] . ' ';
+        $list = pdo_fetchall('select esm.id memberid,eso.createtime,eso.id,eso.addressid,eso.ordersn,eso.price,eso.dispatchprice,eso.status,eso.iscomment,eso.isverify,eso.verifyendtime,' . "\n" . 'eso.verified,eso.verifycode,eso.verifytype,eso.iscomment,eso.refundid,eso.expresscom,eso.express,eso.expresssn,eso.finishtime,eso.`virtual`,eso.sendtype,' . "\n" . 'eso.paytype,eso.expresssn,eso.refundstate,eso.dispatchtype,eso.verifyinfo,eso.merchid,eso.isparent,eso.userdeleted' . $s_string . "\n" . ' from ' . tablename('ewei_shop_order') . ' eso left join ' . tablename('ewei_shop_member') . ' esm on esm.openid=eso.openid ' . ' where 1 ' . $condition . ' order by eso.createtime desc LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize, $params);
 //        show_json(1, $list);
-			$list = pdo_fetchall('select id,addressid,ordersn,price,dispatchprice,status,iscomment,isverify,verifyendtime,' . "\n" . 'verified,verifycode,verifytype,iscomment,refundid,expresscom,express,expresssn,finishtime,`virtual`,sendtype,' . "\n" . 'paytype,expresssn,refundstate,dispatchtype,verifyinfo,merchid,isparent,userdeleted' . $s_string . "\n" . ' from ' . tablename('ewei_shop_order') . ' where 1 ' . $condition . ' order by createtime desc LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize, $params);
-			$total = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_order') . ' where 1 ' . $condition, $params);
+
+        $total = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_order') . ' eso inner join ' . tablename('ewei_shop_member') . ' esm on esm.openid=eso.openid ' . ' where 1 ' . $condition, $params);
 			$refunddays = intval($_W['shopset']['trade']['refunddays']);
 //			if ($is_openmerch == 1)
 //			{
@@ -295,15 +295,32 @@ class Order_EweiShopV2Page extends MobileLoginPage
 					}
 				}
 				$row['canverify'] = $canverify;
-//				if ($is_openmerch == 1)
-//				{
-//					$row['merchname'] = (($merch_user[$row['merchid']]['merchname'] ? $merch_user[$row['merchid']]['merchname'] : $_W['shopset']['shop']['name']));
-//				}
+				if ($is_openmerch == 1)
+				{
+					$row['merchname'] = (($merch_user[$row['merchid']]['merchname'] ? $merch_user[$row['merchid']]['merchname'] : $_W['shopset']['shop']['name']));
+				}
 			}
 		
 		unset($row);
-		show_json(1, array('list' => $list, 'pagesize' => $psize, 'total' => $total));
+        // 处理付款时间和收货地址
+        foreach($list as $k => $v) {
+            $list[$k]['paytime'] = date('Y-m-d H:i:s', $v['createtime']);
+            $list[$k]['address'] = pdo_fetch('select * from ' . tablename('ewei_shop_member_address') . ' where id=' . $v['addressid']);
+        }
+        // 获取快递公司
+        $express = m('express')->getExpressList();
+		show_json(1, array('list' => $list, 'pagesize' => $psize, 'total' => $total, 'express' => $express));
 	}
+
+    // 确认发货
+    public function sendConfirm()
+    {
+        global $_W;
+        global $_GPC;
+
+        $res = pdo_update('ewei_shop_order', array('status' => 2, 'express' => trim($_GPC['express']), 'expresscom' => trim($_GPC['expresscom']), 'expresssn' => trim($_GPC['expresssn']), 'sendtime' => time()), array('id' => $_GPC['orderid'], 'uniacid' => $_W['uniacid']));
+        show_json(1, $res);
+    }
 	public function alipay() 
 	{
 		global $_W;

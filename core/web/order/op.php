@@ -398,6 +398,7 @@ class Op_EweiShopV2Page extends WebPage
 		global $_W;
 		global $_GPC;
 		$opdata = $this->opData();
+//        show_json(1, $_GPC);
 		extract($opdata);
 		if (empty($item['addressid'])) 
 		{
@@ -410,27 +411,28 @@ class Op_EweiShopV2Page extends WebPage
 				show_json(0, '订单未付款，无法发货！');
 			}
 		}
-		if ($_W['ispost']) 
+		if ($_W['ispost'])
 		{
-			if (!(empty($_GPC['isexpress'])) && empty($_GPC['expresssn'])) 
+			if (!(empty($_GPC['isexpress'])) && empty($_GPC['expresssn']))
 			{
 				show_json(0, '请输入快递单号！');
 			}
-			if (!(empty($item['transid']))) 
+			if (!(empty($item['transid'])))
 			{
 			}
 			$time = time();
+//            show_json(1, array('status' => 2, 'express' => trim($_GPC['express']), 'expresscom' => trim($_GPC['expresscom']), 'expresssn' => trim($_GPC['expresssn']), 'sendtime' => $time));
 			pdo_update('ewei_shop_order', array('status' => 2, 'express' => trim($_GPC['express']), 'expresscom' => trim($_GPC['expresscom']), 'expresssn' => trim($_GPC['expresssn']), 'sendtime' => $time), array('id' => $item['id'], 'uniacid' => $_W['uniacid']));
-			if (!(empty($item['refundid']))) 
+			if (!(empty($item['refundid'])))
 			{
 				$refund = pdo_fetch('select * from ' . tablename('ewei_shop_order_refund') . ' where id=:id limit 1', array(':id' => $item['refundid']));
-				if (!(empty($refund))) 
+				if (!(empty($refund)))
 				{
 					pdo_update('ewei_shop_order_refund', array('status' => -1, 'endtime' => $time), array('id' => $item['refundid']));
 					pdo_update('ewei_shop_order', array('refundstate' => 0), array('id' => $item['id']));
 				}
 			}
-			if ($item['paytype'] == 3) 
+			if ($item['paytype'] == 3)
 			{
 				m('order')->setStocksAndCredits($item['id'], 1);
 			}
@@ -444,6 +446,7 @@ class Op_EweiShopV2Page extends WebPage
 			$address = pdo_fetch('SELECT * FROM ' . tablename('ewei_shop_member_address') . ' WHERE id = :id and uniacid=:uniacid', array(':id' => $item['addressid'], ':uniacid' => $_W['uniacid']));
 		}
 		$express_list = m('express')->getExpressList();
+
 		include $this->template();
 	}
 	public function remarksaler() 
