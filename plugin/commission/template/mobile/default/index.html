@@ -125,7 +125,7 @@
 		</a>
 
 		<div style="width:100%;height:0.5rem;"></div>
-		{if empty($this->set['closemyshop'])}
+		{if intval($member['isaagent']) === 1 && intval($member['aagentstatus']) === 1}
 		<a class="fui-block-child" href="{php echo mobileUrl('commission/myshop/set')}" style="color:black;">
 			<div style="width:100%;height:2.8rem;line-height:2.8rem;border-bottom:1px solid #ECECEC;border-top:1px solid #ECECEC">
 				<span style="font-size:0.7rem;margin-left:0.7rem">我是店长<img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="float:right;margin-top:0.6rem;margin-right:20px;width:2%;margin-top: 1.2rem;"></span>

@@ -26,7 +26,7 @@ define(['core', 'tpl'], function (core, tpl) {
                     html += '" style="display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #F1F1F1;"><div style="position: relative;">';
                     html += '<img src="';
                     if (list[i]['avatar']) {
-                        html += list[i][''];
+                        html += list[i]['avatar'];
                     } else {
                         html += '../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png';
                     }

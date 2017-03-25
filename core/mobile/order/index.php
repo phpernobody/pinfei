@@ -31,6 +31,7 @@ class Index_EweiShopV2Page extends MobileLoginPage
 			include $this->template('merch/order/index');
 			return;
 		}
+
 		include $this->template();
 	}
 	public function get_list() 
@@ -77,8 +78,9 @@ class Index_EweiShopV2Page extends MobileLoginPage
 			}
 			
 			$com_verify = com('verify');
-			$list = pdo_fetchall('select id,addressid,ordersn,price,dispatchprice,status,iscomment,isverify,verifyendtime,' . "\n" . 'verified,verifycode,verifytype,iscomment,refundid,expresscom,express,expresssn,finishtime,`virtual`,sendtype,' . "\n" . 'paytype,expresssn,refundstate,dispatchtype,verifyinfo,merchid,isparent,userdeleted' . $s_string . "\n" . ' from ' . tablename('ewei_shop_order') . ' where 1 ' . $condition . ' order by createtime desc LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize, $params);
-			$total = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_order') . ' where 1 ' . $condition, $params);
+			$list = pdo_fetchall('select id,addressid,ordersn,price,dispatchprice,status,iscomment,isverify,verifyendtime,createtime,' . "\n" . 'verified,verifycode,verifytype,iscomment,refundid,expresscom,express,expresssn,finishtime,`virtual`,sendtype,' . "\n" . 'paytype,expresssn,refundstate,dispatchtype,verifyinfo,merchid,isparent,userdeleted' . $s_string . "\n" . ' from ' . tablename('ewei_shop_order') . ' where 1 ' . $condition . ' order by createtime desc LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize, $params);
+
+            $total = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_order') . ' where 1 ' . $condition, $params);
 			$refunddays = intval($_W['shopset']['trade']['refunddays']);
 			if ($is_openmerch == 1) 
 			{
@@ -296,6 +298,9 @@ class Index_EweiShopV2Page extends MobileLoginPage
 			}
 		
 		unset($row);
+        foreach($list as $k => $v) {
+            $list[$k]['paytime'] = date('Y-m-d H:i:s', $v['createtime']*1000);
+        }
 		show_json(1, array('list' => $list, 'pagesize' => $psize, 'total' => $total));
 	}
 	public function alipay() 

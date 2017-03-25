@@ -83,7 +83,7 @@
                 <%each order.order_goods as g%>
                 <div class="fui-list" style="display: flex; justify-content: flex-start; align-items: flex-start;">
                     <img data-lazy="<%g.thumb%>" style='width:3.2rem;height:3.2rem;'>
-                    <div style="font-size: 10px; color: #333; width: calc(100% - 70px - 3.2rem); margin-left: 10px;">
+                    <div style="font-size: 10px; color: #333; width: calc(100% - 70px - 3.2rem); margin-left: 10px;display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
                         <%g.title%>  <%g.shorttitle%>
                     </div>
                     <div style="width: 70px; text-align: right;">

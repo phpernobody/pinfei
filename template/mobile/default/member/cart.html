@@ -135,11 +135,11 @@ height: 1rem;line-height: 1rem;
 						-->
 
 					</div>
-					<div style="color: red; width: 100%;display: flex;">
-							共<span class="se-total"><%g.total%></span>件商品:
-							<span class="price">￥<span class='se-totalprice'><%g.marketprice * g.total%></span></span>
-							<span class="marketprice" style="display: none;"><%g.marketprice%></span>
-						</div>
+					<div style="color: red; width: 100%;display: none;">
+						共<span class="se-total"><%g.total%></span>件商品:
+						<span class="price">￥<span class='se-totalprice'><%g.marketprice * g.total%></span></span>
+						<span class="marketprice" style="display: none;"><%g.marketprice%></span>
+					</div>
 
 				</div>
 				<div class='fui-list-angle' id='ljt' style="width: 20%;height: 4rem;margin-left: 0.5rem;padding:0.5rem;text-align: center;line-height: 3rem;">
@@ -222,7 +222,7 @@ height: 1rem;line-height: 1rem;
 			success:function(data){
                 if(data){
 					history.go(0);
-//					$('#cart_container').load();
+					$('#cart_container').load();
 				}
 			},
 		})
