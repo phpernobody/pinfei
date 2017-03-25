@@ -31,8 +31,8 @@
                     {if $l['nickname']}{$l['nickname']}{else}未获取{/if}
                 </div>
                 <div>
-                    <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">入住时间：</span>
-                    {php echo date("Y-m-d",$l['agenttime'])}
+                    <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">注册时间：</span>
+                    {php echo $l['createtime']}
                 </div>
                 <div>
                     <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">消费金额：</span>

@@ -104,6 +104,35 @@ class Index_EweiShopV2Page extends MobileLoginPage
 		}
 
 
+        // 用户关系展示
+        if (intval($member['oldagentid']) !== 0) {
+            $agentInfo = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where id=' . $member['oldagentid']);
+            $agent = $agentInfo['nickname'];
+        } else if (intval($member['agentid']) !== 0) {
+            $agentInfo = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where id=' . $member['agentid']);
+            $agent = $agentInfo['nickname'];
+        } else {
+            $agent = '总店';
+        }
+
+        if (intval($member['isaagent']) === 1 && intval($member['aagentstatus']) === 1) {
+            switch(intval($member['aagenttype'])) {
+                case 1: $level = '省级代理商';break;
+                case 2: $level = '市级代理商';break;
+                case 3: $level = '区级代理商';break;
+                default: $level = '分销商';break;
+            }
+        } else {
+            $level = '分销商';
+        }
+
+        $memberRelative = array(
+            'agent' => $agent,
+            'level' => $level
+        );
+
+
+
 		$wapset = m('common')->getSysset('wap');
 		include $this->template();
 	}

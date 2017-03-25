@@ -28,6 +28,7 @@
 
     </div>
 
+    {if intval(count($list)) > 0}
 
     <div style="background: #F8F8F8">
         {loop $list $l}
@@ -134,6 +135,12 @@
         {/if}
         {/loop}
     </div>
+
+    {else} 
+    <div style="text-align: center; padding-top: 1rem;">
+        您还未发展下属管理团队
+    </div>
+    {/if}
 
 	<script language='javascript'>
 		require(['../addons/ewei_shopv2/plugin/abonus/static/js/team.js'], function (modal) {

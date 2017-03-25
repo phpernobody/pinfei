@@ -34,7 +34,7 @@ define(['core', 'tpl'], function (core, tpl) {
                     html += '</div><div style="width: calc(100% - 7.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;"><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>';
                     html += list[i]['nickname'];
                     html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">入住时间：</span>';
-                    html += list[i]['agenttime'].split(' ')[0];
+                    html += list[i]['createtime'];
                     html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">消费金额：</span>';
                     html += list[i]['moneycount'];
                     html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">佣金：</span>';
