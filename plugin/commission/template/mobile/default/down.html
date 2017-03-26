@@ -22,17 +22,17 @@
             {if $l['avatar']}
             <img src="{$l['avatar']}" style="width: 3.3rem; height: 3.3rem; margin-left: 0.65rem">
             {else}
-            <img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png" style="width: 3.3rem; height: 3.3rem; margin-left: .5rem">
+            <img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png" style="width: 3.3rem; height: 3.3rem; margin-left: .65rem">
             {/if}
             </div>
-            <div style="width: calc(100% - 7.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;">
+            <div style="width: calc(100% - 8rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;">
                 <div>
                     <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>
                     {if $l['nickname']}{$l['nickname']}{else}未获取{/if}
                 </div>
                 <div>
-                    <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">入住时间：</span>
-                    {php echo date("Y-m-d",$l['agenttime'])}
+                    <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">注册时间：</span>
+                    {php echo $l['createtime']}
                 </div>
                 <div>
                     <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">消费金额：</span>

@@ -299,7 +299,7 @@ class Index_EweiShopV2Page extends MobileLoginPage
 		
 		unset($row);
         foreach($list as $k => $v) {
-            $list[$k]['paytime'] = date('Y-m-d H:i:s', $v['createtime']*1000);
+            $list[$k]['paytime'] = date('Y-m-d H:i:s', $v['createtime']);
         }
 		show_json(1, array('list' => $list, 'pagesize' => $psize, 'total' => $total));
 	}

@@ -26,6 +26,73 @@
     .fui-list:before{
         border: 0px;
     }
+    .se-mobiscroll-btn {
+        background: #fff;
+        height: 2rem;
+        line-height: 2rem;
+        font-size: .7rem;
+
+    }
+
+
+    /*时间空间颜色修改*/
+
+    /*顶部时间*/
+    #se-plugin-express_dummy {
+        border: none;
+        display: block;
+        background: none;
+        height: 100%;
+        line-height: 100%;
+        text-align: right;
+        margin-right: .3rem;
+    }
+    .sense-ui .dwv{
+     border-bottom:1px solid;
+     color:#3B6EBD;
+    }
+    /*整体背景颜色*/
+    .sense-ui{
+     background: #fff;
+    }
+    /*中文颜色*/
+    .dwl{
+     color:#3B6EBD;
+    }
+    /*滚轮背景*/
+    .dww{
+     background: #fff;
+    }
+    .sense-ui .dwwc {
+     background: #fff;
+    }
+    /*按钮*/
+    .dwb:link{
+     color:#3B6EBD;
+     background: none;
+     text-shadow: none;
+     border: 1px solid;
+     -webkit-box-shadow:none;
+    }
+
+    /*数字上下的渐变颜色*/
+      .dwwo{
+     background: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgb(255, 255, 255)),color-stop(0.5, rgba(255, 255, 255,0)),color-stop(1, rgb(255, 255, 255)));
+    }
+    .dwwl{
+     background: none;
+    }
+    /*数字的颜色*/
+    .dww li{
+    text-shadow: none;
+     color: #3B6EBD;
+    /* font-weight: bold; */
+    }
+
+    /*数值中间一横*/
+/*    .dwwol{
+     border: none;
+    }*/
 </style>
 <div class='fui-page order-list-page'>
     <!-- <div class="fui-header" style="background: #fff;">
@@ -64,57 +131,125 @@
         </div>
         {template '_copyright'}
     </div>
-	<!--<span class='status <%order.statuscss%>'><%order.statusstr%></span>-->
-    <script id='tpl_order_index_list' type='text/html'>
-        <%each list as order%>
-        <div class='fui-list-group order-item' data-orderid="<%order.id%>" style="margin-top: .5rem;" >
- <!--            <a href="{php echo mobileUrl('order/detail')}&id=<%order.id%>" data-nocache='true'> -->
-                <div class='fui-list-group-title' style="font-size:0.5rem;color:#7d7c7c;font-family: '微软雅黑',sans-serif;line-height:1.7rem;height:1.7rem">
-                    <span style="float:left;text-overflow :ellipsis;width: 10rem;overflow:hidden;white-space:nowrap;">订单号: <%order.ordersn%></span>
-                    <span style="float:right;color: #ec3028"><!-- 订单日期:{php echo date('Y-m-d H:i:s',$order['createtime'])} -->
-                    <% if order.status==0%>待付款<%/if%><% if order.status==1%>待发货<%/if%>
-                    <% if order.status==2%>待发货<%/if%><% if order.status==3%>已完成<%/if%>
-                    </span>
-                </div>
-                <%each order.goods[0].goods as g%>
-                <div class="fui-list goods-list" style="background: #f2f2f2;margin-bottom: .5rem">
-                    <div class="fui-list-media" style="<%if g.status==2%>padding-left:0.5rem;<%/if%>">
-                        <img data-lazy="<%g.thumb%>" class="round" style="width:5rem;height:5rem">
-                    </div>
-                    <div class="fui-list-inner"style="height:5rem;">
-                        <div class="text goodstitle"  style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"><%if g.seckill_task%><span class="fui-label fui-label-danger"><%g.seckill_task.tag%></span><%/if%><%g.title%></div>
-                         <%if g.status==2%><span class="fui-label fui-label-danger">赠品</span><%/if%>
-                        <%if g.optionid!='0'%><div class='subtitle'><%g.optiontitle%></div><%/if%>
-                        <div style="position:absolute; bottom:1rem;">
-                            <span style="font-size:.65rem;color: #7d7c7c;">订单日期:{php echo date('Y-m-d H:i:s',$order['createtime'])}</span>
-                        </div>
-                        
-                        <div style="width: 100%;font-size: 0.65rem;font-family:'微软雅黑',sans-serif;color:#949494;position:absolute; bottom:0;padding-right: 0.5rem">
-                            <span style="float: left;color:#ec3028">共<%g.total%>件商品:￥<%g.price%></span>
-                            <span style="float: right;">数量：<%g.total%>件</span>
-                        </div>
-                    </div>
-                </div>
-                <%/each%>
 
-<!--                 <div class='fui-list-group-title lineblock'style="height: 1.2rem;line-height: 1.2rem;font-size: .65rem">
-                    <span class='status'>共 <span class='text-danger'><%order.goods.length%></span> 个商品 实付: <span class='text-danger'>&yen; <%order.price%></span></span>
-                </div> -->
-                <% if order.status==1%>
-                <div style="width: 100%; display: flex; justify-content: flex-end;">
-                    <div style="float: right; margin-right: .5rem; margin-bottom: .5rem;width: 2rem; height: 1rem; line-height: 1rem; font-size: .5rem; background: red; border-radius: .2rem;color: #fff;text-align: center;">发货</div>
-                </div>
-                <%/if%>
-            <!-- </a> -->
+    <div class="se-send" style="position: absolute; top: 0; width: 100%; height: 100%; z-index: 100; background: #fff; display: none;">
+        <div style="width: 100%; height: 2rem; line-height: 2rem; padding: 0 .5rem; display: flex; justify-content: space-between; color: 0.65rem;">
+            <div>商品</div>
+            <div class="se-status" style="color: red; color: 0.55rem;">
+                待发货
+            </div>
         </div>
-        <%/each%>
+        <div style="background: #f2f2f2; overflow: hidden; padding: .5rem;">
+            <div class="se-order-goods">
+                
+            </div>
+        </div>
+
+
+        <div style="margin-top: .5rem; border-top: 1px solid #ddd; font-size: .6rem; height: 1.5rem; line-height: 1.5rem;padding: 0 .5rem; color: #949494;">收货人:  <span class="se-order-address-user" style="color: #333;">姓名</span></div>
+        <div style="border-top: 1px solid #ddd; font-size: .6rem; height: 1.5rem; line-height: 1.5rem;padding: 0 .5rem; color: #949494;">电话:  <span class="se-order-address-phone" style="color: #333;">姓名</span></div>
+        <div style="border-top: 1px solid #ddd; font-size: .6rem; height: 1.5rem; line-height: 1.5rem;padding: 0 .5rem; color: #949494;">订单号:  <span class="se-order-sn" style="color: #333;">姓名</span></div>
+        <div style="border-top: 1px solid #ddd; font-size: .6rem; height: 1.5rem; line-height: 1.5rem;padding: 0 .5rem; color: #949494; border-bottom: 1px solid #ddd;">地址:  <span class="se-order-address-address" style="color: #333;">姓名</span></div>
+        
+
+        <div style="margin-top: .5rem; background: #fbfbfb; font-size: 0.65rem; border-top: 1px solid #eee; height: 1.5rem; line-height: 1.5rem; padding: 0 .5rem;">发货</div>
+         <div style="width: 100%; display: flex; border-top: 1px solid #ddd; font-size: .65rem; height: 1.5rem; line-height: 1.5rem; justify-content: space-between; padding: 0 .5rem;">
+            <div>快递公司</div>
+            <div style="color: #949494; font-size: .6rem; border: none; text-align: right;">
+                <select id="se-plugin-express" >
+                    <option value="false">其他快递</option>
+                </select>
+            </div>
+
+        </div>
+        <div style="width: 100%; display: flex; border-top: 1px solid #ddd; font-size: .65rem; height: 1.5rem; line-height: 1.5rem; justify-content: space-between; padding: 0 .5rem;">
+            <div>快递单号</div>
+            <input class="se-express-sn" type="text" style="color: #949494; font-size: .6rem; border: none; text-align: right;" placeholder="请输入物流单号">
+        </div>
+
+        <div style="width: 100%; position: absolute; bottom: 0; height: 2.5rem; line-height: 2.5rem; z-index: 1000; background: #eee; display: flex; justify-content: space-between; text-align: center;">
+            <div class="se-order-cancel" style="width: 5.5rem; color: #949494">返回</div>
+            <div class="se-order-confirm" style="width: calc(100% - 5.5rem); color: #fff; background: #ec3028;">确认发货</div>
+        </div>
+    </div>
+    
+    	<!--<span class='status <%order.statuscss%>'><%order.statusstr%></span>-->
+    <script id='tpl_order_index_list' type='text/html'>
+        <div class="se-tpl-orders">
+            <%each list as order%>
+            <div class='fui-list-group order-item' data-orderid="<%order.id%>" style="margin-top: .5rem;" >
+     <!--            <a href="{php echo mobileUrl('order/detail')}&id=<%order.id%>" data-nocache='true'> -->
+                    <div class='fui-list-group-title' style="font-size:0.5rem;color:#7d7c7c;font-family: '微软雅黑',sans-serif;line-height:1.7rem;height:1.7rem">
+                        <span style="float:left;text-overflow :ellipsis;width: 10rem;overflow:hidden;white-space:nowrap;">订单号: <%order.ordersn%></span>
+                        <span style="float:right;color: #ec3028"><!-- 订单日期:{php echo date('Y-m-d H:i:s',$order['createtime'])} -->
+                        <% if order.status==0%>待付款<%/if%><% if order.status==1%>待发货<%/if%>
+                        <% if order.status==2%>待发货<%/if%><% if order.status==3%>已完成<%/if%>
+                        </span>
+                    </div>
+                    <%each order.goods[0].goods as g%>
+                    <div class="fui-list goods-list" style="background: #f2f2f2;margin-bottom: .5rem">
+                        <div class="fui-list-media" style="<%if g.status==2%>padding-left:0.5rem;<%/if%>">
+                            <img data-lazy="<%g.thumb%>" class="round" style="width:5rem;height:5rem">
+                        </div>
+                        <div class="fui-list-inner"style="height:5rem;">
+                            <div class="text goodstitle"  style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"><%if g.seckill_task%><span class="fui-label fui-label-danger"><%g.seckill_task.tag%></span><%/if%><%g.title%></div>
+                             <%if g.status==2%><span class="fui-label fui-label-danger">赠品</span><%/if%>
+                            <%if g.optionid!='0'%><div class='subtitle'><%g.optiontitle%></div><%/if%>
+                            <div style="position:absolute; bottom:1rem;">
+                                <span style="font-size:.65rem;color: #7d7c7c;">订单日期:<%order.paytime%></span>
+                            </div>
+                            
+                            <div style="width: 100%;font-size: 0.65rem;font-family:'微软雅黑',sans-serif;color:#949494;position:absolute; bottom:0;padding-right: 0.5rem">
+                                <span style="float: left;color:#ec3028">共<%g.total%>件商品:￥<%g.price%></span>
+                                <span style="float: right;">数量：<%g.total%>件</span>
+                            </div>
+                        </div>
+                    </div>
+                    <%/each%>
+
+    <!--                 <div class='fui-list-group-title lineblock'style="height: 1.2rem;line-height: 1.2rem;font-size: .65rem">
+                        <span class='status'>共 <span class='text-danger'><%order.goods.length%></span> 个商品 实付: <span class='text-danger'>&yen; <%order.price%></span></span>
+                    </div> -->
+                    <% if order.status==1%>
+                    <div style="width: 100%; display: flex; justify-content: flex-end;">
+                        <div data-id="<%order.id%>" class="se-send-btn" style="float: right; margin-right: .5rem; margin-bottom: .5rem;width: 2rem; height: 1rem; line-height: 1rem; font-size: .5rem; background: red; border-radius: .2rem;color: #fff;text-align: center;">发货</div>
+                    </div>
+                    <%/if%>
+                <!-- </a> -->
+            </div>
+            <%/each%>
+        </div>
     </script>
     {if com('verify')}
     {template 'order/verify'}
     {/if}
+
+
     <script language='javascript'>
         // require(['biz/order/list'], function (modal) {
         //     modal.init({fromDetail:false,status:"{$_GPC['status']}",merchid:{php echo intval($_GPC['merchid'])}});
+        $(function () {
+            $("#se-plugin-express").mobiscroll().select({ 
+                theme: 'sense-ui', 
+                display: 'bottom',
+                group: false,
+                rows: 3,
+                select: 'single',
+                inputClass: 'se-mobiscroll-btn',
+                buttons: [ 
+                    { 
+                        text: '确定',
+                        cssClass: 'se-mobiscroll-btn', 
+                        handler: 'set'
+                    },
+                    {
+                        text: '取消',
+                        cssClass: 'se-mobiscroll-btn', 
+                        handler: 'cancel'
+                    }
+                ]
+            });
+        });
 
         require(['../addons/ewei_shopv2/plugin/abonus/static/js/list.js'], function (modal) {
             modal.init({ 

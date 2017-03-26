@@ -68,6 +68,8 @@ class Down_EweiShopV2Page extends CommissionMobileLoginPage
         }
 
         unset($row);
+
+//        var_dump($list);exit;
         return $list;
     }
 

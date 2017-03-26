@@ -16,11 +16,16 @@ class Team_EweiShopV2Page extends CommissionMobileLoginPage
 
         $list = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where uniacid = ' . $_W['uniacid'] . ' and isaagent = 1 and hagentid='. $member['id'] . '  ORDER BY id desc');
         foreach($list as $k => $v) {
+            $list[$k]['totalagent'] = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_member') . ' where hagentid=' . $list[$k]['id'] . ' and isaagent=0');
             $downList = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where uniacid = ' . $_W['uniacid'] . ' and isaagent = 1 and hagentid='. $v['id'] . '  ORDER BY id desc');
+
+            foreach($downList as $key => $value) {
+                $downList[$key]['totalagent'] = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_member') . ' where hagentid=' . $downList[$key]['id'] . ' and isaagent=0');
+            }
             $list[$k]['downList'] = $downList;
         }
 
-//        var_dump($member);exit;
+//        var_dump($list);exit;
 
 //        var_dump($list);exit;
 //		$levelcount1 = $member['level1'];

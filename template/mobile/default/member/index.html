@@ -65,11 +65,12 @@
 				<div style="float: left;margin-left: 0.4rem;">
 					<a href="{php echo mobileUrl('member/info')}"style="color:#fff;font-size: 0.6rem;">
 						<img src="../addons/ewei_shopv2/static/img/hy_1.png" style="height:0.8rem;margin-right: .2rem">
-						{if empty($level['id'])}
+<!-- 						{if empty($level['id'])}
 					    	{if empty($_W['shopset']['shop']['levelname'])}普通会员{else}{$_W['shopset']['shop']['levelname']}{/if}
 					    {else}
 					    	{$level['levelname']}
-					    {/if}
+					    {/if} -->
+					    {$memberRelative['level']}
 					</a>
 				</div>
 				<div style="float: right;margin-right: 0.4rem;">
