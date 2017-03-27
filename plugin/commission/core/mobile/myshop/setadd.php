@@ -1,9 +1,10 @@
 <?php
-if (!defined('IN_IA')) 
-{
-	exit('Access Denied');
-}
-class Info_EweiShopV2Page extends MobileLoginPage 
+	if (!(defined('IN_IA'))) 
+	{
+		exit('Access Denied');
+	}	
+require EWEI_SHOPV2_PLUGIN . 'commission/core/page_login_mobile.php';
+class Setadd_EweiShopV2Page extends CommissionMobileLoginPage
 {
 	protected $member;
 	public function __construct() 
@@ -13,7 +14,7 @@ class Info_EweiShopV2Page extends MobileLoginPage
 		parent::__construct();
 		$this->member = m('member')->getInfo($_W['openid']);
 	}
-	protected function diyformData() 
+	/*protected function diyformData() 
 	{
 		$template_flag = 0;
 		$diyform_plugin = p('diyform');
@@ -35,13 +36,13 @@ class Info_EweiShopV2Page extends MobileLoginPage
 			}
 		}
 		return array('template_flag' => $template_flag, 'set_config' => $set_config, 'diyform_plugin' => $diyform_plugin, 'formInfo' => $formInfo, 'diyform_id' => $diyform_id, 'diyform_data' => $diyform_data, 'fields' => $fields, 'f_data' => $f_data);
-	}
+	}*/
 	public function main() 
 	{
 		global $_W;
 		global $_GPC;
-		$diyform_data = $this->diyformData();
-		extract($diyform_data);
+		/*//$diyform_data = $this->diyformData();
+		extract($diyform_data);*/
 		$returnurl = urldecode(trim($_GPC['returnurl']));
 		$member = $this->member;
 		$wapset = m('common')->getSysset('wap');
@@ -73,18 +74,38 @@ class Info_EweiShopV2Page extends MobileLoginPage
             'agent' => $agent,
             'level' => $level
         );
-
-//        var_dump($memberRelative);exit;
+        if(empty($_POST)){
+        	include $this->template();
+        }else{
+        	//var_dump($_POST);
+        	
+        	$memberdata=$_POST;
+        	pdo_update('ewei_shop_member', $memberdata, array('openid' => $_W['openid'], 'uniacid' => $_W['uniacid']));
+			if (!empty($this->member['uid'])) 
+			{
+				$mcdata = $_GPC['mcdata'];
+				m('member')->mc_update($this->member['uid'], $mcdata);
+			}
+			$url=mobileUrl('commission/myshop/set',array('mid'=>$mid));
+			Header("Location: $url"); 
+        }
 		
-		include $this->template();
 	}
-	public function submit() 
+	
+	/*public function submit() 
 	{
 		global $_W;
 		global $_GPC;
 		$diyform_data = $this->diyformData();
 		extract($diyform_data);
 		$memberdata = $_GPC['memberdata'];
+		//var_dump($memberdata);
+		pdo_update('ewei_shop_member', $memberdata, array('openid' => $_W['openid'], 'uniacid' => $_W['uniacid']));
+			if (!empty($this->member['uid'])) 
+			{
+				$mcdata = $_GPC['mcdata'];
+				m('member')->mc_update($this->member['uid'], $mcdata);
+			}
 		if ($template_flag == 1) 
 		{
 			$data = array();
@@ -116,6 +137,5 @@ class Info_EweiShopV2Page extends MobileLoginPage
 			}
 		}
 		show_json(1);
-	}
+	}*/
 }
-?>

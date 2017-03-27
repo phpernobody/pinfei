@@ -41,7 +41,7 @@ define(['jquery.ui'], function (ui) {
                         imgurl: '../addons/ewei_shopv2/plugin/diypage/static/images/default/menu-3.png',
                         linkurl: '',
                         iconclass: 'icon-group',
-                        text: '分销中心'
+                        text: '品飞成员'
                     },
                     M0123456789104: {
                         imgurl: '../addons/ewei_shopv2/plugin/diypage/static/images/default/menu-4.png',

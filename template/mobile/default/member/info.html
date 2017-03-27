@@ -23,6 +23,12 @@
 	.fui-cell-group:not(.fui-cell-group-o):before{
 		border: 0px;
 	}
+	.btn.btn-success:active,
+	.btn.btn-success.disabled {
+		background: #F33C2C;
+		color: #666;
+		border: 1px solid #F33C2C;
+	}
 </style>
 <div class='fui-page  fui-page-current'>
     <!-- <div class="fui-header">
@@ -41,7 +47,7 @@
 				</div>
 				<div style="text-align: center;font-size: 0.75rem;color: #fff;font-family:'微软雅黑',sans-serif;margin-top:1rem">
 					{if empty($member['nickname'])}
-						用户昵称{else}用户:{$member['nickname']}
+						用户昵称{else}品飞成员:{$member['nickname']}
 					{/if}
 				</div>
 				<div style="text-align: center;font-size: 0.6rem;color:#fffc00;font-family:'微软雅黑',sans-serif;overflow: hidden;line-height: 1rem;height: 1rem">
@@ -74,7 +80,7 @@
 				</div>
 			{/if}
 			
-			<div class="fui-cell">
+			<!--<div class="fui-cell">
 				<div class="fui-cell-label"style="letter-spacing: .5em">微信号</div>
 				<div class="fui-cell-info"><input type="text"  class='fui-input'  id='weixin' name='weixin' placeholder="请输入您的微信号"  value="{$member['weixin']}" /><i><img src="../addons/ewei_shopv2/static/img/grzl_img.png" style="height:.7rem " ></i></div>
 			</div>
@@ -85,7 +91,7 @@
 			<div class="fui-cell">
 				<div class="fui-cell-label">兴趣爱好</div>
 				<div class="fui-cell-info"><input type="text"  class='fui-input'  id='hobe' name='hobe' placeholder="请输入您的兴趣爱好"  value="" /><i><img src="../addons/ewei_shopv2/static/img/grzl_img.png" style="height:.7rem " ></i></div>
-			</div>
+			</div>-->
 			<div class="fui-cell">
 				<div class="fui-cell-label">出生日期</div>
 				<div class="fui-cell-info"><input type="text"  class='fui-input'  id='birthday' name='birthday' placeholder="请选择出生日期"  value="{$member['birthday']}" readonly/><i><img src="../addons/ewei_shopv2/static/img/grzl_img.png" style="height:.7rem " ></i></div>
