@@ -22,7 +22,7 @@
         <link href="../addons/ewei_shopv2/vendor/mobiscroll/mobiscroll.custom-2.17.0.min.css" rel="stylesheet" type="text/css">
         <script language="javascript">require(['core'],function(modal){modal.init({siteUrl: "{$_W['siteroot']}",baseUrl: "{php echo mobileUrl('ROUTES')}"})});</script>
 
-
+		<script>document.title = "品飞商城"; </script>
         {if !empty($_W['shopset']['shop']['loading'])}
         <style>.fui-goods-group.block .fui-goods-item .image {background-image: url("{php echo tomedia($_W['shopset']['shop']['loading'])}");}</style>
         {/if}
