@@ -62,6 +62,12 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
 		$qrimg = pdo_fetch('select qrimg from' . tablename('ewei_shop_poster_qr') . 'where openid="' . $member['openid'].'"')['qrimg'];
 		//var_dump($qrimg);
 		//echo $member['openid'];
+		//店铺名称
+		$xiaodname=$member['xiaodianname'];
+		//店铺地址
+		$xiaodadd=$member['xiaodianadd'];
+		//店铺图片
+		$xiaodpath=$member['xiaodpath'];
 		$shop['openselect'] = $openselect;
 		include $this->template('commission/myshop/set');
 	}

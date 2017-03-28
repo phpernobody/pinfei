@@ -39,6 +39,7 @@
 		border: 1px solid #F33C2C;
 	}
 </style>
+
 <div class='fui-page  fui-page-current'>
     <!-- <div class="fui-header">
     		<div class="fui-header-left">
@@ -84,17 +85,36 @@
 					<div class="fui-cell-label" >店铺地址:</div>
 					<div class="fui-cell-info"><input type="text" class='fui-input' id='xiaodianadd' name='xiaodianadd' placeholder="请输入店铺地址"  value="{$member['xiaodianadd']}" /><i><img style="height:.7rem " src="../addons/ewei_shopv2/static/img/grzl_img.png"  ></i></div>
 				</div>
+				<!--<div class="form-group">
+                    <label class="col-sm-2 control-label">商品图片</label>
+                    <div class="col-sm-4">
+                        <input type="file" id="pic" name="file" class="form-control">
+                    </div>
+                    <img src="__PUBLIC__/<?=$getGoods['pic'];?>" id="pic_img"  style="width:80px;height:80px;">
+                    </img>
+                </div>-->
 				<div class="fui-cell">
 					<div class="fui-cell-label">店铺图片</div>
 					<div class="fui-cell-info">
-						<input type="file" />						
+						<input type="file" id='pic' name='upfile' class='fui-input'/>
 					</div>
+				</div>
+				<div id="pic_div" class="fui-cell" style="height: 8rem;">
+					<!--<img src="" id='pic_img' style="margin: 0 auto"/>-->
 				</div>
 			</div>
 			<a href='#' onclick="document.getElementById('form_setadd').submit();" class='btn btn-success block' style="border-radius: 0;">确认修改</a>
 		</form>
 	</div>
-	
+	<script type="text/javascript">
+		  $('#pic').on('change',function(){
+
+        var src_p = window.URL.createObjectURL(this.files[0]);
+//      $('#pic_img').attr('src', src_p);
+		var htm ='<img src="'+src_p+'" style="margin: 0 auto;height: 7rem;"/>'
+        $('#pic_div').append(htm)  ; 
+    })
+	</script>
 </div>
 {template '_footer'}
 

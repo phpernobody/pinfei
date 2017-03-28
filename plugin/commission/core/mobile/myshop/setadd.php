@@ -14,29 +14,7 @@ class Setadd_EweiShopV2Page extends CommissionMobileLoginPage
 		parent::__construct();
 		$this->member = m('member')->getInfo($_W['openid']);
 	}
-	/*protected function diyformData() 
-	{
-		$template_flag = 0;
-		$diyform_plugin = p('diyform');
-		if ($diyform_plugin) 
-		{
-			$set_config = $diyform_plugin->getSet();
-			$user_diyform_open = $set_config['user_diyform_open'];
-			if ($user_diyform_open == 1) 
-			{
-				$template_flag = 1;
-				$diyform_id = $set_config['user_diyform'];
-				if (!empty($diyform_id)) 
-				{
-					$formInfo = $diyform_plugin->getDiyformInfo($diyform_id);
-					$fields = $formInfo['fields'];
-					$diyform_data = iunserializer($this->member['diymemberdata']);
-					$f_data = $diyform_plugin->getDiyformData($diyform_data, $fields, $this->member);
-				}
-			}
-		}
-		return array('template_flag' => $template_flag, 'set_config' => $set_config, 'diyform_plugin' => $diyform_plugin, 'formInfo' => $formInfo, 'diyform_id' => $diyform_id, 'diyform_data' => $diyform_data, 'fields' => $fields, 'f_data' => $f_data);
-	}*/
+
 	public function main() 
 	{
 		global $_W;
@@ -74,12 +52,22 @@ class Setadd_EweiShopV2Page extends CommissionMobileLoginPage
             'agent' => $agent,
             'level' => $level
         );
+        
         if(empty($_POST)){
         	include $this->template();
         }else{
         	//var_dump($_POST);
-        	
-        	$memberdata=$_POST;
+        	//var_dump($_FILES);
+        	if(!is_uploaded_file($_FILES["upfile"]['tmp_name'])){
+        		$memberdata=$_POST;
+        	}else{
+        		//var_dump($_FILES);
+        		$path=$this->up_img();
+        		//var_dump($path);
+        		$memberdata=$_POST;
+        		$memberdata['xiaodpath']=$path;
+        		
+        	}
         	pdo_update('ewei_shop_member', $memberdata, array('openid' => $_W['openid'], 'uniacid' => $_W['uniacid']));
 			if (!empty($this->member['uid'])) 
 			{
@@ -92,50 +80,67 @@ class Setadd_EweiShopV2Page extends CommissionMobileLoginPage
 		
 	}
 	
-	/*public function submit() 
-	{
-		global $_W;
-		global $_GPC;
-		$diyform_data = $this->diyformData();
-		extract($diyform_data);
-		$memberdata = $_GPC['memberdata'];
-		//var_dump($memberdata);
-		pdo_update('ewei_shop_member', $memberdata, array('openid' => $_W['openid'], 'uniacid' => $_W['uniacid']));
-			if (!empty($this->member['uid'])) 
-			{
-				$mcdata = $_GPC['mcdata'];
-				m('member')->mc_update($this->member['uid'], $mcdata);
-			}
-		if ($template_flag == 1) 
-		{
-			$data = array();
-			$m_data = array();
-			$mc_data = array();
-			$insert_data = $diyform_plugin->getInsertData($fields, $memberdata);
-			$data = $insert_data['data'];
-			$m_data = $insert_data['m_data'];
-			$mc_data = $insert_data['mc_data'];
-			$m_data['diymemberid'] = $diyform_id;
-			$m_data['diymemberfields'] = iserializer($fields);
-			$m_data['diymemberdata'] = $data;
-			pdo_update('ewei_shop_member', $m_data, array('openid' => $_W['openid'], 'uniacid' => $_W['uniacid']));
-			if (!empty($this->member['uid'])) 
-			{
-				if (!empty($mc_data)) 
-				{
-					m('member')->mc_update($this->member['uid'], $mc_data);
-				}
-			}
-		}
-		else 
-		{
-			pdo_update('ewei_shop_member', $memberdata, array('openid' => $_W['openid'], 'uniacid' => $_W['uniacid']));
-			if (!empty($this->member['uid'])) 
-			{
-				$mcdata = $_GPC['mcdata'];
-				m('member')->mc_update($this->member['uid'], $mcdata);
-			}
-		}
-		show_json(1);
-	}*/
+	/**
+	 * 上传图片
+	 * 
+	 */
+	public function up_img(){
+		//类型
+		$uptypes=array(  
+		    'image/jpg',  
+		    'image/jpeg',  
+		    'image/png',  
+		    'image/gif',
+		);
+		//储存地址
+		$path="../addons/ewei_shopv2/static/xiaod/";
+		$max_file_size=2000000;     //上传文件大小限制, 单位BYTE 
+		$file = $_FILES["upfile"];
+		//检查文件大小  
+		if($max_file_size < $file["size"]){  
+	        echo "文件太大!";  
+	        exit;  
+	    }
+	    //检查文件类型 
+	    if(!in_array($file["type"], $uptypes)) {  
+	        echo "文件类型不符!".$file["type"];  
+	        exit;  
+    	}
+    	//检查路径
+    	if(!file_exists($destination_folder)){  
+        	mkdir($path, 0700);  
+    	}
+    	
+    	$filetype = $_FILES['upfile']['type'];
+    	$type=null;
+    	//图片的类型
+    	switch ($filetype){
+    		case 'image/jpg':
+    		 $type = '.jpg';
+    		 break;
+    		 case 'image/jpeg':
+    		 $type ='.jpg';
+    		 break;
+    		 case 'image/png';
+    		 $type='.png';
+    		 break;
+    		 default:
+    		 $type='.gif';
+    		 break;	 
+    	}
+    	//复制到路径
+    	if($_FILES["upfile"]["name"]){
+    		 $today=date("YmdHis"); //获取时间并赋值给变量
+    		 $file1= substr(md5($_FILES["upfile"]["name"]),0,6);
+    		 $file2 = $path.$today.$file1.$type;
+    	}
+    
+    		if(move_uploaded_file($_FILES["upfile"]["tmp_name"],$file2)){
+    			return $file2;
+    		}else{
+    			return false;
+    		}
+    		
+    	
+	}
 }
