@@ -527,6 +527,8 @@ class List_EweiShopV2Page extends WebPage
                                 }
                             }
 
+                        } else {
+                            pdo_update('ewei_shop_member', array('isagent' => '1'), array('id' => $id, 'uniacid' => $_W['uniacid']));
                         }
 					}
 				}
