@@ -566,6 +566,40 @@ if ($_W['ispost'])
     // 更新专柜
     pdo_update('ewei_shop_goods', array('shoppe' => $_GPC['shoppe']), array('id' => $id));
 
+    // 增加代理商仓库
+    $aagents = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where isaagent=1 and aagentstatus=1');
+
+    foreach($aagents as $k => $v) {
+        $segoods = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid=0 and memberid=' . $v['id']);
+        if (empty($segoods) || count($segoods) === 0) {
+            $res = pdo_insert('ewei_shop_agent_stock', array(
+                'goodsid' => $id,
+                'memberid' => $v['id']
+            ));
+        }
+
+        $seoption = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid!=0 and memberid=' . $v['id']);
+
+        if (0 < count($optionids)) {
+            foreach($optionids as $key => $val) {
+                $rs = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $optionids[$key] . ' and memberid=' . $v['id']);
+                if (empty($rs)) {
+                    pdo_insert('ewei_shop_agent_stock', array(
+                        'goodsid' => $id,
+                        'optionid' => $optionids[$key],
+                        'memberid' => $v['id']
+                    ));
+                }
+            }
+        } else {
+            pdo_query('delete from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid!=0 and memberid=' . $v['id']);
+        }
+        unset($segoods);
+        unset($seoption);
+    }
+
+
+
 	show_json(1, array('url' => webUrl('goods/edit', array('id' => $id, 'tab' => str_replace('#tab_', '', $_GPC['tab'])))));
 }
 // 商品id存在执行以下
