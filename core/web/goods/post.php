@@ -286,6 +286,17 @@ if ($_W['ispost'])
 	}
 	else
 	{
+        //   代理商成本计算
+//        $aagentdata = m('common')->getSysset('mygoods');
+//        $productprice = $good['productprice'];
+//        $marketprice = $good['marketprice'];
+//        $p = $marketprice - $productprice;
+//        $provinceprice = $p * $data['province'] / 100.0 + $productprice;
+//        $cityprice = $p * $data['city'] / 100.0 + $productprice;
+//        $countyprice = $p * $data['county'] / 100.0 + $productprice;
+
+
+//        show_json(1, $aagentdata);
 		unset($data['createtime']);
 		pdo_update('ewei_shop_goods', $data, array('id' => $id));
 		plog('goods.edit', '编辑商品 ID: ' . $id . '<br>' . ((!(empty($data['nocommission'])) ? '是否参与分销 -- 否' : '是否参与分销 -- 是')));

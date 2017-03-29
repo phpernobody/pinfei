@@ -275,7 +275,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
             }, function (res) {
                 console.info(res);
                 var html = '';
-                modal.options = res.result.options;
+                modal.options = res.result.options || [];
                 modal.commission = res.result.commission;
                 modal.hasOptions = res.result.hasOptions;
                 modal.goodDetail = res.result.goodDetail;
@@ -308,12 +308,29 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
 
         // 点击修改库存
         $('.se-confirm').click(function() {
+            console.log(modal);
             var goodid = $(this).attr('data-goodid');   
             var joinStock = $('.se-join-stock').val();
+            var stockOptionId = modal.options.length > 0 ? modal.options[modal.optionIndex].id : 0;
+            var realStock = 0;
+            // 检查是否超出限制
+            if (modal.hasOptions) {
+                realStock = modal.options[modal.optionIndex].stock;
+            } else {
+                realStock = modal.goodDetail.vstock;
+            }
+
+            console.log(realStock)
+            if (joinStock > realStock) {
+                FoxUI.toast.show('请设置少于' + realStock + '件商品');
+                return;
+            }
+
+
             if (joinStock) {
                 if (modal.hasOptions) {
                     core.json('commission/myshop/select/setStock', {
-                        stockOptionId: modal.options[modal.optionIndex].id || 0,
+                        stockOptionId: stockOptionId,
                         joinStock: joinStock,
                         hasOptions: true
                     }, function (res) {

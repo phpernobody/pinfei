@@ -27,12 +27,11 @@ define(['core', 'tpl', 'biz/member/cart', 'biz/plugin/diyform'], function (core,
             core.json('goods/picker', {
                 id: params.goodsid
             }, function (ret) {
-                console.log('hhehehe', ret)
+                console.info('res',ret)
                 if (ret.status == 0) {
                     FoxUI.toast.show('未找到商品!');
                     return
                 }
-                console.log(ret.result.goods);
                 modal.followtip = '';
                 modal.followurl = '';
                 if (ret.status == 2) {
@@ -60,8 +59,6 @@ define(['core', 'tpl', 'biz/member/cart', 'biz/plugin/diyform'], function (core,
                     ret.result.goods.minprice = agentInfo.minprice;
                 }
 
-
-                console.log('option-picker', ret.result)
                 modal.containerHTML = tpl('option-picker', ret.result);
                 modal.goods = ret.result.goods;
                 modal.specs = ret.result.specs;
@@ -161,6 +158,7 @@ define(['core', 'tpl', 'biz/member/cart', 'biz/plugin/diyform'], function (core,
         modal.container.container.find('.option-picker .option-picker-options').css('max-height', height - 225)
     };
     modal.addToCart = function () {
+        console.log('addToCart')
         if (!modal.goods.canAddCart) {
             FoxUI.toast.show('此商品不可加入购物车<br>请直接点击立刻购买');
             return
