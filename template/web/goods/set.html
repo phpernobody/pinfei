@@ -1,0 +1,32 @@
+{template '_header'}
+<div class="page-heading">
+    <h2>利润设置</h2></div>
+
+
+<form action="" method="post" class="form-horizontal form-search" role="form">
+    <div style="width: 300px;margin-left: 200px">
+        <div class="input-group">
+            <span style="color: red;">{$error}</span>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">省代利润</span>
+            <input class="form-control" name="province" value="{$data[province]}">
+            <span class="input-group-addon">%</span>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">市代利润</span>
+            <input class="form-control" name="city" value="{$data[city]}">
+            <span class="input-group-addon">%</span>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">区代利润</span>
+            <input class="form-control" name="county" value="{$data[county]}">
+            <span class="input-group-addon">%</span>
+        </div>
+        <div style="height: 50px"></div>
+        <div class="input-group">
+            <input type="submit" class="btn btn-primary btn-sm">
+        </div>
+    </div>
+</form>
+{template '_footer'}
