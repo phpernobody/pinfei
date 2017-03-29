@@ -689,7 +689,8 @@
 </div>
 {/if}
 
-{if $goods['canbuy'] && $totalVstock != 0}
+<!-- {if ($goods['canbuy'] && intval($member['hagentid']) == 0) || ($goods['canbuy'] && intval($member['hagentid']) != 0 && intval($totalVstock != 0))} -->
+{if $goods['canbuy']}
 <div class="fui-navbar bottom-buttons">
     <a  class="nav-item favorite-item {if $isFavorite}active{/if}" data-isfavorite="{php echo intval($isFavorite)}">
         <span class="icon {if $isFavorite}icon-likefill{else}icon-like{/if}"></span>

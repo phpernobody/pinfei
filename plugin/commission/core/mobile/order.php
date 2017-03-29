@@ -234,6 +234,7 @@ class Order_EweiShopV2Page extends CommissionMobileLoginPage {
 	}
 
 	function get_list() {
+
 		global $_W, $_GPC;
 		$openid = $_W['openid'];
 		$member = $this->model->getInfo($openid, array('ordercount0'));
@@ -366,7 +367,8 @@ class Order_EweiShopV2Page extends CommissionMobileLoginPage {
 		if (!empty($orderids)) {
 
 			$list = pdo_fetchall("select id,ordersn,openid,createtime,status from " . tablename('ewei_shop_order') . "  where uniacid ={$_W['uniacid']} and id in ( " . implode(',', array_keys($orderids)) . ") order by id desc");
-			foreach ($list as &$row) {
+
+            foreach ($list as &$row) {
 				$row['amount_total'] = 0;
 				$row['goods_number'] = 0;
 

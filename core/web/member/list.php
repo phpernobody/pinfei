@@ -499,7 +499,7 @@ class List_EweiShopV2Page extends WebPage
 //                        var_dump($aadata);exit;
                         //  去除上级分销关系
                         if(intval($aadata['isaagent']) === 1 && intval($aadata['aagentstatus']) === 1) {
-                            pdo_update('ewei_shop_member', array('agentid' => 0, 'oldagentid' => $member['agentid']), array('id' => $id, 'uniacid' => $_W['uniacid']));
+                            pdo_update('ewei_shop_member', array('agentid' => 0, 'oldagentid' => $member['agentid'], 'isagent' => '0'), array('id' => $id, 'uniacid' => $_W['uniacid']));
 
                             $downList = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where agentid=' . $member['id']);
 //                            var_dump($downList);exit;
@@ -508,6 +508,25 @@ class List_EweiShopV2Page extends WebPage
                                     $this->updateDownHagent($v['id'], $member['id']);
                                 }
                             }
+
+                            // 库存处理
+                            $segoods = pdo_fetchall('select * from ' . tablename('ewei_shop_goods'));
+                            foreach($segoods as $k => $v) {
+                                $megoods = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $v['id'] . ' and memberid=' . $member['id']);
+                                if(empty($megoods)) {
+                                    pdo_insert('ewei_shop_agent_stock', array('memberid' => $member['id'], 'goodsid' => $v['id']));
+                                }
+                            }
+
+                            $seoptions = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option'));
+                            foreach($seoptions as $key => $val) {
+                                $meoption = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $val['id'] . ' and memberid=' . $member['id']);
+
+                                if(empty($meoption)) {
+                                    pdo_insert('ewei_shop_agent_stock', array('memberid' => $member['id'], 'goodsid' => $val['goodsid'], 'optionid' => $val['id']));
+                                }
+                            }
+
                         }
 					}
 				}

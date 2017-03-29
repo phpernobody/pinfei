@@ -63,7 +63,7 @@ class Detail_EweiShopV2Page extends MobilePage
                 $agentGoodsData = array(
                     'memberid' => $member['hagentid'],
                     'optionid' => '0',
-                    'goodsid' => $goodsid,
+                    'goodsid' => $id,
                     'stock' => '0',
                     'vstock' => '0'
                 );
@@ -683,7 +683,7 @@ class Detail_EweiShopV2Page extends MobilePage
 				exit();
 			}
 		}
-
+//var_dump($totalVstock);exit;
 
 		include $this->template();
 	}
