@@ -23,7 +23,7 @@ class Category_EweiShopV2Page extends MobilePage
 
 		$id = $_POST['id'];
 
-        $sql = "select id,title,salesreal,marketprice,thumb from ims_ewei_shop_goods where pcate=" . $id;
+        $sql = "select id,title,salesreal,productprice,marketprice,total,thumb from ims_ewei_shop_goods where pcate=" . $id;
 
 		$getGoods = pdo_fetchall($sql);
 
@@ -33,7 +33,7 @@ class Category_EweiShopV2Page extends MobilePage
 
 	public function getIstime(){
 
-		$sql = "select id,title,content,productprice,marketprice,thumb from ims_ewei_shop_goods where istime=1";
+		$sql = "select id,title,content,productprice,marketprice,total,thumb from ims_ewei_shop_goods where istime=1";
 
 		$getIstime = pdo_fetchall($sql);
 
@@ -43,7 +43,7 @@ class Category_EweiShopV2Page extends MobilePage
 
 	public function getIsnew1(){
 
-		$sql = "select id,title,productprice,marketprice,thumb from ims_ewei_shop_goods where isnew=1 limit 2";
+		$sql = "select id,title,productprice,marketprice,total,thumb from ims_ewei_shop_goods where isnew=1 limit 2";
 
 		$getIsnew1 = pdo_fetchall($sql);
 
@@ -53,7 +53,7 @@ class Category_EweiShopV2Page extends MobilePage
 
 	public function getIsnew2(){
 
-		$sql = "select id,title,productprice,marketprice,thumb from ims_ewei_shop_goods where isnew=1 order by id desc limit 2";
+		$sql = "select id,title,productprice,marketprice,total,thumb from ims_ewei_shop_goods where isnew=1 order by id desc limit 2";
 
 		$getIsnew2 = pdo_fetchall($sql);
 
