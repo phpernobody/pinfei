@@ -38,6 +38,47 @@
 		color: #666;
 		border: 1px solid #F33C2C;
 	}
+	/*上传input*/
+	#pic{
+		position: absolute;
+        width:90%;
+        height:8rem;
+        opacity: 0;
+        z-index: 100;
+        margin: 0 auto;   
+	}
+    /*关闭按钮*/
+    .close{
+        position: absolute;
+        width: .5rem;
+        height: .5rem;
+        right:1rem;
+        top:0.5rem;
+        z-index: 500;
+	    cursor: pointer;
+    }          
+    .add{
+		position: absolute;
+		width: 90%;  
+        height:8rem;
+        background:#f2f2f2;
+        text-align: center;
+        line-height: 7rem;
+        font-size: 1.5rem;
+        color: #7d7c7c;
+        margin: 0 auto;  
+    }   
+    /*隐藏*/
+    .hide{
+       display: none;
+    }
+    /*显示图片*/ 
+    .show{
+    	position: absolute;
+		width: 90%;  
+        height:8rem;
+        margin: 0 auto;
+    } 
 </style>
 
 <div class='fui-page  fui-page-current'>
@@ -96,17 +137,23 @@
 				<div class="fui-cell">
 					<div class="fui-cell-label">店铺图片</div>
 					<div class="fui-cell-info">
-						<input type="file" id='pic' name='upfile' class='fui-input'/>
+						
 					</div>
 				</div>
-				<div id="pic_div" class="fui-cell" style="height: 8rem;">
+				<div id="pic_div" class="fui-cell" style="height: 9rem;padding-left: 1rem;">
+					<input type="file" id='pic' name='upfile' class='fui-input'/>
+					<img src="../addons/ewei_shopv2/static/img/x.jpg" class="close hide"/>
+        			<div class="add">
+        				点击添加图片
+        			</div>
+        			<img class="show hide"/>
 					<!--<img src="" id='pic_img' style="margin: 0 auto"/>-->
 				</div>
 			</div>
 			<a href='#' onclick="document.getElementById('form_setadd').submit();" class='btn btn-success block' style="border-radius: 0;">确认修改</a>
 		</form>
 	</div>
-	<script type="text/javascript">
+	<!--<script type="text/javascript">
 		  $('#pic').on('change',function(){
 
         var src_p = window.URL.createObjectURL(this.files[0]);
@@ -114,7 +161,48 @@
 		var htm ='<img src="'+src_p+'" style="margin: 0 auto;height: 7rem;"/>'
         $('#pic_div').append(htm)  ; 
     })
-	</script>
+	</script>-->
+	<script>
+    $(document).ready(function()
+    {
+        //点击上传时实时显示图片
+        $("#pic").change(function()
+        {
+            var src=getObjectURL(this.files[0]);//获取上传文件的路径
+            $(".close").removeClass('hide');
+            $(".add").addClass('hide');
+            $(".show").removeClass('hide');
+            $(".show").attr('src',src);//把路径赋值给img标签
+        });
+
+        //点击关闭按钮时恢复初始状态
+        $(".close").click(function()
+        {
+            $(".close").addClass('hide');
+            $(".add").removeClass('hide');
+            $(".show").addClass('hide');
+        });
+    });
+
+    //获取上传文件的url
+    function getObjectURL(file)
+    {
+        var url = null;
+        if (window.createObjectURL != undefined)
+        {
+            url = window.createObjectURL(file);
+        }
+        else if (window.URL != undefined)
+        {
+            url = window.URL.createObjectURL(file);
+        }
+        else if (window.webkitURL != undefined)
+        {
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+</script>
 </div>
 {template '_footer'}
 
