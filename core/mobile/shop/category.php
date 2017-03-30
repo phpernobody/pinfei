@@ -11,7 +11,7 @@ class Category_EweiShopV2Page extends MobilePage
 		global $_GPC;
 		$merchid = intval($_GPC['merchid']);
 
-		$sql = "select * from ims_ewei_shop_category where level=1";
+		$sql = "select * from ims_ewei_shop_category where level=1 order by id";
 
 		$getCategory = pdo_fetchall($sql);
 		
