@@ -97,43 +97,6 @@ class Picker_EweiShopV2Page extends MobilePage
 			unset($spec);
 			$options = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option') . ' where goodsid=:goodsid and uniacid=:uniacid order by displayorder asc', array(':goodsid' => $id, ':uniacid' => $_W['uniacid']));
 
-            // 分销商的库存处理
-            if (intval($member['hagentid']) !== 0) {
-                foreach($options as $k => $v) {
-                    $agentOption = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock'). ' where optionid=' . $v['id'] . ' and memberid=' . $member['hagentid']);
-                    if (empty($agentOption)) {
-                        $agentOptionData = array(
-                            'memberid' => $member['hagentid'],
-                            'optionid' => $v['id'],
-                            'goodsid' => $goods['id'],
-                            'stock' => '0',
-                            'vstock' => '0'
-                        );
-                        pdo_insert('ewei_shop_agent_stock', $agentOptionData);
-                        $agentOptionVstock = '0';
-                    } else {
-                        $agentOptionVstock = $agentOption['vstock'];
-                    }
-                    $options[$k]['vstock'] = $agentOptionVstock;
-                }
-            }
-        } else {
-            $agentGood = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock'). ' where goodsid=' . $goods['id'] . ' and memberid=' . $member['hagentid']);
-
-            if (empty($agentGood)) {
-                $agentGoodData = array(
-                    'memberid' => $member['hagentid'],
-                    'optionid' => '0',
-                    'goodsid' => $goods['id'],
-                    'stock' => '0',
-                    'vstock' => '0'
-                );
-                pdo_insert('ewei_shop_agent_stock', $agentGoodData);
-                $agentGoodVstock = '0';
-            } else {
-                $agentGoodVstock = $agentGood['vstock'];
-            }
-            $goods['vstock'] = $agentGoodVstock;
         }
 		if ($seckillinfo && ($seckillinfo['status'] == 0))
 		{
@@ -326,6 +289,8 @@ class Picker_EweiShopV2Page extends MobilePage
                 'isagent' => false
             );
         }
+
+//        show_json(1, $goods);
 
 
 

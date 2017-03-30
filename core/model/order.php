@@ -32,11 +32,13 @@ class Order_EweiShopV2Model
             $commission_total3 += ((isset($commissions['level3']) ? floatval($commissions['level3']) : 0));
             $goodstotal += $og['total'];
             $param1 = array();
+            $param1['goodsid'] = $og['goodsid'];
             if (empty($og['optionid'])) {
                 if (!empty($parentaagent)) {
                     $basePrice += $this->caculatePrice($parentaagent, $og) * $og['total'];
                 }
-                $param1['goodsid'] = $og['goodsid'];
+
+
             }
             else {
                 $option = m('goods')->getOption($og['goodsid'], $og['optionid']);
@@ -179,7 +181,14 @@ class Order_EweiShopV2Model
         if ($isself) {
             return intval($data['stock']);
         }
-        return intval($data['vstock']);
+        if (empty($optionid)){
+            $goods = pdo_get('ewei_shop_goods',array('id'=>$goodsid));
+            return intval($data['vstock'] + $goods['total']);
+        }else{
+            $option = pdo_get('ewei_shop_goods_option',array('id'=>$optionid));
+            return intval($data['vstock'] + $option['stock']);
+        }
+
     }
 
     public

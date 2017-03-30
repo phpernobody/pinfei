@@ -66,19 +66,7 @@
         {if !empty($this->set['openorderdetail']) || !empty($this->set['openorderbuyer'])}
         <div class='fui-according-content' style="height: auto; border-top: none; background: #FAFAFA;">
             <div class='content-block' style="position: relative; overflow: hidden; padding: 0;">
-                {if false && !empty($this->set['openorderbuyer'])}
-                <div class="fui-list">
-                    <div class="fui-list-media">
-                        <img data-lazy="<%order.buyer.avatar%>" class="round" style='width:2rem;height:2rem;'>
-                    </div>
-                    <div class="fui-list-inner">
-                        <div class="row">
-                            <div class="row-text" style="font-size: 15px"><%order.buyer.nickname%></div>
-                        </div>
-                        <div class="subtitle" style="font-size: 15px">微信号: <%order.buyer.weixin%></div>
-                    </div>
-                </div>
-                {/if}
+
                 {if !empty($this->set['openorderdetail'])}
                 <%each order.order_goods as g%>
                 <div class="fui-list" style="display: flex; justify-content: flex-start; align-items: flex-start;">

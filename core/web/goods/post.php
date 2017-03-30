@@ -280,12 +280,27 @@ if ($_W['ispost'])
 	if (empty($id))
 	{
 		$data['merchid'] = 0;
+
+        //   代理商成本计算
+        $aagentdata = m('common')->getSysset('mygoods');
+        $p = $data['marketprice'] - $data['productprice'];
+        $data['provinceprice'] = $p * $data['province'] / 100.0 + $data['productprice'];
+        $data['cityprice'] = $p * $data['city'] / 100.0 + $data['productprice'];
+        $data['countyprice'] = $p * $data['county'] / 100.0 + $data['productprice'];
+
 		pdo_insert('ewei_shop_goods', $data);
 		$id = pdo_insertid();
 		plog('goods.add', '添加商品 ID: ' . $id . '<br>' . ((!(empty($data['nocommission'])) ? '是否参与分销 -- 否' : '是否参与分销 -- 是')));
 	}
 	else
 	{
+        //   代理商成本计算
+        $aagentdata = m('common')->getSysset('mygoods');
+        $p = intval($data['marketprice']) - intval($data['productprice']);
+        $data['provinceprice'] = $p * intval($aagentdata['province']) / 100.0 + intval($data['productprice']);
+        $data['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($data['productprice']);
+        $data['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($data['productprice']);
+
 		unset($data['createtime']);
 		pdo_update('ewei_shop_goods', $data, array('id' => $id));
 		plog('goods.edit', '编辑商品 ID: ' . $id . '<br>' . ((!(empty($data['nocommission'])) ? '是否参与分销 -- 否' : '是否参与分销 -- 是')));
@@ -430,14 +445,31 @@ if ($_W['ispost'])
 		}
 		$newids = implode('_', $newids);
 		$a = array('uniacid' => $_W['uniacid'], 'title' => $optionArray['option_title'][$k], 'productprice' => $optionArray['option_productprice'][$k], 'costprice' => $optionArray['option_costprice'][$k], 'marketprice' => $optionArray['option_marketprice'][$k], 'presellprice' => $optionArray['option_presellprice'][$k],  'provinceprice' => $optionArray['option_provinceprice'][$k],  'cityprice' => $optionArray['option_cityprice'][$k],  'countyprice' => $optionArray['option_countyprice'][$k], 'stock' => $optionArray['option_stock'][$k], 'weight' => $optionArray['option_weight'][$k], 'goodssn' => $optionArray['option_goodssn'][$k], 'productsn' => $optionArray['option_productsn'][$k], 'goodsid' => $id, 'specs' => $newids, 'virtual' => ($data['type'] == 3 ? $optionArray['option_virtual'][$k] : 0));
-		$totalstocks += $a['stock'];
+
+
+        $totalstocks += $a['stock'];
 		if (empty($get_option_id))
 		{
+            //   代理商成本计算
+            $aagentdata = m('common')->getSysset('mygoods');
+            $p = intval($a['marketprice']) - intval($a['productprice']);
+            $a['provinceprice'] = $p * intval($aagentdata['province']) / 100.0 + intval($a['productprice']);
+            $a['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($a['productprice']);
+            $a['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($a['productprice']);
+
 			pdo_insert('ewei_shop_goods_option', $a);
 			$option_id = pdo_insertid();
 		}
 		else
 		{
+            //   代理商成本计算
+            $aagentdata = m('common')->getSysset('mygoods');
+            $p = intval($a['marketprice']) - intval($a['productprice']);
+            $a['provinceprice'] = $p * intval($aagentdata['province']) / 100.0 + intval($a['productprice']);
+            $a['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($a['productprice']);
+            $a['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($a['productprice']);
+
+//            show_json(1, $a);
 			pdo_update('ewei_shop_goods_option', $a, array('id' => $get_option_id));
 			$option_id = $get_option_id;
 		}
@@ -565,6 +597,40 @@ if ($_W['ispost'])
 
     // 更新专柜
     pdo_update('ewei_shop_goods', array('shoppe' => $_GPC['shoppe']), array('id' => $id));
+
+    // 增加代理商仓库
+    $aagents = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where isaagent=1 and aagentstatus=1');
+
+    foreach($aagents as $k => $v) {
+        $segoods = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid=0 and memberid=' . $v['id']);
+        if (empty($segoods) || count($segoods) === 0) {
+            $res = pdo_insert('ewei_shop_agent_stock', array(
+                'goodsid' => $id,
+                'memberid' => $v['id']
+            ));
+        }
+
+        $seoption = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid!=0 and memberid=' . $v['id']);
+
+        if (0 < count($optionids)) {
+            foreach($optionids as $key => $val) {
+                $rs = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $optionids[$key] . ' and memberid=' . $v['id']);
+                if (empty($rs)) {
+                    pdo_insert('ewei_shop_agent_stock', array(
+                        'goodsid' => $id,
+                        'optionid' => $optionids[$key],
+                        'memberid' => $v['id']
+                    ));
+                }
+            }
+        } else {
+            pdo_query('delete from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid!=0 and memberid=' . $v['id']);
+        }
+        unset($segoods);
+        unset($seoption);
+    }
+
+
 
 	show_json(1, array('url' => webUrl('goods/edit', array('id' => $id, 'tab' => str_replace('#tab_', '', $_GPC['tab'])))));
 }
