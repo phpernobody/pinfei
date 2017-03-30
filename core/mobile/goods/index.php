@@ -72,11 +72,14 @@ class Index_EweiShopV2Page extends MobilePage
 		global $_GPC;
 		global $_W;
 		$args = array('pagesize' => 10, 'page' => intval($_GPC['page']), 'isnew' => trim($_GPC['isnew']), 'ishot' => trim($_GPC['ishot']), 'isrecommand' => trim($_GPC['isrecommand']), 'isdiscount' => trim($_GPC['isdiscount']), 'istime' => trim($_GPC['istime']), 'keywords' => trim($_GPC['keywords']), 'cate' => trim($_GPC['cate']), 'order' => trim($_GPC['order']), 'by' => trim($_GPC['by']));
+
 		$this->_condition($args);
 	}
 	private function _condition($args) 
 	{
 		global $_GPC;
+		global $_W;
+		$member = m('member')->getMember($_W['openid']);
 		$merch_plugin = p('merch');
 		$merch_data = m('common')->getPluginset('merch');
 		if ($merch_plugin && $merch_data['is_openmerch']) 
@@ -88,6 +91,12 @@ class Index_EweiShopV2Page extends MobilePage
 			$args['nocommission'] = intval($_GPC['nocommission']);
 		}
 		$goods = m('goods')->getList($args);
+
+		foreach ($goods['list'] as $key => $value) {
+			$stock = intval(pdo_fetchcolumn('select stock from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $value['id'] . ' and memberid=' . $member['id']));
+
+			$goods['list'][$key]['stock'] = $stock;
+		}
 		show_json(1, array('list' => $goods['list'], 'total' => $goods['total'], 'pagesize' => $args['pagesize']));
 	}
 }
