@@ -28,21 +28,21 @@ class Set_EweiShopV2Page extends WebPage
                 if (!empty($goods)) {
                     foreach ($goods as $good) {
                         $productprice = $good['productprice'];
-                        $marketprice = $good['marketprice'];
-                        $p = $marketprice - $productprice;
-                        $provinceprice = $p * $data['province'] / 100.0 + $productprice;
-                        $cityprice = $p * $data['city'] / 100.0 + $productprice;
-                        $countyprice = $p * $data['county'] / 100.0 + $productprice;
+                        $costprice = $good['costprice'];
+                        $p = $productprice - $costprice;
+                        $provinceprice = $p * $data['province'] / 100.0 + $costprice;
+                        $cityprice = $p * $data['city'] / 100.0 + $provinceprice;
+                        $countyprice = $p * $data['county'] / 100.0 + $cityprice;
                         pdo_update('ewei_shop_goods', array('provinceprice' => $provinceprice, 'cityprice' => $cityprice, 'countyprice' => $countyprice), array('id' => $good['id']));
                         $options = pdo_getall('ewei_shop_goods_option', array('goodsid' => $good['id'], 'uniacid' => $_W['uniacid']));
                         if (!empty($options)) {
                             foreach ($options as $option) {
-                                $productprice = $option['productprice'];
-                                $marketprice = $option['marketprice'];
-                                $p = $marketprice - $productprice;
-                                $provinceprice = $p * $data['province'] / 100.0 + $productprice;
-                                $cityprice = $p * $data['city'] / 100.0 + $productprice;
-                                $countyprice = $p * $data['county'] / 100.0 + $productprice;
+                                $productprice = $good['productprice'];
+                                $costprice = $good['costprice'];
+                                $p = $productprice - $costprice;
+                                $provinceprice = $p * $data['province'] / 100.0 + $costprice;
+                                $cityprice = $p * $data['city'] / 100.0 + $provinceprice;
+                                $countyprice = $p * $data['county'] / 100.0 + $cityprice;
                                 pdo_update('ewei_shop_goods_option', array('provinceprice' => $provinceprice, 'cityprice' => $cityprice, 'countyprice' => $countyprice), array('id' => $option['id']));
                             }
                         }

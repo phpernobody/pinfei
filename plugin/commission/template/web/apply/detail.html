@@ -57,15 +57,15 @@
             <div style='float:left;height:auto;overflow: hidden;width:600px'>
                 <p><b>昵称:</b> {$member['nickname']}    <b>姓名:</b> {$member['realname']}  <b>手机号:</b> {$member['mobile']}    <b>微信号:</b> {$member['weixin']}</p>
                 <p><b>分销等级:</b>  {$agentLevel['levelname']} (
-                    {if $this->set['level']>=1}一级比例: <span style='color:blue'>{$agentLevel['commission1']}%</span>{/if}
+                    {if $this->set['level']>=1}三级比例: <span style='color:blue'>{$agentLevel['commission1']}%</span>{/if}
                     {if $this->set['level']>=2}二级比例: <span style='color:blue'>{$agentLevel['commission2']}%</span>{/if}
-                    {if $this->set['level']>=3}三级比例: <span style='color:blue'>{$agentLevel['commission3']}%</span>{/if}
+                    {if $this->set['level']>=3}一级比例: <span style='color:blue'>{$agentLevel['commission3']}%</span>{/if}
                     )</p>
                 <p>
                     <b>下级:</b> 总共 <span style='color:red'>{$member['agentcount']}</span> 人 
-                    {if $this->set['level']>=1}<b>一级:</b><span style='color:red'>{$member['level1']}</span>  人{/if}  
+                    {if $this->set['level']>=1}<b>三级:</b><span style='color:red'>{$member['level1']}</span>  人{/if}
                     {if $this->set['level']>=2}<b>二级:</b> <span style='color:red'>{$member['level2']}</span>  人{/if} 
-                    {if $this->set['level']>=3}<b>三级: </b><span style='color:red'>{$member['level3']}</span> 人{/if}
+                    {if $this->set['level']>=3}<b>一级: </b><span style='color:red'>{$member['level3']}</span> 人{/if}
                     点击:  <span style='color:red'>{$member['clickcount']}</span> 次 
                 <p>
                     <b>累计佣金: </b><span style='color:red'>{$member['commission_total']}</span> 元  
@@ -177,7 +177,7 @@
                                             {if $this->set['level']>=1 && $row['level']==1}
                                             <p>
                                             <div class='input-group'>
-                                                <span class='input-group-addon'>一级佣金</span>
+                                                <span class='input-group-addon'>三级佣金</span>
                                                 <span class='input-group-addon' style='width:80px;'>{$g['commission1']}</span>
 
                                                 <span class='input-group-addon'>
@@ -228,7 +228,7 @@
                                             {if $this->set['level']>=2  && $row['level']==3}<p>
 
                                             <div class='input-group'>
-                                                <span class='input-group-addon'>三级佣金</span>
+                                                <span class='input-group-addon'>一级佣金</span>
                                                 <span class='input-group-addon' style='background:#fff;width:80px;'>{$g['commission3']}</span>
                                                 <span class='input-group-addon'>状态</span>    
                                                 <span class='input-group-addon' style='background:#fff'>

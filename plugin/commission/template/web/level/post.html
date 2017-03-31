@@ -20,7 +20,7 @@
                 </div>
                 {if $set['level']>=1}
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">一级佣金比例</label>
+                    <label class="col-sm-2 control-label">三级佣金比例</label>
                           <div class="col-sm-9 col-xs-12">
 							{ife 'member.level' $level}
                                                             <div class='input-group'>
@@ -50,7 +50,7 @@
                     {/if}
                   {if $set['level']>=3}
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">三级佣金比例</label>
+                    <label class="col-sm-2 control-label">一级佣金比例</label>
                           <div class="col-sm-9 col-xs-12">
                       {ife 'member.level' $level}
                           <div class='input-group'>
@@ -77,7 +77,7 @@
 							{/if}
 							
 							{if $leveltype==1}
-									<span class='input-group-addon'>一级分销订单金额满</span>
+									<span class='input-group-addon'>三级分销订单金额满</span>
 									<input type="text" name="ordermoney" class="form-control" value="{$level['ordermoney']}" />
 									<span class='input-group-addon'>元</span>
 							{/if}
@@ -90,7 +90,7 @@
 							{/if}
 							
 							{if $leveltype==3}
-									<span class='input-group-addon'>一级分销订单数量满</span>
+									<span class='input-group-addon'>三级分销订单数量满</span>
 									<input type="text" name="ordercount" class="form-control" value="{$level['ordercount']}" />
 									<span class='input-group-addon'>个</span>
 							{/if}
@@ -112,7 +112,7 @@
 									<span class='input-group-addon'>个（分销商+非分销商）</span>
 							{/if}
 							{if $leveltype==7}
-									<span class='input-group-addon'>一级下级人数满</span>
+									<span class='input-group-addon'>三级下级人数满</span>
 									<input type="text" name="downcount" class="form-control" value="{$level['downcount']}" />
 									<span class='input-group-addon'>个（分销商+非分销商）</span>
 							{/if}
@@ -122,7 +122,7 @@
 									<span class='input-group-addon'>个（分销商）</span>
 							{/if}
 							{if $leveltype==9}
-									<span class='input-group-addon'>一级团队人数满</span>
+									<span class='input-group-addon'>三级团队人数满</span>
 									<input type="text" name="downcount" class="form-control" value="{$level['downcount']}" />
 									<span class='input-group-addon'>个（分销商）</span>
 							{/if}
@@ -144,14 +144,14 @@
 							{/if}
 							
 							{if $leveltype==1}
-							                      一级分销订单金额满 {$level['ordermoney']} 元
+						三级分销订单金额满 {$level['ordermoney']} 元
 							{/if}
 							{if $leveltype==2}
 							                    分销订单数量满 {$level['ordercount']} 个
 							{/if}
 							
 							{if $leveltype==3}
-							                一级分销订单数量满 {$level['ordercount']} 个
+						三级分销订单数量满 {$level['ordercount']} 个
 							{/if}
 							
 							{if $leveltype==4}
@@ -166,14 +166,14 @@
 									 
 							{/if}
 							{if $leveltype==7}
-							一级下级人数满 {$level['downcount']} 个（分销商+非分销商）
+						三级下级人数满 {$level['downcount']} 个（分销商+非分销商）
 									 
 							{/if}
 							{if $leveltype==8}
 								团队总人数满 {$level['downcount']} 个（分销商）
 							{/if}
 							{if $leveltype==9}
-							          一级团队人数满 {$level['downcount']} 个（分销商）
+						三级团队人数满 {$level['downcount']} 个（分销商）
 							{/if}
 							 
 							{if $leveltype==10}
