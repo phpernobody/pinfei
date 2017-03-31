@@ -283,10 +283,10 @@ if ($_W['ispost'])
 
         //   代理商成本计算
         $aagentdata = m('common')->getSysset('mygoods');
-        $p = $data['productprice'] - $data['costprice'];
-        $data['provinceprice'] = $p * $data['province'] / 100.0 + $data['costprice'];
-        $data['cityprice'] = $p * $data['city'] / 100.0 + $data['costprice'];
-        $data['countyprice'] = $p * $data['county'] / 100.0 + $data['costprice'];
+        $p = intval($data['productprice']) - intval($data['costprice']);
+        $data['provinceprice'] = $p * intval($aagentdata['province']) / 100.0 + intval($data['costprice']);
+        $data['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($data['provinceprice']);
+        $data['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($data['cityprice']);
 
 		pdo_insert('ewei_shop_goods', $data);
 		$id = pdo_insertid();
@@ -296,10 +296,10 @@ if ($_W['ispost'])
 	{
         //   代理商成本计算
         $aagentdata = m('common')->getSysset('mygoods');
-        $p = intval($data['marketprice']) - intval($data['productprice']);
-        $data['provinceprice'] = $p * intval($aagentdata['province']) / 100.0 + intval($data['productprice']);
-        $data['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($data['productprice']);
-        $data['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($data['productprice']);
+        $p = intval($data['productprice']) - intval($data['costprice']);
+        $data['provinceprice'] = $p * intval($aagentdata['province']) / 100.0 + intval($data['costprice']);
+        $data['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($data['provinceprice']);
+        $data['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($data['cityprice']);
 
 		unset($data['createtime']);
 		pdo_update('ewei_shop_goods', $data, array('id' => $id));
@@ -454,8 +454,8 @@ if ($_W['ispost'])
             $aagentdata = m('common')->getSysset('mygoods');
             $p = intval($a['productprice']) - intval($a['costprice']);
             $a['provinceprice'] = $p * intval($aagentdata['province']) / 100.0 + intval($a['costprice']);
-            $a['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($a['costprice']);
-            $a['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($a['costprice']);
+            $a['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($a['provinceprice']);
+            $a['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($a['cityprice']);
 
 			pdo_insert('ewei_shop_goods_option', $a);
 			$option_id = pdo_insertid();
@@ -466,8 +466,8 @@ if ($_W['ispost'])
             $aagentdata = m('common')->getSysset('mygoods');
             $p = intval($a['productprice']) - intval($a['costprice']);
             $a['provinceprice'] = $p * intval($aagentdata['province']) / 100.0 + intval($a['costprice']);
-            $a['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($a['costprice']);
-            $a['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($a['costprice']);
+            $a['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($a['provinceprice']);
+            $a['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($a['cityprice']);
 
 //            show_json(1, $a);
 			pdo_update('ewei_shop_goods_option', $a, array('id' => $get_option_id));
