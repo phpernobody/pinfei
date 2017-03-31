@@ -156,18 +156,13 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
         $member = m('member')->getMember($_W['openid']);
 
         if ($hasOptions == 'true') {
-            $res = pdo_update('ewei_shop_agent_stock', array("vstock" => intval($_GPC['joinStock'])) , array('id' => $_GPC['optionid'], 'memberid' => $member['id']));
+            $res = pdo_update('ewei_shop_agent_stock', array("vstock" => intval($_GPC['joinStock'])) , array('optionid' => $_GPC['stockOptionId'], 'memberid' => $member['id']));
         } else {
-//            show_json(1, $_GPC);
             $res = pdo_update('ewei_shop_agent_stock', array("vstock" => intval($_GPC['joinStock'])) , array('goodsid' => $_GPC['goodsid'], 'memberid' => $member['id']));
         }
 
+        show_json(1, $res);
 
-        if($res === 1) {
-            show_json(1, 'success');
-        } else {
-            show_json(0, 'fail');
-        }
 
     }
 }

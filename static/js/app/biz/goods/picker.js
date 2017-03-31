@@ -27,7 +27,6 @@ define(['core', 'tpl', 'biz/member/cart', 'biz/plugin/diyform'], function (core,
             core.json('goods/picker', {
                 id: params.goodsid
             }, function (ret) {
-                console.info('res',ret)
                 if (ret.status == 0) {
                     FoxUI.toast.show('未找到商品!');
                     return
@@ -50,16 +49,17 @@ define(['core', 'tpl', 'biz/member/cart', 'biz/plugin/diyform'], function (core,
                     modal.show();
                     return
                 }
-                console.log(modal)
                 // 有代理商价格
                 var agentInfo = ret.result.agentInfo;
-                console.log(agentInfo)
+
                 if(agentInfo.isagent) {
                     ret.result.goods.maxprice = agentInfo.maxprice;
                     ret.result.goods.minprice = agentInfo.minprice;
                 }
 
                 modal.containerHTML = tpl('option-picker', ret.result);
+                console.log(ret.result);
+                // debugger;
                 modal.goods = ret.result.goods;
                 modal.specs = ret.result.specs;
                 modal.options = ret.result.options;
@@ -303,6 +303,7 @@ define(['core', 'tpl', 'biz/member/cart', 'biz/plugin/diyform'], function (core,
             });
             $.each(modal.options, function () {
                 var specs = this.specs.split('_').sort().join('_');
+                console.log('dd', specs, itemids);
                 if (specs == itemids.sort().join('_')) {
                     var stock = this.stock == '-1' ? '无限' : this.stock;
                     $('.total', modal.container.container).html(stock);
