@@ -39,6 +39,20 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 
 		foreach ($list as &$g ) 
 		{
+            /**
+             * by xiaorenwu
+             * 库存计算
+             */
+            if (!(empty($g['optionid']))) {
+                $agentstock = intval(pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $g['optionid']));
+            } else {
+                $agentstock = intval(pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where optionid=0 and goodsid=' . $g['goodsid']));
+            }
+
+            $g['stock'] = intval($g['stock']) + $agentstock;
+
+
+
 			if ((0 < $g['ispresell']) && (($g['preselltimeend'] == 0) || (time() < $g['preselltimeend']))) 
 			{
 				$g['marketprice'] = ((0 < intval($g['hasoption']) ? $g['presellprice'] : $g['gpprice']));
@@ -151,6 +165,7 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 			{
 				$ischeckall = false;
 			}
+
 		}
 
 

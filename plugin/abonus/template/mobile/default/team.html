@@ -43,7 +43,7 @@
                 {if intval($l['aagenttype']) === 2}市{else}区{/if}代理
             </div>
             </div>
-            <div style="width: calc(100% - 4.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;">
+            <div style="width: calc(100% - 8.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;">
                 <div>
                     <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>
                     {if $l['nickname']}{$l['nickname']}{else}未获取{/if}
@@ -54,12 +54,15 @@
                 </div>
                 <div>
                     <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">获取利润：</span>
-                    {$l['moneycount']}{php echo $this->set['texts']['yuan']}
+                    {$l['totalamout']}元
                 </div>
                 <div>
                     <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">分销人数：</span>
                     {$l['totalagent']}人
                 </div>
+            </div>
+            <div style="width: 4rem; display: flex; justify-content: center; align-items: center;">
+                <a href="{php echo mobileUrl('abonus.down').'&downid='}{php echo $l['id']}" style="width: 2.5rem; height: 1rem; line-height: 1.2rem; border-radius: .2rem; font-size: .45rem; background: #ec3028; color: #fff; text-align: center;">分销团队</a>
             </div>
         </div>
 
@@ -77,7 +80,7 @@
                 height: .9rem; line-height: .9rem; bottom: 0; background: rgba(0,0,0,0.7); color: #fff">
                     {if intval($dl['aagenttype']) === 2}市{else}区{/if}代理
                 </div>
-                <div style="width: calc(100% - 4.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;">
+                <div style="width: calc(100% - 9.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;">
                     <div>
                         <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>
                         {if $dl['nickname']}{$dl['nickname']}{else}未获取{/if}
@@ -88,12 +91,15 @@
                     </div>
                     <div>
                         <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">获取利润：</span>
-                        {$dl['moneycount']}{php echo $this->set['texts']['yuan']}
+                        {$dl['totalamout']}元
                     </div>
                     <div>
                         <span style="color: #ff5d15; width: 3.5rem; display: inline-block;">分销人数：</span>
                         {$dl['total_commission']}{php echo $this->set['texts']['yuan']}
                     </div>
+                </div>
+                <div>
+                    <div>下线</div>
                 </div>
             </div>
 
@@ -142,9 +148,9 @@
     {/if}
 
 	<script language='javascript'>
-		require(['../addons/ewei_shopv2/plugin/abonus/static/js/team.js'], function (modal) {
-			modal.init({fromDetail: true});
-		});
+		// require(['../addons/ewei_shopv2/plugin/abonus/static/js/team.js'], function (modal) {
+		// 	modal.init({fromDetail: true});
+		// });
 	</script>
 </div>
 {php $this->footerMenus()}

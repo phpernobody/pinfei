@@ -7,6 +7,7 @@ define(['core', 'tpl', 'biz/goods/picker', 'biz/plugin/diyform'], function (core
     };
     modal.init = function () {
         core.json('member/cart/get_list', {}, function (ret) {
+            console.log(ret);
             var result = ret.result;
             if (result.total > 0) {
                 $('.btn-edit').show()
