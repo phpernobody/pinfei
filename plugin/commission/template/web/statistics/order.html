@@ -312,9 +312,9 @@
         </td>
         <td colspan='5' style='text-align:right'>
             {if !empty($item['agentid'])}
-            {if $item['commission1']!=-1}<b>1级佣金:</b> {$item['commission1']} 元 {/if}
+            {if $item['commission1']!=-1}<b>3级佣金:</b> {$item['commission1']} 元 {/if}
             {if $item['commission2']!=-1}<b>2级佣金:</b> {$item['commission2']} 元 {/if}
-            {if $item['commission3']!=-1}<b>3级佣金:</b> {$item['commission3']} 元 {/if}
+            {if $item['commission3']!=-1}<b>1级佣金:</b> {$item['commission3']} 元 {/if}
             {/if}
 
             {if !empty($item['agentid']) && !$is_merch[$item['id']]}
