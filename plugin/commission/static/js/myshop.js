@@ -68,12 +68,14 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
         });
         $('.container').lazyload();
         $('.menu nav').click(function () {
+            $('.se-cate-all').css('color', '#666');
             $('.container').infinite('init');
             var item = $(this);
             item.siblings().removeClass("on");
             item.addClass("on");
             // ietm.css('background','#f2f2f2');
             // item.siblings().css("background", "none");
+            console.log(item.data('cate'))
             $('.goods-list-group').html('');
             modal.params = {
                 isnew: item.data('isnew') || '',
@@ -91,6 +93,29 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
             modal.stop = 0;
             modal.getList()
         });
+
+        $('.se-cate-all').click(function () {
+            $(this).css('color', '#ED322B');
+            $('.menu nav').removeClass("on");
+
+            $('.goods-list-group').html('');
+            modal.params = {
+                isnew: '',
+                ishot: '',
+                isrecommand: '',
+                isdiscount: '',
+                keywords: '',
+                istime: '',
+                cate: 0,
+                nocommission: 0,
+                order: "",
+                by: ""
+            };
+            modal.page = 1,
+            modal.stop = 0;
+            modal.getList()
+        });
+
         $('.btn-submit').click(function () {
             var btn = $(this);
             if (btn.attr('stop')) {
@@ -150,7 +175,6 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                         modal.page++
                     }
                 }
-                console.log(result)
                 core.tpl('.goods-list-group', 'tpl_commission_goods_select', result, modal.page > 1);
                 modal.bindEvents()
             })
@@ -257,7 +281,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                 $('.se-commission1').html(parseInt(goodDetail.countyprice*commission.commission1/100));
                 $('.se-commission2').html(parseInt(goodDetail.countyprice*commission.commission2/100));
                 $('.se-commission3').html(parseInt(goodDetail.countyprice*commission.commission3/100));
-                $('.se-confirm').attr('data-goodid', goodDetail.goodsid);
+                $('.se-confirm').attr('data-goodsid', goodDetail.id);
                 $('.se-title').html(goodDetail.title);
                 $('.se-goods-thumb').attr('src', '../attachment/'+goodDetail.thumb);
                 $('.se-join-stock').val(parseInt(goodDetail.vstock));
@@ -268,14 +292,15 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
         $('.se-modal-btn').click(function() {
             var title = $(this).attr('data-title');
             var thumb = $(this).attr('data-thumb');
-            var goodid = $(this).attr('data-goodid');
+            var goodsid = $(this).attr('data-goodsid');
+
 
             core.json('commission/myshop/select/getDetail', {
-               goodid: goodid
+               goodsid: goodsid
             }, function (res) {
                 console.info(res);
                 var html = '';
-                modal.options = res.result.options;
+                modal.options = res.result.options || [];
                 modal.commission = res.result.commission;
                 modal.hasOptions = res.result.hasOptions;
                 modal.goodDetail = res.result.goodDetail;
@@ -300,7 +325,6 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                     $('.se-options-wrap').hide();
                 }
 
-
                 changeParams();
                 $('.se-modal').show();
             });
@@ -308,12 +332,28 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
 
         // 点击修改库存
         $('.se-confirm').click(function() {
-            var goodid = $(this).attr('data-goodid');   
+            console.log(modal);
+            var goodsid = $(this).attr('data-goodsid');   
             var joinStock = $('.se-join-stock').val();
+            var stockOptionId = modal.options.length > 0 ? modal.options[modal.optionIndex].id : 0;
+            var realStock = 0;
+            // 检查是否超出限制
+            if (modal.hasOptions) {
+                realStock = modal.options[modal.optionIndex].stock;
+            } else {
+                realStock = modal.goodDetail.stock;
+            }
+
+            if (joinStock > realStock) {
+                FoxUI.alert('请设置少于' + realStock + '件商品');
+                return;
+            }
+
+console.log(goodsid);
             if (joinStock) {
                 if (modal.hasOptions) {
                     core.json('commission/myshop/select/setStock', {
-                        stockOptionId: modal.options[modal.optionIndex].id || 0,
+                        stockOptionId: stockOptionId,
                         joinStock: joinStock,
                         hasOptions: true
                     }, function (res) {
@@ -324,7 +364,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                     })
                 } else {
                     core.json('commission/myshop/select/setStock', {
-                        goodid: goodid,
+                        goodsid: goodsid,
                         joinStock: joinStock,
                         hasOptions: false
                     }, function (res) {

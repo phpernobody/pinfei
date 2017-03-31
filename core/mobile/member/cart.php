@@ -39,6 +39,20 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 
 		foreach ($list as &$g ) 
 		{
+            /**
+             * by xiaorenwu
+             * 库存计算
+             */
+            if (!(empty($g['optionid']))) {
+                $agentstock = intval(pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $g['optionid']));
+            } else {
+                $agentstock = intval(pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where optionid=0 and goodsid=' . $g['goodsid']));
+            }
+
+            $g['stock'] = intval($g['stock']) + $agentstock;
+
+
+
 			if ((0 < $g['ispresell']) && (($g['preselltimeend'] == 0) || (time() < $g['preselltimeend']))) 
 			{
 				$g['marketprice'] = ((0 < intval($g['hasoption']) ? $g['presellprice'] : $g['gpprice']));
@@ -151,6 +165,7 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 			{
 				$ischeckall = false;
 			}
+
 		}
 
 
@@ -303,10 +318,10 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 		if (empty($data)) 
 		{
             // 插入库存处理
-            if (intval($member['hagentid']) !== 0) {
-                $maxBuying = $this->getMaxBuying($member, $id, $optionid);
-                if ($total > $maxBuying) $total = $maxBuying;
-            }
+            $maxBuying = $this->getMaxBuying($member, $id, $optionid);
+
+            show_json(1, $maxBuying);
+            if ($total > $maxBuying) $total = $maxBuying;
 
 			$data = array('uniacid' => $_W['uniacid'], 'merchid' => $goods['merchid'], 'openid' => $_W['openid'], 'goodsid' => $id, 'optionid' => $optionid, 'marketprice' => $goods['marketprice'], 'total' => $total, 'selected' => 1, 'diyformid' => $diyformid, 'diyformdata' => $diyformdata, 'diyformfields' => $diyformfields, 'createtime' => time());
 			pdo_insert('ewei_shop_member_cart', $data);
@@ -318,14 +333,13 @@ class Cart_EweiShopV2Page extends MobileLoginPage
 			$data['diyformfields'] = $diyformfields;
 			$data['total'] += $total;
 
-            // 插入库存处理
-            if (intval($member['hagentid']) !== 0) {
-                $maxBuying = $this->getMaxBuying($member, $id, $optionid);
-                if ($data['total'] > $maxBuying) $data['total'] = $maxBuying;
-            }
+            // 更新库存处理
+            $maxBuying = intval($this->getMaxBuying($member, $id, $optionid));
+            if (intval($data['total']) > intval($maxBuying)) $data['total'] = $maxBuying;
 
 			pdo_update('ewei_shop_member_cart', $data, array('id' => $data['id']));
 		}
+
 		$cartcount = pdo_fetchcolumn('select sum(total) from ' . tablename('ewei_shop_member_cart') . ' where openid=:openid and deleted=0 and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':openid' => $_W['openid']));
 		show_json(1, array('isnew' => false, 'cartcount' => $cartcount));
 	}
@@ -334,39 +348,13 @@ class Cart_EweiShopV2Page extends MobileLoginPage
     public function getMaxBuying($member, $goodsid, $optionid)
     {
         if (intval($optionid) !== 0) {
-            // 虚拟库存处理
-            $agentOption = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $optionid . ' and memberid=' . $member['hagentid']);
-            if (empty($agentOption)) {
-                $agentOptionData = array(
-                    'memberid' => $member['hagentid'],
-                    'optionid' => $optionid,
-                    'goodsid' => $goodsid,
-                    'stock' => '0',
-                    'vstock' => '0'
-                );
-                pdo_insert('ewei_shop_agent_stock', $agentOptionData);
-                $agentOptionVstock = '0';
-            } else {
-                $agentOptionVstock = $agentOption['vstock'];
-            }
-            return $agentOptionVstock;
+            $agentoptiontotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $goodsid . ' and optionid=' . $optionid);
+            $optiontotal = pdo_fetchcolumn('select stock from ' .tablename('ewei_shop_goods_option') . ' where id=' . $optionid);
+            return intval($agentoptiontotal) + intval($optiontotal);
         } else {
-            // 虚拟库存处理
-            $agentGoods = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $goodsid . ' and memberid=' . $member['hagentid']);
-            if (empty($agentGoods)) {
-                $agentGoodsData = array(
-                    'memberid' => $member['hagentid'],
-                    'optionid' => '0',
-                    'goodsid' => $goodsid,
-                    'stock' => '0',
-                    'vstock' => '0'
-                );
-                pdo_insert('ewei_shop_agent_stock', $agentGoodsData);
-                $agentGoodsVstock = '0';
-            } else {
-                $agentGoodsVstock = $agentGoods['vstock'];
-            }
-            return $agentGoodsVstock;
+            $agentgoodstotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $goodsid . ' and optionid=0');
+            $goodstotal = pdo_fetchcolumn('select total from ' .tablename('ewei_shop_goods') . ' where id=' . $goodsid);
+            return intval($agentgoodstotal) + intval($goodstotal);
         }
     }
 

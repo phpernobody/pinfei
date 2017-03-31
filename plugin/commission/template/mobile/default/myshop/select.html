@@ -123,7 +123,7 @@
 	<div class="fui-fullHigh-group" >
         <div class="fui-fullHigh-item menu" id="tab" style="background: white;text-align: center; width: 5.5rem;">
 			<div class="left-title" >
-				<div style="width: 100%; height: 1.3rem; line-height: 1.3rem; border-right: 1px solid #dcdcdc; z-index: 301">
+				<div class="se-cate-all" style="width: 100%; height: 1.3rem; line-height: 1.3rem; border-right: 1px solid #dcdcdc; z-index: 301">
 					全部分类
 				</div>
 			</div>
@@ -167,7 +167,7 @@
         </div>
     </div>
 </div>
-<div class="se-modal" style="width: 100%;height: 100%; background: rgba(255,255,255,0.75);position: fixed;top: 0;left: 0;z-index: 999999; display: none;">
+<div class="se-modal" style="width: 100%;height: 100%; background: rgba(255,255,255,0.75);position: fixed;top: 0;left: 0;z-index: 999; display: none;">
 	<div style="width: 16.3rem; left: 50%; transform: translate(-50%, 0); top: 2rem; position: fixed; background: #fff; border: 1px solid #e9e9e9;">
 
 		<div class="se-title" style="margin: .6rem;display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">标题</div>
@@ -200,7 +200,7 @@
 			<div style="float: left; width: calc(100% - 5.3rem); background: #f5f5f5; color: #757575;">
 				库存设置: <input class="se-join-stock" style="width: 2.3rem; border: none; border-bottom: 1px solid #757575; background: none; text-align: center;" type="text"> 件
 			</div>
-			<div class="se-confirm" data-goodid="0" style="width: 5.30rem; background: #ec3028; color: #fff; float: right;">确认</div>
+			<div class="se-confirm" data-goodsid="0" style="width: 5.30rem; background: #ec3028; color: #fff; float: right;">确认</div>
 		</div>
 		<div class="se-cancel" style="position: absolute; width: 2rem; height: 2rem; border-radius: 1rem; border: 1px solid #959595;color: #757575; background: #f5f5f5; font-size: 2rem; text-align: center; line-height: 1.8rem; bottom: -3rem; left: 50%; transform: translate(-50%, 0);">×</div>
 	</div>
@@ -216,8 +216,8 @@
             <div style="font-size: .55rem;display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"><%g.title%></div>
             <!-- <div style="color: #959595; margin-top: .2rem;">月销: 件</div> -->
             <div style="font-size: .5rem; position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                <!-- <div style="color: #ec3028;">¥: 200</div> -->
-                <div class="se-modal-btn" data-goodid="<%g.id%>" data-thumb="<%g.thumb%>" data-title="<%g.title%>" style="font-size: .5rem; color: #fff; background: #ec3028; width: 3rem; height: 1rem; line-height: 1rem;text-align: center; border-radius: .2rem;">查看详情</div>
+                <div style="color: #777;">库存：<%g.stock%></div>
+                <div class="se-modal-btn" data-goodsid="<%g.id%>" data-thumb="<%g.thumb%>" data-title="<%g.title%>" style="font-size: .5rem; color: #fff; background: #ec3028; width: 3rem; height: 1rem; line-height: 1rem;text-align: center; border-radius: .2rem;">查看价格</div>
             </div>
         </div>
     </div>
