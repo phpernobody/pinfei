@@ -255,6 +255,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
 
         // 参数改变
         function changeParams() {
+            console.log(modal);
             if (modal.hasOptions) {
                 var option = modal.options[modal.optionIndex];
                 var commission = modal.commission;
@@ -264,9 +265,9 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                 $('.se-provinceprice').html(parseInt(option.provinceprice));
                 $('.se-cityprice').html(parseInt(option.cityprice));
                 $('.se-countyprice').html(parseInt(option.countyprice));
-                $('.se-commission1').html(parseInt(option.countyprice*commission.commission1/100));
-                $('.se-commission2').html(parseInt(option.countyprice*commission.commission2/100));
-                $('.se-commission3').html(parseInt(option.countyprice*commission.commission3/100));
+                $('.se-commission1').html(parseInt((option.productprice-option.costprice)*commission.commission1/100) + parseInt(option.countyprice));
+                $('.se-commission2').html(parseInt((option.productprice-option.costprice)*(parseInt(commission.commission2) + parseInt(commission.commission1))/100) + parseInt(option.countyprice));
+                $('.se-commission3').html(parseInt((option.productprice-option.costprice)*(parseInt(commission.commission3) + parseInt(commission.commission2) + parseInt(commission.commission1))/100) + parseInt(option.countyprice));
                 $('.se-title').html(goodDetail.title);
                 $('.se-goods-thumb').attr('src', '../attachment/'+goodDetail.thumb);
                 $('.se-join-stock').val(parseInt(option.vstock));
@@ -278,9 +279,9 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                 $('.se-provinceprice').html(parseInt(goodDetail.provinceprice));
                 $('.se-cityprice').html(parseInt(goodDetail.cityprice));
                 $('.se-countyprice').html(parseInt(goodDetail.countyprice));
-                $('.se-commission1').html(parseInt(goodDetail.countyprice*commission.commission1/100));
-                $('.se-commission2').html(parseInt(goodDetail.countyprice*commission.commission2/100));
-                $('.se-commission3').html(parseInt(goodDetail.countyprice*commission.commission3/100));
+                $('.se-commission1').html(parseInt((goodDetail.productprice-goodDetail.costprice)*commission.commission1/100) + parseInt(goodDetail.countyprice));
+                $('.se-commission2').html(parseInt((goodDetail.productprice-goodDetail.costprice)*(parseInt(commission.commission2) + parseInt(commission.commission1))/100) + parseInt(goodDetail.countyprice));
+                $('.se-commission3').html(parseInt((goodDetail.productprice-goodDetail.costprice)*(parseInt(commission.commission3) + parseInt(commission.commission1) + parseInt(commission.commission2))/100) + parseInt(goodDetail.countyprice));
                 $('.se-confirm').attr('data-goodsid', goodDetail.id);
                 $('.se-title').html(goodDetail.title);
                 $('.se-goods-thumb').attr('src', '../attachment/'+goodDetail.thumb);
