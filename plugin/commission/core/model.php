@@ -54,7 +54,7 @@ if (!(class_exists('CommissionModel')))
                     /**
                      * by yaowk
                      */
-                    $price = $cinfo['marketprice'] - $cinfo['productprice'];
+                    $price = $cinfo['productprice'] - $cinfo['costprice'];
                     /**
                      * end
                      */
