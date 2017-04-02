@@ -145,7 +145,6 @@ define(['core', 'tpl', 'biz/goods/picker', 'biz/member/favorite', 'biz/member/ca
             core.json('goods/detail/get_comments', {
                 id: modal.goodsid
             }, function (ret) {
-              console.info(ret);
                 var result = ret.result;
                 $(".fui-icon-col[data-level='all']").find('.count').html(result.count.all);
                 $(".fui-icon-col[data-level='good']").find('.count').html(result.count.good);

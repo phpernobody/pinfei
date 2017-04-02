@@ -55,7 +55,7 @@ class Detail_EweiShopV2Page extends MobilePage
 		}
 		$goods = pdo_fetch('select * from ' . tablename('ewei_shop_goods') . ' where id=:id and uniacid=:uniacid limit 1', array(':id' => $id, ':uniacid' => $_W['uniacid']));
 
-        // 代理商价格展示
+        // 前端-商品详情-代理商价格
         if ( intval($member['isaagent']) !== 0 && intval($member['aagentstatus']) !== 0) {
             switch($member['aagenttype']) {
                 case 1: $agentLevel = 'provinceprice';break;
@@ -68,7 +68,6 @@ class Detail_EweiShopV2Page extends MobilePage
                 'minprice' => $goods[$agentLevel]
             );
         }
-
 
         if ((0 < $goods['ispresell']) && (((0 < $goods['presellend']) && (time() < $goods['preselltimeend'])) || ($goods['preselltimeend'] == 0)))
 		{
@@ -216,7 +215,7 @@ class Detail_EweiShopV2Page extends MobilePage
             $options = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option') . ' where goodsid=:goodsid and uniacid=:uniacid order by displayorder asc', array(':goodsid' => $goods['id'], ':uniacid' => $_W['uniacid']), 'stock');
 			$options_stock = array_keys($options);
 
-            // 带规格商品的总库存计算
+            // 前端-商品详情-代理商价格
             foreach($options as $k => $v) {
                 $aagentoptiontotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid=' . $v['id']);
                 $options[$k]['stock'] = intval($options[$k]['stock']) + intval($aagentoptiontotal);
@@ -247,7 +246,9 @@ class Detail_EweiShopV2Page extends MobilePage
         }
 
         // 库存等于总店库存加上代理商库存
+//        var_dump($id);
         $agenttotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id);
+//        var_dump($agenttotal);exit;
         $goods['total'] = intval($goods['total']) + intval($agenttotal);
 
 		if ($goods['total'] <= 0) 
@@ -654,7 +655,7 @@ class Detail_EweiShopV2Page extends MobilePage
 			}
 		}
 
-        //
+//        var_dump($goods);exit;
 
 
 		include $this->template();

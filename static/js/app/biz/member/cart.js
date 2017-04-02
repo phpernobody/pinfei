@@ -220,12 +220,14 @@ define(['core', 'tpl', 'biz/goods/picker', 'biz/plugin/diyform'], function (core
         }, true, true)
     };
     modal.add = function (goodsid, optionid, total, diyformdata, callback) {
+        console.log(goodsid, optionid, total, diyformdata)
         core.json('member/cart/add', {
             id: goodsid,
             optionid: optionid,
             total: total,
             diyformdata: diyformdata
         }, function (ret) {
+            console.log(ret)
             if (ret.status == 0) {
                 FoxUI.toast.show(ret.result.message);
                 if (ret.result.url) {
