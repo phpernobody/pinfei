@@ -281,7 +281,7 @@ class Create_EweiShopV2Page extends MobileLoginPage
                  * 查询库存
                  * by yaowk
                  */
-                $data['stock'] = m('order')->caculateStock($member,$data['id'],$optionid);
+                $data['stock'] = m('order')->caculateStock($member,$data['goodsid'],$optionid);
                 /**
                  * end
                  */
@@ -1037,7 +1037,7 @@ class Create_EweiShopV2Page extends MobileLoginPage
                         $data['task_goods'] = $task_goods_data['task_goods'];
                     }
                 }
-                $data['stock'] = $data['total'];
+
                 $data['total'] = $goodstotal;
                 if (!(empty($optionid))) {
                     $option = pdo_fetch('select id,title,marketprice,presellprice,goodssn,productsn,stock,`virtual`,weight from ' . tablename('ewei_shop_goods_option') . ' where id=:id and goodsid=:goodsid and uniacid=:uniacid  limit 1', array(':uniacid' => $uniacid, ':goodsid' => $goodsid, ':id' => $optionid));
@@ -1050,6 +1050,7 @@ class Create_EweiShopV2Page extends MobileLoginPage
                         }
                     }
                 }
+                $data['stock'] = m('order')->caculateStock($member,$data['goodsid'],$optionid);
                 if ($data['seckillinfo'] && ($data['seckillinfo']['status'] == 0)) {
                     $data['ggprice'] = $data['seckillinfo']['price'] * $g['total'];
                     $seckill_payprice += $data['ggprice'];
@@ -1530,7 +1531,7 @@ class Create_EweiShopV2Page extends MobileLoginPage
                  * by yaowk
                  */
                 $option = pdo_fetch('select provinceprice,cityprice,countyprice, id,title,marketprice,presellprice,goodssn,productsn,stock,`virtual`,weight' . $sql_condition . ' from ' . tablename('ewei_shop_goods_option') . ' where id=:id and goodsid=:goodsid and uniacid=:uniacid  limit 1', array(':uniacid' => $uniacid, ':goodsid' => $goodsid, ':id' => $optionid));
-                $option['stock'] = m('order')->caculateStock($member,$data['id'],$option['id']);
+                $option['stock'] = m('order')->caculateStock($member,$data['goodsid'],$option['id']);
                 /**
                  * end
                  */
