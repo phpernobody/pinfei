@@ -404,45 +404,63 @@ class Order_EweiShopV2Model
         foreach ($goods as $g) {
             $stocktype = 0;
             $agentType = 0;
-            /**
-             * by yaowk
-             * 如果上级不是平台
-             */
-            if (!empty($member['hagentid'])) {
-                if (!empty($g['optionid'])) {
-                    $data = pdo_get('ewei_shop_agent_stock', array('optionid' => $g['optionid'], 'memberid' => $member['hagentid']));
-                    $stock = $data['vstock'] - $g['total'];
-                    ($stock <= 0) && ($stock = 0);
-                    pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('optionid' => $g['optionid'], 'memberid' => $member['hagentid']));
-                } else {
-                    $data = pdo_get('ewei_shop_agent_stock', array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']));
-                    $stock = $data['vstock'] - $g['total'];
-                    ($stock <= 0) && ($stock = 0);
-                    pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']));
-                }
-            } else {
-                /**
-                 * end
-                 */
-                if ($type == 0) {
-                    if ($g['totalcnf'] == 0) {
-                        $stocktype = -1;
-                    }
-                } else if ($type == 1) {
-                    if ($g['totalcnf'] == 1) {
-                        $stocktype = -1;
-                    }
 
-                } else if ($type == 2) {
-                    if (1 <= $order['status']) {
-                        if ($g['totalcnf'] == 1) {
-                            $stocktype = 1;
-                        }
-                    } else if ($g['totalcnf'] == 0) {
+            if ($type == 0) {
+                if ($g['totalcnf'] == 0) {
+                    $stocktype = -1;
+                }
+            } else if ($type == 1) {
+                if ($g['totalcnf'] == 1) {
+                    $stocktype = -1;
+                }
+
+            } else if ($type == 2) {
+                if (1 <= $order['status']) {
+                    if ($g['totalcnf'] == 1) {
                         $stocktype = 1;
                     }
+                } else if ($g['totalcnf'] == 0) {
+                    $stocktype = 1;
                 }
-                if (!(empty($stocktype))) {
+            }
+            if (!(empty($stocktype))) {
+                /**
+                 * by yaowk
+                 * 如果上级不是平台
+                 */
+                if (!empty($member['hagentid'])) {
+                    if (!empty($g['optionid'])) {
+                        $data = pdo_get('ewei_shop_agent_stock', array('optionid' => $g['optionid'], 'memberid' => $member['hagentid']));
+                        if (!empty($data)) {
+                            if ($stocktype == 1) {
+                                $stock = $data['vstock'] + $g['total'];
+                            } else if ($stocktype == -1) {
+                                $stock = $data['vstock'] - $g['total'];
+                                ($stock <= 0) && ($stock = 0);
+                            }
+                            if (!empty($stock)) {
+                                pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('optionid' => $g['optionid'], 'memberid' => $member['hagentid']));
+                            }
+                        }
+                    }
+                    unset($data);
+                    unset($stock);
+                    $data = pdo_get('ewei_shop_agent_stock', array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']));
+                    if (!empty($data)) {
+                        if ($stocktype == 1) {
+                            $stock = $data['vstock'] + $g['total'];
+                        } else if ($stocktype == -1) {
+                            $stock = $data['vstock'] - $g['total'];
+                            ($stock <= 0) && ($stock = 0);
+                        }
+                        if (!empty($stock)) {
+                            pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']));
+                        }
+                    }
+                } else {
+                    /**
+                     * end
+                     */
                     if (!(empty($g['optionid']))) {
                         $option = m('goods')->getOption($g['goodsid'], $g['optionid']);
                         if (!(empty($option)) && ($option['stock'] != -1)) {
