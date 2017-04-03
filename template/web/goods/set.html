@@ -9,19 +9,30 @@
             <span style="color: red;">{$error}</span>
         </div>
         <div class="input-group">
-            <span class="input-group-addon">省代利润</span>
+            <span class="input-group-addon">平台利润比</span>
             <input class="form-control" name="province" value="{$data[province]}">
             <span class="input-group-addon">%</span>
         </div>
         <div class="input-group">
-            <span class="input-group-addon">市代利润</span>
+            <span class="input-group-addon">省级利润比</span>
             <input class="form-control" name="city" value="{$data[city]}">
             <span class="input-group-addon">%</span>
         </div>
         <div class="input-group">
-            <span class="input-group-addon">区代利润</span>
+            <span class="input-group-addon">市级利润比</span>
             <input class="form-control" name="county" value="{$data[county]}">
             <span class="input-group-addon">%</span>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">区级利润比</span>
+            <input class="form-control" name="miss" value="{$data[miss]}">
+            <span class="input-group-addon">%</span>
+        </div>
+        <div class="input-group">
+            <span style="color: red;">注：利润比是指这个所获得的利润在商品利润中占比<br>
+	利润=原价-升本价<br>
+	各级进货价=成本+（上级利润比之和）x利润<br>
+	如区级进货价=成本+（市级+省级+平台）利润比之和x商品利润</span>
         </div>
         <div style="height: 50px"></div>
         <div class="input-group">

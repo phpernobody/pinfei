@@ -11,18 +11,19 @@ class Set_EweiShopV2Page extends WebPage
         global $_GPC;
         global $_S;
         $error = '';
-        if (!empty($_GPC['province']) || !empty($_GPC['city']) || !empty($_GPC['country'])) {
+        if (!empty($_GPC['province']) || !empty($_GPC['city']) || !empty($_GPC['country']) || !empty($_GPC['miss'])) {
             $data = array(
                 'province' => $_GPC['province'],
                 'city' => $_GPC['city'],
-                'county' => $_GPC['county']
+                'county' => $_GPC['county'],
+                'miss' => $_GPC['miss']
             );
 //            $commission = m('common')->getSysset('commission');
             $commission = $_S['commission'];
-            $total = $commission['commission1'] + $commission['commission2'] + $commission['commission3'] + $data['province'] + $data['city'] + $data['county'];
+            $total = $commission['commission1'] + $commission['commission2'] + $commission['commission3'] + $data['province'] + $data['city'] + $data['county'] + $data['miss'];
             if ($total != 100) {
                 $error = '加上分销比例不等于100%,请重新设置';
-            }else {
+            } else {
                 m('common')->updateSysset(array('mygoods' => $data));
                 $goods = pdo_getall('ewei_shop_goods', array('uniacid' => $_W['uniacid']));
                 if (!empty($goods)) {
@@ -37,8 +38,8 @@ class Set_EweiShopV2Page extends WebPage
                         $options = pdo_getall('ewei_shop_goods_option', array('goodsid' => $good['id'], 'uniacid' => $_W['uniacid']));
                         if (!empty($options)) {
                             foreach ($options as $option) {
-                                $productprice = $good['productprice'];
-                                $costprice = $good['costprice'];
+                                $productprice = $option['productprice'];
+                                $costprice = $option['costprice'];
                                 $p = $productprice - $costprice;
                                 $provinceprice = $p * $data['province'] / 100.0 + $costprice;
                                 $cityprice = $p * $data['city'] / 100.0 + $provinceprice;

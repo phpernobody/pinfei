@@ -55,6 +55,10 @@ if (!(class_exists('CommissionModel')))
                      * by yaowk
                      */
                     $price = $cinfo['productprice'] - $cinfo['costprice'];
+                    if (!empty($cinfo['optionid'])){
+                        $option = m('goods')->getOption($cinfo['goodsid'],$cinfo['optionid']);
+                        $price = $option['productprice'] - $option['costprice'];
+                    }
                     /**
                      * end
                      */
