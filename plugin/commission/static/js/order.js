@@ -12,7 +12,6 @@ define(['core', 'tpl'], function (core, tpl) {
                 modal.getList()
             }
         });
-        console.log('init', modal )
         if (modal.page == 1) {
             modal.getList();
         }
@@ -56,20 +55,20 @@ define(['core', 'tpl'], function (core, tpl) {
         }
 
         var downid = getQueryString('downid');
-        console.log(downid);
 
         var url = 'commission/order/get_list';
         if (downid) {
             url = 'commission/order/get_down_list';
         }
 
+        console.log('before ajax:',  modal);
         core.json(url, {
             page: modal.page,
             status: modal.status,
             downid: downid
         }, function (ret) {
-            console.log(ret.result);
             var result = ret.result;
+
             if (modal.page == 1 && result.list && result.list.length) {
                 $('.content-empty').show();
             }
@@ -83,6 +82,8 @@ define(['core', 'tpl'], function (core, tpl) {
                 }
             }
             modal.page++;
+
+            console.log('before tpl:', result);
             core.tpl('#container', 'tpl_commission_order_list', result, modal.page > 1);
             // FoxUI.according.init()
         })

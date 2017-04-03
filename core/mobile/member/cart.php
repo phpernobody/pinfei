@@ -320,7 +320,6 @@ class Cart_EweiShopV2Page extends MobileLoginPage
             // 插入库存处理
             $maxBuying = $this->getMaxBuying($member, $id, $optionid);
 
-            show_json(1, $maxBuying);
             if ($total > $maxBuying) $total = $maxBuying;
 
 			$data = array('uniacid' => $_W['uniacid'], 'merchid' => $goods['merchid'], 'openid' => $_W['openid'], 'goodsid' => $id, 'optionid' => $optionid, 'marketprice' => $goods['marketprice'], 'total' => $total, 'selected' => 1, 'diyformid' => $diyformid, 'diyformdata' => $diyformdata, 'diyformfields' => $diyformfields, 'createtime' => time());
