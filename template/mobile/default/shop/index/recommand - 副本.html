@@ -1,0 +1,567 @@
+
+<!--十点开团-->
+<style>
+	body{
+		background: #fff;
+	}
+	.shidian{
+		height:4rem;
+		width: 100%;
+		padding-top: .85rem;
+	}
+	.shidian .shidian_btn{
+	 	width: 50%;
+	 	background:red;
+	 	height: 1.4rem;
+	 	border: 1px solid #ec3028;
+	 	display: flex;
+	 	flex-direction: row;
+	 	font-family: '微软雅黑',sans-serif;
+	 	font-size:.65rem;
+	 }
+	.shidian .shidian_btn .shidian_con{
+		height: 100%;
+		width: 50%;
+		text-align: center;
+		line-height: 1.4rem;
+	}
+
+	.shidian .shidian_count{
+		height:1.4rem;
+		font-family: '微软雅黑',sans-serif;
+		font-size:.6rem;
+		width: 50%;
+		line-height: 1.4rem;
+		text-align: center;
+		color:#848383;
+	}
+	.shidian .shidian_count span{
+		background: #ec3028;
+		color: #fff;
+	}
+	.show{
+		width: 100%;
+		font-family: '微软雅黑',sans-serif;
+	}
+	.show .show_con{
+		padding: .2rem .6rem;
+	}
+	.show .show_con .con-title{
+		font-size: .65rem;
+		font-weight: bold;
+		color: #000;
+		height: 1rem;
+		line-height: 1rem;
+	}
+	.show .show_con .con-jies{
+		font-size: .55rem;
+		color:#767676;
+		height: 1rem;
+		line-height: 1rem
+	}
+	.rows{
+		display: flex;
+		flex-direction: row;
+	}
+	.rows .row_btn{
+		height: 1rem;
+		width: 3.5rem;
+		line-height: 1rem;
+		text-align: center;
+		/*background: #ec3028;*/
+		background: gray;
+		border:0px;
+		color: #fff;
+		font-size: .55rem;
+	}
+	.magic{
+		margin: 1rem 0;
+		padding: 0rem .6rem;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		font-family: '微软雅黑',sans-serif;
+		/* height: 22.5rem; */
+	}
+	.magic .magic-left;.magic .magic-right{
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.magic .magic-left{
+		width: 42%;
+		margin-right: 2%;
+		padding-right: .55rem;
+	}
+	#leftImg{
+		width:100%;
+		height:6.5rem;
+	}
+	#rightImg{
+		width:100%;
+		height:8.9rem;
+	}
+	.magic .magic-right{
+		display: flex;
+		flex-direction: column;
+		width: 56%;
+		justify-content: space-between;
+	}
+	.magic .magic-left .magic-left1{
+		height:24%;
+	}
+	.magic-left .magic-left2,.magic-left .magic-left3{
+		height:38%;
+		padding-top: .55rem;
+	}
+	.magic-right .magic-right1,.magic-right .magic-right2{
+		height:45%;
+	}
+	.left-cont,.right-cont{
+		display: flex;
+		flex-direction: row;
+		height: 2rem;
+	}
+	.zhuangui{
+		width: 100%;
+		padding-left:1rem;
+		padding-right:1rem;
+	}
+	.zhuangui .zhuangui-con{
+		width: 100%;
+		margin-top:1rem;
+		display: flex;
+		flex-direction: column;
+	}
+	.zhuangui .zhuangui-art{
+		width: 100%;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		color: #676767;
+		font-family: '微软雅黑',sans-serif;
+	}
+	#RemainH,#RemainM,#RemainS{
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+</style>
+
+<div id="recommand"></div>
+<div class='infinite-loading' style="text-align: center; color: #666;">
+	<span class='fui-preloader'></span>
+	<span class='text'> 正在加载...</span>
+</div>
+
+<!--<script type="text/html" id="tpl_recommand">-->
+	<!--<%if list!=''%>-->
+		<!--<%if page==1%>-->
+			<!--<div class="fui-line" style="background: #f4f4f4;">-->
+				<!--<div class="text text-danger"><i class="icon icon-hotfill"></i> 店铺推荐</div>-->
+			<!--</div>-->
+			<!--<div class="fui-goods-group block border">-->
+		<!--<%/if%>-->
+		<!---->
+			<!--<%each list as item%>-->
+				<!--<div class="fui-goods-item" data-goodsid="<%item.id%>" data-type="<%item.type%>">-->
+					<!--<a <%if item.bargain>0%>href="{php echo mobileUrl('bargain/detail')}&id=<%item.bargain%>"<%else%>href="{php echo mobileUrl('goods/detail')}&id=<%item.id%>"<%/if%>>-->
+						<!--<div class="image" data-lazy-background="<%item.thumb%>">-->
+							<!--<%if item.total<=0%><div class="salez" style="background-image: url('{php echo tomedia($_W['shopset']['shop']['saleout'])}'); "></div><%/if%>-->
+						<!--</div>-->
+					<!--</a>-->
+					<!--<div class="detail">-->
+						<!--<a <%if item.bargain>0%>href="{php echo mobileUrl('bargain/detail')}&id=<%item.bargain%>"<%else%>href="{php echo mobileUrl('goods/detail')}&id=<%item.id%>"<%/if%>>-->
+							<!--<div class="name">-->
+								<!--<%if item.ispresell==1%><i class="fui-tag fui-tag-danger">预售</i><%/if%>-->
+								<!--<%item.title%>-->
+							<!--</div>-->
+						<!--</a>-->
+						<!--<div class="price">-->
+							<!--<span class="text">￥<%item.minprice%></span>-->
+							<!--<span class="buy"><%if item.bargain>0%>砍价活动<%else%><i class="icon icon-cart"></i><%/if%></span>-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+
+			<!--<%/each%>-->
+			<!---->
+		<!--<%if page==1%>-->
+			<!--</div>-->
+		<!--<%/if%>-->
+		<!---->
+	<!--<%/if%>-->
+<!--</script>-->
+<?php
+	date_default_timezone_set('PRC');
+	$starttimestr = "10:00:00";
+	$endtimestr = "22:00:00";
+	$starttime = strtotime($starttimestr);
+	$endtime = strtotime($endtimestr);
+	$nowtime = time();
+
+?>
+<div class="shidian">
+	<div class="shidian_btn" style="margin: 0 auto">
+		<div class='shidian_con' style="background: #ec3028;color: #fff">十点开团</div>
+		<div class='shidian_con' style="background: #fff;color:#de2a22">晚十抢购</div>
+	</div>
+	<!--$lefttime为零时限时秒杀结束-->
+	<div class="shidian_count" style="margin: 0 auto;margin-top:.2rem"
+		 a="<?php echo $nowtime;?>" b="<?php echo $starttime;?>"
+		 c="<?php echo $endtime;?>" >
+		<sapn class="miaosha">距离抢购结束:</sapn>
+		<span id="RemainH">00</span>:<span  id="RemainM">00</span>:<span id="RemainS">00</span>
+	</div>
+</div>
+
+
+<!--商品展示-->
+<div class="show">
+	{loop $getIstime $v}
+	<div class="show_con">
+		<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
+			<img src="../attachment/{$v['thumb']}" style="width:100%;height: 6.5rem">
+
+		</a>
+		<div style="width: 100%;padding-left: .3rem">
+			<div class='con-title'>{$v['title']}</div>
+			<div class='con-jies'>{$v['content']}</div>
+			<div class='rows'>
+				<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
+					<div class="row_btn">立即抢购</div>
+				</a>
+				<span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥{$v['productprice']}</span>
+				<span style="font-size:0.55rem;color:#ec3028;line-height: 1rem;height: 1rem;margin-left:.5rem">抢购价:￥{$v['marketprice']}</span>
+			</div>
+		</div>
+	</div>
+	{/loop}
+</div>
+<!--魔方样式-->
+
+<div class="magic">
+	<div class="magic-left">
+		<div class='magic-left1'>
+
+				<img onclick="doNew()" src="../addons/ewei_shopv2/static/img/news.jpg" style="width: 100%;height: 4.275rem">
+		</div>
+		{loop $getIsnew1 $v}
+		<div class='magic-left2'>
+			<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
+				<img src="../attachment/{$v['thumb']}" style="width: 100%;height: 6.2rem">
+
+				<div class="left-cont">
+					<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
+						{$v['title']}
+					</div>
+					<div style='width: 37%;height: 2rem;'>
+						<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">
+							新品优惠
+						</div>
+						<div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">
+							￥{$v['productprice']}
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		{/loop}
+		<!--<div class='magic-left3'>-->
+			<!--<a href="">-->
+				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img1.jpg" style="width: 100%">-->
+				<!--<div class="left-cont">-->
+					<!--<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">-->
+						<!--佳能单反入门相机相机佳-->
+					<!--</div>-->
+					<!--<div style='width: 37%;height: 2rem;'>-->
+						<!--<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>-->
+							<!--新品优惠-->
+						<!--</div>-->
+						<!--<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>-->
+							<!--￥2688-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</a>-->
+		<!--</div>-->
+	</div>
+
+	<div class="magic-right">
+		{loop $getIsnew2 $v}
+		<div class="magic-right2">
+			<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
+				<img id="rightImg" src="../attachment/{$v['thumb']}" style="width: 100%;height: 8.55rem">
+				<div class="right-cont">
+					<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
+						{$v['title']}
+					</div>
+					<div style='width: 30%;height: 2rem;'>
+						<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">
+							新品优惠
+						</div>
+						<div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">
+							￥{$v['productprice']}
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		{/loop}
+		<!--<div class="magic-right2">-->
+			 <!--<a href="">-->
+				<!--<img src="../addons/ewei_shopv2/static/img/pro1_img.jpg" style="width: 100%">-->
+				<!--<div class="right-cont">-->
+					<!--<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">-->
+						<!--路易威登全球限量款手提 包包-->
+					<!--</div>-->
+					<!--<div style='width: 30%;height: 2rem;'>-->
+						<!--<div style='float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem'>-->
+							<!--新品优惠-->
+						<!--</div>-->
+						<!--<div style='float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;'>-->
+							<!--￥2688-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</a>-->
+		<!--</div>-->
+	</div>
+</div>
+
+<div onclick="doNew()" style="margin:0 .6rem;text-align:center;color:#000;background:#eeeeee;height: 1.5rem;line-height:1.5rem;font-size: .6rem">更多新品>></div>
+<!--<div style="width: 100%;background:#f5f5f5;margin-top:1rem;">-->
+	<!--<img src="../addons/ewei_shopv2/static/img/zg_img.jpg"style="width: 100%">-->
+<!--</div>-->
+<!--&lt;!&ndash; 专柜商品 &ndash;&gt;-->
+<!--<div class='zhuangui'>-->
+	<!--<div class='zhuangui-con'>-->
+		<!--<a href="">-->
+			<!--<div style="width: 100%;padding: .5rem;background: #eee;margin-bottom: .7rem">-->
+				<!--<img src="../addons/ewei_shopv2/static/img/zg_pro_img.jpg"style="width:100%">-->
+			<!--</div>-->
+			<!--<div class='zhuangui-art'>-->
+				<!--<div style="margin-bottom:.6rem"><span style="color: #000;margin: 0 auto;border-bottom: 1px solid #000;margin-bottom:.6rem;font-size: .65rem;font-weight: bold">商品标题商品标题</span></div>-->
+			<!--<span style="text-align: center;font-size: .55rem;margin-bottom: .7rem">-->
+			<!--商品详细介绍,<br/>服装的种类很多，由于服装的基本形态、品种、用途、制作方法、<br/>			原材料的不同，各类服装亦表现出不同的、<br/>风格与特色，变化万千，<br/>十分丰富</span>-->
+				<!--<div style="color: #fff;font-size:.5rem;background: #ec3028;width:3.5rem;margin: 0 auto;padding-left: .5rem;padding-right: .5rem;height: .7rem;line-height: .7rem ">查看更多</div>-->
+			<!--</div>-->
+		<!--</a>-->
+	<!--</div>-->
+
+<!--</div>-->
+<!-- <div style="width:94%;height:2rem;background: #eee;margin:0 auto;line-height: 2rem;">
+	<span style="font-size:0.8rem;color:black;margin-left:43%;">更多新品>></span>
+</div> -->
+<!-- <div style="width:100%;height:6rem;margin-top:1rem;">
+	<img src="../addons/ewei_shopv2/static/img/zg_img.jpg" alt="" style="width:100%">
+</div>
+<div style="width:86%;margin:0 auto;height:23rem;">
+	<div style="width:100%;background: #EFEFEF">
+
+		<div style="width:94%;margin:0 auto;">
+			<img src="../addons/ewei_shopv2/static/img/zg_pro_img.jpg" alt="" style="width:100%;margin-top:0.5rem">
+		</div>
+	</div>
+	<div style="width:100%;height:8.5rem;margin-top:0.5rem;text-align: center;">
+		<span style="font-weight:bold;text-decoration:underline;color:black;font-family: 宋体;font-size:1.2rem">商品标题商品标题</span>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;margin-top:0.4rem">商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍</div>
+        <div class="row">
+			<button class="btn btn-danger" style="background:#EC3027;border-radius: 0;width:4.6rem;height:1.1rem;line-height:1.1rem;font-size:0.8rem;margin-top:0.6rem">查看更多</button>
+		</div>
+	</div>
+</div>
+
+<div style="width:86%;margin:0 auto;height:23rem;">
+	<div style="width:100%;background: #EFEFEF">
+
+		<div style="width:94%;margin:0 auto;">
+			<img src="../addons/ewei_shopv2/static/img/zg_pro_img.jpg" alt="" style="width:100%;margin-top:0.5rem">
+		</div>
+	</div>
+	<div style="width:100%;height:8.5rem;margin-top:0.5rem;text-align: center;">
+		<span style="font-weight:bold;text-decoration:underline;color:black;font-family: 宋体;font-size:1.2rem">商品标题商品标题</span>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;margin-top:0.4rem">商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍</div>
+		<div class="row">
+			<button class="btn btn-danger" style="background:#EC3027;border-radius: 0;width:4.6rem;height:1.1rem;line-height:1.1rem;font-size:0.8rem;margin-top:0.6rem">查看更多</button>
+		</div>
+	</div>
+</div>
+
+<div style="width:86%;margin:0 auto;height:23rem;">
+	<div style="width:100%;background: #EFEFEF">
+
+		<div style="width:94%;margin:0 auto;">
+			<img src="../addons/ewei_shopv2/static/img/zg_pro_img.jpg" alt="" style="width:100%;margin-top:0.5rem">
+		</div>
+	</div>
+	<div style="width:100%;height:8.5rem;margin-top:0.5rem;text-align: center;">
+		<span style="font-weight:bold;text-decoration:underline;color:black;font-family: 宋体;font-size:1.2rem">商品标题商品标题</span>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;margin-top:0.4rem">商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍商品详情介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍介绍</div>
+		<div class="row" style="text-align: center;color:#8F8F8F;font-size:0.8rem;">商品详情介绍</div>
+		<div class="row">
+			<button class="btn btn-danger" style="background:#EC3027;border-radius: 0;width:4.6rem;height:1.1rem;line-height:1.1rem;font-size:0.8rem;margin-top:0.6rem">查看更多</button>
+		</div>
+	</div>
+</div> -->
+<script language='javascript'>
+	require(['biz/shop/index'], function (modal) {modal.init({merchid:{php echo intval($_GPC['merchid'])}})});
+</script>
+
+
+<script language="JavaScript">
+	var runtimes = 0;
+	function GetRTime(){
+		var nowtime = $('.shidian_count').attr('a');
+		var starttime = $('.shidian_count').attr('b');
+		var endtime = $('.shidian_count').attr('c');
+
+
+		if (endtime>=nowtime){
+			lefttime = endtime-nowtime; //实际剩下的时间（秒）
+		}else{
+			lefttime=0;
+		}
+        if(lefttime == 0){
+			$("#RemainH").html('00');
+			$("#RemainM").html('00');
+			$("#RemainS").html('00');
+			$('.miaosha').html('10:00开始秒杀：');
+		}
+
+		var nMS = lefttime*1000-runtimes*1000;
+
+		if (nMS>=0){
+			var nH=Math.floor(nMS/(1000*60*60))%24;
+			if(nH<=9){
+			nH = '0'+nH;
+			}
+			var nM=Math.floor(nMS/(1000*60)) % 60;
+			if(nM<=9){
+			nM = '0'+nM;
+			}
+			var nS=Math.floor(nMS/1000) % 60;
+			if(nS<=9){
+			nS = '0'+nS;
+			}
+			$("#RemainH").html(nH);
+			$("#RemainM").html(nM);
+			$("#RemainS").html(nS);
+
+			runtimes++;
+			if(nowtime>=starttime){
+				setTimeout("GetRTime()",1000);
+				$('.row_btn').css('background','#ec3028');
+			}else{
+				$('.miaosha').html('10:00开始抢购：');
+				$("#RemainH").html('00');
+				$("#RemainM").html('00');
+				$("#RemainS").html('00');
+				$('.row_btn').css('background','gray');
+			}
+
+		}
+
+		if(nMS==0){
+			$('.miaosha').html('10:00开始秒杀：');
+			$('.row_btn').css('background','gray');
+		}
+	}
+
+	$(document).ready(function() {
+
+//		$.ajax({
+//            url:"{php echo mobileUrl('shop/category/getIstime')}",
+//			dataType:'json',
+//			success:function(data){
+//				var htm = '';
+//				$.each(data,function(key,value){
+//                    htm +='<div class="show_con">'
+//					htm +='<img onclick="doUrl(this)" a="'+value.id
+//					htm +='" src="../attachment/'+value.thumb+'" style="width:100%;">'
+//					htm +='<div style="width: 100%;padding-left: .3rem">'
+//					htm +='<div class="con-title">'+value.title+'</div>'
+//					htm +='<div class="con-jies">'+value.content+'</div>'
+//					htm +='<div class="rows">'
+//					htm +='<a href="{php echo mobileUrl('goods/detail').'&id='}"'
+//					htm +='"><div class="row_btn">立即抢购</div></a>'
+//					htm +='<span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥'+value.productprice+'</span>'
+//					htm +='<span style="font-size:0.55rem;color:#ec3028;line-height: 1rem;height: 1rem;margin-left:.5rem">抢购价:￥'+value.marketprice+'</span>'
+//					htm +='</div></div></div>'
+//				});
+//				$('.show').append(htm);
+//			},
+//		})
+
+
+//		$.ajax({
+//			url:"{php echo mobileUrl('shop/category/getIsnew1')}",
+//			dataType:'json',
+//			success:function(data){
+//				var htm = '';
+//				console.log(data);
+//				$.each(data,function(key,value){
+//                    htm +='<div class="magic-left2" onclick="doUrl(this)" a="'+value.id
+//					htm +='">'
+//					htm +='<img id="leftImg" src="../attachment/'+value.thumb+'" style="width: 100%">'
+//					htm +='<div class="left-cont">'
+//					htm +='<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">'
+//					htm +=value.title+'</div>'
+//					htm +='<div style="width: 37%;height: 2rem;">'
+//					htm +='<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">'
+//					htm +='新品优惠</div><div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">'
+//					htm +='￥'+value.productprice+'</div></div></div></div>'
+//				});
+//				$('.magic-left').append(htm);
+//			},
+//		})
+
+//		$.ajax({
+//			url:"{php echo mobileUrl('shop/category/getIsnew2')}",
+//			dataType:'json',
+//			success:function(data){
+//				var htm = '';
+//				console.log(data);
+//				$.each(data,function(key,value){
+//					htm +='<div class="magic-right2" onclick="doUrl(this)" a="'+value.id
+//					htm +='">'
+//					htm +='<img  id="rightImg" src="../attachment/'+value.thumb+'" style="width: 100%">'
+//					htm +='<div class="right-cont">'
+//					htm +='<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">'
+//					htm +=value.title+'</div>'
+//					htm +='<div style="width: 30%;height: 2rem;">'
+//					htm +='<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">'
+//					htm +='新品优惠</div><div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">'
+//					htm +='￥'+value.productprice+'</div></div></div></div>'
+//				});
+//				$('.magic-right').html(htm);
+//			},
+//		})
+
+		GetRTime();
+	})
+
+//	function doUrl(obj){
+//		var id = $(obj).attr('a');
+////		window.location.href='./index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=goods.detail&mid=1&id='+id;
+//		window.location.href="{php echo mobileUrl('goods/detail').'&id='}";
+//	}
+
+	function doNew(){
+		window.location.href="{php echo mobileUrl('newgoods').'&isnew=1'}";
+	}
+
+</script>
+
+
+
