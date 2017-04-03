@@ -57,14 +57,16 @@ class Order_EweiShopV2Model
                 $param = array_merge($param1, array('memberid' => $member['id']));
 
                 if (!empty($param['optionid'])) {
-                    $param2 = $param;
-                    unset($param2['optionid']);
+                    $param2 = array();
+                    $param2['memberid'] = $param['memberid'];
+                    $param2['goodsid'] = $param['goodsid'];
                     $result = pdo_get('ewei_shop_agent_stock', $param2);
                     if (empty($result)) {
                         pdo_insert('ewei_shop_agent_stock', array_merge($param2, array('stock' => $og['total'], 'vstock' => 0)));
                     } else {
                         pdo_update('ewei_shop_agent_stock', array('stock +=' => $og['total'], 'vstock +=' => $og['total']), $param2);
                     }
+
                 }
                 $result = pdo_get('ewei_shop_agent_stock', $param);
                 if (empty($result)) {
