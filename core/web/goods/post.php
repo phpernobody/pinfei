@@ -612,7 +612,6 @@ if ($_W['ispost'])
             ));
         }
 
-
         $seoption = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid!=0 and memberid=' . $v['id']);
 
         if (0 < count($optionids) && ($data['hasoption'] !== 0)) {

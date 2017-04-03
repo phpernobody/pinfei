@@ -141,7 +141,7 @@
         </div>
         <div style="background: #f2f2f2; overflow: hidden; padding: .5rem;">
             <div class="se-order-goods">
-                
+
             </div>
         </div>
 
@@ -150,7 +150,7 @@
         <div style="border-top: 1px solid #ddd; font-size: .6rem; height: 1.5rem; line-height: 1.5rem;padding: 0 .5rem; color: #949494;">电话:  <span class="se-order-address-phone" style="color: #333;">姓名</span></div>
         <div style="border-top: 1px solid #ddd; font-size: .6rem; height: 1.5rem; line-height: 1.5rem;padding: 0 .5rem; color: #949494;">订单号:  <span class="se-order-sn" style="color: #333;">姓名</span></div>
         <div style="border-top: 1px solid #ddd; font-size: .6rem; height: 1.5rem; line-height: 1.5rem;padding: 0 .5rem; color: #949494; border-bottom: 1px solid #ddd;">地址:  <span class="se-order-address-address" style="color: #333;">姓名</span></div>
-        
+
 
         <div style="margin-top: .5rem; background: #fbfbfb; font-size: 0.65rem; border-top: 1px solid #eee; height: 1.5rem; line-height: 1.5rem; padding: 0 .5rem;">发货</div>
          <div style="width: 100%; display: flex; border-top: 1px solid #ddd; font-size: .65rem; height: 1.5rem; line-height: 1.5rem; justify-content: space-between; padding: 0 .5rem;">
@@ -172,7 +172,7 @@
             <div class="se-order-confirm" style="width: calc(100% - 5.5rem); color: #fff; background: #ec3028;">确认发货</div>
         </div>
     </div>
-    
+
     	<!--<span class='status <%order.statuscss%>'><%order.statusstr%></span>-->
     <script id='tpl_order_index_list' type='text/html'>
         <div class="se-tpl-orders">
@@ -182,8 +182,9 @@
                     <div class='fui-list-group-title' style="font-size:0.5rem;color:#7d7c7c;font-family: '微软雅黑',sans-serif;line-height:1.7rem;height:1.7rem">
                         <span style="float:left;text-overflow :ellipsis;width: 10rem;overflow:hidden;white-space:nowrap;">订单号: <%order.ordersn%></span>
                         <span style="float:right;color: #ec3028"><!-- 订单日期:{php echo date('Y-m-d H:i:s',$order['createtime'])} -->
-                        <% if order.status==0%>待付款<%/if%><% if order.status==1%>待发货<%/if%>
-                        <% if order.status==2%>待发货<%/if%><% if order.status==3%>已完成<%/if%>
+                      <!--   <% if order.status==0%>待付款<%/if%><% if order.status==1%>待发货<%/if%>
+                        <% if order.status==2%>待发货<%/if%><% if order.status==3%>已完成<%/if%> -->
+                        <%order.statusstr%>
                         </span>
                     </div>
                     <%each order.goods[0].goods as g%>
@@ -198,7 +199,7 @@
                             <div style="position:absolute; bottom:1rem;">
                                 <span style="font-size:.65rem;color: #7d7c7c;">订单日期:<%order.paytime%></span>
                             </div>
-                            
+
                             <div style="width: 100%;font-size: 0.65rem;font-family:'微软雅黑',sans-serif;color:#949494;position:absolute; bottom:0;padding-right: 0.5rem">
                                 <span style="float: left;color:#ec3028">共<%g.total%>件商品:￥<%g.price%></span>
                                 <span style="float: right;">数量：<%g.total%>件</span>
@@ -229,22 +230,22 @@
         // require(['biz/order/list'], function (modal) {
         //     modal.init({fromDetail:false,status:"{$_GPC['status']}",merchid:{php echo intval($_GPC['merchid'])}});
         $(function () {
-            $("#se-plugin-express").mobiscroll().select({ 
-                theme: 'sense-ui', 
+            $("#se-plugin-express").mobiscroll().select({
+                theme: 'sense-ui',
                 display: 'bottom',
                 group: false,
                 rows: 3,
                 select: 'single',
                 inputClass: 'se-mobiscroll-btn',
-                buttons: [ 
-                    { 
+                buttons: [
+                    {
                         text: '确定',
-                        cssClass: 'se-mobiscroll-btn', 
+                        cssClass: 'se-mobiscroll-btn',
                         handler: 'set'
                     },
                     {
                         text: '取消',
-                        cssClass: 'se-mobiscroll-btn', 
+                        cssClass: 'se-mobiscroll-btn',
                         handler: 'cancel'
                     }
                 ]
@@ -252,9 +253,9 @@
         });
 
         require(['../addons/ewei_shopv2/plugin/abonus/static/js/list.js'], function (modal) {
-            modal.init({ 
+            modal.init({
                 fromDetail: false,
-                status:"{$_GPC['status']}", 
+                status:"{$_GPC['status']}",
                 merchid: {php echo intval($_GPC['merchid'])}
             });
         });
