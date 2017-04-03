@@ -93,8 +93,7 @@ class Index_EweiShopV2Page extends MobilePage
 		$goods = m('goods')->getList($args);
 
 		foreach ($goods['list'] as $key => $value) {
-			$stock = intval(pdo_fetchcolumn('select stock from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $value['id'] . ' and memberid=' . $member['id']));
-
+			$stock = intval(pdo_fetchcolumn('select stock from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $value['id'] . ' and memberid=' . $member['id'] . ' and optionid=0'));
 			$goods['list'][$key]['stock'] = $stock;
 		}
 		show_json(1, array('list' => $goods['list'], 'total' => $goods['total'], 'pagesize' => $args['pagesize']));

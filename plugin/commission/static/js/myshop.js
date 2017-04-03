@@ -175,6 +175,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                         modal.page++
                     }
                 }
+                console.log(result)
                 core.tpl('.goods-list-group', 'tpl_commission_goods_select', result, modal.page > 1);
                 modal.bindEvents()
             })

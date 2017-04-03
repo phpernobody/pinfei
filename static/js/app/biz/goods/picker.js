@@ -49,10 +49,11 @@ define(['core', 'tpl', 'biz/member/cart', 'biz/plugin/diyform'], function (core,
                     modal.show();
                     return
                 }
+                console.log(ret.result);
                 // 有代理商价格
                 var agentInfo = ret.result.agentInfo;
 
-                if(agentInfo.isagent) {
+                if(agentInfo && agentInfo.isagent) {
                     ret.result.goods.maxprice = agentInfo.maxprice;
                     ret.result.goods.minprice = agentInfo.minprice;
                 }
