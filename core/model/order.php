@@ -39,8 +39,7 @@ class Order_EweiShopV2Model
                 }
 
 
-            }
-            else {
+            } else {
                 $option = m('goods')->getOption($og['goodsid'], $og['optionid']);
                 if (!empty($parentaagent)) {
                     $basePrice += $this->caculatePrice($parentaagent, $option) * $og['total'];
@@ -48,17 +47,29 @@ class Order_EweiShopV2Model
                 $param1['optionid'] = $option['id'];
             }
             if (!empty($parentaagent)) {
+                if (!empty($param1['optionid'])) {
+                    pdo_update('ewei_shop_agent_stock', array('stock -=' => $og['total']), array_merge(array('goodsid' => $param1['goodsid']), array('memberid' => $parentaagent['id'])));
+                }
                 pdo_update('ewei_shop_agent_stock', array('stock -=' => $og['total']), array_merge($param1, array('memberid' => $parentaagent['id'])));
             }
             if (!empty($member['isaagent'])) {
                 // 本身是代理商，增加库存
                 $param = array_merge($param1, array('memberid' => $member['id']));
+
+                if (!empty($param['optionid'])) {
+                    $param2 = $param;
+                    unset($param2['optionid']);
+                    $result = pdo_get('ewei_shop_agent_stock', $param2);
+                    if (empty($result)) {
+                        pdo_insert('ewei_shop_agent_stock', array_merge($param2, array('stock' => $og['total'], 'vstock' => 0)));
+                    } else {
+                        pdo_update('ewei_shop_agent_stock', array('stock +=' => $og['total'], 'vstock +=' => $og['total']), $param2);
+                    }
+                }
                 $result = pdo_get('ewei_shop_agent_stock', $param);
-                // 本身是代理商，扣除上级代理商真实库存，增加本身真实库存
                 if (empty($result)) {
                     pdo_insert('ewei_shop_agent_stock', array_merge($param, array('stock' => $og['total'], 'vstock' => 0)));
-                }
-                else {
+                } else {
                     pdo_update('ewei_shop_agent_stock', array('stock +=' => $og['total'], 'vstock +=' => $og['total']), $param);
                 }
             }
@@ -71,8 +82,7 @@ class Order_EweiShopV2Model
                     $oldagent1 = m('member')->getMember($parentaagent['oldagentid']);
                     if (!empty($oldagent1['isaagent']) && !empty($oldagent1['oldagentid'])) { // 上级1也是代理商但是曾有上级分销商
                         $oldagent2 = m('member')->getMember($oldagent1['oldagentid']);
-                    }
-                    else if (empty($oldagent1['isaagent']) && !empty($oldagent1['agentid'])) { // 上级1不是代理商但是有上级分销商
+                    } else if (empty($oldagent1['isaagent']) && !empty($oldagent1['agentid'])) { // 上级1不是代理商但是有上级分销商
                         $oldagent2 = m('member')->getMember($oldagent1['agentid']);
                     }
                 }
@@ -116,8 +126,7 @@ class Order_EweiShopV2Model
                 $data['hagentid'] = $member['hagentid'];
                 m('member')->setCredit($parentaagent['openid'], 'credit2', $resultPrice);
                 pdo_insert('ewei_shop_agent_order_finish', $data);
-            }
-            else {
+            } else {
                 $parentaagent = m('member')->getMember($member['hagentid']);
                 m('member')->setCredit($parentaagent['openid'], 'credit2', $basePrice);
             }
@@ -158,37 +167,20 @@ class Order_EweiShopV2Model
      * @return bool|string
      */
     public
-    function caculateStock($member, $goodsid, $optionid = 0, $isself = false)
+    function caculateStock($member, $goodsid, $optionid = 0)
     {
-        $sql = ' select stock,vstock from ' . tablename('ewei_shop_agent_stock') . ' where memberid= :memberid and ';
-        $param = array();
-        if (!$isself) {
-            if ($member['hagentid'] == 0) {
-                return 999999999;
-            }
-            $member = m('member')->getMember($member['hagentid']);
+        $member = m('member')->getMember($member['hagentid']);
+        if ($member['hagentid'] == 0) {
+            // 取平台数据
+            $goods = pdo_get('ewei_shop_goods', array('id' => $goodsid));
+            $agenttotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid = ' . $goodsid);
+            return intval($goods['total']) + intval($agenttotal);
+        } else {
+            // 取代理商数据
+            $agenttotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid = ' . $goodsid . ' and optionid=' . $optionid);
+            $option = pdo_get('ewei_shop_goods_option', array('id' => $optionid));
+            return intval($option['stock']) + intval($agenttotal);
         }
-        $param['memberid'] = $member['id'];
-        if (empty($optionid)) {
-            $sql .= ' goodsid=:goodsid ';
-            $param['goodsid'] = $goodsid;
-        }
-        else {
-            $sql .= ' optionid=:optionid ';
-            $param['optionid'] = $optionid;
-        }
-        $data = pdo_fetch($sql, $param);
-        if ($isself) {
-            return intval($data['stock']);
-        }
-        if (empty($optionid)){
-            $goods = pdo_get('ewei_shop_goods',array('id'=>$goodsid));
-            return intval($data['vstock'] + $goods['total']);
-        }else{
-            $option = pdo_get('ewei_shop_goods_option',array('id'=>$optionid));
-            return intval($data['vstock'] + $option['stock']);
-        }
-
     }
 
     public
@@ -339,8 +331,7 @@ class Order_EweiShopV2Model
             if (!(empty($gcredit))) {
                 if (strexists($gcredit, '%')) {
                     $credits += intval((floatval(str_replace('%', '', $gcredit)) / 100) * $g['realprice']);
-                }
-                else {
+                } else {
                     $credits += intval($g['credit']) * $g['total'];
                 }
             }
@@ -369,8 +360,7 @@ class Order_EweiShopV2Model
             if (!(empty($gbalance))) {
                 if (strexists($gbalance, '%')) {
                     $balance += intval((floatval(str_replace('%', '', $gbalance)) / 100) * $g['realprice']);
-                }
-                else {
+                } else {
                     $balance += intval($g['money']) * $g['total'];
                 }
             }
@@ -382,8 +372,7 @@ class Order_EweiShopV2Model
                     m('member')->setCredit($order['openid'], 'credit2', $balance, array(0, $shopset['name'] . '购物赠送余额 订单号: ' . $order['ordersn']));
                     return;
                 }
-            }
-            else if ($type == 2) {
+            } else if ($type == 2) {
                 if (1 <= $order['status']) {
                     m('member')->setCredit($order['openid'], 'credit2', -$balance, array(0, $shopset['name'] . '购物取消订单扣除赠送余额 订单号: ' . $order['ordersn']));
                 }
@@ -401,8 +390,7 @@ class Order_EweiShopV2Model
         if ($order['isparent'] == 1) {
             $condition = ' og.parentorderid=:parentorderid';
             $param[':parentorderid'] = $orderid;
-        }
-        else {
+        } else {
             $condition = ' og.orderid=:orderid';
             $param[':orderid'] = $orderid;
         }
@@ -426,14 +414,13 @@ class Order_EweiShopV2Model
                     $stock = $data['vstock'] - $g['total'];
                     ($stock <= 0) && ($stock = 0);
                     pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('optionid' => $g['optionid'], 'memberid' => $member['hagentid']));
-                }
-                else {
+                } else {
                     $data = pdo_get('ewei_shop_agent_stock', array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']));
                     $stock = $data['vstock'] - $g['total'];
                     ($stock <= 0) && ($stock = 0);
                     pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']));
                 }
-            }else {
+            } else {
                 /**
                  * end
                  */
@@ -441,20 +428,17 @@ class Order_EweiShopV2Model
                     if ($g['totalcnf'] == 0) {
                         $stocktype = -1;
                     }
-                }
-                else if ($type == 1) {
+                } else if ($type == 1) {
                     if ($g['totalcnf'] == 1) {
                         $stocktype = -1;
                     }
 
-                }
-                else if ($type == 2) {
+                } else if ($type == 2) {
                     if (1 <= $order['status']) {
                         if ($g['totalcnf'] == 1) {
                             $stocktype = 1;
                         }
-                    }
-                    else if ($g['totalcnf'] == 0) {
+                    } else if ($g['totalcnf'] == 0) {
                         $stocktype = 1;
                     }
                 }
@@ -465,8 +449,7 @@ class Order_EweiShopV2Model
                             $stock = -1;
                             if ($stocktype == 1) {
                                 $stock = $option['stock'] + $g['total'];
-                            }
-                            else if ($stocktype == -1) {
+                            } else if ($stocktype == -1) {
                                 $stock = $option['stock'] - $g['total'];
                                 ($stock <= 0) && ($stock = 0);
                             }
@@ -479,8 +462,7 @@ class Order_EweiShopV2Model
                         $totalstock = -1;
                         if ($stocktype == 1) {
                             $totalstock = $g['goodstotal'] + $g['total'];
-                        }
-                        else if ($stocktype == -1) {
+                        } else if ($stocktype == -1) {
                             $totalstock = $g['goodstotal'] - $g['total'];
                             ($totalstock <= 0) && ($totalstock = 0);
                         }
@@ -495,8 +477,7 @@ class Order_EweiShopV2Model
             if (!(empty($gcredit))) {
                 if (strexists($gcredit, '%')) {
                     $credits += intval((floatval(str_replace('%', '', $gcredit)) / 100) * $g['realprice']);
-                }
-                else {
+                } else {
                     $credits += intval($g['credit']) * $g['total'];
                 }
             }
@@ -504,8 +485,7 @@ class Order_EweiShopV2Model
                 if ($g['totalcnf'] != 1) {
                     pdo_update('ewei_shop_goods', array('sales' => $g['sales'] + $g['total']), array('uniacid' => $_W['uniacid'], 'id' => $g['goodsid']));
                 }
-            }
-            else if ($type == 1) {
+            } else if ($type == 1) {
                 if (1 <= $order['status']) {
                     if ($g['totalcnf'] != 1) {
                         pdo_update('ewei_shop_goods', array('sales' => $g['sales'] - $g['total']), array('uniacid' => $_W['uniacid'], 'id' => $g['goodsid']));
@@ -519,8 +499,7 @@ class Order_EweiShopV2Model
             $shopset = m('common')->getSysset('shop');
             if ($type == 1) {
                 m('member')->setCredit($order['openid'], 'credit1', $credits, array(0, $shopset['name'] . '购物积分 订单号: ' . $order['ordersn']));
-            }
-            else if ($type == 2) {
+            } else if ($type == 2) {
                 if (1 <= $order['status']) {
                     m('member')->setCredit($order['openid'], 'credit1', -$credits, array(0, $shopset['name'] . '购物取消订单扣除积分 订单号: ' . $order['ordersn']));
                 }
@@ -579,7 +558,7 @@ class Order_EweiShopV2Model
             }
             if (!empty($child1)) {
                 $condition = substr($condition, 0, strlen($condition) - 2) . ')';
-            }else{
+            } else {
                 $condition = ' 1=2 ';
             }
             return $condition;
@@ -597,8 +576,7 @@ class Order_EweiShopV2Model
                 if ((0 < $dd) && ($dd < 100)) {
                     $price = round(($dd / 100) * $gprice, 2);
                 }
-            }
-            else if (0 < floatval($isd)) {
+            } else if (0 < floatval($isd)) {
                 $price = round(floatval($isd * $gtotal), 2);
             }
         }
@@ -626,8 +604,7 @@ class Order_EweiShopV2Model
                     }
                 }
             }
-        }
-        else if (!(empty($isdiscount_discounts['merch']))) {
+        } else if (!(empty($isdiscount_discounts['merch']))) {
             foreach ($isdiscount_discounts['merch'] as $k => $v) {
                 $k = substr($k, 6);
                 $op_marketprice = m('goods')->getOptionPirce($goods['id'], $k);
@@ -653,8 +630,7 @@ class Order_EweiShopV2Model
     {
         if ($type == 0) {
             $total = $g['total'];
-        }
-        else {
+        } else {
             $total = 1;
         }
         $gprice = $g['marketprice'] * $total;
@@ -701,21 +677,18 @@ class Order_EweiShopV2Model
                         if (!(empty($isd))) {
                             $price1 = $this->getFormartDiscountPrice($isd, $gprice, $total);
                         }
-                    }
-                    else {
+                    } else {
                         $isd = trim($isdiscount_discounts['merch']['option0']);
                         if (!(empty($isd))) {
                             $price1 = $this->getFormartDiscountPrice($isd, $gprice, $total);
                         }
                     }
-                }
-                else if (empty($g['merchsale'])) {
+                } else if (empty($g['merchsale'])) {
                     $isd = trim($isdiscount_discounts[$key]['option' . $g['optionid']]);
                     if (!(empty($isd))) {
                         $price1 = $this->getFormartDiscountPrice($isd, $gprice, $total);
                     }
-                }
-                else {
+                } else {
                     $isd = trim($isdiscount_discounts['merch']['option' . $g['optionid']]);
                     if (!(empty($isd))) {
                         $price1 = $this->getFormartDiscountPrice($isd, $gprice, $total);
@@ -724,8 +697,7 @@ class Order_EweiShopV2Model
             }
             if ($gprice < $price1) {
                 $isdiscountprice = 0;
-            }
-            else {
+            } else {
                 $isdiscountprice = abs($price1 - $gprice);
             }
             $isCdiscount = 1;
@@ -740,19 +712,16 @@ class Order_EweiShopV2Model
                         if ((0 < $dd) && ($dd < 10)) {
                             $price2 = round(($dd / 10) * $gprice, 2);
                         }
-                    }
-                    else {
+                    } else {
                         $dd = floatval($discounts[$key . '_pay'] * $total);
                         $md = floatval($level['discount']);
                         if (!(empty($dd))) {
                             $price2 = round($dd, 2);
-                        }
-                        else if (0 < $md) {
+                        } else if (0 < $md) {
                             $price2 = round(($md / 10) * $gprice, 2);
                         }
                     }
-                }
-                else {
+                } else {
                     $isd = trim($discounts[$key]['option' . $g['optionid']]);
                     if (!(empty($isd))) {
                         $price2 = $this->getFormartDiscountPrice($isd, $gprice, $total);
@@ -765,8 +734,7 @@ class Order_EweiShopV2Model
         if ($isCdiscount == 1) {
             $price = $price1;
             $discounttype = 1;
-        }
-        else if ($isHdiscount == 1) {
+        } else if ($isHdiscount == 1) {
             $price = $price2;
             $discounttype = 2;
         }
@@ -776,8 +744,7 @@ class Order_EweiShopV2Model
         if ($canbuyagain) {
             if (empty($g['buyagain_islong'])) {
                 $buyagainprice = ($unitprice * (10 - $g['buyagain'])) / 10;
-            }
-            else {
+            } else {
                 $buyagainprice = ($price * (10 - $g['buyagain'])) / 10;
             }
         }
@@ -818,13 +785,11 @@ class Order_EweiShopV2Model
             if ($is_deduct == 1) {
                 if ($g['manydeduct']) {
                     $deduct = $g['deduct'] * $g['total'];
-                }
-                else {
+                } else {
                     $deduct = $g['deduct'];
                 }
                 if ($g['seckillinfo'] && ($g['seckillinfo']['status'] == 0)) {
-                }
-                else {
+                } else {
                     $deduct_total += $deduct;
                     $ch_order[$merchid]['deducttotal'] += $deduct;
                 }
@@ -832,18 +797,15 @@ class Order_EweiShopV2Model
             if ($is_deduct2 == 1) {
                 if ($g['deduct2'] == 0) {
                     $deduct2 = $g['ggprice'];
-                }
-                else if (0 < $g['deduct2']) {
+                } else if (0 < $g['deduct2']) {
                     if ($g['ggprice'] < $g['deduct2']) {
                         $deduct2 = $g['ggprice'];
-                    }
-                    else {
+                    } else {
                         $deduct2 = $g['deduct2'];
                     }
                 }
                 if ($g['seckillinfo'] && ($g['seckillinfo']['status'] == 0)) {
-                }
-                else {
+                } else {
                     $ch_order[$merchid]['deduct2total'] += $deduct2;
                     $deduct2_total += $deduct2;
                 }
@@ -938,8 +900,7 @@ class Order_EweiShopV2Model
         $user_city = '';
         if (!(empty($address))) {
             $user_city = $address['city'];
-        }
-        else if (!(empty($member['city']))) {
+        } else if (!(empty($member['city']))) {
             $user_city = $member['city'];
         }
         foreach ($goods as $g) {
@@ -958,47 +919,38 @@ class Order_EweiShopV2Model
             $merchid = $g['merchid'];
             if (!(empty($g['issendfree']))) {
                 $sendfree = true;
-            }
-            else {
+            } else {
                 if ($seckillinfo && ($seckillinfo['status'] == 0)) {
-                }
-                else if (($g['ednum'] <= $total_array[$g['goodsid']]) && (0 < $g['ednum'])) {
+                } else if (($g['ednum'] <= $total_array[$g['goodsid']]) && (0 < $g['ednum'])) {
                     $gareas = explode(';', $g['edareas']);
                     if (empty($gareas)) {
                         $sendfree = true;
-                    }
-                    else if (!(empty($address))) {
+                    } else if (!(empty($address))) {
                         if (!(in_array($address['city'], $gareas))) {
                             $sendfree = true;
                         }
-                    }
-                    else if (!(empty($member['city']))) {
+                    } else if (!(empty($member['city']))) {
                         if (!(in_array($member['city'], $gareas))) {
                             $sendfree = true;
                         }
-                    }
-                    else {
+                    } else {
                         $sendfree = true;
                     }
                 }
                 if ($seckillinfo && ($seckillinfo['status'] == 0)) {
-                }
-                else if ((floatval($g['edmoney']) <= $totalprice_array[$g['goodsid']]) && (0 < floatval($g['edmoney']))) {
+                } else if ((floatval($g['edmoney']) <= $totalprice_array[$g['goodsid']]) && (0 < floatval($g['edmoney']))) {
                     $gareas = explode(';', $g['edareas']);
                     if (empty($gareas)) {
                         $sendfree = true;
-                    }
-                    else if (!(empty($address))) {
+                    } else if (!(empty($address))) {
                         if (!(in_array($address['city'], $gareas))) {
                             $sendfree = true;
                         }
-                    }
-                    else if (!(empty($member['city']))) {
+                    } else if (!(empty($member['city']))) {
                         if (!(in_array($member['city'], $gareas))) {
                             $sendfree = true;
                         }
-                    }
-                    else {
+                    } else {
                         $sendfree = true;
                     }
                 }
@@ -1027,17 +979,14 @@ class Order_EweiShopV2Model
                     $dispatch_merch[$merchid] += $g['dispatchprice'];
                     if ($seckillinfo && ($seckillinfo['status'] == 0)) {
                         $seckill_dispatchprice += $g['dispatchprice'];
-                    }
-                    else {
+                    } else {
                         $dispatch_price += $g['dispatchprice'];
                     }
                 }
-            }
-            else if ($g['dispatchtype'] == 0) {
+            } else if ($g['dispatchtype'] == 0) {
                 if (empty($g['dispatchid'])) {
                     $dispatch_data = m('dispatch')->getDefaultDispatch($merchid);
-                }
-                else {
+                } else {
                     $dispatch_data = m('dispatch')->getOneDispatch($g['dispatchid']);
                 }
                 if (empty($dispatch_data)) {
@@ -1068,22 +1017,19 @@ class Order_EweiShopV2Model
                         $areas = unserialize($dispatch_data['areas']);
                         if ($dispatch_data['calculatetype'] == 1) {
                             $param = $g['total'];
-                        }
-                        else {
+                        } else {
                             $param = $g['weight'] * $g['total'];
                         }
                         if (array_key_exists($dkey, $dispatch_array)) {
                             $dispatch_array[$dkey]['param'] += $param;
-                        }
-                        else {
+                        } else {
                             $dispatch_array[$dkey]['data'] = $dispatch_data;
                             $dispatch_array[$dkey]['param'] = $param;
                         }
                         if ($seckillinfo && ($seckillinfo['status'] == 0)) {
                             if (array_key_exists($dkey, $dispatch_array)) {
                                 $dispatch_array[$dkey]['seckillnums'] += $param;
-                            }
-                            else {
+                            } else {
                                 $dispatch_array[$dkey]['seckillnums'] = $param;
                             }
                         }
@@ -1098,19 +1044,16 @@ class Order_EweiShopV2Model
                 $areas = unserialize($dispatch_data['areas']);
                 if (!(empty($address))) {
                     $dprice = m('dispatch')->getCityDispatchPrice($areas, $address['city'], $param, $dispatch_data);
-                }
-                else if (!(empty($member['city']))) {
+                } else if (!(empty($member['city']))) {
                     $dprice = m('dispatch')->getCityDispatchPrice($areas, $member['city'], $param, $dispatch_data);
-                }
-                else {
+                } else {
                     $dprice = m('dispatch')->getDispatchPrice($param, $dispatch_data);
                 }
                 $merchid = $dispatch_data['merchid'];
                 $dispatch_merch[$merchid] += $dprice;
                 if (0 < $v['seckillnums']) {
                     $seckill_dispatchprice += $dprice;
-                }
-                else {
+                } else {
                     $dispatch_price += $dprice;
                 }
             }
@@ -1124,27 +1067,23 @@ class Order_EweiShopV2Model
                         if (floatval($merchset['enoughorder']) <= 0) {
                             $dispatch_price = $dispatch_price - $dispatch_merch[$merchid];
                             $dispatch_merch[$merchid] = 0;
-                        }
-                        else if (floatval($merchset['enoughorder']) <= $merch_array[$merchid]['ggprice']) {
+                        } else if (floatval($merchset['enoughorder']) <= $merch_array[$merchid]['ggprice']) {
                             if (empty($merchset['enoughareas'])) {
                                 $dispatch_price = $dispatch_price - $dispatch_merch[$merchid];
                                 $dispatch_merch[$merchid] = 0;
-                            }
-                            else {
+                            } else {
                                 $areas = explode(';', $merchset['enoughareas']);
                                 if (!(empty($address))) {
                                     if (!(in_array($address['city'], $areas))) {
                                         $dispatch_price = $dispatch_price - $dispatch_merch[$merchid];
                                         $dispatch_merch[$merchid] = 0;
                                     }
-                                }
-                                else if (!(empty($member['city']))) {
+                                } else if (!(empty($member['city']))) {
                                     if (!(in_array($member['city'], $areas))) {
                                         $dispatch_price = $dispatch_price - $dispatch_merch[$merchid];
                                         $dispatch_merch[$merchid] = 0;
                                     }
-                                }
-                                else if (empty($member['city'])) {
+                                } else if (empty($member['city'])) {
                                     $dispatch_price = $dispatch_price - $dispatch_merch[$merchid];
                                     $dispatch_merch[$merchid] = 0;
                                 }
@@ -1160,24 +1099,20 @@ class Order_EweiShopV2Model
                 if ($loop == 0) {
                     if (floatval($saleset['enoughorder']) <= 0) {
                         $saleset_free = 1;
-                    }
-                    else if (floatval($saleset['enoughorder']) <= $realprice - $seckill_payprice) {
+                    } else if (floatval($saleset['enoughorder']) <= $realprice - $seckill_payprice) {
                         if (empty($saleset['enoughareas'])) {
                             $saleset_free = 1;
-                        }
-                        else {
+                        } else {
                             $areas = explode(';', $saleset['enoughareas']);
                             if (!(empty($address))) {
                                 if (!(in_array($address['city'], $areas))) {
                                     $saleset_free = 1;
                                 }
-                            }
-                            else if (!(empty($member['city']))) {
+                            } else if (!(empty($member['city']))) {
                                 if (!(in_array($member['city'], $areas))) {
                                     $saleset_free = 1;
                                 }
-                            }
-                            else if (empty($member['city'])) {
+                            } else if (empty($member['city'])) {
                                 $saleset_free = 1;
                             }
                         }
@@ -1189,8 +1124,7 @@ class Order_EweiShopV2Model
                         foreach ($goods as $k => $v) {
                             if (!(in_array($v['goodsid'], $saleset['goodsids']))) {
                                 unset($goods[$k]);
-                            }
-                            else {
+                            } else {
                                 $is_nofree = 1;
                             }
                         }
@@ -1198,8 +1132,7 @@ class Order_EweiShopV2Model
                     if (($is_nofree == 1) && ($loop == 0)) {
                         $new_data = $this->getOrderDispatchPrice($goods, $member, $address, $saleset, $merch_array, $t, 1);
                         $dispatch_price += $new_data['dispatch_price'];
-                    }
-                    else if ($saleset_free == 1) {
+                    } else if ($saleset_free == 1) {
                         $dispatch_price = 0;
                     }
                 }
@@ -1287,8 +1220,7 @@ class Order_EweiShopV2Model
                 if (!(empty($m1))) {
                     if (is_array($commissions)) {
                         $commission1 += ((isset($commissions['level1']) ? floatval($commissions['level1']) : 0));
-                    }
-                    else {
+                    } else {
                         $c1 = iunserializer($og['commission1']);
                         $l1 = $pc->getLevel($m1['openid']);
                         $commission1 += ((isset($c1['level' . $l1['id']]) ? $c1['level' . $l1['id']] : $c1['default']));
@@ -1297,8 +1229,7 @@ class Order_EweiShopV2Model
                 if (!(empty($m2))) {
                     if (is_array($commissions)) {
                         $commission2 += ((isset($commissions['level2']) ? floatval($commissions['level2']) : 0));
-                    }
-                    else {
+                    } else {
                         $c2 = iunserializer($og['commission2']);
                         $l2 = $pc->getLevel($m2['openid']);
                         $commission2 += ((isset($c2['level' . $l2['id']]) ? $c2['level' . $l2['id']] : $c2['default']));
@@ -1307,8 +1238,7 @@ class Order_EweiShopV2Model
                 if (!(empty($m3))) {
                     if (is_array($commissions)) {
                         $commission3 += ((isset($commissions['level3']) ? floatval($commissions['level3']) : 0));
-                    }
-                    else {
+                    } else {
                         $c3 = iunserializer($og['commission3']);
                         $l3 = $pc->getLevel($m3['openid']);
                         $commission3 += ((isset($c3['level' . $l3['id']]) ? $c3['level' . $l3['id']] : $c3['default']));
