@@ -109,8 +109,7 @@
             dataType:'json',
             success: function(data) {
                 console.log(data);
-                data = data.concat(data);
-                data = data.concat(data);
+
                 var html = '';
                 $.each(data, function(key,v) {
                     html += '<div style="margin: auto; width: 12.25rem; height: 4.8rem; padding: .3rem; margin-top: .5rem; background: #fff; overflow: hidden;"><a href="';
