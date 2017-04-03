@@ -14,7 +14,6 @@ class Category_EweiShopV2Page extends MobilePage
 		$sql = "select * from ims_ewei_shop_category where level=1 order by id";
 
 		$getCategory = pdo_fetchall($sql);
-		
 
 		include $this->template();
 	}
@@ -26,6 +25,12 @@ class Category_EweiShopV2Page extends MobilePage
         $sql = "select id,title,salesreal,productprice,marketprice,total,thumb from ims_ewei_shop_goods where pcate=" . $id;
 
 		$getGoods = pdo_fetchall($sql);
+//var_dump($getGoods);exit;
+        // 商品库存重新计算
+        foreach($getGoods as $k => $v) {
+            $agenttotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $v['id'] . ' and optionid=0');
+            $getGoods[$k]['total'] = intval($getGoods[$k]['total']) + intval($agenttotal);
+        }
 
 		echo json_encode($getGoods);
 

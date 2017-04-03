@@ -215,7 +215,7 @@ class Detail_EweiShopV2Page extends MobilePage
             $options = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option') . ' where goodsid=:goodsid and uniacid=:uniacid order by displayorder asc', array(':goodsid' => $goods['id'], ':uniacid' => $_W['uniacid']), 'stock');
 			$options_stock = array_keys($options);
 
-            // 前端-商品详情-代理商价格
+            // 规格商品库存
             foreach($options as $k => $v) {
                 $aagentoptiontotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid=' . $v['id']);
                 $options[$k]['stock'] = intval($options[$k]['stock']) + intval($aagentoptiontotal);
@@ -245,10 +245,8 @@ class Detail_EweiShopV2Page extends MobilePage
             }
         }
 
-        // 库存等于总店库存加上代理商库存
-//        var_dump($id);
-        $agenttotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id);
-//        var_dump($agenttotal);exit;
+        // 商品库存等于总店库存加上代理商库存
+        $agenttotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid=0');
         $goods['total'] = intval($goods['total']) + intval($agenttotal);
 
 		if ($goods['total'] <= 0) 
