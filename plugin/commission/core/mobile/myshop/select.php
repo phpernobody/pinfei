@@ -157,6 +157,8 @@ class Select_EweiShopV2Page extends CommissionMobileLoginPage
 
         if ($hasOptions == 'true') {
             $res = pdo_update('ewei_shop_agent_stock', array("vstock" => intval($_GPC['joinStock'])) , array('optionid' => $_GPC['stockOptionId'], 'memberid' => $member['id']));
+            $allgoodsstsock = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $_GPC['goodsid'] . ' and memberid=' . $member['id'] . ' and optionid!=0');
+            pdo_update('ewei_shop_agent_stock', array('vstock' => intval($allgoodsstsock)), array('goodsid' => $_GPC['goodsid'], 'optionid' => 0, 'memberid' => $member['id']));
         } else {
             $res = pdo_update('ewei_shop_agent_stock', array("vstock" => intval($_GPC['joinStock'])) , array('goodsid' => $_GPC['goodsid'], 'memberid' => $member['id']));
         }

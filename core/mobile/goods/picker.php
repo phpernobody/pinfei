@@ -41,6 +41,9 @@ class Picker_EweiShopV2Page extends MobilePage
         }
         $goods = pdo_fetch('select provinceprice,cityprice,countyprice,id,thumb,title,marketprice,total,maxbuy,minbuy,unit,hasoption,showtotal,diyformid,diyformtype,diyfields,isdiscount,presellprice,' . "\n" . '                isdiscount_time,isdiscount_discounts, needfollow, followtip, followurl, `type`, isverify, maxprice, minprice, merchsale,ispresell,preselltimeend' . "\n" . '                from ' . tablename('ewei_shop_goods') . ' where id=:id and uniacid=:uniacid limit 1', array(':id' => $id, ':uniacid' => $_W['uniacid']));
 
+        // 库存等于总店库存加上代理商库存
+        $agenttotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid=0');
+        $goods['total'] = intval($goods['total']) + intval($agenttotal);
 
         // 前端-商品详情-代理商价格
         if ( intval($member['isaagent']) !== 0 && intval($member['aagentstatus']) !== 0) {
@@ -116,6 +119,12 @@ class Picker_EweiShopV2Page extends MobilePage
             }
             unset($spec);
             $options = pdo_fetchall('select * from ' . tablename('ewei_shop_goods_option') . ' where goodsid=:goodsid and uniacid=:uniacid order by displayorder asc', array(':goodsid' => $id, ':uniacid' => $_W['uniacid']));
+
+            // 规格商品库存
+            foreach($options as $k => $v) {
+                $aagentoptiontotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid=' . $v['id']);
+                $options[$k]['stock'] = intval($options[$k]['stock']) + intval($aagentoptiontotal);
+            }
         }
 
 
@@ -303,13 +312,8 @@ class Picker_EweiShopV2Page extends MobilePage
                 $agentInfo['maxprice'] = $goods[$agentLevel];
                 $agentInfo['minprice'] = $goods[$agentLevel];
             }
-        } else {
-            $agentInfo = array(
-                'maxprice' => 0,
-                'minprice' => 9999999999999,
-                'isagent' => false
-            );
         }
+
         show_json(1, array('goods' => $goods, 'seckillinfo' => $seckillinfo, 'specs' => $specs, 'options' => $options, 'diyformhtml' => $diyformhtml, 'agentInfo' => $agentInfo));
     }
 }
