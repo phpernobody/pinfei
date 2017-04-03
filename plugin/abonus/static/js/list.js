@@ -131,7 +131,7 @@ define(['core', 'tpl', 'biz/order/op'], function (core, tpl, op) {
             var expresssn = $('.se-express-sn').val();
 
             if (!expresssn) {
-                alert('请填写快递单号!'); 
+                alert('请填写快递单号!');
                 return;
             }
 
@@ -163,7 +163,7 @@ define(['core', 'tpl', 'biz/order/op'], function (core, tpl, op) {
             }
 
 
-            core.json('abonus/order/sendConfirm', {
+            core.json('abonus/order/send', {
                 express: express,
                 expresscom: expresscom,
                 expresssn: expresssn,
@@ -171,10 +171,11 @@ define(['core', 'tpl', 'biz/order/op'], function (core, tpl, op) {
                 memberid: modal.orderDetail.memberid,
                 goodsids: goodsids,
                 optionids: optionids,
-                goodsnumber: goodsnumber
-            }, function (ret) { 
-                console.log(ret) 
-                // window.location.reload();
+                goodsnumber: goodsnumber,
+                addressid: modal.orderDetail.addressid
+            }, function (ret) {
+                console.log(ret)
+                window.location.reload();
             })
 
         });
@@ -202,7 +203,8 @@ define(['core', 'tpl', 'biz/order/op'], function (core, tpl, op) {
             page: modal.page,
             status: modal.status,
             merchid: modal.merchid
-        }, function (ret) { 
+        }, function (ret) {
+            console.log(ret);
             var result = ret.result;
             if (result.total <= 0) {
                 $('.content-empty').show();

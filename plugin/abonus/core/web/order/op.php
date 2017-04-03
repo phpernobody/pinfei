@@ -397,7 +397,7 @@ class Op_EweiShopV2Page extends WebPage
 		global $_GPC;
 		$opdata = $this->opData();
 		extract($opdata);
-		if (empty($item['addressid'])) 
+        if (empty($item['addressid']))
 		{
 			show_json(0, '无收货地址，无法发货！');
 		}
@@ -410,13 +410,6 @@ class Op_EweiShopV2Page extends WebPage
 		}
 		if ($_W['ispost']) 
 		{
-			if (!(empty($_GPC['isexpress'])) && empty($_GPC['expresssn'])) 
-			{
-				show_json(0, '请输入快递单号！');
-			}
-			if (!(empty($item['transid']))) 
-			{
-			}
 			$time = time();
 			pdo_update('ewei_shop_order', array('status' => 2, 'express' => trim($_GPC['express']), 'expresscom' => trim($_GPC['expresscom']), 'expresssn' => trim($_GPC['expresssn']), 'sendtime' => $time), array('id' => $item['id'], 'uniacid' => $_W['uniacid']));
 			if (!(empty($item['refundid']))) 
