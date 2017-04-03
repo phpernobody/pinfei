@@ -469,7 +469,6 @@ if ($_W['ispost'])
             $a['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($a['provinceprice']);
             $a['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($a['cityprice']);
 
-//            show_json(1, $a);
 			pdo_update('ewei_shop_goods_option', $a, array('id' => $get_option_id));
 			$option_id = $get_option_id;
 		}
@@ -581,6 +580,9 @@ if ($_W['ispost'])
 		pdo_query('delete from ' . tablename('ewei_shop_goods_option') . ' where goodsid=' . $id);
 		$sql = 'update ' . tablename('ewei_shop_goods') . ' set minprice = marketprice,maxprice = marketprice where id = ' . $id . ' and hasoption=0;';
 		pdo_query($sql);
+
+        // 如果不启用规格，删除agent_stock的相应规格
+        pdo_query('delete from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid!=0');
 	}
 	$sqlgoods = 'SELECT id,title,thumb,marketprice,productprice,minprice,maxprice,isdiscount,isdiscount_time,isdiscount_discounts,sales,total,description,merchsale FROM ' . tablename('ewei_shop_goods') . ' where id=:id and uniacid=:uniacid limit 1';
 	$goodsinfo = pdo_fetch($sqlgoods, array(':id' => $id, ':uniacid' => $_W['uniacid']));
@@ -610,9 +612,10 @@ if ($_W['ispost'])
             ));
         }
 
+
         $seoption = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid!=0 and memberid=' . $v['id']);
 
-        if (0 < count($optionids)) {
+        if (0 < count($optionids) && ($data['hasoption'] !== 0)) {
             foreach($optionids as $key => $val) {
                 $rs = pdo_fetch('select * from ' . tablename('ewei_shop_agent_stock') . ' where optionid=' . $optionids[$key] . ' and memberid=' . $v['id']);
                 if (empty($rs)) {
@@ -623,8 +626,6 @@ if ($_W['ispost'])
                     ));
                 }
             }
-        } else {
-            pdo_query('delete from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $id . ' and optionid!=0 and memberid=' . $v['id']);
         }
         unset($segoods);
         unset($seoption);
