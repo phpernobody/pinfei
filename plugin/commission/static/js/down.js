@@ -42,13 +42,13 @@ define(['core', 'tpl'], function (core, tpl) {
                     html += '</div></div><div style="width: 3rem;"><a href="';
                     html += link + list[i]['id'];
                     html += '" style="width: 1.8rem; height: 1rem; line-height: 1.2rem; border-radius: .2rem; font-size: .45rem; text-align: center; background: #ec3028; color: #fff; display: block; margin-top: .3rem;">明细</a></div></div>';
-                }   
+                }
 
-                next.html(html);     
+                next.html(html);
             } else {
-                alert('no member');
+                FoxUI.alert('没有下线成员');
             }
-            
+
         })
     };
     modal.changeTab = function (level, agentid) {

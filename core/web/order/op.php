@@ -398,7 +398,6 @@ class Op_EweiShopV2Page extends WebPage
 		global $_W;
 		global $_GPC;
 		$opdata = $this->opData();
-//        show_json(1, $_GPC);
 		extract($opdata);
 		if (empty($item['addressid'])) 
 		{

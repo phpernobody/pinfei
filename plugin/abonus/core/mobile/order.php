@@ -353,7 +353,57 @@ class Order_EweiShopV2Page extends MobileLoginPage
 
         show_json(1);
     }
-	public function alipay() 
+
+    // 确认发货
+    public function send()
+    {
+        global $_W;
+        global $_GPC;
+        $opdata = $this->opData();
+        extract($opdata);
+        $item = pdo_fetch('SELECT * FROM ' . tablename('ewei_shop_order') . ' WHERE id = :id and uniacid=:uniacid', array(':id' => $_GPC['orderid'], ':uniacid' => $_W['uniacid']));
+//        show_json(1, $item);
+        if (empty($item['addressid']))
+        {
+            show_json(0, '无收货地址，无法发货！');
+        }
+        if ($item['paytype'] != 3)
+        {
+            if ($item['status'] != 1)
+            {
+                show_json(0, '订单未付款，无法发货！');
+            }
+        }
+
+        $time = time();
+        $res = pdo_update('ewei_shop_order', array('status' => 2, 'express' => trim($_GPC['express']), 'expresscom' => trim($_GPC['expresscom']), 'expresssn' => trim($_GPC['expresssn']), 'sendtime' => $time), array('id' => $item['id'], 'uniacid' => $_W['uniacid']));
+
+        if (!(empty($item['refundid'])))
+        {
+            $refund = pdo_fetch('select * from ' . tablename('ewei_shop_order_refund') . ' where id=:id limit 1', array(':id' => $item['refundid']));
+            if (!(empty($refund)))
+            {
+                pdo_update('ewei_shop_order_refund', array('status' => -1, 'endtime' => $time), array('id' => $item['refundid']));
+                pdo_update('ewei_shop_order', array('refundstate' => 0), array('id' => $item['id']));
+            }
+        }
+        if ($item['paytype'] == 3)
+        {
+            m('order')->setStocksAndCredits($item['id'], 1);
+        }
+        m('notice')->sendOrderMessage($item['id']);
+        plog('order.op.send', '订单发货 ID: ' . $item['id'] . ' 订单号: ' . $item['ordersn'] . ' <br/>快递公司: ' . $_GPC['expresscom'] . ' 快递单号: ' . $_GPC['expresssn']);
+        show_json(1);
+
+        $address = iunserializer($item['address']);
+        if (!(is_array($address)))
+        {
+            $address = pdo_fetch('SELECT * FROM ' . tablename('ewei_shop_member_address') . ' WHERE id = :id and uniacid=:uniacid', array(':id' => $item['addressid'], ':uniacid' => $_W['uniacid']));
+        }
+        $express_list = m('express')->getExpressList();
+//        include $this->template();
+    }
+	public function alipay()
 	{
 		global $_W;
 		global $_GPC;
