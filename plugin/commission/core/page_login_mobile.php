@@ -12,13 +12,17 @@ class CommissionMobileLoginPage extends PluginMobileLoginPage
 		global $_W;
 		global $_GPC;
 
-		if (($_W['action'] != 'register') && ($_W['action'] != 'myshop') && ($_W['action'] != 'share')) {
+        /**
+         * modify by xiaorenwu
+         */
+        $member = $this->model->getInfo($_W['openid']);
+
+		if (($_W['action'] != 'register') && ($_W['action'] != 'myshop') && ($_W['action'] != 'share')  && ((intval($member['isaagent']) === 0) || (intval($member['aagentstatus']) === 0)) ) {
 			$member = m('member')->getMember($_W['openid']);
 			if (($member['isagent'] != 1) || ($member['status'] != 1)) {
 				header('location:' . mobileUrl('commission/register'));
 				exit();
 			}
-
 		}
 
 	}

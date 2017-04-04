@@ -37,8 +37,6 @@ class Order_EweiShopV2Model
                 if (!empty($parentaagent)) {
                     $basePrice += $this->caculatePrice($parentaagent, $og) * $og['total'];
                 }
-
-
             } else {
                 $option = m('goods')->getOption($og['goodsid'], $og['optionid']);
                 if (!empty($parentaagent)) {
@@ -64,6 +62,11 @@ class Order_EweiShopV2Model
                     if (empty($result)) {
                         pdo_insert('ewei_shop_agent_stock', array_merge($param2, array('stock' => $og['total'], 'vstock' => 0)));
                     } else {
+//                        pdo_update('ewei_shop_agent_stock', array('stock +=' => $og['total'], 'vstock +=' => $og['total']), $param2);
+                        /**
+                         * modify by xiaorenwu
+                         */
+                        $param2['optionid'] = $param['optionid'];
                         pdo_update('ewei_shop_agent_stock', array('stock +=' => $og['total'], 'vstock +=' => $og['total']), $param2);
                     }
 
@@ -72,6 +75,11 @@ class Order_EweiShopV2Model
                 if (empty($result)) {
                     pdo_insert('ewei_shop_agent_stock', array_merge($param, array('stock' => $og['total'], 'vstock' => 0)));
                 } else {
+//                    pdo_update('ewei_shop_agent_stock', array('stock +=' => $og['total'], 'vstock +=' => $og['total']), $param);
+                    /**
+                     * modify by xiaorenwu
+                     */
+                    $param['optionid'] = 0;
                     pdo_update('ewei_shop_agent_stock', array('stock +=' => $og['total'], 'vstock +=' => $og['total']), $param);
                 }
             }
