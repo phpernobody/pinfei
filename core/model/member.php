@@ -239,6 +239,8 @@ class Member_EweiShopV2Model
 		}
 		return pdo_fetch('SELECT ' . $types . ' FROM ' . tablename('ewei_shop_member') . ' WHERE  openid=:openid and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':openid' => $openid));
 	}
+
+
 	public function checkMember() 
 	{
 		global $_W;
@@ -339,6 +341,8 @@ class Member_EweiShopV2Model
         // 返回用户id和用户openid
 		return array('id' => $member['id'], 'openid' => $member['openid']);
 	}
+
+
 	public function getLevels($all = true) 
 	{
 		global $_W;
