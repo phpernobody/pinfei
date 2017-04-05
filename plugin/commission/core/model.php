@@ -212,12 +212,16 @@ if (!(class_exists('CommissionModel'))) {
                                 $commissions['level1'] = ((empty($l1) ? round($cinfo['commission1']['default'], 2) : round($cinfo['commission1']['level' . $l1['id']], 2)));
                                 if (!(empty($m1['agentid']))) {
                                     $m2 = m('member')->getMember($m1['agentid']);
-                                    $l2 = $this->getLevel($m2['openid']);
-                                    $commissions['level2'] = ((empty($l2) ? round($cinfo['commission2']['default'], 2) : round($cinfo['commission2']['level' . $l2['id']], 2)));
-                                    if (!(empty($m2['agentid']))) {
-                                        $m3 = m('member')->getMember($m2['agentid']);
-                                        $l3 = $this->getLevel($m3['openid']);
-                                        $commissions['level3'] = ((empty($l3) ? round($cinfo['commission3']['default'], 2) : round($cinfo['commission3']['level' . $l3['id']], 2)));
+                                    if (!empty($m2['isagent'])) {
+                                        $l2 = $this->getLevel($m2['openid']);
+                                        $commissions['level2'] = ((empty($l2) ? round($cinfo['commission2']['default'], 2) : round($cinfo['commission2']['level' . $l2['id']], 2)));
+                                        if (!(empty($m2['agentid']))) {
+                                            $m3 = m('member')->getMember($m2['agentid']);
+                                            if (!empty($m3['isagent'])) {
+                                                $l3 = $this->getLevel($m3['openid']);
+                                                $commissions['level3'] = ((empty($l3) ? round($cinfo['commission3']['default'], 2) : round($cinfo['commission3']['level' . $l3['id']], 2)));
+                                            }
+                                        }
                                     }
                                 }
                             }
