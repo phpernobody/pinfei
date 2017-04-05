@@ -438,11 +438,8 @@ class Order_EweiShopV2Model
                                 $stock = $data['vstock'] + $g['total'];
                             } else if ($stocktype == -1) {
                                 $stock = $data['vstock'] - $g['total'];
-                                ($stock <= 0) && ($stock = 0);
                             }
-                            if (!empty($stock)) {
-                                pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('optionid' => $g['optionid'], 'memberid' => $member['hagentid']));
-                            }
+                            pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('optionid' => $g['optionid'], 'memberid' => $member['hagentid']));
                         }
                     }
                     unset($data);
@@ -453,11 +450,8 @@ class Order_EweiShopV2Model
                             $stock = $data['vstock'] + $g['total'];
                         } else if ($stocktype == -1) {
                             $stock = $data['vstock'] - $g['total'];
-                            ($stock <= 0) && ($stock = 0);
                         }
-                        if (!empty($stock)) {
-                            pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']));
-                        }
+                        pdo_update('ewei_shop_agent_stock', array('vstock' => $stock), array('goodsid' => $g['goodsid'], 'memberid' => $member['hagentid']));
                     }
                 } else {
                     /**

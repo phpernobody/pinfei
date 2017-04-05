@@ -310,7 +310,7 @@
             商户名称:<span class="text-info">{$item['merchname']}</span>
             {/if}
             {if !empty($agentid)}
-            <b>分销订单级别:</b> {$item['level']}级 <b>分销佣金:</b> {$item['commission']} 元
+            <b>分销订单级别:</b> {if $item['level'] == 1} 3 {/if} {if $item['level'] == 3} 1 {/if} {if $item['level'] == 2 } 2 {/if} 级 <b>分销佣金:</b> {$item['commission']} 元
             {/if}
         </td>
         <td colspan='4' style='text-align:right'>
