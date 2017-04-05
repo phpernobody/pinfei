@@ -17,7 +17,7 @@ class Qrcode_EweiShopV2Page extends CommissionMobilePage
 		$member = m('member')->getMember($openid);
 		$share_set = set_medias(m('common')->getSysset('share'), 'icon');
 		$can = false;
-		if (empty($member['isagent']) || empty($member['status'])) {
+		if ((empty($member['isaagent']) || empty($member['aagentstatus'])) && (empty($member['isagent']) || empty($member['status']))) {
 			header('location: ' . mobileUrl('commission/register'));
 			exit();
 		}

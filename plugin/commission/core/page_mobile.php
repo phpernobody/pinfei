@@ -17,13 +17,12 @@ class CommissionMobilePage extends PluginMobilePage
          */
         $member = $this->model->getInfo($_W['openid']);
 
-        if (($_W['action'] != 'register') && ($_W['action'] != 'myshop') && ($_W['action'] != 'share')  && ((intval($member['isaagent']) === 0) || (intval($member['aagentstatus']) === 0)) ) {
+        if (($_W['action'] != 'register') && ($_W['action'] != 'myshop') && ($_W['action'] != 'share')  && (empty($member['isaagent']) || empty($member['aagentstatus'])) ) {
 			$member = m('member')->getMember($_W['openid']);
 			if (($member['isagent'] != 1) || ($member['status'] != 1)) {
 				header('location:' . mobileUrl('commission/register'));
 				exit();
 			}
-
 		}
 
 	}

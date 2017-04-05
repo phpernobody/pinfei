@@ -312,6 +312,7 @@ if (!(class_exists('CommissionModel'))) {
             }
             global $_W;
             $set = $this->getSet();
+//            var_dump($set);exit;
             $level = intval($set['level']);
             $member = m('member')->getMember($openid);
             $agentLevel = $this->getLevel($openid);
