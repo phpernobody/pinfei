@@ -145,6 +145,8 @@ class List_EweiShopV2Page extends WebPage
 		}
 		$groups = m('member')->getGroups();
 		$levels = m('member')->getLevels();
+
+//        var_dump($list);exit;
 		include $this->template();
 	}
 
