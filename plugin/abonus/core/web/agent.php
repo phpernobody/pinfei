@@ -218,7 +218,7 @@ class Agent_EweiShopV2Page extends PluginWebPage
         }
         $params = array();
         $params[':uniacid'] = $wechatid;
-        $condition = ' and uniacid=:uniacid and isagent=1 and status=1 and isaagent=1';
+        $condition = ' and uniacid=:uniacid and status=1 and isaagent=1';
         if (!(empty($kwd))) {
             $condition .= ' AND ( `nickname` LIKE :keyword or `realname` LIKE :keyword or `mobile` LIKE :keyword )';
             $params[':keyword'] = '%' . $kwd . '%';

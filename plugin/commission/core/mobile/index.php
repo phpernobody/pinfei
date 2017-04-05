@@ -99,7 +99,6 @@ class Index_EweiShopV2Page extends CommissionMobileLoginPage
             'agent' => $agent,
             'level' => $level
         );
-
 		include $this->template();
 	}
 }

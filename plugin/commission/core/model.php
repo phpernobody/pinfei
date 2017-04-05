@@ -1211,7 +1211,9 @@ if (!(class_exists('CommissionModel'))) {
                 }
             }
             if ($to_check_agent) {
-                pdo_update('ewei_shop_member', array('isagent' => 1, 'status' => $become_check, 'agenttime' => ($become_check == 1 ? $time : 0)), array('uniacid' => $_W['uniacid'], 'id' => $member['id']));
+                $isagent = (intval($member['isaagent']) && intval($member['aagentstatus']) === 1) ? 0 : 1;
+
+                pdo_update('ewei_shop_member', array('isagent' => $isagent, 'status' => $become_check, 'agenttime' => ($become_check == 1 ? $time : 0)), array('uniacid' => $_W['uniacid'], 'id' => $member['id']));
                 if ($become_check == 1) {
                     $this->sendMessage($openid, array('nickname' => $member['nickname'], 'agenttime' => $time), TM_COMMISSION_BECOME);
                     if ($parent_is_agent) {

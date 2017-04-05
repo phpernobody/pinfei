@@ -12,7 +12,7 @@ class MobilePage extends Page
 	{
 		global $_W;
 		global $_GPC;
-        // 检查商城是否关闭，如果关闭状态直接返回商城关闭提示页面
+//        // 检查商城是否关闭，如果关闭状态直接返回商城关闭提示页面
 		m('shop')->checkClose();
 		$preview = intval($_GPC['preview']);
 		$wap = m('common')->getSysset('wap');
@@ -20,28 +20,28 @@ class MobilePage extends Page
         if ($wap['open'] && !(is_weixin()) && empty($preview))
 		{
 
-			if ($this instanceof MobileLoginPage || $this instanceof PluginMobileLoginPage) 
+			if ($this instanceof MobileLoginPage || $this instanceof PluginMobileLoginPage)
 			{
-				if (empty($_W['openid'])) 
+				if (empty($_W['openid']))
 				{
 					$_W['openid'] = m('account')->checkLogin();
 				}
 			}
-			else 
+			else
 			{
 				$_W['openid'] = m('account')->checkOpenid();
 			}
 		}
-		else 
+		else
 		{
 
             // 条件：没搞懂 && 非微信端
-			if ($preview && !(is_weixin())) 
+			if ($preview && !(is_weixin()))
 			{
 				$_W['openid'] = 'o6tC-wmZovDTswVba3Kg1oAV_dd0';
 			}
             // 调试模式
-			if (EWEI_SHOPV2_DEBUG) 
+			if (EWEI_SHOPV2_DEBUG)
 			{
 				$_W['openid'] = 'o6tC-wmZovDTswVba3Kg1oAV_dd0';
 			}
