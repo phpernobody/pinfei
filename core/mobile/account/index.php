@@ -135,9 +135,22 @@ class Index_EweiShopV2Page extends MobilePage
 				$salt = m('account')->getSalt();
 				$data = array('salt' => $salt, 'pwd' => md5($pwd . $salt));
 			}
-            // 条件：已经有了会员信息
+
 			if (empty($member)) 
 			{
+                /**
+                 * add by xiaorenwu
+                 * 处理注册后的用户关系
+                 */
+                $mid = $_GPC['mid'];
+                if (!(empty($mid))) {
+                    $parent = m('member')->getMember($mid);
+                    if (!empty($parent['isaagent']) && !empty($parent['aagentstatus'])) {
+                        $data['hagentid'] = $parent['id'];
+                    } else {
+                        $data['hagentid'] = $parent['hagentid'];
+                    }
+                }
 				pdo_insert('ewei_shop_member', $data);
 			}
 			else 
@@ -151,6 +164,8 @@ class Index_EweiShopV2Page extends MobilePage
 				p('commission')->checkAgent($openid);
 			}
 			unset($_SESSION[$key]);
+
+
 			show_json(1, (empty($type) ? '注册成功' : '密码重置成功'));
 		}
 		$sendtime = $_SESSION['verifycodesendtime'];

@@ -1236,11 +1236,11 @@ if (!(class_exists('CommissionModel'))) {
                 }
             }
 
-            if (!empty($parent['isaagent']) && !empty($parent['aagentstatus'])) {
-                pdo_update('ewei_shop_member', array('hagentid' => $parent['id']), array('uniacid' => $_W['uniacid'], 'id' => $member['id']));
-            } else {
-                pdo_update('ewei_shop_member', array('hagentid' => $parent['hagentid']), array('uniacid' => $_W['uniacid'], 'id' => $member['id']));
-            }
+//            if (!empty($parent['isaagent']) && !empty($parent['aagentstatus'])) {
+//                pdo_update('ewei_shop_member', array('hagentid' => $parent['id']), array('uniacid' => $_W['uniacid'], 'id' => $member['id']));
+//            } else {
+//                pdo_update('ewei_shop_member', array('hagentid' => $parent['hagentid']), array('uniacid' => $_W['uniacid'], 'id' => $member['id']));
+//            }
         }
 
         public function checkOrderConfirm($orderid = '0')
