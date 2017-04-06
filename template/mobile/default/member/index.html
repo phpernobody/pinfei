@@ -164,8 +164,9 @@
 					<div class="icons"><img src="../addons/ewei_shopv2/static/img/dd_3.png" /></div>
 					<div class="text">待收货</div>
 				</a>
-				<a class="fui-icon-col external" href="{php echo mobileUrl('order',array('status'=>4))}">
-					{if $statics['order_4']>0}<div class="badge">{$statics['order_4']}</div>{/if}
+				<!-- 退款的链接为{php echo mobileUrl('order',array('status'=>4))}-->
+				<a class="fui-icon-col external" href="{php echo mobileUrl('order',array('status'=>3))}">
+					{if $statics['order_4']>0}<div class="badge">{$statics['order_3']}</div>{/if}
 					<div class="icons"><img src="../addons/ewei_shopv2/static/img/dd_4.png" /></div>
 					<div class="text">交易成功</div>
 				</a>
