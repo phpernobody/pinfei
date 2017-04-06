@@ -106,19 +106,33 @@
             </thead>
             <tbody>
                 {loop $list $row}
-                <tr rel="pop" data-title="ID: {$row['id']} " data-content="推荐人 <br/> {if empty($row['agentid'])}
-				  {if $row['isagent']==1}
-				      <label class='label label-primary'>总店</label>
-				      {else}
-				       <label class='label label-default'>暂无</label>
-				      {/if}
-				{else}
-				
-                    	{if !empty($row['agentavatar'])}
-                         <img src='{$row['agentavatar']}' style='width:20px;height:20px;padding1px;border:1px solid #ccc' />
-                       {/if}
-                       [{$row['agentid']}]{if empty($row['agentnickname'])}未更新{else}{$row['agentnickname']}{/if}
-					   {/if}">
+                <tr rel="pop" data-title="ID: {$row['id']} " data-content="推荐人 <br/> 
+                {if !empty($row['isaagent'] && !empty($row['aagentstatus']))}
+                    {if empty($row['oldagentid'])}
+                        <label class='label label-primary'>总店</label>
+                    {else}
+                        [{$row['oldagentid']}]
+                    {/if}
+                {else}
+                    {if empty($row['agentid'])}
+                        {if $row['isagent']==1}
+                            <label class='label label-primary'>总店</label>
+                        {else}
+                            <label class='label label-default'>暂无</label>
+                        {/if}
+                    {else}
+                        {if !empty($row['agentavatar'])}
+                            <img src='{$row['agentavatar']}' style='width:20px;height:20px;padding1px;border:1px solid #ccc' />
+                        {/if}
+                        [{$row['agentid']}]
+                        {if empty($row['agentnickname'])}
+                            未更新
+                        {else}
+                            {$row['agentnickname']}
+                        {/if}
+                    {/if}
+                {/if}"
+                >
 					
 			
                    	<td style="position: relative; ">

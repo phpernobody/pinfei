@@ -38,7 +38,7 @@
 <div class="fui-page fui-page-current page-shop-goods_category" style="width: 100%;display:flex;flex-direction: row;">
     <div class="left-con">
         <div class="left-title" >
-            <div style="width: 100%; height: 1.3rem; line-height: 1.3rem; border-right: 1px solid #dcdcdc;">
+            <div style="color: #333; width: 100%; height: 1.3rem; line-height: 1.3rem; border-right: 1px solid #dcdcdc;">
                 全部分类
             </div>
         </div>
@@ -109,7 +109,11 @@
             dataType:'json',
             success: function(data) {
                 console.log(data);
-
+// data = data.concat(data);
+// data = data.concat(data);
+// data = data.concat(data);
+// data = data.concat(data);
+// data = data.concat(data);
                 var html = '';
                 $.each(data, function(key,v) {
                     html += '<div style="margin: auto; width: 12.25rem; height: 4.8rem; padding: .3rem; margin-top: .5rem; background: #fff; overflow: hidden;"><a href="';
@@ -142,9 +146,17 @@
         getCateGoods(id);
     });
 
-    var firstCate = $('.navbar').children('.category:first-child');
-    firstCate.addClass('se-active');
-    getCateGoods(firstCate.attr('a'));
+    var activeCate = $('.navbar').children('.category.se-active');
+
+    if (activeCate && activeCate.length != 0) {
+        getCateGoods(activeCate.attr('a'));
+    } else {
+        var firstCate = $('.navbar').children('.category:first-child');
+        firstCate.addClass('se-active');
+        getCateGoods(firstCate.attr('a'));
+    }
+
+
 </script>
 {php $this->footerMenus()}
 {template '_footer'}
