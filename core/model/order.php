@@ -86,60 +86,58 @@ class Order_EweiShopV2Model
         }
         $data = array();
         $data['goodsnumber'] = $goodstotal;
-        if (!empty($member['hagentid'])) { // 上级代理商不是平台
-            if (empty($member['isaagent'])) { // 不是代理商
-                if (!empty($parentaagent) && !empty($parentaagent['oldagentid'])) { // 上级代理曾有上级分销商
-                    $oldagent1 = m('member')->getMember($parentaagent['oldagentid']);
-                    if (!empty($oldagent1['isaagent']) && !empty($oldagent1['oldagentid'])) { // 上级1也是代理商但是曾有上级分销商
-                        $oldagent2 = m('member')->getMember($oldagent1['oldagentid']);
-                    } else if (empty($oldagent1['isaagent']) && !empty($oldagent1['agentid'])) { // 上级1不是代理商但是有上级分销商
-                        $oldagent2 = m('member')->getMember($oldagent1['agentid']);
-                    }
+        if (empty($member['isaagent'])) { // 不是代理商
+            if (!empty($parentaagent) && !empty($parentaagent['oldagentid'])) { // 上级代理曾有上级分销商
+                $oldagent1 = m('member')->getMember($parentaagent['oldagentid']);
+                if (!empty($oldagent1['isaagent']) && !empty($oldagent1['oldagentid'])) { // 上级1也是代理商但是曾有上级分销商
+                    $oldagent2 = m('member')->getMember($oldagent1['oldagentid']);
+                } else if (empty($oldagent1['isaagent']) && !empty($oldagent1['agentid'])) { // 上级1不是代理商但是有上级分销商
+                    $oldagent2 = m('member')->getMember($oldagent1['agentid']);
                 }
-                if (!empty($member['agentid'])) { // 购买者有上级分销商
-                    $agent2 = m('member')->getMember($member['agentid']);
-                    if (!empty($agent2['agentid'])) {
-                        $agent3 = m('member')->getMember($agent2['agentid']);
-                    }
-                }
-
-
-                $profit = $order['price'] - $basePrice - $commission_total1;
-                $data['commission1'] = $commission_total1;
-                $data['price'] = $order['price'];
-                $data['buyingprice'] = $basePrice;
-                if (!empty($agent2)) {
-                    $profit -= $commission_total2;
-                    $data['commission2'] = $commission_total2;
-                }
-                if (!empty($agent3)) {
-                    $profit -= $commission_total3;
-                    $data['commission3'] = $commission_total3;
-                }
-                $resultPrice = $profit;
-                if (!empty($oldagent1) && empty($oldagent1['isaagent'])) {
-                    $oldagent1Money = $profit * floatval($up1);
-                    $data['oldagent1id'] = $oldagent1['id'];
-                    $data['oldagent1money'] = $oldagent1Money;
-                    $resultPrice -= $oldagent1Money;
-                }
-                if (!empty($oldagent2) && empty($oldagent2['isaagent'])) {
-                    $oldagent2Money = $profit * floatval($up2);
-                    $data['oldagent2id'] = $oldagent2['id'];
-                    $data['oldagent2money'] = $oldagent2Money;
-                    $resultPrice -= $oldagent2Money;
-                }
-                $data['resultprice'] = $resultPrice;
-                $data['createtime'] = date('Y-m-d H-i-s');
-                $data['memberid'] = $member['id'];
-                $data['orderid'] = $order['id'];
-                $data['hagentid'] = $member['hagentid'];
-                m('member')->setCredit($parentaagent['openid'], 'credit2', $resultPrice);
-                pdo_insert('ewei_shop_agent_order_finish', $data);
-            } else {
-                $parentaagent = m('member')->getMember($member['hagentid']);
-                m('member')->setCredit($parentaagent['openid'], 'credit2', $basePrice);
             }
+            if (!empty($member['agentid'])) { // 购买者有上级分销商
+                $agent2 = m('member')->getMember($member['agentid']);
+                if (!empty($agent2['agentid'])) {
+                    $agent3 = m('member')->getMember($agent2['agentid']);
+                }
+            }
+
+
+            $profit = $order['price'] - $basePrice - $commission_total1;
+            $data['commission1'] = $commission_total1;
+            $data['price'] = $order['price'];
+            $data['buyingprice'] = $basePrice;
+            if (!empty($agent2)) {
+                $profit -= $commission_total2;
+                $data['commission2'] = $commission_total2;
+            }
+            if (!empty($agent3)) {
+                $profit -= $commission_total3;
+                $data['commission3'] = $commission_total3;
+            }
+            $resultPrice = $profit;
+            if (!empty($oldagent1) && empty($oldagent1['isaagent'])) {
+                $oldagent1Money = $profit * floatval($up1);
+                $data['oldagent1id'] = $oldagent1['id'];
+                $data['oldagent1money'] = $oldagent1Money;
+                $resultPrice -= $oldagent1Money;
+            }
+            if (!empty($oldagent2) && empty($oldagent2['isaagent'])) {
+                $oldagent2Money = $profit * floatval($up2);
+                $data['oldagent2id'] = $oldagent2['id'];
+                $data['oldagent2money'] = $oldagent2Money;
+                $resultPrice -= $oldagent2Money;
+            }
+            $data['resultprice'] = $resultPrice;
+            $data['createtime'] = date('Y-m-d H-i-s');
+            $data['memberid'] = $member['id'];
+            $data['orderid'] = $order['id'];
+            $data['hagentid'] = $member['hagentid'];
+            m('member')->setCredit($parentaagent['openid'], 'credit2', $resultPrice);
+            pdo_insert('ewei_shop_agent_order_finish', $data);
+        } else {
+            $parentaagent = m('member')->getMember($member['hagentid']);
+            m('member')->setCredit($parentaagent['openid'], 'credit2', $basePrice);
         }
     }
 
