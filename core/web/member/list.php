@@ -501,7 +501,7 @@ class List_EweiShopV2Page extends WebPage
 //                        var_dump($aadata);exit;
                         //  去除上级分销关系
                         if(intval($aadata['isaagent']) === 1 && intval($aadata['aagentstatus']) === 1) {
-                            pdo_update('ewei_shop_member', array('agentid' => 0, 'oldagentid' => $member['agentid'], 'isagent' => '0'), array('id' => $id, 'uniacid' => $_W['uniacid']));
+                            pdo_update('ewei_shop_member', array('oldagentid' => $member['agentid'], 'isagent' => '0'), array('id' => $id, 'uniacid' => $_W['uniacid']));
 
                             $downList = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where agentid=' . $member['id']);
 //                            var_dump($downList);exit;

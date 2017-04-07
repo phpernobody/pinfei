@@ -1,6 +1,6 @@
 {template '_header'}
 {template 'commission/common'}
-<div class="fui-page fui-page-current page-commission-down" style="background: #F8F8F8">
+<div class="fui-page fui-page-current page-commission-down" style="background: #F8F8F8; height: 100%;">
 <!--     <div class="fui-header">
         <div class="fui-header-left">
             <a class="back"></a>
@@ -30,7 +30,7 @@
 
     {if intval(count($list)) > 0}
 
-    <div style="background: #F8F8F8">
+    <div style="background: #F8F8F8; height: calc(100% - 9.5rem); overflow-y: scroll; padding-bottom: 2rem;">
         {loop $list $l}
         <div class="se-table-body" style="border-left: 2px solid #EC3028; display: flex; justify-content: space-between; height: 4.60rem; align-items: center; margin-top: .5rem; background: #fff;">
             <div style="position: relative;">

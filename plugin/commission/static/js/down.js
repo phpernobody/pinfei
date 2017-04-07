@@ -18,6 +18,11 @@ define(['core', 'tpl'], function (core, tpl) {
         }, function (ret) {
 
             var list = ret.result.list;
+
+            // list = list.concat(list);
+            // list = list.concat(list);
+            // list = list.concat(list);
+            // list = list.concat(list);
             if (list.length > 0) {
                 var html = '<img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/bottom.png" alt="" style="width: 0.75rem;margin: auto; display: block; ">';
                 for (var i = list.length - 1; i >= 0; i--) {

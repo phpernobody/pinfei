@@ -150,6 +150,7 @@ class Index_EweiShopV2Page extends MobilePage
                     } else {
                         $data['hagentid'] = $parent['hagentid'];
                     }
+                    $data['agentid'] = $parent['id'];
                 }
 				pdo_insert('ewei_shop_member', $data);
 			}

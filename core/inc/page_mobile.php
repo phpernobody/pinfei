@@ -19,7 +19,6 @@ class MobilePage extends Page
         // 条件：全网通 && 非微信端 && 没搞清楚
         if ($wap['open'] && !(is_weixin()) && empty($preview))
 		{
-
 			if ($this instanceof MobileLoginPage || $this instanceof PluginMobileLoginPage)
 			{
 				if (empty($_W['openid']))
