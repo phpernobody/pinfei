@@ -27,10 +27,10 @@ class Team_EweiShopV2Page extends CommissionMobileLoginPage
             $list[$k]['downList'] = $downList;
         }
 
-        $list = array_merge($list, $list);
-        $list = array_merge($list, $list);
-        $list = array_merge($list, $list);
-        $list = array_merge($list, $list);
+//        $list = array_merge($list, $list);
+//        $list = array_merge($list, $list);
+//        $list = array_merge($list, $list);
+//        $list = array_merge($list, $list);
 
 //        var_dump($list);exit;
 

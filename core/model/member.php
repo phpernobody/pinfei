@@ -317,7 +317,7 @@ class Member_EweiShopV2Model
                     $member['agentid'] = $parent['id'];
                 }
             }
-            
+
 			pdo_insert('ewei_shop_member', $member);
 			$member['id'] = pdo_insertid();
 		}
