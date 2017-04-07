@@ -10,50 +10,51 @@ define(['core', 'tpl'], function (core, tpl) {
             var dom = $(this).parent().parent('.se-table-body');
             modal.getDownList(dom.attr('data-openid'), dom.next(), dom.attr('data-link'));
         });
+        $('.se-down-box').html('');
     };
 
     modal.getDownList = function(openid, next, link) {
         core.json('commission/down/get_down_ajax', {
             openid: openid
         }, function (ret) {
+            // console.log(next.html());
 
             var list = ret.result.list;
 
-            // list = list.concat(list);
-            // list = list.concat(list);
-            // list = list.concat(list);
-            // list = list.concat(list);
-            if (list.length > 0) {
-                var html = '<img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/bottom.png" alt="" style="width: 0.75rem;margin: auto; display: block; ">';
-                for (var i = list.length - 1; i >= 0; i--) {
-                    html += '<div class="se-table-body" data-openid="';
-                    html += list[i]['openid'];
-                    html += '" style="display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #F1F1F1;"><div style="position: relative;">';
-                    html += '<img src="';
-                    if (list[i]['avatar']) {
-                        html += list[i]['avatar'];
-                    } else {
-                        html += '../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png';
-                    }
-                    html += '" style="width: 3.3rem; height: 3.3rem; margin-left: .5rem">';
-                    html += '</div><div style="width: calc(100% - 7.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;"><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>';
-                    html += list[i]['nickname'];
-                    html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">入住时间：</span>';
-                    html += list[i]['createtime'];
-                    html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">消费金额：</span>';
-                    html += list[i]['moneycount'];
-                    html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">佣金：</span>';
-                    html += list[i]['commission_total'];
-                    html += '</div></div><div style="width: 3rem;"><a href="';
-                    html += link + list[i]['id'];
-                    html += '" style="width: 1.8rem; height: 1rem; line-height: 1.2rem; border-radius: .2rem; font-size: .45rem; text-align: center; background: #ec3028; color: #fff; display: block; margin-top: .3rem;">明细</a></div></div>';
-                }
-
-                next.html(html);
+            if (next.html()) {
+                next.html('');
             } else {
-                FoxUI.alert('没有下线成员');
-            }
+                if (list.length > 0) {
+                    var html = '<img src="../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/bottom.png" alt="" style="width: 0.75rem;margin: auto; display: block; ">';
+                    for (var i = list.length - 1; i >= 0; i--) {
+                        html += '<div class="se-table-body" data-openid="';
+                        html += list[i]['openid'];
+                        html += '" style="display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #F1F1F1;"><div style="position: relative;">';
+                        html += '<img src="';
+                        if (list[i]['avatar']) {
+                            html += list[i]['avatar'];
+                        } else {
+                            html += '../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png';
+                        }
+                        html += '" style="width: 3.3rem; height: 3.3rem; margin-left: .5rem">';
+                        html += '</div><div style="width: calc(100% - 7.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;"><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>';
+                        html += list[i]['nickname'];
+                        html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">入住时间：</span>';
+                        html += list[i]['createtime'];
+                        html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">消费金额：</span>';
+                        html += list[i]['moneycount'];
+                        html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">佣金：</span>';
+                        html += list[i]['commission_total'];
+                        html += '</div></div><div style="width: 3rem;"><a href="';
+                        html += link + list[i]['id'];
+                        html += '" style="width: 1.8rem; height: 1rem; line-height: 1.2rem; border-radius: .2rem; font-size: .45rem; text-align: center; background: #ec3028; color: #fff; display: block; margin-top: .3rem;">明细</a></div></div>';
+                    }
 
+                    next.html(html);
+                } else {
+                    FoxUI.alert('没有下线成员');
+                }
+            }
         })
     };
     modal.changeTab = function (level, agentid) {
