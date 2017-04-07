@@ -302,7 +302,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
         }
 
         // 点击查看详情
-        $('.se-modal-btn').click(function() {
+        $('.se-modal-btn').unbind('click').click(function() {
             var title = $(this).attr('data-title');
             var thumb = $(this).attr('data-thumb');
             var goodsid = $(this).attr('data-goodsid');
@@ -344,8 +344,8 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
         });
 
         // 点击修改库存
-        $('.se-confirm').click(function() {
-            console.log(modal);
+        $('.se-confirm').unbind('click').click(function() {
+            console.log('confirm', modal);
             var goodsid = $(this).attr('data-goodsid');   
             var joinStock = $('.se-join-stock').val();
             var stockOptionId = modal.options.length > 0 ? modal.options[modal.optionIndex].id : 0;
@@ -395,12 +395,13 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
 
         });
         // 点击取消
-        $('.se-cancel').click(function() {
+        $('.se-cancel').unbind('click').click(function() {
             modal.optionIndex = 0;
             $('.se-join-stock').val('');
             $('.se-modal').hide();
         });
     };
+
     modal.bindSelectedEvents = function () {
         $('.goods-selected-group .btn-delete').click(function () {
             $(this).closest('.goods-selected').remove()
