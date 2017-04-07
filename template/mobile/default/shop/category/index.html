@@ -98,6 +98,15 @@
     </div>
 </div>
 <script>
+
+    // 获取url参数
+    function getQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) return unescape(r[2]);
+      return null;
+    }
+
     // 获取分类内容
     function getCateGoods(id) {
         $.ajax({
@@ -145,15 +154,27 @@
         $(this).addClass('se-active');
         getCateGoods(id);
     });
-
     var activeCate = $('.navbar').children('.category.se-active');
 
+    // 如果原本已经有选择分类则进入页面还是展示原来的分类; 针对通过返回键进入页面的情况
     if (activeCate && activeCate.length != 0) {
         getCateGoods(activeCate.attr('a'));
     } else {
-        var firstCate = $('.navbar').children('.category:first-child');
-        firstCate.addClass('se-active');
-        getCateGoods(firstCate.attr('a'));
+        var cateid = getQueryString('cateid');
+        // 判断url是否有带cateid，有的话展示对应cate内容
+        if (cateid && cateid !== '') {
+            var cates = $('.navbar').children('.category');
+            cates.each(function(k, v) {
+                if (+$(v).attr('a') == +cateid) {
+                    $(v).addClass('se-active');
+                }
+            });
+            getCateGoods(+cateid);
+        } else {
+            var firstCate = $('.navbar').children('.category:first-child');
+            firstCate.addClass('se-active');
+            getCateGoods(firstCate.attr('a'));
+        }
     }
 
 
