@@ -356,8 +356,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
             } else {
                 realStock = modal.goodDetail.stock;
             }
-
-            if (joinStock > realStock) {
+            if (+joinStock > +realStock) {
                 FoxUI.alert('请设置少于' + realStock + '件商品');
                 return;
             }
