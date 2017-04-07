@@ -243,16 +243,19 @@ class Member_EweiShopV2Model
 
 	public function checkMember() 
 	{
+
 		global $_W;
 		global $_GPC;
 		$member = array();
         // 商城配置，首页和平台信息
 		$shopset = m('common')->getSysset(array('shop', 'wap'));
 		$openid = $_W['openid'];
+
 		if (($_W['routes'] == 'order.pay_alipay') || ($_W['routes'] == 'creditshop.log.dispatch_complete') || ($_W['routes'] == 'creditshop.detail.creditshop_complete') || ($_W['routes'] == 'order.pay_alipay.recharge_complete') || ($_W['routes'] == 'order.pay_alipay.complete') || ($_W['routes'] == 'newmr.alipay') || ($_W['routes'] == 'newmr.callback.gprs') || ($_W['routes'] == 'newmr.callback.bill') || ($_W['routes'] == 'account.sns')) 
 		{
 			return;
 		}
+
         // 条件：开通全网通
 		if ($shopset['wap']['open']) 
 		{
@@ -261,6 +264,7 @@ class Member_EweiShopV2Model
 				return;
 			}
 		}
+
         // 条件：未登录微信 && 非调试模式
 		if (empty($openid) && !(EWEI_SHOPV2_DEBUG)) 
 		{
@@ -296,6 +300,24 @@ class Member_EweiShopV2Model
 		if (empty($member) && !(empty($openid))) 
 		{
 			$member = array('uniacid' => $_W['uniacid'], 'uid' => $uid, 'openid' => $openid, 'realname' => (!(empty($mc['realname'])) ? $mc['realname'] : ''), 'mobile' => (!(empty($mc['mobile'])) ? $mc['mobile'] : ''), 'nickname' => (!(empty($mc['nickname'])) ? $mc['nickname'] : ''), 'avatar' => (!(empty($mc['avatar'])) ? $mc['avatar'] : ''), 'gender' => (!(empty($mc['gender'])) ? $mc['gender'] : '-1'), 'province' => (!(empty($mc['resideprovince'])) ? $mc['resideprovince'] : ''), 'city' => (!(empty($mc['residecity'])) ? $mc['residecity'] : ''), 'area' => (!(empty($mc['residedist'])) ? $mc['residedist'] : ''), 'createtime' => time(), 'status' => 0);
+
+            /**
+             * modify by xiaorenwu
+             * 微信注册后关系处理
+             */
+            if(is_weixin()) {
+                $mid = $_GPC['mid'];
+                if (!(empty($mid))) {
+                    $parent = m('member')->getMember($mid);
+                    if (!empty($parent['isaagent']) && !empty($parent['aagentstatus'])) {
+                        $member['hagentid'] = $parent['id'];
+                    } else {
+                        $member['hagentid'] = $parent['hagentid'];
+                    }
+                    $member['agentid'] = $parent['id'];
+                }
+            }
+            
 			pdo_insert('ewei_shop_member', $member);
 			$member['id'] = pdo_insertid();
 		}
