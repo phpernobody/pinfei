@@ -133,7 +133,7 @@ class Order_EweiShopV2Model
             $data['memberid'] = $member['id'];
             $data['orderid'] = $order['id'];
             $data['hagentid'] = $member['hagentid'];
-            m('member')->setCredit($parentaagent['openid'], 'credit2', $resultPrice);
+            m('member')->setCredit($parentaagent['openid'], 'credit2', intval($resultPrice) + intval($basePrice));
             pdo_insert('ewei_shop_agent_order_finish', $data);
         } else {
             $parentaagent = m('member')->getMember($member['hagentid']);
