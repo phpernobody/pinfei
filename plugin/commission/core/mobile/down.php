@@ -53,23 +53,26 @@ class Down_EweiShopV2Page extends CommissionMobileLoginPage
         $list = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where uniacid = ' . $_W['uniacid'] . ' ' . $condition . '  ORDER BY isagent desc,id desc');
 
         foreach ($list as &$row ) {
-            if ($member['isagent'] && $member['status']) {
-                $info = $this->model->getInfo($row['openid'], array('total'));
+
+            if ($row['isagent'] && $row['status']) {
+                $info = $this->model->getInfo($row['openid'], array('total', 'ordercount'));
                 $row['commission_total'] = $info['commission_total'];
                 $row['agentcount'] = $info['agentcount'];
                 $row['agenttime'] = date('Y-m-d H:i', $row['agenttime']);
             }
-
+//var_dump($info);exit;
             $ordercount = pdo_fetchcolumn('select count(id) from ' . tablename('ewei_shop_order') . ' where openid=:openid and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':openid' => $row['openid']));
             $row['ordercount'] = number_format(intval($ordercount), 0);
             $moneycount = pdo_fetchcolumn('select sum(og.realprice) from ' . tablename('ewei_shop_order_goods') . ' og ' . ' left join ' . tablename('ewei_shop_order') . ' o on og.orderid=o.id where o.openid=:openid  and o.status>=1 and o.uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':openid' => $row['openid']));
             $row['moneycount'] = number_format(floatval($moneycount), 2);
             $row['createtime'] = date('Y-m-d H:i', $row['createtime']);
+//            var_dump($row['agentcount']);exit;
+
         }
 
         unset($row);
 
-//        var_dump($list);exit;
+
         return $list;
     }
 
@@ -93,7 +96,7 @@ class Down_EweiShopV2Page extends CommissionMobileLoginPage
         $list = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where uniacid = ' . $_W['uniacid'] . ' ' . $condition . '  ORDER BY isagent desc,id desc');
 
         foreach ($list as &$row ) {
-            if ($member['isagent'] && $member['status']) {
+            if ($row['isagent'] && $row['status']) {
                 $info = $this->model->getInfo($row['openid'], array('total'));
                 $row['commission_total'] = $info['commission_total'];
                 $row['agentcount'] = $info['agentcount'];
