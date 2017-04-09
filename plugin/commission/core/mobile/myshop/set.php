@@ -11,8 +11,7 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
 	public function main()
 	{
         $count = $this->count_data();
-//        var_dump($data);
-//        exit;
+//        var_dump($count); exit;
 
 		global $_W;
 		global $_GPC;
@@ -81,16 +80,18 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
         $viewLog = pdo_fetchall('select * from ' . tablename('ewei_shop_member_history') . ' hs left join ' . tablename('ewei_shop_member') . ' mb on mb.openid=hs.openid' . ' where mb.hagentid=' . $member['id']);
 
         $totalOrder = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_order_finish') . ' where hagentid=' . $member['id']);
-
+//var_dump($member);exit;
         $payOrder = 0;
         $todayTotalPrice = 0.00;
+        $todayTotalProfit = 0.00;
         $totalGoods = 0;
 
         $today = explode(' ', date("Y-m-d H:i:s",time()))[0];
         if ($totalOrder) {
             foreach($totalOrder as $k => $v) {
                 if (explode(' ', $v['createtime'])[0] == $today) {
-                    $todayTotalPrice += round($v['buyingprice'], 2);
+                    $todayTotalPrice += round($v['price'], 2);
+                    $todayTotalProfit += round($v['resultprice'], 2);
                 }
                 $payOrder += 1;
                 $totalGoods += intval($v['goodsnumber']);
@@ -100,6 +101,7 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
         $data = array(
             'payOrder' => $payOrder,
             'todayTotalPrice' => round($todayTotalPrice, 2),
+            'todayTotalProfit' => round($todayTotalProfit, 2),
             'totalGoods' => $totalGoods,
             'viewLog' => count($viewLog)
         );

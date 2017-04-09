@@ -10,9 +10,17 @@
 	    </div> -->
 	<div class='fui-content' style="background: #fff">
 		<div style="width: 100%;background: #F33C2C; text-align: center;">
-			<div style="width: 100%; height: 6.2rem;border-bottom: 1px solid #f67167; padding-top: 1.5rem;">
-				<div style="color: #fff;font-size: .75rem;"><b>今天付款金额（元）</b></div>
-				<div style="color:#fffc00;font-size: 1rem;margin-top: .6rem;">{$count['todayTotalPrice']}</div>
+			<div style="width: 100%; height: 6.2rem;border-bottom: 1px solid #f67167; padding-top: 1.5rem; display: flex; justify-content: space-between;">
+<!-- 				<div style="color: #fff;font-size: .75rem;"><b>今天付款金额（元）</b></div>
+				<div style="color:#fffc00;font-size: 1rem;margin-top: .6rem;">{$count['todayTotalPrice']}</div> -->
+				<div style="width: 50%; border-right: 1px solid #eee;">
+					<div style="color: #fff;font-size: .75rem;"><b>今日营业额（元）</b></div>
+					<div style="color:#fffc00;font-size: 1rem;margin-top: .6rem;">{$count['todayTotalPrice']}</div>
+				</div>
+				<div style="width: 50%;">
+					<div style="color: #fff;font-size: .75rem;"><b>今日纯利（元）</b></div>
+					<div style="color:#fffc00;font-size: 1rem;margin-top: .6rem;">{$count['todayTotalProfit']}</div>
+				</div>
 			</div>
 			<div style="width:100%; height: 3.1rem; padding: 0.65rem 0;font-size: .5rem;color: #fff; display
 			: flex;">
