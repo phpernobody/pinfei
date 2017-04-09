@@ -104,12 +104,27 @@ class Order_EweiShopV2Page extends MobileLoginPage
 					$scondition = ' og.orderid=:orderid';
 					$param[':orderid'] = $row['id'];
 				}
-				$sql = 'SELECT og.goodsid,og.total,g.title,g.thumb,g.status,og.price,og.optionname as optiontitle,og.optionid,op.specs,g.merchid,og.seckill,og.seckill_taskid,' . "\n" . '                og.sendtype,og.expresscom,og.expresssn,og.express,og.sendtime,og.finishtime,og.remarksend' . "\n" . '                FROM ' . tablename('ewei_shop_order_goods') . ' og ' . ' left join ' . tablename('ewei_shop_goods') . ' g on og.goodsid = g.id ' . ' left join ' . tablename('ewei_shop_goods_option') . ' op on og.optionid = op.id ' . ' where ' . $scondition . ' order by og.id asc';
+                //增加各代理商等级价格，未处理规格商品
+				$sql = 'SELECT g.provinceprice,g.cityprice,g.countyprice,og.commissions,og.goodsid,og.total,g.title,g.thumb,g.status,og.price,og.optionname as optiontitle,og.optionid,op.specs,g.merchid,og.seckill,og.seckill_taskid,' . "\n" . '                og.sendtype,og.expresscom,og.expresssn,og.express,og.sendtime,og.finishtime,og.remarksend' . "\n" . '                FROM ' . tablename('ewei_shop_order_goods') . ' og ' . ' left join ' . tablename('ewei_shop_goods') . ' g on og.goodsid = g.id ' . ' left join ' . tablename('ewei_shop_goods_option') . ' op on og.optionid = op.id ' . ' where ' . $scondition . ' order by og.id asc';
 				$goods = pdo_fetchall($sql, $param);
 				$ismerch = 0;
 				$merch_array = array();
 				foreach ($goods as &$r ) 
 				{
+
+                    /**
+                     * 处理盈利价格
+                     */
+                    $commissions = unserialize($r['commissions']);
+                    $commissionsprice = $commissions['level1'] + $commissions['level2'] + $commissions['level3'];
+
+                    switch(intval($member['aagenttype'])) {
+                        case 1: $r['profit'] = (intval($r['price']) - $commissionsprice - $r['provinceprice']);break;
+                        case 2: $r['profit'] = (intval($r['price']) - $commissionsprice - $r['cityprice']);break;
+                        case 3: $r['profit'] = (intval($r['price']) - $commissionsprice - $r['countyprice']);break;
+                        default: ;
+                    }
+
 					$r['seckilltask'] = false;
 					if ($r['seckill']) 
 					{
