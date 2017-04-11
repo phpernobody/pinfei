@@ -178,13 +178,13 @@ class Order_EweiShopV2Model
     function caculateStock($member, $goodsid, $optionid = 0)
     {
         $member = m('member')->getMember($member['hagentid']);
-        if ($member['hagentid'] == 0) {
-            // 取平台数据
+        if (empty($optionid)) {
+            // 没有规格
             $goods = pdo_get('ewei_shop_goods', array('id' => $goodsid));
             $agenttotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid = ' . $goodsid);
             return intval($goods['total']) + intval($agenttotal);
         } else {
-            // 取代理商数据
+            // 有规格
             $agenttotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid = ' . $goodsid . ' and optionid=' . $optionid);
             $option = pdo_get('ewei_shop_goods_option', array('id' => $optionid));
             return intval($option['stock']) + intval($agenttotal);
