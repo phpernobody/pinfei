@@ -42,11 +42,14 @@
 					商品管理
 				</div>
 			</div>
-			<div class="tap_order" style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem;">
+			<div class="tap_order" style="position: relative;width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem;">
 				<img src="../addons/ewei_shopv2/static/img/3.png" style="margin: .3rem auto; display: block; width:1.1rem; margin-top: .5rem;">
-				<div>
+				<div style="position: relative;">
 					订单管理
 				</div>
+				{if intval($count['unSendOrder']) !== 0}
+				<div style="width: .8rem; height: .8rem; line-height: .8rem; border-radius: .4rem; font-size: .45rem; color: #fff;position: absolute; top: .2rem; left: 50%; background: #F33C2C;">{$count['unSendOrder']}</div>
+				{/if}
 			</div>
 		</div>
 		<div style="width: 100%; background:#f9f9fb; display: flex; border-top: 1px solid #ededed; border-bottom: 1px solid #ededed;margin-top: .5rem; height: 1.9rem; font-size: .7rem; justify-content: space-between; align-items: center;">

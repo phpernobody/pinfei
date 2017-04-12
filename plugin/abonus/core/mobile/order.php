@@ -117,11 +117,11 @@ class Order_EweiShopV2Page extends MobileLoginPage
                      */
                     $commissions = unserialize($r['commissions']);
                     $commissionsprice = $commissions['level1'] + $commissions['level2'] + $commissions['level3'];
-
+//show_json(1, $r);exit;
                     switch(intval($member['aagenttype'])) {
-                        case 1: $r['profit'] = (intval($r['price']) - $commissionsprice - $r['provinceprice']);break;
-                        case 2: $r['profit'] = (intval($r['price']) - $commissionsprice - $r['cityprice']);break;
-                        case 3: $r['profit'] = (intval($r['price']) - $commissionsprice - $r['countyprice']);break;
+                        case 1: $r['profit'] = (intval($r['price']) - $commissionsprice - $r['provinceprice']*$r['total']);break;
+                        case 2: $r['profit'] = (intval($r['price']) - $commissionsprice - $r['cityprice']*$r['total']);break;
+                        case 3: $r['profit'] = (intval($r['price']) - $commissionsprice - $r['countyprice']*$r['total']);break;
                         default: ;
                     }
 

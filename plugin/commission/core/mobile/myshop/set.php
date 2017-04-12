@@ -80,11 +80,14 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
         $viewLog = pdo_fetchall('select * from ' . tablename('ewei_shop_member_history') . ' hs left join ' . tablename('ewei_shop_member') . ' mb on mb.openid=hs.openid' . ' where mb.hagentid=' . $member['id']);
 
         $totalOrder = pdo_fetchall('select * from ' . tablename('ewei_shop_agent_order_finish') . ' where hagentid=' . $member['id']);
-//var_dump($member);exit;
+//var_dump($totalOrder);exit;
         $payOrder = 0;
         $todayTotalPrice = 0.00;
         $todayTotalProfit = 0.00;
         $totalGoods = 0;
+        $unSendOrder = 0;
+
+        $unSendOrder = pdo_fetchcolumn('select count(*) from ' . tablename('ewei_shop_order') . ' eso left join ' . tablename('ewei_shop_member') . ' esm on eso.openid=esm.openid ' . ' where hagentid=' . $member['id'] . ' and eso.status=1');
 
         $today = explode(' ', date("Y-m-d H:i:s",time()))[0];
         if ($totalOrder) {
@@ -103,7 +106,8 @@ class Set_EweiShopV2Page extends CommissionMobileLoginPage
             'todayTotalPrice' => round($todayTotalPrice, 2),
             'todayTotalProfit' => round($todayTotalProfit, 2),
             'totalGoods' => $totalGoods,
-            'viewLog' => count($viewLog)
+            'viewLog' => count($viewLog),
+            'unSendOrder' => $unSendOrder
         );
         return $data;
     }
