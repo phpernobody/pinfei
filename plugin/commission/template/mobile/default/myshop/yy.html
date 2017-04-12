@@ -1,128 +1,202 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>营业利润</title>
-    <meta name="viewport" content="width=640,user-scalable=no"/>
-    <link rel="stylesheet" href="../addons/ewei_shopv2/plugin/commission/static/css/yy.css"/>
-</head>
-<body>
-
-    <div class="all">
-        <div class="top clearfix">
-            <div class="top_left">
-                <p>总营业额(元)</p>
-                <p>￥1200.00</p>
-            </div>
-            <div class="top_right">
-                <p>总利润(元)</p>
-                <p>￥100.00</p>
-            </div>
-        </div>
-        <div class="bottom clearfix">
-            <!--月份选择-->
-            <div class="bottom_left">
-                <p>
-                    <span>2017年04月</span>
-                    <i></i>
-                </p>
-                <!--下拉菜单-->
-                <div class="dropdown">
-                    <ul>
-                        <li>2017年01月</li>
-                        <li>2017年02月</li>
-                        <li>2017年03月</li>
-                        <li>2017年04月</li>
-                        <li>2017年05月</li>
-                        <li>2017年06月</li>
-                        <li>2017年07月</li>
-                        <li>2017年08月</li>
-                        <li>2017年09月</li>
-                        <li>2017年10月</li>
-                        <li>2017年11月</li>
-                        <li>2017年12月</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="bottom_right">
-                <p>营：<span>￥1000</span></p>
-                <p>利：<span>￥800</span></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="all_month">
-        <!--<div class="month">-->
-            <!--<span>1日</span>-->
-            <!--<span>营业额：<i>￥100</i></span>-->
-            <!--<span>利润：<i>￥100</i></span>-->
-        <!--</div>-->
-        <!--<div class="month">-->
-            <!--<span>2日</span>-->
-            <!--<span>营业额：<i>￥100</i></span>-->
-            <!--<span>利润：<i>￥100</i></span>-->
-        <!--</div>-->
-        <!--<div class="month">-->
-            <!--<span>3日</span>-->
-            <!--<span>营业额：<i>￥100</i></span>-->
-            <!--<span>利润：<i>￥100</i></span>-->
-        <!--</div>-->
-
-    </div>
-
-    <script src="../addons/ewei_shopv2/plugin/commission/static/js/jquery-1.11.3.js"></script>
-    <script>
-        $(function(){
-            var Html ='';
-            for(var i=1;i<=30;i++){
-                Html+='<div class="month">'
-                +'<span>'+i+'日</span>'
-                +'<span>营业额：<i>￥100</i></span>'
-                +'<span>利润：<i>￥100</i></span>'
-                +'</div>';
-            }
-            $('.all_month').html(Html);
-        });
-        $('.bottom_left').on('click','i',function(){
-            $('.dropdown').toggle();
-            $('.dropdown').on('click','li',function(){
-                $(this).parent().parent().siblings('p').children('span').html($(this).html());
-                $('.dropdown').slideUp(300);
-                var html='';
-                if($(this).index()==0 || $(this).index()==2 || $(this).index()==4 || $(this).index()==6 || $(this).index()==7 || $(this).index()==9 || $(this).index()==11){
-                    for(var i = 1;i<=31;i++){
-                        html+='<div class="month">'
-                        +'<span>'+i+'日</span>'
-                        +'<span>营业额：<i>￥100</i></span>'
-                        +'<span>利润：<i>￥100</i></span>'
-                        +'</div>';
-                    }
-                    $('.all_month').html(html);
-                }
-                if($(this).index()==3 || $(this).index()==5 ||$(this).index()==8 || $(this).index()==10){
-                    for(var i = 1;i<=30;i++){
-                        html+='<div class="month">'
-                        +'<span>'+i+'日</span>'
-                        +'<span>营业额：<i>￥100</i></span>'
-                        +'<span>利润：<i>￥100</i></span>'
-                        +'</div>';
-                    }
-                    $('.all_month').html(html);
-                }
-                if($(this).index()==1){
-                    for(var i = 1;i<=28;i++){
-                        html+='<div class="month">'
-                        +'<span>'+i+'日</span>'
-                        +'<span>营业额：<i>￥100</i></span>'
-                        +'<span>利润：<i>￥100</i></span>'
-                        +'</div>';
-                    }
-                    $('.all_month').html(html);
-                }
-            });
-        });
-
-    </script>
-
-</body>
-</html>
+{template '_header'}
+<script>document.title = "我是店长"; </script>
+{template 'commission/common'}
+<style>
+	
+	.all{
+		width: 100%;
+	    height: 9.5rem;
+	    background: #ec3028;
+	    border-bottom: 3px solid #ee736e;
+	    top: 0;
+	}
+	.top{
+	    width: 100%;
+	    height: 5.5rem;
+	    border-bottom: 3px solid #ee736e;
+	    padding-top: 1.625rem;
+	    display: flex;
+	    flex-direction: row;
+	}
+	.top_left,.top_right{
+	    width: 50%;
+	    height: 100%;
+	    text-align: center;
+	    
+	}
+	
+	.top_left p,.top_right p{
+    	font-size: 1rem;
+    	color: #fffc00;
+	}
+	.bottom{
+	    width: 100%;
+	    height: 3.75rem;
+	    display: flex;
+	    flex-direction: row;
+	}
+/************下拉菜单**************/
+	.bottom_left{
+	    
+	    width: 50%;
+	    height: 100%;
+	    border-right: 3px solid #ee736e;
+	    position: relative;
+	   	display: flex;
+	   	justify-content:center;
+	   	align-items:Center;	    
+	}
+	.reg_testdate{
+		display: flex;
+		flex-direction: row;		
+	}
+	.reg_testdate select{
+		height: 1rem;
+		line-height: 1rem;
+		font-size: .75rem;
+	}
+/*****************************/
+	.bottom_right{
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: space-around;
+		padding-left: 1rem;
+	}
+	.bottom_right p{
+	    font-size: .8rem;
+	    color: #fff;
+	}
+	.bottom_right>p>span{
+	    color: #fffc00;
+	}
+/***********每日账单*************/
+	.all_month{
+	    width: 100%;
+	    height: 20rem;
+	    margin-top: 2px;
+	    border-top: 1px solid #e7e7e7;
+	    overflow-y:scroll; 
+	    overflow-x:scroll;
+	}
+	.month{
+	    width: 100%;
+	    height: 2rem;
+	    line-height: 2rem;
+	    border-bottom: 1px solid #e7e7e7;
+	    padding-left: .5rem;
+	    display: flex;
+	    justify-content: space-around;
+	}
+	.month span i{
+	    font-style: normal;
+	    color: #ec3028;
+	}
+</style>
+	<div class="fui-page fui-page-current">
+		<div class="all">
+		    <div class="top ">
+		        <div class="top_left">
+		            <p>总营业额(元)</p>
+		    		<p>&yen;{$count_all['allTotalPrice']}</p>
+		        </div>
+		        <div class="top_right">
+		            <p>总利润(元)</p>
+		            <p>&yen;{$count_all['allTotalProfit']}</p>
+		        </div>
+		    </div>
+		    <div class="bottom">
+		        <!--月份选择-->
+		        <div class="bottom_left">
+		        	<!--<form name="reg_testdate">-->
+		        	<div class='reg_testdate'>
+		        		<select id="YYYY" style="margin-right: .5rem;">
+					    	<option value=""selected="selected">选择 年</option>
+					  	</select>
+						<select id="MM">
+							<option value=""selected="selected">选择 月</option>
+						</select>
+		        	</div>
+					  	
+					<!--</form>-->
+		        </div>
+		        <div class="bottom_right">
+		            <p>营：<span>&yen;</span><span id='mprice'>0</span></p>
+		            <p>利：<span>&yen;</span><span id='mprofit'>0</span></p>
+		        </div>
+		    </div>
+	    </div>
+		<div class="all_month" id="day_money">
+			<!--<div class="month">
+	            <span>1日</span>
+	            <span>营业额：<i>￥100</i></span>
+	            <span>利润：<i>￥100</i></span>
+        	</div>
+        	<div class="month">
+	            <span>2日</span>
+	            <span>营业额：<i>￥100</i></span>
+	            <span>利润：<i>￥100</i></span>
+        	</div>
+        	<div class="month">
+	            <span>3日</span>
+	            <span>营业额：<i>￥100</i></span>
+	            <span>利润：<i>￥100</i></span>
+        	</div>-->
+		</div>
+	</div>
+	<script>
+		//年下拉框赋内容 
+		var y = new Date().getFullYear();
+		//今年为准 前5年
+		for(var i = (y-5); i <= y; i++){
+			$('#YYYY').append('<option value="'+i+'">'+i+'年</option>');
+		}
+		for(var i = 1; i < 13; i++ ){
+			$('#MM').append('<option value="'+i+'">'+i+'月</option>');
+		}
+		$('#MM').change(function(){
+			//接受表单的值
+			var year =$('#YYYY').val();
+ 			var month=$('#MM').val();
+ 			//计算选择的月份有多少天
+ 			var  days = new Date(year,month,0);
+			var daycount=days.getDate();
+			$.ajax({
+				type:'get',
+ 				url:"{php echo mobileUrl('commission/myshop/yy/get_count')}",
+ 				data: {'yyear':year,'mmonth':month},
+ 				dataType: "json",
+ 				success:function(data){
+ 					//console.log(data);
+ 					//赋值月营业额，和利润
+					$('#mprice').text(data.monthTotalPrice);
+					$('#mprofit').text(data.monthTotalProfit);
+					var htm = '';
+					var day = data.dayTotal;
+					//遍历每天营业额
+					//console.log(day[11].price);
+					for(var i=1; i<=daycount ;i++){
+						if(day[i]){
+							htm +='<div class="month">'
+		   						+'<span>'+i+'日</span>'
+		   						+'<span>营业额：<i>&yen;'
+		   						+day[i].price
+		   						+'</i></span>'
+		   						+'<span>利润：<i>&yen;'
+		   						+day[i].profit
+		   						+'</i></span></div>';
+						}else{
+							htm +='<div class="month">'
+		   						+'<span>'+i+'日</span>'
+		   						+'<span>营业额：<i>&yen;'
+		   						+'0</i></span>'
+		   						+'<span>利润：<i>&yen;'
+		   						+'0</i></span></div>';
+						}
+					}
+					$('#day_money').html(htm);					
+ 				}
+			});
+		});
+	</script>
+{php $this->footerMenus()}
+{template '_footer'}
