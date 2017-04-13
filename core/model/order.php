@@ -177,7 +177,6 @@ class Order_EweiShopV2Model
     public
     function caculateStock($member, $goodsid, $optionid = 0)
     {
-        $member = m('member')->getMember($member['hagentid']);
         if (empty($optionid)) {
             // 没有规格
             $goods = pdo_get('ewei_shop_goods', array('id' => $goodsid));

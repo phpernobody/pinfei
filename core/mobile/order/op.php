@@ -42,7 +42,7 @@ class Op_EweiShopV2Page extends MobileLoginPage
 		global $_W;
 		global $_GPC;
 		$orderid = intval($_GPC['id']);
-		$order = pdo_fetch('select id,status,openid,couponid,refundstate,refundid from ' . tablename('ewei_shop_order') . ' where id=:id and uniacid=:uniacid and openid=:openid limit 1', array(':id' => $orderid, ':uniacid' => $_W['uniacid'], ':openid' => $_W['openid']));
+		$order = pdo_fetch('select price, id,status,openid,couponid,refundstate,refundid from ' . tablename('ewei_shop_order') . ' where id=:id and uniacid=:uniacid and openid=:openid limit 1', array(':id' => $orderid, ':uniacid' => $_W['uniacid'], ':openid' => $_W['openid']));
 		if (empty($order)) 
 		{
 			show_json(0, '订单未找到');
