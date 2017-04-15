@@ -32,18 +32,53 @@
 	    margin: 0;
 	    border-radius: .5rem;
 	}
-	.
+
 	.btn.btn-danger:active{
 		background:#fc494c;
 		color: #fff;		
 	}
+
+	.img_02 img{
+		/*width: 1.5rem;*/
+		height: 1rem;
+		width: auto;
+	}
+	.img_02 img.jt_01{
+		position: relative;
+		left: 5px;
+		animation: move 0.8s infinite;
+		
+	}
+	.img_02 img.jt_02{
+		position: relative;
+		left: -5px;
+		animation: move1 0.8s infinite;
+		
+	}
+	
+	@-webkit-keyframes move{
+		from{left:5px;}
+		to{left:-15px;}
+	}
+	@-webkit-keyframes move1{
+		from{left:-5px;}
+		to{left:15px;}
+	}
+	
+
 </style>
 <div class='page_all'>
 	<div class='img_01'>
 		<img src="../addons/ewei_shopv2/static/img/y-01.jpg"/>
 	</div>	
-	<div class='img_02'>
+	<!--<div class='img_02'>
 		<a href="{php echo mobileUrl()}"class='btn btn-danger '>开启全球之旅</a>
+		<i class="right"></i>
+	</div>-->
+	<div class='img_02' style="width: 100%;display: flex;flex-direction: row;justify-content: space-between;">
+		<div style="width:30%;display: flex;justify-content: flex-end;padding: .5rem"><img class="jt_01" src="../addons/ewei_shopv2/static/img/jt_left.png" alt="" /></div>
+		<div style="width:40%;display:flex;justify-content: center;z-index: 1;"><a href="{php echo mobileUrl()}"class='btn btn-danger '>开启全球之旅</a></div>
+		<div style="width:30%;display: flex;justify-content: flex-start;padding: .5rem"><img class="jt_02" src="../addons/ewei_shopv2/static/img/jt_right.png" alt="" /></div>
 	</div>
 	<div class='img_03'>
 		<img src="../addons/ewei_shopv2/static/img/y-03.jpg"/>
@@ -56,7 +91,7 @@
 </html>
 
 <script>
-  /*  setTimeout(function () {
+    setTimeout(function () {
         location.href = "{php echo mobileUrl()}" 
-    }, 3000);*/
+    }, 5000);
 </script>
