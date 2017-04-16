@@ -1,183 +1,151 @@
 {template '_header'}
+
 <style>
-    .left-con{
-        width: 5.5rem;
-        text-align: center;
-    }
-    .right-con{
-        width: calc(100% - 5.5rem);
-        background: #f2f2f2
-    }
-    .left-title{
-        height: 1.9rem;
-        line-height: 1.9rem;
-        background: #fff;
-        color: #ED322B;
-        border-bottom:1px solid #dcdcdc;
-        font-size: .7rem;
-        display: flex;
-        align-items: center;
-    }
-    .right-title{
-        height: 1.9rem;
-        width: 100%;
-        background: #fff;
-        border-bottom:1px solid #dcdcdc;
-    }
-    .searchbar{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-    }
-    .se-active {
-        background: #f2f2f2;
-    }
+	.fui-header ~ .fui-content {
+		top:2.2rem
+	}
 </style>
-<div class="fui-page fui-page-current page-shop-goods_category" style="width: 100%;display:flex;flex-direction: row;">
-    <div class="left-con">
-        <div class="left-title" >
-            <div style="color: #333; width: 100%; height: 1.3rem; line-height: 1.3rem; border-right: 1px solid #dcdcdc;">
-                全部分类
-            </div>
+<div class="fui-page fui-page-current page-shop-goods_category">
+    <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back"></a>
         </div>
-        <div class="navbar" style='background: #fff'>
-            {loop $getCategory $value}
-            <nav class="category" a="{$value['id']}" style="height:2rem;line-height:2rem;font-size:0.6rem; text-align: center;position: relative;">{$value['name']}
-                <img src="../addons/ewei_shopv2/static/img/jt_img.png" alt="" style="position: absolute; top: 50%; transform: translate(0, -50%);right: .6rem;width: .3rem;">
-            </nav>
+        <div class="title">
+            <form method="post" action="{php echo mobileUrl('goods')}">
+                <div class="searchbar">
+                    <div class="search-input">
+                        <i class="icon icon-search"></i>
+                        <input type="search" name="keywords" placeholder="输入关键字...">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+	<div class="fui-content navbar">
+    <div class="fui-fullHigh-group">
+        {if $category_set['level']!=1}
+        <div class="fui-fullHigh-item menu" id="tab">
+            <nav data-cate="recommend" data-src="{$category_set['advimg']}" data-href="{$category_set['advurl']}">推荐分类</nav>
+          	{loop $category['parent'][0] $value}
+            <nav data-cate="{$value['id']}" data-src="{$value['advimg']}" data-href="{$value['advurl']}">{$value['name']}</nav>
             {/loop}
         </div>
-    </div>
-    <div class="right-con" style="height: 100%;">
-    <form method="post" action="{php echo mobileUrl('goods')}" name="form1">
-        <div class='right-title'>
-            <div class='searchbar'>
-                <div class='search-input'>
-                    <input type="search" name="keywords" placeholder="请输入商品名称" style="width: 8.3rem; height: 1.1rem; line-height: 1.1rem; border-radius: .55rem; font-size: .7rem;">
-                </div>
-                <div class='search-right-pic' style="display: flex; align-items: center;">
-                    <img src="../addons/ewei_shopv2/static/img/fl_ssimg.png" style="width: 1.1rem; height: 1.1rem; margin: 0 .3rem;"  onclick="document.form1.submit();">
-                </div>
-            </div>
+        {/if}
+        <div class="fui-fullHigh-item container" style="position: relative">
+            <a id="advurl" class="swipe external" href="javascript:">
+                <img id="advimg">
+            </a>
+            <div id="container"></div>
         </div>
-        </form>
-        <!-- <div id="container" style="width:100%;background: #f2f2f2;">
-        </div> -->
-        <style>
-        .goodShow{
-            width:94%;
-            /* height:4.5rem; */
-            margin:0 auto;
-            background:#fff;
-            margin-top:10px;
-            padding:10px;
-            display: flex;
-            flex-flow:row;
-            justify-content: space-between;
-        }
-        .goodShow-left{
-            width: 35%;
-            height: 100%;
-        }
-        .goodShow-right{
-
-            width: 63%;
-            display: flex;
-            flex-flow: column;
-            justify-content: space-between;
-            font-size:1em;
-        }
-        </style>
-        <!-- <div id="container" style="width:100%; height: calc(100% - 1.9rem);background: #f2f2f2; overflow-y: scroll;padding-bottom: 3rem;"> -->
-        <div id="container" style="width:100%; height: calc(100% - 5rem);background: #f2f2f2; overflow-y: scroll; ">
-
-        </div>
-
     </div>
 </div>
-<script>
+	</div>
+<script id='tpl_shop_category_list' type='text/html'>
+    <%if recommend == 1%>
+    <div class="fui-icon-group selecter">
+        <a class="fui-icon-col external" href="{php echo mobileUrl('goods')}">
+            <div class="icon {if empty($set['style'])}radius{/if}"><i class="icon icon-category"></i></div>
+            <div class="text">所有商品</div>
+        </a>
+        {if $category_set['level']<=2}
+            <%each recommend_children as child%>
+                <a class="fui-icon-col external" href="{php echo mobileUrl('goods')}&cate=<%child.id%>">
+                    <div class="icon {if empty($set['style'])}radius{/if}"><img src="<%child.thumb%>" onerror="this.src='{EWEI_SHOPV2_STATIC}images/nopic100.jpg'; this.title='图片未找到.'"></div>
+                    <div class="text"><%child.name%></div>
+                </a>
+            <%/each%>
 
-    // 获取url参数
-    function getQueryString(name) {
-      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-      var r = window.location.search.substr(1).match(reg);
-      if (r != null) return unescape(r[2]);
-      return null;
-    }
+        {else}
 
-    // 获取分类内容
-    function getCateGoods(id) {
-        $.ajax({
-            type: 'post',
-            url: "{php echo mobileUrl('shop/category/getGoods')}",
-            data: {
-                'id': id
-            },
-            dataType:'json',
-            success: function(data) {
-                console.log(data);
-// data = data.concat(data);
-// data = data.concat(data);
-// data = data.concat(data);
-// data = data.concat(data);
-// data = data.concat(data);
-                var html = '';
-                $.each(data, function(key,v) {
-                    html += '<div style="margin: auto; width: 12.25rem; height: 4.8rem; padding: .3rem; margin-top: .5rem; background: #fff; overflow: hidden;"><a href="';
-                    html += "{php echo mobileUrl('goods.detail').'&id='}" + v.id;
-                    html += '"><img style="display: block; float: left; width: 4.2rem; height: 4.2rem;" src="../attachment/';
-                    html += v.thumb;
-                    html += '" alt=""></a><div style="position: relative; width: calc(100% - 4.5rem); height: 100%; float: right; font-size: 0.45rem;"><div style="font-size: .7rem;display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">';
-                    html += v.title;
-                    html += '</div><div style="margin-right:.5rem;color: #959595; margin-top: .2rem;display:flex;justify-content: space-between;"><span>月销: '
-                    html += v.salesreal;
-                    html += '件</span><span>库存：';
-                    html += v.total;
-                    html += '件</span></div><div style="font-size: .6rem; position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;"><div style="font-size:.7rem;color: #ec3028;">¥: ';
-                    html += v.marketprice;
-                    html +='</div><div style="color: #9d9d9d;text-decoration:line-through">¥:';
-                    html += v.productprice;
-                    html += '</div><a href="';
-                    html += "{php echo mobileUrl('goods.detail').'&id='}" + v.id;
-                    html += '" style="font-size: 1rem; color: #fff; background: #ec3028; width: 1rem; height: 1rem; line-height: 1rem; border-radius: 1rem; text-align: center; display: block;">+</a></div></div></div>';
-                });
-                $('#container').html(html);
-            }
-        });
-    }
+            <%each recommend_children as child%>
+                <a class="fui-icon-col show" data-children="<%child.id%>" data-pid="recommend" data-src="<%child.advimg%>" data-href="<%child.advurl%>" href="javascript:">
+                    <div class="icon {if empty($set['style'])}radius{/if}">
+                        <img src="<%child.thumb%>" onerror="this.src='{EWEI_SHOPV2_STATIC}images/nopic100.jpg'; this.title='图片未找到.'">
+                    </div>
+                    <div class="text"><%child.name%></div>
+                </a>
+            <%/each%>
+        {/if}
 
-    $('.category').click(function() {
-        var id = $(this).attr('a');
-        $(this).siblings('.category').removeClass('se-active');
-        $(this).addClass('se-active');
-        getCateGoods(id);
+        <%each recommend_grandchildren as grandchild%>
+        <a class="fui-icon-col external" href="{php echo mobileUrl('goods')}&cate=<%grandchild.id%>">
+            <div class="icon {if empty($set['style'])}radius{/if}"><img src="<%grandchild.thumb%>" onerror="this.src='{EWEI_SHOPV2_STATIC}images/nopic100.jpg'; this.title='图片未找到.'"></div>
+            <div class="text"><%grandchild.name%></div>
+        </a>
+        <%/each%>
+    </div>
+    <%else%>
+
+    {if $category_set['level']==1}
+    <a class="fui-title">所有分类</a>
+    <div class="fui-icon-group selecter">
+        <a class="fui-icon-col external" href="{php echo mobileUrl('goods')}">
+            <div class="icon {if empty($set['style'])}radius{/if}"><i class="icon icon-category"></i></div>
+            <div class="text">所有商品</div>
+        </a>
+        <%each parent[0] as cate%>
+        <a class="fui-icon-col external" href="{php echo mobileUrl('goods')}&cate=<%cate.id%>">
+            <div class="icon {if empty($set['style'])}radius{/if}"><img src="<%cate.advimg%>" onerror="this.src='{EWEI_SHOPV2_STATIC}images/nopic100.jpg'; this.title='图片未找到.'"></div>
+            <div class="text"><%cate.name%></div>
+        </a>
+        <%/each%>
+    </div>
+
+    {else if $category_set['level']==2 || empty($category_set['level']) }
+    <div class="fui-icon-group selecter">
+        <%each children as child%>
+        <a class="fui-icon-col external" href="{php echo mobileUrl('goods')}&cate=<%child.id%>">
+            <div class="icon {if empty($set['style'])}radius{/if}"><img src="<%child.thumb%>" onerror="this.src='{EWEI_SHOPV2_STATIC}images/nopic100.jpg'; this.title='图片未找到.'"></div>
+            <div class="text"><%child.name%></div>
+        </a>
+        <%/each%>
+    </div>
+
+    {else}
+    {if $category_set['show']!=1}
+    <%each children as child%>
+    <a class="fui-title external" href="{php echo mobileUrl('goods')}&cate=<%child.id%>"><%child.name%></a>
+    <div class="fui-icon-group selecter">
+        <%each grandchildren[child.id] as grandchild%>
+        <a class="fui-icon-col external" href="{php echo mobileUrl('goods')}&cate=<%grandchild.id%>">
+            <div class="icon {if empty($set['style'])}radius{/if}"><img src="<%grandchild.thumb%>" onerror="this.src='{EWEI_SHOPV2_STATIC}images/nopic100.jpg'; this.title='图片未找到.'"></div>
+            <div class="text"><%grandchild.name%></div>
+        </a>
+        <%/each%>
+    </div>
+    <%/each%>
+    {else}
+    <div class="fui-icon-group selecter">
+    <%each children as child%>
+    <a class="fui-icon-col show" data-children="<%child.id%>" data-pid="<%child.parentid%>"  data-src="<%child.advimg%>" data-href="<%child.advurl%>" href="javascript:">
+        <div class="icon {if empty($set['style'])}radius{/if}"><img src="<%child.thumb%>" onerror="this.src='{EWEI_SHOPV2_STATIC}images/nopic100.jpg'; this.title='图片未找到.'"></div>
+        <div class="text"><%child.name%></div>
+    </a>
+    <%/each%>
+    </div>
+    {/if}
+    {/if}
+    <%/if%>
+</script>
+
+<script id='tpl_shop_category_show_list' type='text/html'>
+    <div class="fui-icon-group selecter">
+        <a class="fui-icon-col prev" data-prev="<%pid%>">
+            <div class="icon {if empty($set['style'])}radius{/if}"><i class="icon icon-toleft"></i></div>
+            <div class="text">返回上一级</div>
+        </a>
+        <%each children as child%>
+        <a class="fui-icon-col external" href="{php echo mobileUrl('goods')}&cate=<%child.id%>">
+            <div class="icon {if empty($set['style'])}radius{/if}"><img src="<%child.thumb%>" onerror="this.src='{EWEI_SHOPV2_STATIC}images/nopic100.jpg'; this.title='图片未找到.'"></div>
+            <div class="text"><%child.name%></div>
+        </a>
+        <%/each%>
+    </div>
+</script>
+<script language='javascript'>
+    require(['biz/shop/category'], function (modal) {
+        modal.init({php echo json_encode($category)},{php echo json_encode($category_set)});
     });
-    var activeCate = $('.navbar').children('.category.se-active');
-
-    // 如果原本已经有选择分类则进入页面还是展示原来的分类; 针对通过返回键进入页面的情况
-    if (activeCate && activeCate.length != 0) {
-        getCateGoods(activeCate.attr('a'));
-    } else {
-        var cateid = getQueryString('cateid');
-        // 判断url是否有带cateid，有的话展示对应cate内容
-        if (cateid && cateid !== '') {
-            var cates = $('.navbar').children('.category');
-            cates.each(function(k, v) {
-                if (+$(v).attr('a') == +cateid) {
-                    $(v).addClass('se-active');
-                }
-            });
-            getCateGoods(+cateid);
-        } else {
-            var firstCate = $('.navbar').children('.category:first-child');
-            firstCate.addClass('se-active');
-            getCateGoods(firstCate.attr('a'));
-        }
-    }
-
-
 </script>
 {php $this->footerMenus()}
 {template '_footer'}

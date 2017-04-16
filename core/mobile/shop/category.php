@@ -3,69 +3,111 @@ if (!(defined('IN_IA')))
 {
 	exit('Access Denied');
 }
-class Category_EweiShopV2Page extends MobilePage
+class Category_EweiShopV2Page extends MobilePage 
 {
-	public function main()
+	public function main() 
 	{
 		global $_W;
 		global $_GPC;
 		$merchid = intval($_GPC['merchid']);
-
-		$sql = "select * from ims_ewei_shop_category where level=1 order by id";
-
-		$getCategory = pdo_fetchall($sql);
-
+		$category_set = $_W['shopset']['category'];
+		$category_set['advimg'] = tomedia($category_set['advimg']);
+		if ($category_set['level'] == -1) 
+		{
+			$this->message('暂时未开启分类', '', 'error');
+		}
+		$category = $this->getCategory($category_set['level'], $merchid);
+		$set = m('common')->getSysset('category');
+		//var_dump($category);
 		include $this->template();
 	}
-
-	public function getGoods(){
-
-		$id = $_POST['id'];
-
-        $sql = "select id,title,salesreal,productprice,marketprice,total,thumb from ims_ewei_shop_goods where pcate=" . $id;
-
-		$getGoods = pdo_fetchall($sql);
-//var_dump($getGoods);exit;
-        // 商品库存重新计算
-        foreach($getGoods as $k => $v) {
-            $agenttotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $v['id'] . ' and optionid=0');
-            $getGoods[$k]['total'] = intval($getGoods[$k]['total']) + intval($agenttotal);
-        }
-
-		echo json_encode($getGoods);
-
+	protected function getCategory($level, $merchid = 0) 
+	{
+		$level = intval($level);
+		$category = m('shop')->getCategory();
+		$category_parent = array();
+		$category_children = array();
+		$category_grandchildren = array();
+		if (0 < $merchid) 
+		{
+			$merch_plugin = p('merch');
+			$merch_data = m('common')->getPluginset('merch');
+			if ($merch_plugin && $merch_data['is_openmerch']) 
+			{
+				$is_openmerch = 1;
+			}
+			else 
+			{
+				$is_openmerch = 0;
+			}
+			if ($is_openmerch) 
+			{
+				$merch_category = $merch_plugin->getSet('merch_category', $merchid);
+				if (!(empty($merch_category))) 
+				{
+					if (!(empty($category['parent']))) 
+					{
+						foreach ($category['parent'] as $key => $value ) 
+						{
+							if (array_key_exists($value['id'], $merch_category)) 
+							{
+								$category['parent'][$key]['enabled'] = $merch_category[$value['id']];
+							}
+						}
+					}
+					if (!(empty($category['children']))) 
+					{
+						foreach ($category['children'] as $key => $value ) 
+						{
+							if (!(empty($value))) 
+							{
+								foreach ($value as $k => $v ) 
+								{
+									if (array_key_exists($v['id'], $merch_category)) 
+									{
+										$category['children'][$key][$k]['enabled'] = $merch_category[$v['id']];
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		foreach ($category['parent'] as $value ) 
+		{
+			if ($value['enabled'] == 1) 
+			{
+				$value['thumb'] = tomedia($value['thumb']);
+				$value['advimg'] = tomedia($value['advimg']);
+				$category_parent[$value['parentid']][] = $value;
+				if (!(empty($category['children'][$value['id']])) && (2 <= $level)) 
+				{
+					foreach ($category['children'][$value['id']] as $val ) 
+					{
+						if ($val['enabled'] == 1) 
+						{
+							$val['thumb'] = tomedia($val['thumb']);
+							$val['advimg'] = tomedia($val['advimg']);
+							$category_children[$val['parentid']][] = $val;
+							if (!(empty($category['children'][$val['id']])) && (3 <= $level)) 
+							{
+								foreach ($category['children'][$val['id']] as $v ) 
+								{
+									if ($v['enabled'] == 1) 
+									{
+										$v['thumb'] = tomedia($v['thumb']);
+										$v['advimg'] = tomedia($v['advimg']);
+										$category_grandchildren[$v['parentid']][] = $v;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return array('parent' => $category_parent, 'children' => $category_children, 'grandchildren' => $category_grandchildren);
 	}
-
-	public function getIstime(){
-
-		$sql = "select id,title,content,productprice,marketprice,total,thumb from ims_ewei_shop_goods where istime=1";
-
-		$getIstime = pdo_fetchall($sql);
-
-		echo json_encode($getIstime);
-
-	}
-
-	public function getIsnew1(){
-
-		$sql = "select id,title,productprice,marketprice,total,thumb from ims_ewei_shop_goods where isnew=1 limit 2";
-
-		$getIsnew1 = pdo_fetchall($sql);
-
-		echo json_encode($getIsnew1);
-
-	}
-
-	public function getIsnew2(){
-
-		$sql = "select id,title,productprice,marketprice,total,thumb from ims_ewei_shop_goods where isnew=1 order by id desc limit 2";
-
-		$getIsnew2 = pdo_fetchall($sql);
-
-		echo json_encode($getIsnew2);
-
-	}
-
-
 }
-
+?>
