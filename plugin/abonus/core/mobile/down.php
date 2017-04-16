@@ -34,7 +34,7 @@ class Down_EweiShopV2Page extends CommissionMobileLoginPage
 
 //        $list = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where uniacid = ' . $_W['uniacid'] . ' and isaagent = 1 and hagentid='. $member['id'] . '  ORDER BY id desc');
         $list = $this->get_down($openid);
-//        var_dump($list);exit;
+
         include $this->template();
 	}
 
@@ -58,8 +58,9 @@ class Down_EweiShopV2Page extends CommissionMobileLoginPage
         $list = pdo_fetchall('select * from ' . tablename('ewei_shop_member') . ' where uniacid = ' . $_W['uniacid'] . ' ' . $condition . '  ORDER BY isagent desc,id desc');
 
         foreach ($list as &$row ) {
-            if ($member['isagent'] && $member['status']) {
+            if ($row['isagent'] && $row['status']) {
                 $info = $this->model->getInfo($row['openid'], array('total'));
+
                 $row['commission_total'] = $info['commission_total'];
                 $row['agentcount'] = $info['agentcount'];
                 $row['agenttime'] = date('Y-m-d H:i', $row['agenttime']);

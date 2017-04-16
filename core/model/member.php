@@ -52,7 +52,7 @@ class Member_EweiShopV2Model
 		if ($uid == 0) 
 		{
 			$info = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where  openid=:openid and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':openid' => $openid));
-			if (empty($info)) 
+            if (empty($info))
 			{
                 // 条件：用户是qq端
 				if (strexists($openid, 'sns_qq_')) 
@@ -82,7 +82,8 @@ class Member_EweiShopV2Model
 		else 
 		{
 			$info = pdo_fetch('select * from ' . tablename('ewei_shop_member') . ' where id=:id and uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':id' => $openid));
-		}
+        }
+
         // 会员信息不为空的时候更新会员卡信息
 		if (!(empty($info))) 
 		{
@@ -122,6 +123,7 @@ class Member_EweiShopV2Model
 				}
 			}
 		}
+
 		$credits = $this->getCredits($openid);
 		$info['credit1'] = $credits['credit1'];
 		$info['credit2'] = $credits['credit2'];
