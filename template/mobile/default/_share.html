@@ -6,6 +6,7 @@
             window.shareData = {php echo json_encode($_W['shopshare'])};
             jssdkconfig = {php echo json_encode($_W['account']['jssdkconfig']);} || { jsApiList:[] };
             jssdkconfig.debug = false;
+
             jssdkconfig.jsApiList = ['checkJsApi','onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','showOptionMenu', 'hideMenuItems', 'onMenuShareQZone'];
             wx.config(jssdkconfig);
             wx.ready(function () {
@@ -16,9 +17,26 @@
                         menuList: {php echo  json_encode($_W['shopshare']['hideMenus'])}
                     });
                 {/if}
+                console.log('share', window.shareData);
+                // by xiaorenwu 
+                // 修改分享信息
+                seShareData = {
+                    desc: window.shareData.desc,
+                    imgUrl: window.shareData.imgUrl,
+                    title: '发现一个好商城，快快来围观!'
+                };
 
-                wx.onMenuShareAppMessage(window.shareData);
-                wx.onMenuShareTimeline(window.shareData);
+                seMidArr = window.shareData.link.split('mid=');
+                if (seMidArr && seMidArr.length > 1) {
+                    seMid = seMidArr[1];
+                }
+
+                seShareData.link = 'http://www.pinfeimy.com/app/index.php?i=2&c=entry&m=ewei_shopv2&do=mobile&mid=' + seMid;
+
+                console.log(seShareData);
+
+                wx.onMenuShareAppMessage(seShareData);
+                wx.onMenuShareTimeline(seShareData);
                 wx.onMenuShareQQ(window.shareData);
                 wx.onMenuShareWeibo(window.shareData);
                 wx.onMenuShareQZone(window.shareData);

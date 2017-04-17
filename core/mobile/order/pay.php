@@ -7,6 +7,10 @@ class Pay_EweiShopV2Page extends MobileLoginPage
 {
 	public function main() 
 	{
+//        m('notice')->sendAbounsMessage(301);
+//        m('notice')->sendOrderMessage(301);
+//        exit;
+
 		global $_W;
 		global $_GPC;
 		$openid = $_W['openid'];
@@ -486,6 +490,10 @@ class Pay_EweiShopV2Page extends MobileLoginPage
 			$ret['uniacid'] = $_W['uniacid'];
 			$pay_result = m('order')->payResult($ret);
 			m('notice')->sendOrderMessage($order['id']);
+
+            // 支付通知
+            m('notice')->sendAbounsMessage($order['id']);
+
 			@session_start();
 			$_SESSION[EWEI_SHOPV2_PREFIX . '_order_pay_complete'] = 1;
 			if ($_W['ispost']) 
@@ -565,6 +573,8 @@ class Pay_EweiShopV2Page extends MobileLoginPage
 			$ret['fee'] = $log['fee'];
 			$ret['weid'] = $log['weid'];
 			$ret['uniacid'] = $log['uniacid'];
+            // 支付通知
+            m('notice')->sendAbounsMessage($order['id']);
 			@session_start();
 			$_SESSION[EWEI_SHOPV2_PREFIX . '_order_pay_complete'] = 1;
 			$pay_result = m('order')->payResult($ret);
@@ -573,6 +583,7 @@ class Pay_EweiShopV2Page extends MobileLoginPage
 				show_json(1, array('result' => $pay_result));
 				return;
 			}
+
 			header('location:' . mobileUrl('order/pay/success', array('id' => $order['id'], 'result' => $pay_result)));
 			return;
 		}
