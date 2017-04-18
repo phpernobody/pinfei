@@ -83,6 +83,7 @@ define(['core', 'tpl'], function (core, tpl) {
         core.json('order/op/finish', {
             id: id
         }, function (pay_json) {
+            console.log(pay_json);
             if (pay_json.status == 1) {
                 location.reload();
                 return

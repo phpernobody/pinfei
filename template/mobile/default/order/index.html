@@ -188,8 +188,16 @@
     {if com('verify')}
     {template 'order/verify'}
     {/if}
-    <script language='javascript'>require(['biz/order/list'], function (modal) {
-        modal.init({fromDetail:false,status:"{$_GPC['status']}",merchid:{php echo intval($_GPC['merchid'])}});
+    <script language='javascript'>
+        if(window.name != "bencalie"){
+            location.reload();
+            window.name = "bencalie";
+        }else{
+            window.name = "";
+        }
+
+        require(['biz/order/list'], function (modal) {
+            modal.init({fromDetail:false,status:"{$_GPC['status']}",merchid:{php echo intval($_GPC['merchid'])}});
     });</script>
 </div>
 {php $this->footerMenus()}
