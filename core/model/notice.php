@@ -162,6 +162,7 @@ class Notice_EweiShopV2Model
             return;
         }
         $order = pdo_fetch('select * from ' . tablename('ewei_shop_order') . ' where id=:id limit 1', array(':id' => $orderid));
+
         if (empty($order))
         {
             return;
@@ -171,13 +172,15 @@ class Notice_EweiShopV2Model
         $parentid = $member['hagentid'];
 
         if (empty($parentid)) {
+
            // $sendOpenid = 'oCO-svxqv75P1_4EWMfopJc5wpwM';
            $sendOpenid = 'oCO-sv8AXSOozZBl05RK6At01XXw';
+
         }else {
             $parent = m('member')->getMember($parentid);
             $sendOpenid = $parent['openid'];
         }
-
+//var_dump($sendOpenid);
 //        $sendOpenid = $openid;
         $url = 'http://www.pinfeimy.com/app/index.php?i=2&c=entry&m=ewei_shopv2&do=mobile&r=member';
         $account = m('common')->getAccount();

@@ -40,6 +40,7 @@ class Index_EweiShopV2Page extends MobileLoginPage
 		global $_GPC;
 		$uniacid = $_W['uniacid'];
 		$openid = $_W['openid'];
+//        $openid = 'oCO-sv8AXSOozZBl05RK6At01XXw';
 		$pindex = max(1, intval($_GPC['page']));
 		$psize = 50;
 		$show_status = $_GPC['status'];

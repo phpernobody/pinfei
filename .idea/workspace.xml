@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8425939e-a88e-459e-87d2-34c7bf2490e7" name="Default" comment="" />
+    <list default="true" id="8425939e-a88e-459e-87d2-34c7bf2490e7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/mobile/order/index.php" afterPath="$PROJECT_DIR$/core/mobile/order/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/mobile/order/pay.php" afterPath="$PROJECT_DIR$/core/mobile/order/pay.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/model/notice.php" afterPath="$PROJECT_DIR$/core/model/notice.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin/commission/core/mobile/down.php" afterPath="$PROJECT_DIR$/plugin/commission/core/mobile/down.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin/commission/static/js/myshop.js" afterPath="$PROJECT_DIR$/plugin/commission/static/js/myshop.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin/commission/template/mobile/default/down.html" afterPath="$PROJECT_DIR$/plugin/commission/template/mobile/default/down.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin/commission/template/mobile/default/myshop/select.html" afterPath="$PROJECT_DIR$/plugin/commission/template/mobile/default/myshop/select.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/biz/order/detail.js" afterPath="$PROJECT_DIR$/static/js/app/biz/order/detail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/biz/order/list.js" afterPath="$PROJECT_DIR$/static/js/app/biz/order/list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/app/biz/order/op.js" afterPath="$PROJECT_DIR$/static/js/app/biz/order/op.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/mobile/default/_share.html" afterPath="$PROJECT_DIR$/template/mobile/default/_share.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/mobile/default/order/index.html" afterPath="$PROJECT_DIR$/template/mobile/default/order/index.html" />
+    </list>
     <ignored path="ewei_shopv2.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -12,12 +27,8 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="DaemonCodeAnalyzer">
-    <disable_hints />
   </component>
   <component name="DatabaseView">
     <option name="FLATTEN" value="false" />
@@ -31,159 +42,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/mobile/member/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.6764705" vertical-offset="200" max-vertical-offset="3675">
-              <caret line="13" column="40" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="40" />
-              <folding>
-                <marker date="1492325546589" expanded="true" signature="676:811" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="854:1004" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="1047:1197" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="1240:1380" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="1420:1551" placeholder="select ifnul..." />
-                <marker date="1492325546589" expanded="true" signature="1596:1719" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="1798:1959" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="2002:2178" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="2221:2397" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="2440:2606" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="2646:2794" placeholder="select ifnul..." />
-                <marker date="1492325546589" expanded="true" signature="2886:3022" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="3053:3176" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="3335:3400" placeholder="select count..." />
-                <marker date="1492325546589" expanded="true" signature="3941:4053" placeholder="SELECT 1 FRO..." />
-                <marker date="1492325546589" expanded="true" signature="5726:5787" placeholder="select * fro..." />
-                <marker date="1492325546589" expanded="true" signature="5951:6012" placeholder="select * fro..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="member.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/model/member.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.2473118" vertical-offset="5766" max-vertical-offset="16850">
-              <caret line="239" column="82" selection-start-line="239" selection-start-column="72" selection-end-line="239" selection-end-column="82" />
-              <folding>
-                <marker date="1492325994638" expanded="true" signature="219:320" placeholder="select * fro..." />
-                <marker date="1492325994638" expanded="true" signature="421:515" placeholder="select * fro..." />
-                <marker date="1492325994638" expanded="true" signature="2282:2384" placeholder="select * fro..." />
-                <marker date="1492325994638" expanded="true" signature="2972:3078" placeholder="select * fro..." />
-                <marker date="1492325994638" expanded="true" signature="3266:3359" placeholder="select * fro..." />
-                <marker date="1492325994638" expanded="true" signature="4523:4624" placeholder="select * fro..." />
-                <marker date="1492325994638" expanded="true" signature="12946:13063" placeholder="select * fro..." />
-                <marker date="1492325994638" expanded="true" signature="13350:13449" placeholder="select * fro..." />
-                <marker date="1492325994638" expanded="true" signature="14129:14356" placeholder="select ifnul..." />
-                <marker date="1492325994638" expanded="true" signature="14453:14632" placeholder="select * fro..." />
-                <marker date="1492325994638" expanded="true" signature="14744:14856" placeholder="select count..." />
-                <marker date="1492325994638" expanded="true" signature="14953:15131" placeholder="select * fro..." />
-                <marker date="1492325994638" expanded="true" signature="15751:15847" placeholder="select * fro..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pay.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/mobile/order/pay.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-51.172043" vertical-offset="6841" max-vertical-offset="19525">
-              <caret line="464" column="9" selection-start-line="464" selection-start-column="9" selection-end-line="464" selection-end-column="9" />
-              <folding>
-                <marker date="1492329048173" expanded="true" signature="570:681" placeholder="select * fro..." />
-                <marker date="1492329048173" expanded="true" signature="1132:1247" placeholder="SELECT * FRO..." />
-                <marker date="1492329048173" expanded="true" signature="1523:1661" placeholder="select goods..." />
-                <marker date="1492329048173" expanded="true" signature="7404:7501" placeholder="select statu..." />
-                <marker date="1492329048173" expanded="true" signature="7969:8091" placeholder="select id fr..." />
-                <marker date="1492329048173" expanded="true" signature="8664:8775" placeholder="select * fro..." />
-                <marker date="1492329048173" expanded="true" signature="8912:9007" placeholder="SELECT * FRO..." />
-                <marker date="1492329048173" expanded="true" signature="9704:9819" placeholder="SELECT * FRO..." />
-                <marker date="1492329048173" expanded="true" signature="10106:10490" placeholder="select og.id..." />
-                <marker date="1492329048173" expanded="true" signature="12268:12519" placeholder="select ifnul..." />
-                <marker date="1492329048173" expanded="true" signature="14372:14546" placeholder="select id,ti..." />
-                <marker date="1492329048173" expanded="true" signature="20930:21041" placeholder="select * fro..." />
-                <marker date="1492329048173" expanded="true" signature="21174:21478" placeholder="select og.go..." />
-                <marker date="1492329048173" expanded="true" signature="21710:21791" placeholder="select * fro..." />
-                <marker date="1492329048173" expanded="true" signature="22076:22154" placeholder="select * fro..." />
-                <marker date="1492329048173" expanded="true" signature="22236:22308" placeholder="select * fro..." />
-                <marker date="1492329048173" expanded="true" signature="22675:22789" placeholder="select * fro..." />
-                <marker date="1492329048173" expanded="true" signature="22905:22992" placeholder="select * fro..." />
-                <marker date="1492329048173" expanded="true" signature="23104:23261" placeholder="select * fro..." />
-                <marker date="1492329048173" expanded="true" signature="23373:23503" placeholder="select * fro..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notice.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="notice.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/model/notice.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.924731" vertical-offset="7366" max-vertical-offset="34025">
-              <caret line="339" column="5" selection-start-line="339" selection-start-column="5" selection-end-line="339" selection-end-column="5" />
+            <state relative-caret-position="346">
+              <caret line="176" column="56" lean-forward="false" selection-start-line="176" selection-start-column="56" selection-end-line="176" selection-end-column="56" />
               <folding>
-                <marker date="1492329155343" expanded="true" signature="717:795" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="1175:1266" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="3899:4010" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="5527:5639" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="9890:10000" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="11693:11764" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="12244:12532" placeholder="select g.id,..." />
-                <marker date="1492329155343" expanded="true" signature="13243:13364" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="13509:13601" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="14012:14157" placeholder="select id,re..." />
-                <marker date="1492329155343" expanded="true" signature="18845:18916" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="19396:19735" placeholder="select g.id,..." />
-                <marker date="1492329155343" expanded="true" signature="20446:20567" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="20712:20804" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="21215:21360" placeholder="select id,re..." />
-                <marker date="1492329155343" expanded="true" signature="24348:24426" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="26146:26252" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="34556:34662" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="69169:69266" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="76811:76921" placeholder="select * fro..." />
-                <marker date="1492329155343" expanded="true" signature="78380:78497" placeholder="select templ..." />
-                <marker date="1492329155343" expanded="true" signature="78886:79003" placeholder="select templ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="down.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/plugin/abonus/core/mobile/down.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43723848" vertical-offset="1216" max-vertical-offset="8650">
-              <caret line="57" column="67" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
-              <folding>
-                <marker date="1492330669751" expanded="true" signature="322:388" placeholder="select openi..." />
-                <marker date="1492330669751" expanded="true" signature="2324:2464" placeholder="select * fro..." />
-                <marker date="1492330669751" expanded="true" signature="2898:3006" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="3191:3411" placeholder="select sum(o..." />
-                <marker date="1492330669751" expanded="true" signature="4313:4453" placeholder="select * fro..." />
-                <marker date="1492330669751" expanded="true" signature="4892:5000" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="5185:5405" placeholder="select sum(o..." />
-                <marker date="1492330669751" expanded="true" signature="5998:6178" placeholder="select * fro..." />
-                <marker date="1492330669751" expanded="true" signature="7718:7826" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="8007:8227" placeholder="select sum(o..." />
-                <marker date="1492330669751" expanded="true" signature="8541:8681" placeholder="select * fro..." />
-                <marker date="1492330669751" expanded="true" signature="8989:9097" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="9266:9486" placeholder="select sum(o..." />
-                <marker date="1492330669751" expanded="true" signature="10429:10539" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="10985:11152" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="11580:11747" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="11818:11998" placeholder="select * fro..." />
-                <marker date="1492330669751" expanded="true" signature="12366:12474" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="12641:12861" placeholder="select sum(o..." />
-                <marker date="1492330669751" expanded="true" signature="13857:13967" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="14493:14660" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="15157:15324" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="15407:15587" placeholder="select * fro..." />
-                <marker date="1492330669751" expanded="true" signature="16036:16144" placeholder="select count..." />
-                <marker date="1492330669751" expanded="true" signature="16329:16549" placeholder="select sum(o..." />
+                <marker date="1492566866332" expanded="true" signature="865:943" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+                <marker date="1492566866332" expanded="true" signature="1413:1504" ph="select * fro... ${tablename('ewei_shop_groups_goods')}" />
+                <marker date="1492566866332" expanded="true" signature="4430:4541" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+                <marker date="1492566866332" expanded="true" signature="6283:6395" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+                <marker date="1492566866332" expanded="true" signature="10511:10582" ph="select * fro... ${tablename('ewei_shop_order')}" />
+                <marker date="1492566866332" expanded="true" signature="13094:13204" ph="select * fro... ${tablename('ewei_shop_member_message_template')}" />
+                <marker date="1492566866332" expanded="true" signature="15436:15507" ph="select * fro... ${tablename('ewei_shop_order')}" />
+                <marker date="1492566866332" expanded="true" signature="16113:16401" ph="select g.id,... ${tablename('ewei_shop_order_goods')}" />
+                <marker date="1492566866332" expanded="true" signature="17285:17406" ph="select * fro... ${tablename('ewei_shop_merch_store')}" />
+                <marker date="1492566866332" expanded="true" signature="17589:17681" ph="select * fro... ${tablename('ewei_shop_store')}" />
+                <marker date="1492566866332" expanded="true" signature="18218:18363" ph="select id,re... ${tablename('ewei_shop_member_address')}" />
+                <marker date="1492566866332" expanded="true" signature="23486:23557" ph="select * fro... ${tablename('ewei_shop_order')}" />
+                <marker date="1492566866332" expanded="true" signature="24163:24502" ph="select g.id,... ${tablename('ewei_shop_order_goods')}" />
+                <marker date="1492566866332" expanded="true" signature="25386:25507" ph="select * fro... ${tablename('ewei_shop_merch_store')}" />
+                <marker date="1492566866332" expanded="true" signature="25690:25782" ph="select * fro... ${tablename('ewei_shop_store')}" />
+                <marker date="1492566866332" expanded="true" signature="26319:26464" ph="select id,re... ${tablename('ewei_shop_member_address')}" />
+                <marker date="1492566866332" expanded="true" signature="29781:29859" ph="select * fro... ${tablename('ewei_shop_order_refund')}" />
+                <marker date="1492566866332" expanded="true" signature="32023:32129" ph="select * fro... ${tablename('ewei_shop_refund_address')}" />
+                <marker date="1492566866332" expanded="true" signature="42761:42867" ph="select * fro... ${tablename('ewei_shop_refund_address')}" />
+                <marker date="1492566866332" expanded="true" signature="85225:85322" ph="select * fro... ${tablename('ewei_shop_member_log')}" />
+                <marker date="1492566866332" expanded="true" signature="94037:94147" ph="select * fro... ${tablename('ewei_shop_member_message_template')}" />
+                <marker date="1492566866332" expanded="true" signature="96057:96174" ph="select templ... ${tablename('ewei_shop_member_message_template_type')}" />
+                <marker date="1492566866332" expanded="true" signature="96789:96906" ph="select templ... ${tablename('ewei_shop_member_message_template_type')}" />
+                <marker date="1492566866332" expanded="true" signature="100161:100162" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -202,31 +99,25 @@
         <option value="$PROJECT_DIR$/core/mobile/member/index.php" />
         <option value="$PROJECT_DIR$/core/model/member.php" />
         <option value="$PROJECT_DIR$/core/mobile/order/pay.php" />
-        <option value="$PROJECT_DIR$/core/model/notice.php" />
         <option value="$PROJECT_DIR$/plugin/abonus/core/mobile/down.php" />
+        <option value="$PROJECT_DIR$/core/model/notice.php" />
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -238,8 +129,12 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -420,30 +315,44 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../wxdev.cccwei.com" />
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
@@ -452,12 +361,10 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
-    <list size="0" />
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -466,35 +373,44 @@
       <changelist id="8425939e-a88e-459e-87d2-34c7bf2490e7" name="Default" comment="" />
       <created>1489201057214</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1489201057214</updated>
+      <workItem from="1492566649302" duration="8000" />
+      <workItem from="1492566797351" duration="96000" />
+      <workItem from="1492566912102" duration="16000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="120000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18305598" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1828125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -507,563 +423,442 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <option name="myTodoPanelSettings">
-      <TodoPanelSettings />
-    </option>
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/web/goods/post.php">
+    <entry file="file://$PROJECT_DIR$/core/model/notice.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="27550">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="8814">
+          <caret line="339" column="5" lean-forward="false" selection-start-line="339" selection-start-column="5" selection-end-line="339" selection-end-column="5" />
           <folding>
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select level..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select paren..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select id,pa..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select id,pa..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="SELECT id,ti..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select a.id,..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select id,st..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select detai..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2800">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1772" max-vertical-offset="2475">
-          <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="14950" max-vertical-offset="18925">
-          <caret line="606" column="156" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3863" max-vertical-offset="17525">
-          <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2800">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1772" max-vertical-offset="2475">
-          <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="14950" max-vertical-offset="18925">
-          <caret line="606" column="156" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3863" max-vertical-offset="17525">
-          <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2263" max-vertical-offset="2800">
-          <caret line="101" column="32" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1772" max-vertical-offset="2475">
-          <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="14950" max-vertical-offset="18925">
-          <caret line="606" column="156" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3863" max-vertical-offset="17525">
-          <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/web/member/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="17125">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/web/member/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16950">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/commission/core/web/agent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="9657" max-vertical-offset="12000">
-          <caret line="397" column="42" selection-start-line="397" selection-start-column="42" selection-end-line="397" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/web/agent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4800" max-vertical-offset="5925">
-          <caret line="192" column="9" selection-start-line="192" selection-start-column="9" selection-end-line="192" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/web/member/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4007" max-vertical-offset="16425">
-          <caret line="310" column="45" selection-start-line="310" selection-start-column="35" selection-end-line="310" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/commission/core/web/agent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="9057" max-vertical-offset="12000">
-          <caret line="397" column="42" selection-start-line="397" selection-start-column="42" selection-end-line="397" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/web/agent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5900">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/commission/template/web/query.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/commission/core/web/agent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="9657" max-vertical-offset="12000">
-          <caret line="397" column="42" selection-start-line="397" selection-start-column="42" selection-end-line="397" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/web/agent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4800" max-vertical-offset="5925">
-          <caret line="192" column="9" selection-start-line="192" selection-start-column="9" selection-end-line="192" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/web/member/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.443203" vertical-offset="7563" max-vertical-offset="17125">
-          <caret line="355" column="12" selection-start-line="355" selection-start-column="12" selection-end-line="355" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/model/common.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.294118" vertical-offset="12182" max-vertical-offset="30575">
-          <caret line="504" column="18" selection-start-line="504" selection-start-column="18" selection-end-line="504" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5425">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8398511" vertical-offset="2475" max-vertical-offset="3725">
-          <caret line="38" column="36" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="24750">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/picker.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.167598" vertical-offset="150" max-vertical-offset="6575">
-          <caret line="117" column="13" selection-start-line="117" selection-start-column="13" selection-end-line="117" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8091873" vertical-offset="1938" max-vertical-offset="2800">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70553595" vertical-offset="1626" max-vertical-offset="2475">
-          <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23557127" vertical-offset="14950" max-vertical-offset="18925">
-          <caret line="606" column="156" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27915195" vertical-offset="3863" max-vertical-offset="17525">
-          <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/web/order/op.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34662044" vertical-offset="10575" max-vertical-offset="14475">
-          <caret line="431" column="17" selection-start-line="414" selection-start-column="12" selection-end-line="431" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/web/order/op.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48180243" vertical-offset="9672" max-vertical-offset="14200">
-          <caret line="398" column="25" selection-start-line="398" selection-start-column="25" selection-end-line="398" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/web/order/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="22025">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/shop/category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8266898" vertical-offset="348" max-vertical-offset="1925">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/mobile/order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0034662045" vertical-offset="9473" max-vertical-offset="19400">
-          <caret line="379" column="0" selection-start-line="379" selection-start-column="0" selection-end-line="379" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/web/goods/post.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18621974" vertical-offset="14475" max-vertical-offset="27550">
-          <caret line="583" column="37" selection-start-line="583" selection-start-column="37" selection-end-line="583" selection-end-column="37" />
-          <folding>
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select level..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select paren..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select id,pa..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select id,pa..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="SELECT id,ti..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select a.id,..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select id,st..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select detai..." />
-            <marker date="1491238457082" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/mobile/default/member/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9575">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/order/pay.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-51.172043" vertical-offset="6841" max-vertical-offset="19525">
-          <caret line="464" column="9" selection-start-line="464" selection-start-column="9" selection-end-line="464" selection-end-column="9" />
-          <folding>
-            <marker date="1492329048173" expanded="true" signature="570:681" placeholder="select * fro..." />
-            <marker date="1492329048173" expanded="true" signature="1132:1247" placeholder="SELECT * FRO..." />
-            <marker date="1492329048173" expanded="true" signature="1523:1661" placeholder="select goods..." />
-            <marker date="1492329048173" expanded="true" signature="7404:7501" placeholder="select statu..." />
-            <marker date="1492329048173" expanded="true" signature="7969:8091" placeholder="select id fr..." />
-            <marker date="1492329048173" expanded="true" signature="8664:8775" placeholder="select * fro..." />
-            <marker date="1492329048173" expanded="true" signature="8912:9007" placeholder="SELECT * FRO..." />
-            <marker date="1492329048173" expanded="true" signature="9704:9819" placeholder="SELECT * FRO..." />
-            <marker date="1492329048173" expanded="true" signature="10106:10490" placeholder="select og.id..." />
-            <marker date="1492329048173" expanded="true" signature="12268:12519" placeholder="select ifnul..." />
-            <marker date="1492329048173" expanded="true" signature="14372:14546" placeholder="select id,ti..." />
-            <marker date="1492329048173" expanded="true" signature="20930:21041" placeholder="select * fro..." />
-            <marker date="1492329048173" expanded="true" signature="21174:21478" placeholder="select og.go..." />
-            <marker date="1492329048173" expanded="true" signature="21710:21791" placeholder="select * fro..." />
-            <marker date="1492329048173" expanded="true" signature="22076:22154" placeholder="select * fro..." />
-            <marker date="1492329048173" expanded="true" signature="22236:22308" placeholder="select * fro..." />
-            <marker date="1492329048173" expanded="true" signature="22675:22789" placeholder="select * fro..." />
-            <marker date="1492329048173" expanded="true" signature="22905:22992" placeholder="select * fro..." />
-            <marker date="1492329048173" expanded="true" signature="23104:23261" placeholder="select * fro..." />
-            <marker date="1492329048173" expanded="true" signature="23373:23503" placeholder="select * fro..." />
+            <marker date="1492566866332" expanded="true" signature="865:943" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+            <marker date="1492566866332" expanded="true" signature="1413:1504" ph="select * fro... ${tablename('ewei_shop_groups_goods')}" />
+            <marker date="1492566866332" expanded="true" signature="4430:4541" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+            <marker date="1492566866332" expanded="true" signature="6283:6395" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+            <marker date="1492566866332" expanded="true" signature="10511:10582" ph="select * fro... ${tablename('ewei_shop_order')}" />
+            <marker date="1492566866332" expanded="true" signature="13094:13204" ph="select * fro... ${tablename('ewei_shop_member_message_template')}" />
+            <marker date="1492566866332" expanded="true" signature="15436:15507" ph="select * fro... ${tablename('ewei_shop_order')}" />
+            <marker date="1492566866332" expanded="true" signature="16113:16401" ph="select g.id,... ${tablename('ewei_shop_order_goods')}" />
+            <marker date="1492566866332" expanded="true" signature="17285:17406" ph="select * fro... ${tablename('ewei_shop_merch_store')}" />
+            <marker date="1492566866332" expanded="true" signature="17589:17681" ph="select * fro... ${tablename('ewei_shop_store')}" />
+            <marker date="1492566866332" expanded="true" signature="18218:18363" ph="select id,re... ${tablename('ewei_shop_member_address')}" />
+            <marker date="1492566866332" expanded="true" signature="23486:23557" ph="select * fro... ${tablename('ewei_shop_order')}" />
+            <marker date="1492566866332" expanded="true" signature="24163:24502" ph="select g.id,... ${tablename('ewei_shop_order_goods')}" />
+            <marker date="1492566866332" expanded="true" signature="25386:25507" ph="select * fro... ${tablename('ewei_shop_merch_store')}" />
+            <marker date="1492566866332" expanded="true" signature="25690:25782" ph="select * fro... ${tablename('ewei_shop_store')}" />
+            <marker date="1492566866332" expanded="true" signature="26319:26464" ph="select id,re... ${tablename('ewei_shop_member_address')}" />
+            <marker date="1492566866332" expanded="true" signature="29781:29859" ph="select * fro... ${tablename('ewei_shop_order_refund')}" />
+            <marker date="1492566866332" expanded="true" signature="32023:32129" ph="select * fro... ${tablename('ewei_shop_refund_address')}" />
+            <marker date="1492566866332" expanded="true" signature="42761:42867" ph="select * fro... ${tablename('ewei_shop_refund_address')}" />
+            <marker date="1492566866332" expanded="true" signature="85225:85322" ph="select * fro... ${tablename('ewei_shop_member_log')}" />
+            <marker date="1492566866332" expanded="true" signature="94037:94147" ph="select * fro... ${tablename('ewei_shop_member_message_template')}" />
+            <marker date="1492566866332" expanded="true" signature="96057:96174" ph="select templ... ${tablename('ewei_shop_member_message_template_type')}" />
+            <marker date="1492566866332" expanded="true" signature="96789:96906" ph="select templ... ${tablename('ewei_shop_member_message_template_type')}" />
+            <marker date="1492566866332" expanded="true" signature="100161:100162" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/mobile/member/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.6764705" vertical-offset="200" max-vertical-offset="3675">
-          <caret line="13" column="40" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="40" />
-          <folding>
-            <marker date="1492325546589" expanded="true" signature="676:811" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="854:1004" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="1047:1197" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="1240:1380" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="1420:1551" placeholder="select ifnul..." />
-            <marker date="1492325546589" expanded="true" signature="1596:1719" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="1798:1959" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="2002:2178" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="2221:2397" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="2440:2606" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="2646:2794" placeholder="select ifnul..." />
-            <marker date="1492325546589" expanded="true" signature="2886:3022" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="3053:3176" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="3335:3400" placeholder="select count..." />
-            <marker date="1492325546589" expanded="true" signature="3941:4053" placeholder="SELECT 1 FRO..." />
-            <marker date="1492325546589" expanded="true" signature="5726:5787" placeholder="select * fro..." />
-            <marker date="1492325546589" expanded="true" signature="5951:6012" placeholder="select * fro..." />
-          </folding>
+        <state relative-caret-position="338">
+          <caret line="13" column="40" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/model/member.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2473118" vertical-offset="5766" max-vertical-offset="16850">
-          <caret line="239" column="82" selection-start-line="239" selection-start-column="72" selection-end-line="239" selection-end-column="82" />
-          <folding>
-            <marker date="1492325994638" expanded="true" signature="219:320" placeholder="select * fro..." />
-            <marker date="1492325994638" expanded="true" signature="421:515" placeholder="select * fro..." />
-            <marker date="1492325994638" expanded="true" signature="2282:2384" placeholder="select * fro..." />
-            <marker date="1492325994638" expanded="true" signature="2972:3078" placeholder="select * fro..." />
-            <marker date="1492325994638" expanded="true" signature="3266:3359" placeholder="select * fro..." />
-            <marker date="1492325994638" expanded="true" signature="4523:4624" placeholder="select * fro..." />
-            <marker date="1492325994638" expanded="true" signature="12946:13063" placeholder="select * fro..." />
-            <marker date="1492325994638" expanded="true" signature="13350:13449" placeholder="select * fro..." />
-            <marker date="1492325994638" expanded="true" signature="14129:14356" placeholder="select ifnul..." />
-            <marker date="1492325994638" expanded="true" signature="14453:14632" placeholder="select * fro..." />
-            <marker date="1492325994638" expanded="true" signature="14744:14856" placeholder="select count..." />
-            <marker date="1492325994638" expanded="true" signature="14953:15131" placeholder="select * fro..." />
-            <marker date="1492325994638" expanded="true" signature="15751:15847" placeholder="select * fro..." />
-          </folding>
+        <state relative-caret-position="6214">
+          <caret line="239" column="82" lean-forward="false" selection-start-line="239" selection-start-column="72" selection-end-line="239" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/order/pay.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12064">
+          <caret line="464" column="9" lean-forward="false" selection-start-line="464" selection-start-column="9" selection-end-line="464" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/model/notice.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.924731" vertical-offset="7366" max-vertical-offset="34025">
-          <caret line="339" column="5" selection-start-line="339" selection-start-column="5" selection-end-line="339" selection-end-column="5" />
+        <state relative-caret-position="8814">
+          <caret line="339" column="5" lean-forward="false" selection-start-line="339" selection-start-column="5" selection-end-line="339" selection-end-column="5" />
           <folding>
-            <marker date="1492329155343" expanded="true" signature="717:795" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="1175:1266" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="3899:4010" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="5527:5639" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="9890:10000" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="11693:11764" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="12244:12532" placeholder="select g.id,..." />
-            <marker date="1492329155343" expanded="true" signature="13243:13364" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="13509:13601" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="14012:14157" placeholder="select id,re..." />
-            <marker date="1492329155343" expanded="true" signature="18845:18916" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="19396:19735" placeholder="select g.id,..." />
-            <marker date="1492329155343" expanded="true" signature="20446:20567" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="20712:20804" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="21215:21360" placeholder="select id,re..." />
-            <marker date="1492329155343" expanded="true" signature="24348:24426" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="26146:26252" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="34556:34662" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="69169:69266" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="76811:76921" placeholder="select * fro..." />
-            <marker date="1492329155343" expanded="true" signature="78380:78497" placeholder="select templ..." />
-            <marker date="1492329155343" expanded="true" signature="78886:79003" placeholder="select templ..." />
+            <marker date="1492566866332" expanded="true" signature="865:943" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+            <marker date="1492566866332" expanded="true" signature="1413:1504" ph="select * fro... ${tablename('ewei_shop_groups_goods')}" />
+            <marker date="1492566866332" expanded="true" signature="4430:4541" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+            <marker date="1492566866332" expanded="true" signature="6283:6395" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+            <marker date="1492566866332" expanded="true" signature="10511:10582" ph="select * fro... ${tablename('ewei_shop_order')}" />
+            <marker date="1492566866332" expanded="true" signature="13094:13204" ph="select * fro... ${tablename('ewei_shop_member_message_template')}" />
+            <marker date="1492566866332" expanded="true" signature="15436:15507" ph="select * fro... ${tablename('ewei_shop_order')}" />
+            <marker date="1492566866332" expanded="true" signature="16113:16401" ph="select g.id,... ${tablename('ewei_shop_order_goods')}" />
+            <marker date="1492566866332" expanded="true" signature="17285:17406" ph="select * fro... ${tablename('ewei_shop_merch_store')}" />
+            <marker date="1492566866332" expanded="true" signature="17589:17681" ph="select * fro... ${tablename('ewei_shop_store')}" />
+            <marker date="1492566866332" expanded="true" signature="18218:18363" ph="select id,re... ${tablename('ewei_shop_member_address')}" />
+            <marker date="1492566866332" expanded="true" signature="23486:23557" ph="select * fro... ${tablename('ewei_shop_order')}" />
+            <marker date="1492566866332" expanded="true" signature="24163:24502" ph="select g.id,... ${tablename('ewei_shop_order_goods')}" />
+            <marker date="1492566866332" expanded="true" signature="25386:25507" ph="select * fro... ${tablename('ewei_shop_merch_store')}" />
+            <marker date="1492566866332" expanded="true" signature="25690:25782" ph="select * fro... ${tablename('ewei_shop_store')}" />
+            <marker date="1492566866332" expanded="true" signature="26319:26464" ph="select id,re... ${tablename('ewei_shop_member_address')}" />
+            <marker date="1492566866332" expanded="true" signature="29781:29859" ph="select * fro... ${tablename('ewei_shop_order_refund')}" />
+            <marker date="1492566866332" expanded="true" signature="32023:32129" ph="select * fro... ${tablename('ewei_shop_refund_address')}" />
+            <marker date="1492566866332" expanded="true" signature="42761:42867" ph="select * fro... ${tablename('ewei_shop_refund_address')}" />
+            <marker date="1492566866332" expanded="true" signature="85225:85322" ph="select * fro... ${tablename('ewei_shop_member_log')}" />
+            <marker date="1492566866332" expanded="true" signature="94037:94147" ph="select * fro... ${tablename('ewei_shop_member_message_template')}" />
+            <marker date="1492566866332" expanded="true" signature="96057:96174" ph="select templ... ${tablename('ewei_shop_member_message_template_type')}" />
+            <marker date="1492566866332" expanded="true" signature="96789:96906" ph="select templ... ${tablename('ewei_shop_member_message_template_type')}" />
+            <marker date="1492566866332" expanded="true" signature="100161:100162" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugin/abonus/core/mobile/down.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43723848" vertical-offset="1216" max-vertical-offset="8650">
-          <caret line="57" column="67" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
+        <state relative-caret-position="1482">
+          <caret line="57" column="67" lean-forward="false" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/web/goods/post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="89" column="32" lean-forward="false" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="606" column="156" lean-forward="false" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="164" column="9" lean-forward="false" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="89" column="32" lean-forward="false" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="606" column="156" lean-forward="false" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="164" column="9" lean-forward="false" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="101" column="32" lean-forward="false" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="89" column="32" lean-forward="false" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="606" column="156" lean-forward="false" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="164" column="9" lean-forward="false" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/web/member/list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/web/member/list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/core/web/agent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="397" column="42" lean-forward="false" selection-start-line="397" selection-start-column="42" selection-end-line="397" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/web/agent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="192" column="9" lean-forward="false" selection-start-line="192" selection-start-column="9" selection-end-line="192" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/web/member/list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="310" column="45" lean-forward="false" selection-start-line="310" selection-start-column="35" selection-end-line="310" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/core/web/agent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="397" column="42" lean-forward="false" selection-start-line="397" selection-start-column="42" selection-end-line="397" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/web/agent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/template/web/query.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/core/web/agent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="397" column="42" lean-forward="false" selection-start-line="397" selection-start-column="42" selection-end-line="397" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/web/agent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="192" column="9" lean-forward="false" selection-start-line="192" selection-start-column="9" selection-end-line="192" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/web/member/list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="355" column="12" lean-forward="false" selection-start-line="355" selection-start-column="12" selection-end-line="355" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/model/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="504" column="18" lean-forward="false" selection-start-line="504" selection-start-column="18" selection-end-line="504" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="38" column="36" lean-forward="false" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/picker.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="117" column="13" lean-forward="false" selection-start-line="117" selection-start-column="13" selection-end-line="117" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="89" column="32" lean-forward="false" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="606" column="156" lean-forward="false" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="164" column="9" lean-forward="false" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/web/order/op.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="431" column="17" lean-forward="false" selection-start-line="414" selection-start-column="12" selection-end-line="431" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/web/order/op.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="398" column="25" lean-forward="false" selection-start-line="398" selection-start-column="25" selection-end-line="398" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/web/order/list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/shop/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/mobile/order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="379" column="0" lean-forward="false" selection-start-line="379" selection-start-column="0" selection-end-line="379" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/web/goods/post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="583" column="37" lean-forward="false" selection-start-line="583" selection-start-column="37" selection-end-line="583" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/member/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/mobile/down.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1482">
+          <caret line="57" column="67" lean-forward="false" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/order/pay.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="468" column="9" lean-forward="false" selection-start-line="468" selection-start-column="9" selection-end-line="468" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/model/member.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="239" column="82" lean-forward="false" selection-start-line="239" selection-start-column="72" selection-end-line="239" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/member/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="13" column="40" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/model/notice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="176" column="56" lean-forward="false" selection-start-line="176" selection-start-column="56" selection-end-line="176" selection-end-column="56" />
           <folding>
-            <marker date="1492330669751" expanded="true" signature="322:388" placeholder="select openi..." />
-            <marker date="1492330669751" expanded="true" signature="2324:2464" placeholder="select * fro..." />
-            <marker date="1492330669751" expanded="true" signature="2898:3006" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="3191:3411" placeholder="select sum(o..." />
-            <marker date="1492330669751" expanded="true" signature="4313:4453" placeholder="select * fro..." />
-            <marker date="1492330669751" expanded="true" signature="4892:5000" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="5185:5405" placeholder="select sum(o..." />
-            <marker date="1492330669751" expanded="true" signature="5998:6178" placeholder="select * fro..." />
-            <marker date="1492330669751" expanded="true" signature="7718:7826" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="8007:8227" placeholder="select sum(o..." />
-            <marker date="1492330669751" expanded="true" signature="8541:8681" placeholder="select * fro..." />
-            <marker date="1492330669751" expanded="true" signature="8989:9097" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="9266:9486" placeholder="select sum(o..." />
-            <marker date="1492330669751" expanded="true" signature="10429:10539" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="10985:11152" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="11580:11747" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="11818:11998" placeholder="select * fro..." />
-            <marker date="1492330669751" expanded="true" signature="12366:12474" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="12641:12861" placeholder="select sum(o..." />
-            <marker date="1492330669751" expanded="true" signature="13857:13967" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="14493:14660" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="15157:15324" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="15407:15587" placeholder="select * fro..." />
-            <marker date="1492330669751" expanded="true" signature="16036:16144" placeholder="select count..." />
-            <marker date="1492330669751" expanded="true" signature="16329:16549" placeholder="select sum(o..." />
+            <marker date="1492566866332" expanded="true" signature="865:943" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+            <marker date="1492566866332" expanded="true" signature="1413:1504" ph="select * fro... ${tablename('ewei_shop_groups_goods')}" />
+            <marker date="1492566866332" expanded="true" signature="4430:4541" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+            <marker date="1492566866332" expanded="true" signature="6283:6395" ph="select * fro... ${tablename('ewei_shop_groups_order')}" />
+            <marker date="1492566866332" expanded="true" signature="10511:10582" ph="select * fro... ${tablename('ewei_shop_order')}" />
+            <marker date="1492566866332" expanded="true" signature="13094:13204" ph="select * fro... ${tablename('ewei_shop_member_message_template')}" />
+            <marker date="1492566866332" expanded="true" signature="15436:15507" ph="select * fro... ${tablename('ewei_shop_order')}" />
+            <marker date="1492566866332" expanded="true" signature="16113:16401" ph="select g.id,... ${tablename('ewei_shop_order_goods')}" />
+            <marker date="1492566866332" expanded="true" signature="17285:17406" ph="select * fro... ${tablename('ewei_shop_merch_store')}" />
+            <marker date="1492566866332" expanded="true" signature="17589:17681" ph="select * fro... ${tablename('ewei_shop_store')}" />
+            <marker date="1492566866332" expanded="true" signature="18218:18363" ph="select id,re... ${tablename('ewei_shop_member_address')}" />
+            <marker date="1492566866332" expanded="true" signature="23486:23557" ph="select * fro... ${tablename('ewei_shop_order')}" />
+            <marker date="1492566866332" expanded="true" signature="24163:24502" ph="select g.id,... ${tablename('ewei_shop_order_goods')}" />
+            <marker date="1492566866332" expanded="true" signature="25386:25507" ph="select * fro... ${tablename('ewei_shop_merch_store')}" />
+            <marker date="1492566866332" expanded="true" signature="25690:25782" ph="select * fro... ${tablename('ewei_shop_store')}" />
+            <marker date="1492566866332" expanded="true" signature="26319:26464" ph="select id,re... ${tablename('ewei_shop_member_address')}" />
+            <marker date="1492566866332" expanded="true" signature="29781:29859" ph="select * fro... ${tablename('ewei_shop_order_refund')}" />
+            <marker date="1492566866332" expanded="true" signature="32023:32129" ph="select * fro... ${tablename('ewei_shop_refund_address')}" />
+            <marker date="1492566866332" expanded="true" signature="42761:42867" ph="select * fro... ${tablename('ewei_shop_refund_address')}" />
+            <marker date="1492566866332" expanded="true" signature="85225:85322" ph="select * fro... ${tablename('ewei_shop_member_log')}" />
+            <marker date="1492566866332" expanded="true" signature="94037:94147" ph="select * fro... ${tablename('ewei_shop_member_message_template')}" />
+            <marker date="1492566866332" expanded="true" signature="96057:96174" ph="select templ... ${tablename('ewei_shop_member_message_template_type')}" />
+            <marker date="1492566866332" expanded="true" signature="96789:96906" ph="select templ... ${tablename('ewei_shop_member_message_template_type')}" />
+            <marker date="1492566866332" expanded="true" signature="100161:100162" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -7,7 +7,7 @@ class Pay_EweiShopV2Page extends MobileLoginPage
 {
 	public function main() 
 	{
-//        m('notice')->sendAbounsMessage(301);
+//        m('notice')->sendAbounsMessage(332);
 //        m('notice')->sendOrderMessage(301);
 //        exit;
 
@@ -641,6 +641,8 @@ class Pay_EweiShopV2Page extends MobileLoginPage
 				$ret['uniacid'] = $log['uniacid'];
 				$ret['deduct'] = intval($_GPC['deduct']) == 1;
 				$pay_result = m('order')->payResult($ret);
+                // 支付通知
+                m('notice')->sendAbounsMessage($order['id']);
 				@session_start();
 				$_SESSION[EWEI_SHOPV2_PREFIX . '_order_pay_complete'] = 1;
 				if ($_W['ispost']) 

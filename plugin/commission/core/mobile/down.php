@@ -66,6 +66,8 @@ class Down_EweiShopV2Page extends CommissionMobileLoginPage
             $moneycount = pdo_fetchcolumn('select sum(og.realprice) from ' . tablename('ewei_shop_order_goods') . ' og ' . ' left join ' . tablename('ewei_shop_order') . ' o on og.orderid=o.id where o.openid=:openid  and o.status>=1 and o.uniacid=:uniacid limit 1', array(':uniacid' => $_W['uniacid'], ':openid' => $row['openid']));
             $row['moneycount'] = number_format(floatval($moneycount), 2);
             $row['createtime'] = date('Y-m-d H:i', $row['createtime']);
+
+            $row['down_count'] = pdo_fetchcolumn('select count(id) from ' . tablename('ewei_shop_member') . ' where agentid=' . $member['id']);
 //            var_dump($row['agentcount']);exit;
 
         }
