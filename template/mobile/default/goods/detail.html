@@ -83,7 +83,6 @@
     <div class='content-block content-images'></div>
 </div>
 
-
 <div class='fui-content basic-block pulldown {if !$goods['canbuy']}notbuy{/if}'>
 
 
@@ -524,7 +523,7 @@
             <div class="fui-list package-list">
                 {loop $packages $item}
                 <div class="fui-list-inner package-goods" onclick="javascript:window.location.href='{php echo mobileUrl('goods/package/detail',array('pid'=>$package_goods['pid']))}'">
-                    <img src="{php echo tomedia($item['thumb'])}" class="package-goods-img" alt="{$item['title']}">
+                    <img src="{php echo tomedia($item['thumb'])}" class="package-goods-img" >
                     <span>{$item['title']}</span>
                 </div>
                 {/loop}
@@ -600,7 +599,7 @@
     $(function(){
         $(".package-goods-img").height($(".package-goods-img").width());
     })
-    $("img").attr("alt","");
+    $("p").removeAttr("alt");
 </script>
 {/if}
 
@@ -969,7 +968,7 @@
                     {$_W['shopset']['shop']['name']}
                 </div>
             </div>
-            <img src="{php echo tomedia($goods['thumb'])}" class="alert-goods-img" alt="">
+            <img src="{php echo tomedia($goods['thumb'])}" class="alert-goods-img">
             <div class="fui-list alert-qrcode">
                 <div class="fui-list-media">
                     <i class="alert-qrcode-i"></i>
@@ -992,7 +991,7 @@
         <div class="alert2">
             <div class="fui-list alert2-goods">
                 <div class="fui-list-media">
-                    <img src="{php echo tomedia($goods['thumb'])}" class="alert2-goods-img" alt="">
+                    <img src="{php echo tomedia($goods['thumb'])}" class="alert2-goods-img" >
                 </div>
                 <div class="fui-list-inner">
                     <h2 class="alert2-title">{$goods['title']}</h2>

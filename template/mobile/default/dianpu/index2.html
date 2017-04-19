@@ -1,0 +1,148 @@
+{template '_header'}
+<script>document.title = "我是店长"; </script>
+{template 'commission/common'}
+<style>
+	
+	.all{
+		width: 100%;
+	    height: 9.5rem;
+	    background: #ec3028;
+	    border-bottom: 3px solid #ee736e;
+	    top: 0;
+	}
+	.top{
+	    width: 100%;
+	    height: 5.5rem;
+	    border-bottom: 3px solid #ee736e;
+	    padding-top: 1.625rem;
+	    display: flex;
+	    flex-direction: row;
+	}
+	.top_left,.top_right{
+	    width: 50%;
+	    height: 100%;
+	    text-align: center;
+	    
+	}
+	
+	.top_left p,.top_right p{
+    	font-size: 1rem;
+    	color: #fffc00;
+	}
+	.bottom{
+	    width: 100%;
+	    height: 3.75rem;
+	    display: flex;
+	    flex-direction: row;
+	}
+/************下拉菜单**************/
+	.bottom_left{
+	    
+	    width: 50%;
+	    height: 100%;
+	    border-right: 3px solid #ee736e;
+	    position: relative;
+	   	display: flex;
+	   	justify-content:center;
+	   	align-items:Center;	    
+	}
+	.reg_testdate{
+		display: flex;
+		flex-direction: row;		
+	}
+	.reg_testdate select{
+		height: 1rem;
+		line-height: 1rem;
+		font-size: .75rem;
+	}
+/*****************************/
+	.bottom_right{
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: space-around;
+		padding-left: 1rem;
+	}
+	.bottom_right p{
+	    font-size: .8rem;
+	    color: #fff;
+	}
+	.bottom_right>p>span{
+	    color: #fffc00;
+	}
+/***********每日账单*************/
+	.all_month{
+	    width: 100%;
+	    height: 20rem;
+	    margin-top: 2px;
+	    border-top: 1px solid #e7e7e7;
+	    overflow-y:scroll; 
+	    overflow-x:scroll;
+	}
+	.month{
+	    width: 100%;
+	    height: 2rem;
+	    line-height: 2rem;
+	    border-bottom: 1px solid #e7e7e7;
+	    padding-left: .5rem;
+	    display: flex;
+	    justify-content: space-around;
+	}
+	.month span i{
+	    font-style: normal;
+	    color: #ec3028;
+	}
+</style>
+	<div class="fui-page fui-page-current">
+		<div class="all">
+		    <div class="top ">
+		        <div class="top_left">
+		            <p>总营业额(元)</p>
+		    		<p>&yen;{$count_all['allTotalPrice']}</p>
+		        </div>
+		        <div class="top_right">
+		            <p>总利润(元)</p>
+		            <p>&yen;{$count_all['allTotalProfit']}</p>
+		        </div>
+		    </div>
+		    <div class="bottom">
+		        <!--月份选择-->
+		        <div class="bottom_left">
+		        	<!--<form name="reg_testdate">-->
+		        	<div class='reg_testdate'>
+		        		<select id="YYYY" style="margin-right: .5rem;">
+					    	<option value=""selected="selected">选择 年</option>
+					  	</select>
+						<select id="MM">
+							<option value=""selected="selected">选择 月</option>
+						</select>
+		        	</div>
+					  	
+					<!--</form>-->
+		        </div>
+		        <div class="bottom_right">
+		            <p>营：<span>&yen;</span><span id='mprice'>0</span></p>
+		            <p>利：<span>&yen;</span><span id='mprofit'>0</span></p>
+		        </div>
+		    </div>
+	    </div>
+		<div class="all_month" id="day_money">
+			<!--<div class="month">
+	            <span>1日</span>
+	            <span>营业额：<i>￥100</i></span>
+	            <span>利润：<i>￥100</i></span>
+        	</div>
+        	<div class="month">
+	            <span>2日</span>
+	            <span>营业额：<i>￥100</i></span>
+	            <span>利润：<i>￥100</i></span>
+        	</div>
+        	<div class="month">
+	            <span>3日</span>
+	            <span>营业额：<i>￥100</i></span>
+	            <span>利润：<i>￥100</i></span>
+        	</div>-->
+		</div>
+	</div>
+
+{php $this->footerMenus()}
+{template '_footer'}

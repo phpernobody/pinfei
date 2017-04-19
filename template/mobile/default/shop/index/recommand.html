@@ -201,9 +201,10 @@
 
 ?>
 <div class="shidian">
-	<div class="shidian_btn" style="margin: 0 auto">
-		<div class='shidian_con' style="background: #ec3028;color: #fff">十点开团</div>
-		<div class='shidian_con' style="background: #fff;color:#de2a22">晚十抢购</div>
+	<div class="shidian_btn" style="margin: 0 auto;background: #ec3028;color: #fff;text-align: center;">
+		
+		<div class='shidian_con' style="background: #ec3028;color: #fff;margin: 0 auto;">限时抢购</div>
+		<!--<div class='shidian_con' style="background: #fff;color:#de2a22">晚六抢购</div>-->
 	</div>
 	<!--$lefttime为零时限时秒杀结束-->
 	<div class="shidian_count" style="margin: 0 auto;margin-top:.2rem"
@@ -259,7 +260,7 @@
 							新品优惠
 						</div>
 						<div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">
-							￥{$v['productprice']}
+							￥{$v['marketprice']}
 						</div>
 					</div>
 				</div>
@@ -300,7 +301,7 @@
 							新品优惠
 						</div>
 						<div style="float: right;font-size: .65rem;color:#ec3028;font-weight: bold;height: 1rem;line-height: 1.2rem;">
-							￥{$v['productprice']}
+							￥{$v['marketprice']}
 						</div>
 					</div>
 				</div>
