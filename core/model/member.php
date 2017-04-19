@@ -266,7 +266,6 @@ class Member_EweiShopV2Model
 				return;
 			}
 		}
-
         // 条件：未登录微信 && 非调试模式
 		if (empty($openid) && !(EWEI_SHOPV2_DEBUG)) 
 		{

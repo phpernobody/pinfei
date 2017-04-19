@@ -67,14 +67,12 @@ class Down_EweiShopV2Page extends CommissionMobileLoginPage
             $row['moneycount'] = number_format(floatval($moneycount), 2);
             $row['createtime'] = date('Y-m-d H:i', $row['createtime']);
 
-            $row['down_count'] = pdo_fetchcolumn('select count(id) from ' . tablename('ewei_shop_member') . ' where agentid=' . $member['id'] . ' and isaagent=0');
+            $row['down_count'] = pdo_fetchcolumn('select count(id) from ' . tablename('ewei_shop_member') . ' where agentid=' . $row['id'] . ' and isaagent=0');
 //            var_dump($row['agentcount']);exit;
 
         }
 
         unset($row);
-
-
         return $list;
     }
 

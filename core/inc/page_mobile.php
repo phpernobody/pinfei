@@ -46,12 +46,9 @@ class MobilePage extends Page
 				$_W['openid'] = 'o6tC-wmZovDTswVba3Kg1oAV_dd0';
 			}
 		}
-
         // 检查会员，如果有会员信息，返回openid和会员id，没有返回false;（这里面检查是根据openid检查的，如果没有openid就直接给出页面）
         // 全网通非app平台，$member为null；（非全网通用户因为未识别到openid，在checkmember()里面直接展示出页面，但是文案不是很正确）
 		$member = m('member')->checkMember();
-
-
 
 
         // 判断用户信息有没有mid和mopenid

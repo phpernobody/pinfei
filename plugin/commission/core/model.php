@@ -1133,11 +1133,20 @@ if (!(class_exists('CommissionModel'))) {
                         if (empty($member['fixagentid'])) {
                             $authorid = ((empty($parent['isauthor']) ? $parent['authorid'] : $parent['id']));
                             $author = p('author');
+                            $updateData = array(
+                                'childtime' => $time
+                            );
+
+                            if (empty($member['isaagent']) || empty($member['aagentstatus'])) {
+                                $updateData['agentid'] = $parent['id'];
+                            }
+
                             if ($author) {
                                 $author->upgradeLevelByAgent($parent['id']);
-                                pdo_update('ewei_shop_member', array('agentid' => $parent['id'], 'childtime' => $time, 'authorid' => $authorid), array('uniacid' => $_W['uniacid'], 'id' => $member['id']));
+                                $updateData['authorid'] = $authorid;
+                                pdo_update('ewei_shop_member', $updateData, array('uniacid' => $_W['uniacid'], 'id' => $member['id']));
                             } else {
-                                pdo_update('ewei_shop_member', array('agentid' => $parent['id'], 'childtime' => $time), array('uniacid' => $_W['uniacid'], 'id' => $member['id']));
+                                pdo_update('ewei_shop_member', $updateData, array('uniacid' => $_W['uniacid'], 'id' => $member['id']));
                             }
                             if ($author) {
                                 $author_set = $author->getSet();
