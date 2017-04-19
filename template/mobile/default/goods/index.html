@@ -95,22 +95,28 @@
 
 <script type='text/html' id='tpl_goods_list'>
      <%each list as g%>
+     	
 	 <div class="fui-goods-item" data-goodsid="<%g.id%>" data-type="<%g.type%>">
 	  <a <%if g.bargain>0%>href="{php echo mobileUrl('bargain/detail')}&id=<%g.bargain%>"<%else%>href="{php echo mobileUrl('goods/detail')}&id=<%g.id%>"<%/if%>>
-	  <div class="image" data-lazy-background="<%g.thumb%>">
-		  <%if g.total<=0%><div class="salez" style="background-image: url('{php echo tomedia($_W['shopset']['shop']['saleout'])}'); "></div><%/if%>
-	  </div>
-        </a>
+		  <div class="image" data-lazy-background="<%g.thumb%>">
+			  <%if g.total<=0%><div class="salez" style="background-image: url('{php echo tomedia($_W['shopset']['shop']['saleout'])}'); "></div><%/if%>
+		  </div>
+      </a>
 	<div class="detail">
 	   <a <%if g.bargain>0%>href="{php echo mobileUrl('bargain/detail')}&id=<%g.bargain%>"<%else%>href="{php echo mobileUrl('goods/detail')}&id=<%g.id%>"<%/if%>>
 	           <div class="name"><%g.title%></div>
+	           
 	   </a>
-	           <div class="price">
+	   		<div style='display:flex;justify-content: space-between;font-size:.7rem'>
+	   			<span style='float:left'>销量:<%g.salesreal%></span>
+	   			<span style='float:right'>库存:<%g.total%></span>
+	   		</div>
+	       <div class="price">
 		   <span class="text">￥<%g.minprice%></span>
            <span class="buy"><%if g.bargain >0%>砍价活动<%else%><i class="icon icon-cart"></i><%/if%></span></div>
  	    </div>
 	</div>
-    <%/each%>
+   <%/each%>
 </script>
 
 <script id="tpl_cate_list" type="text/html">

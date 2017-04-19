@@ -103,7 +103,11 @@
 	   <a <%if g.bargain>0%>href="{php echo mobileUrl('bargain/detail')}&id=<%g.bargain%>"<%else%>href="{php echo mobileUrl('goods/detail')}&id=<%g.id%>"<%/if%>>
 	           <div class="name"><%g.title%></div>
 	   </a>
-	           <div class="price">
+	   	<div style='display:flex;justify-content: space-between;font-size:.7rem'>
+	   			<span style='float:left'>销量:<%g.salesreal%></span>
+	   			<span style='float:right'>库存:<%g.total%></span>
+	   	</div>
+	    <div class="price">
 		   <span class="text">￥<%g.minprice%></span>
            <span class="buy"><%if g.bargain >0%>砍价活动<%else%><i class="icon icon-cart"></i><%/if%></span></div>
  	    </div>
