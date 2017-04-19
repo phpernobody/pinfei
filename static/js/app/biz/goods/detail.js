@@ -227,6 +227,7 @@ define(['core', 'tpl', 'biz/goods/picker', 'biz/member/favorite', 'biz/member/ca
         if ($('.detail-block').find('.content-block').html() != '') {
             return
         }
+
         FoxUI.loader.show('mini');
         $.ajax({
             url: core.getUrl('goods/detail/get_detail', {
@@ -234,13 +235,19 @@ define(['core', 'tpl', 'biz/goods/picker', 'biz/member/favorite', 'biz/member/ca
             }),
             cache: true,
             success: function (html) {
+
                 FoxUI.loader.hide();
                 var detailHeight = $('.detail-block').css('height');
                 $('.detail-block').find('.content-block').css('height', detailHeight).html(html);
+                
+                // 去除alt内容，但是不知道会不会影响
+                $('.content-block').find('img').attr('alt', '');
+
                 setTimeout(function () {
                     $('.detail-block').lazyload();
                     $('.detail-block').find('.content-block').css('height', 'auto');
                     core.showImages('.content-block img');
+    
                     var $html = $(html).find('img');
                     if ($html.length > 0) {
                         for (var i = 0, len = $html.length; i < len; i++) {

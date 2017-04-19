@@ -273,9 +273,9 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                 // $('.se-commission1').html(parseInt((option.productprice-option.costprice)*commission.commission1/100) + parseInt(option.countyprice));
                 // $('.se-commission2').html(parseInt((option.productprice-option.costprice)*(parseInt(commission.commission2) + parseInt(commission.commission1))/100) + parseInt(option.countyprice));
                 // $('.se-commission3').html(parseInt((option.productprice-option.costprice)*(parseInt(commission.commission3) + parseInt(commission.commission2) + parseInt(commission.commission1))/100) + parseInt(option.countyprice));
-                $('.se-commission1').html(((option.productprice-option.costprice)*commission.commission1/100));
-                $('.se-commission2').html(((option.productprice-option.costprice)*commission.commission2/100));
-                $('.se-commission3').html(((option.productprice-option.costprice)*commission.commission3/100));
+                $('.se-commission1').html(((option.productprice-option.costprice)*commission.commission1/100).toFixed(2));
+                $('.se-commission2').html(((option.productprice-option.costprice)*commission.commission2/100).toFixed(2));
+                $('.se-commission3').html(((option.productprice-option.costprice)*commission.commission3/100).toFixed(2));
 
                 $('.se-title').html(goodDetail.title);
                 $('.se-goods-thumb').attr('src', '../attachment/'+goodDetail.thumb);
@@ -291,9 +291,9 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
                 // $('.se-commission1').html(parseInt((goodDetail.productprice-goodDetail.costprice)*commission.commission1/100) + parseInt(goodDetail.countyprice));
                 // $('.se-commission2').html(parseInt((goodDetail.productprice-goodDetail.costprice)*(parseInt(commission.commission2) + parseInt(commission.commission1))/100) + parseInt(goodDetail.countyprice));
                 // $('.se-commission3').html(parseInt((goodDetail.productprice-goodDetail.costprice)*(parseInt(commission.commission3) + parseInt(commission.commission1) + parseInt(commission.commission2))/100) + parseInt(goodDetail.countyprice));
-                $('.se-commission1').html(((goodDetail.productprice-goodDetail.costprice)*commission.commission1/100)); 
-                $('.se-commission2').html(((goodDetail.productprice-goodDetail.costprice)*commission.commission2/100));
-                $('.se-commission3').html(((goodDetail.productprice-goodDetail.costprice)*commission.commission3/100));
+                $('.se-commission1').html(((goodDetail.productprice-goodDetail.costprice)*commission.commission1/100).toFixed(2)); 
+                $('.se-commission2').html(((goodDetail.productprice-goodDetail.costprice)*commission.commission2/100).toFixed(2));
+                $('.se-commission3').html(((goodDetail.productprice-goodDetail.costprice)*commission.commission3/100).toFixed(2));
                 $('.se-confirm').attr('data-goodsid', goodDetail.id);
                 $('.se-title').html(goodDetail.title);
                 $('.se-goods-thumb').attr('src', '../attachment/'+goodDetail.thumb);
