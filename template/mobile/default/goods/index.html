@@ -107,12 +107,13 @@
 	           <div class="name"><%g.title%></div>
 	           
 	   </a>
-	   		<div style='display:flex;justify-content: space-between;font-size:.7rem'>
-	   			<span style='float:left'>销量:<%g.salesreal%></span>
-	   			<span style='float:right'>库存:<%g.total%></span>
+	   		<div style='display:flex;justify-content: space-between;font-size:.65rem'>
+	   			<span style='float:left;color: #959595;'>月销:<%g.salesreal%></span>
+	   			<span style='float:right;color: #959595;'>库存:<%g.total%></span>
 	   		</div>
 	       <div class="price">
-		   <span class="text">￥<%g.minprice%></span>
+		   <span class="text">￥<%g.minprice%><span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥<%g.fprice%></span></span>
+
            <span class="buy"><%if g.bargain >0%>砍价活动<%else%><i class="icon icon-cart"></i><%/if%></span></div>
  	    </div>
 	</div>

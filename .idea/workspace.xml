@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8425939e-a88e-459e-87d2-34c7bf2490e7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/mobile/goods/index.php" afterPath="$PROJECT_DIR$/core/mobile/goods/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/model/goods.php" afterPath="$PROJECT_DIR$/core/model/goods.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/mobile/default/goods/detail.html" afterPath="$PROJECT_DIR$/template/mobile/default/goods/detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/mobile/default/goods/index.html" afterPath="$PROJECT_DIR$/template/mobile/default/goods/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/mobile/default/newgoods/index.html" afterPath="$PROJECT_DIR$/template/mobile/default/newgoods/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/mobile/default/shop/index/recommand.html" afterPath="$PROJECT_DIR$/template/mobile/default/shop/index/recommand.html" />
     </list>
     <ignored path="ewei_shopv2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,10 +23,13 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="DatabaseView">
-    <option name="FLATTEN" value="false" />
-    <option name="GROUP_BY_TYPE" value="true" />
-    <option name="SORT_CHILDREN" value="false" />
-    <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -32,30 +37,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
+      <file leaf-file-name="recommand.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/mobile/default/shop/index/recommand.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-196">
-              <caret line="67" column="8" lean-forward="false" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
+            <state relative-caret-position="152">
+              <caret line="237" column="14" lean-forward="true" selection-start-line="237" selection-start-column="14" selection-end-line="237" selection-end-column="14" />
               <folding>
-                <marker date="1492588003624" expanded="true" signature="105:3816" ph="{...}" />
-                <marker date="1492588003624" expanded="true" signature="787:971" ph="select * fro... ${tablename('ewei_shop_gift')}" />
-                <marker date="1492588003624" expanded="true" signature="1173:1357" ph="select id,st... ${tablename('ewei_shop_goods')}" />
-                <marker date="1492588003624" expanded="true" signature="2996:3814" ph="{...}" />
-                <marker date="1492588003624" expanded="true" signature="3498:3643" ph="select stock... ${tablename('ewei_shop_agent_stock')}" />
+                <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="indexaa.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/mobile/goods/indexaa.php">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/template/mobile/default/newgoods/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2678">
-              <caret line="103" column="9" lean-forward="false" selection-start-line="100" selection-start-column="8" selection-end-line="103" selection-end-column="9" />
-              <folding>
-                <marker date="1492581643969" expanded="true" signature="791:975" ph="select * fro... ${tablename('ewei_shop_gift')}" />
-              </folding>
+            <state relative-caret-position="456">
+              <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="187" column="98" lean-forward="false" selection-start-line="187" selection-start-column="55" selection-end-line="187" selection-end-column="98" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,9 +73,42 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="319">
+              <caret line="115" column="0" lean-forward="true" selection-start-line="114" selection-start-column="11" selection-end-line="115" selection-end-column="0" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="goods.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/model/goods.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="409">
+              <caret line="185" column="8" lean-forward="false" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="8" />
+              <folding>
+                <marker date="1492673270557" expanded="true" signature="185:305" ph="select * fro... ${tablename('ewei_shop_goods_option')}" />
+                <marker date="1492673270557" expanded="true" signature="498:620" ph="select marke... ${tablename('ewei_shop_goods_option')}" />
+                <marker date="1492673270557" expanded="true" signature="5366:5432" ph="select count... ${tablename('ewei_shop_goods')}" />
+                <marker date="1492673270557" expanded="true" signature="6022:6134" ph="select sum(v... ${tablename('ewei_shop_agent_stock')}" />
+                <marker date="1492673270557" expanded="true" signature="10317:10522" ph="select c.* f... ${tablename('ewei_shop_coupon_data')}" />
+                <marker date="1492673270557" expanded="true" signature="10994:11085" ph="select * fro... ${tablename('ewei_shop_goods')}" />
+                <marker date="1492673270557" expanded="true" signature="12369:12504" ph="select count... ${tablename('ewei_shop_goods')}" />
+                <marker date="1492673270557" expanded="true" signature="12571:12692" ph="select count... ${tablename('ewei_shop_goods')}" />
+                <marker date="1492673270557" expanded="true" signature="12761:12883" ph="select count... ${tablename('ewei_shop_goods')}" />
+                <marker date="1492673270557" expanded="true" signature="12952:13046" ph="select count... ${tablename('ewei_shop_goods')}" />
+                <marker date="1492673270557" expanded="true" signature="13484:13671" ph="SELECT id,ni... ${tablename('ewei_shop_goods_comment')}" />
+                <marker date="1492673270557" expanded="true" signature="13941:14093" ph="select count... ${tablename('ewei_shop_member_favorite')}" />
+                <marker date="1492673270557" expanded="true" signature="14452:14589" ph="select id,ti... ${tablename('ewei_shop_member_history')}" />
+                <marker date="1492673270557" expanded="true" signature="15159:15288" ph="select sum(t... ${tablename('ewei_shop_member_cart')}" />
+                <marker date="1492673270557" expanded="true" signature="15564:15676" ph="select thumb... ${tablename('ewei_shop_goods_spec_item')}" />
+                <marker date="1492673270557" expanded="true" signature="19645:19752" ph="select * fro... ${tablename('ewei_shop_goods_spec_item')}" />
+                <marker date="1492673270557" expanded="true" signature="19839:19966" ph="select * fro... ${tablename('ewei_shop_goods_option')}" />
+                <marker date="1492673270557" expanded="true" signature="21285:21414" ph="SELECT id,or... ${tablename('ewei_shop_order_goods')}" />
+                <marker date="1492673270557" expanded="true" signature="21607:21766" ph="SELECT COUNT... ${tablename('ewei_shop_order')}" />
+                <marker date="1492673270557" expanded="true" signature="21989:22140" ph="SELECT id,go... ${tablename('ewei_shop_order_goods')}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,6 +119,13 @@
     <findStrings>
       <find>get_list</find>
       <find>tpl_goods_list</find>
+      <find>原</find>
+      <find>market</find>
+      <find>marketprice</find>
+      <find>按照</find>
+      <find>￥</find>
+      <find>font-size</find>
+      <find>price</find>
     </findStrings>
     <dirStrings>
       <dir>E:\WWW\we7\addons\ewei_shopv2</dir>
@@ -91,7 +141,6 @@
         <option value="$PROJECT_DIR$/core/web/member/list.php" />
         <option value="$PROJECT_DIR$/core/model/common.php" />
         <option value="$PROJECT_DIR$/core/mobile/goods/detail.php" />
-        <option value="$PROJECT_DIR$/core/model/goods.php" />
         <option value="$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php" />
         <option value="$PROJECT_DIR$/core/web/order/op.php" />
         <option value="$PROJECT_DIR$/plugin/abonus/core/web/order/op.php" />
@@ -105,6 +154,11 @@
         <option value="$PROJECT_DIR$/core/model/notice.php" />
         <option value="$PROJECT_DIR$/core/mobile/shoppe/index.php" />
         <option value="$PROJECT_DIR$/core/mobile/goods/index.php" />
+        <option value="$PROJECT_DIR$/template/mobile/default/goods/detail.html" />
+        <option value="$PROJECT_DIR$/template/mobile/default/shop/index/recommand.html" />
+        <option value="$PROJECT_DIR$/core/model/goods.php" />
+        <option value="$PROJECT_DIR$/template/mobile/default/goods/index.html" />
+        <option value="$PROJECT_DIR$/template/mobile/default/newgoods/index.html" />
       </list>
     </option>
   </component>
@@ -137,8 +191,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -227,7 +281,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="goods" />
+              <option name="myItemId" value="newgoods" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -241,157 +295,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biz" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biz" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="goods" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ewei_shopv2" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="goods" />
+              <option name="myItemId" value="payment" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -402,7 +306,12 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../wxdev.cccwei.com" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -507,27 +416,38 @@
       <workItem from="1492566912102" duration="16000" />
       <workItem from="1492584062836" duration="682000" />
       <workItem from="1492586903142" duration="1229000" />
+      <workItem from="1492659023601" duration="2245000" />
+      <workItem from="1492669313749" duration="2658000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2031000" />
+    <option name="totallyTimeSpent" value="6934000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1828125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -535,6 +455,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -557,34 +478,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/mobile/order/pay.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12064">
-          <caret line="464" column="9" lean-forward="false" selection-start-line="464" selection-start-column="9" selection-end-line="464" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/model/notice.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8814">
-          <caret line="339" column="5" lean-forward="false" selection-start-line="339" selection-start-column="5" selection-end-line="339" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/abonus/core/mobile/down.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1482">
-          <caret line="57" column="67" lean-forward="false" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/web/goods/post.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -760,13 +653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/mobile/goods/picker.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -785,13 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="606" column="156" lean-forward="false" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="164" column="9" lean-forward="false" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -879,16 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/indexaa.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2678">
-          <caret line="103" column="9" lean-forward="false" selection-start-line="100" selection-start-column="8" selection-end-line="103" selection-end-column="9" />
-          <folding>
-            <marker date="1492581643969" expanded="true" signature="791:975" ph="select * fro... ${tablename('ewei_shop_gift')}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/mobile/shoppe/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="688">
@@ -900,29 +769,110 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="215" column="17" lean-forward="false" selection-start-line="215" selection-start-column="10" selection-end-line="215" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/indexaa.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="103" column="9" lean-forward="false" selection-start-line="100" selection-start-column="8" selection-end-line="103" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="67" column="8" lean-forward="false" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/shop/category/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="133" column="40" lean-forward="false" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/shop/category/index-01bak.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="137" column="207" lean-forward="false" selection-start-line="137" selection-start-column="198" selection-end-line="137" selection-end-column="207" />
+          <folding>
+            <marker date="1492007630375" expanded="true" signature="4244:4361" ph="..." />
+            <marker date="1492007630375" expanded="true" signature="4674:4769" ph="..." />
+            <marker date="1492007630375" expanded="true" signature="4783:4892" ph="..." />
+            <marker date="1492007630375" expanded="true" signature="4981:5078" ph="..." />
+            <marker date="1492007630375" expanded="true" signature="5274:5403" ph="..." />
+            <marker date="1492007630375" expanded="true" signature="5417:5448" ph="..." />
+            <marker date="1492007630375" expanded="true" signature="5545:5588" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="185" column="8" lean-forward="false" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="8" />
+          <folding>
+            <marker date="1492673270557" expanded="true" signature="185:305" ph="select * fro... ${tablename('ewei_shop_goods_option')}" />
+            <marker date="1492673270557" expanded="true" signature="498:620" ph="select marke... ${tablename('ewei_shop_goods_option')}" />
+            <marker date="1492673270557" expanded="true" signature="5366:5432" ph="select count... ${tablename('ewei_shop_goods')}" />
+            <marker date="1492673270557" expanded="true" signature="6022:6134" ph="select sum(v... ${tablename('ewei_shop_agent_stock')}" />
+            <marker date="1492673270557" expanded="true" signature="10317:10522" ph="select c.* f... ${tablename('ewei_shop_coupon_data')}" />
+            <marker date="1492673270557" expanded="true" signature="10994:11085" ph="select * fro... ${tablename('ewei_shop_goods')}" />
+            <marker date="1492673270557" expanded="true" signature="12369:12504" ph="select count... ${tablename('ewei_shop_goods')}" />
+            <marker date="1492673270557" expanded="true" signature="12571:12692" ph="select count... ${tablename('ewei_shop_goods')}" />
+            <marker date="1492673270557" expanded="true" signature="12761:12883" ph="select count... ${tablename('ewei_shop_goods')}" />
+            <marker date="1492673270557" expanded="true" signature="12952:13046" ph="select count... ${tablename('ewei_shop_goods')}" />
+            <marker date="1492673270557" expanded="true" signature="13484:13671" ph="SELECT id,ni... ${tablename('ewei_shop_goods_comment')}" />
+            <marker date="1492673270557" expanded="true" signature="13941:14093" ph="select count... ${tablename('ewei_shop_member_favorite')}" />
+            <marker date="1492673270557" expanded="true" signature="14452:14589" ph="select id,ti... ${tablename('ewei_shop_member_history')}" />
+            <marker date="1492673270557" expanded="true" signature="15159:15288" ph="select sum(t... ${tablename('ewei_shop_member_cart')}" />
+            <marker date="1492673270557" expanded="true" signature="15564:15676" ph="select thumb... ${tablename('ewei_shop_goods_spec_item')}" />
+            <marker date="1492673270557" expanded="true" signature="19645:19752" ph="select * fro... ${tablename('ewei_shop_goods_spec_item')}" />
+            <marker date="1492673270557" expanded="true" signature="19839:19966" ph="select * fro... ${tablename('ewei_shop_goods_option')}" />
+            <marker date="1492673270557" expanded="true" signature="21285:21414" ph="SELECT id,or... ${tablename('ewei_shop_order_goods')}" />
+            <marker date="1492673270557" expanded="true" signature="21607:21766" ph="SELECT COUNT... ${tablename('ewei_shop_order')}" />
+            <marker date="1492673270557" expanded="true" signature="21989:22140" ph="SELECT id,go... ${tablename('ewei_shop_order_goods')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/shop/index/recommand.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="237" column="14" lean-forward="true" selection-start-line="237" selection-start-column="14" selection-end-line="237" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="187" column="98" lean-forward="false" selection-start-line="187" selection-start-column="55" selection-end-line="187" selection-end-column="98" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="319">
+          <caret line="115" column="0" lean-forward="true" selection-start-line="114" selection-start-column="11" selection-end-line="115" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/newgoods/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-196">
-          <caret line="67" column="8" lean-forward="false" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
-          <folding>
-            <marker date="1492588003624" expanded="true" signature="105:3816" ph="{...}" />
-            <marker date="1492588003624" expanded="true" signature="787:971" ph="select * fro... ${tablename('ewei_shop_gift')}" />
-            <marker date="1492588003624" expanded="true" signature="1173:1357" ph="select id,st... ${tablename('ewei_shop_goods')}" />
-            <marker date="1492588003624" expanded="true" signature="2996:3814" ph="{...}" />
-            <marker date="1492588003624" expanded="true" signature="3498:3643" ph="select stock... ${tablename('ewei_shop_agent_stock')}" />
-          </folding>
+        <state relative-caret-position="456">
+          <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -231,7 +231,8 @@
 				<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
 					<div class="row_btn">立即抢购</div>
 				</a>
-				<span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥{$v['productprice']}</span>
+
+				<span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥{php echo sprintf("%.2f",$v['productprice']*1.18);}</span>
 				<span style="font-size:0.55rem;color:#ec3028;line-height: 1rem;height: 1rem;margin-left:.5rem">抢购价:￥{$v['marketprice']}</span>
 			</div>
 		</div>

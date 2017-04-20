@@ -177,10 +177,11 @@ class Goods_EweiShopV2Model
 		$list = pdo_fetchall($sql, $params);
 		$list = set_medias($list, 'thumb');
 //        var_dump($list);exit();
-		//库存修改
+		//库存修改 价格添加
 		foreach($list as $k => $v) {
 		            $agenttotal = pdo_fetchcolumn('select sum(vstock) from ' . tablename('ewei_shop_agent_stock') . ' where goodsid=' . $v['id'] . ' and optionid=0');
 		            $list[$k]['total'] = intval($list[$k]['total']) + intval($agenttotal);
+		            $list[$k]['fprice'] =sprintf("%.2f",$list[$k]['productprice']*1.18);
 		}
 		return array('list' => $list, 'total' => $total);
 	}
