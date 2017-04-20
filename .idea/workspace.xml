@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8425939e-a88e-459e-87d2-34c7bf2490e7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/model/goods.php" afterPath="$PROJECT_DIR$/core/model/goods.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/mobile/default/goods/detail.html" afterPath="$PROJECT_DIR$/template/mobile/default/goods/detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/mobile/default/goods/index.html" afterPath="$PROJECT_DIR$/template/mobile/default/goods/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/mobile/default/newgoods/index.html" afterPath="$PROJECT_DIR$/template/mobile/default/newgoods/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/mobile/default/shop/index/recommand.html" afterPath="$PROJECT_DIR$/template/mobile/default/shop/index/recommand.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/model/util.php" afterPath="$PROJECT_DIR$/core/model/util.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin/commission/template/mobile/default/myshop/yy.html" afterPath="$PROJECT_DIR$/plugin/commission/template/mobile/default/myshop/yy.html" />
     </list>
     <ignored path="ewei_shopv2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +37,8 @@
       <file leaf-file-name="recommand.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/mobile/default/shop/index/recommand.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="237" column="14" lean-forward="true" selection-start-line="237" selection-start-column="14" selection-end-line="237" selection-end-column="14" />
+            <state relative-caret-position="9006">
+              <caret line="237" column="14" lean-forward="false" selection-start-line="237" selection-start-column="14" selection-end-line="237" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
@@ -50,11 +47,57 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/mobile/default/newgoods/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+            <state relative-caret-position="4218">
+              <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="yy.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin/commission/template/mobile/default/myshop/yy.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="99" column="22" lean-forward="false" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+              <folding>
+                <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1492682249010" expanded="true" signature="4907:4912" ph="¥" />
+                <marker date="1492682249010" expanded="true" signature="4990:4995" ph="¥" />
+                <marker date="1492682249010" expanded="true" signature="5164:5169" ph="¥" />
+                <marker date="1492682249010" expanded="true" signature="5223:5228" ph="¥" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="express.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/mobile/default/order/express.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="38" column="90" lean-forward="false" selection-start-line="38" selection-start-column="83" selection-end-line="38" selection-end-column="90" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/mobile/order/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1379">
+              <caret line="663" column="32" lean-forward="false" selection-start-line="663" selection-start-column="32" selection-end-line="663" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/model/util.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1851">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -63,7 +106,7 @@
       <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
+            <state relative-caret-position="7106">
               <caret line="187" column="98" lean-forward="false" selection-start-line="187" selection-start-column="55" selection-end-line="187" selection-end-column="98" />
               <folding />
             </state>
@@ -73,8 +116,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="115" column="0" lean-forward="true" selection-start-line="114" selection-start-column="11" selection-end-line="115" selection-end-column="0" />
+            <state relative-caret-position="4294">
+              <caret line="115" column="0" lean-forward="false" selection-start-line="114" selection-start-column="11" selection-end-line="115" selection-end-column="0" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
               </folding>
@@ -85,8 +128,8 @@
       <file leaf-file-name="goods.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/model/goods.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="185" column="8" lean-forward="false" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="8" />
+            <state relative-caret-position="6954">
+              <caret line="183" column="18" lean-forward="false" selection-start-line="183" selection-start-column="18" selection-end-line="183" selection-end-column="18" />
               <folding>
                 <marker date="1492673270557" expanded="true" signature="185:305" ph="select * fro... ${tablename('ewei_shop_goods_option')}" />
                 <marker date="1492673270557" expanded="true" signature="498:620" ph="select marke... ${tablename('ewei_shop_goods_option')}" />
@@ -126,6 +169,9 @@
       <find>￥</find>
       <find>font-size</find>
       <find>price</find>
+      <find />
+      <find>物流</find>
+      <find>express</find>
     </findStrings>
     <dirStrings>
       <dir>E:\WWW\we7\addons\ewei_shopv2</dir>
@@ -159,6 +205,8 @@
         <option value="$PROJECT_DIR$/core/model/goods.php" />
         <option value="$PROJECT_DIR$/template/mobile/default/goods/index.html" />
         <option value="$PROJECT_DIR$/template/mobile/default/newgoods/index.html" />
+        <option value="$PROJECT_DIR$/plugin/commission/template/mobile/default/myshop/yy.html" />
+        <option value="$PROJECT_DIR$/core/model/util.php" />
       </list>
     </option>
   </component>
@@ -191,7 +239,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -281,7 +328,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="newgoods" />
+              <option name="myItemId" value="order" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -295,12 +342,31 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="payment" />
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ewei_shopv2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ewei_shopv2" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -417,12 +483,13 @@
       <workItem from="1492584062836" duration="682000" />
       <workItem from="1492586903142" duration="1229000" />
       <workItem from="1492659023601" duration="2245000" />
-      <workItem from="1492669313749" duration="2658000" />
+      <workItem from="1492669313749" duration="6332000" />
+      <workItem from="1492697976432" duration="1132000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6934000" />
+    <option name="totallyTimeSpent" value="11740000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -434,7 +501,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -442,12 +509,13 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -455,7 +523,6 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -478,48 +545,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="89" column="32" lean-forward="false" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="606" column="156" lean-forward="false" selection-start-line="606" selection-start-column="12" selection-end-line="606" selection-end-column="156" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/model/goods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="164" column="9" lean-forward="false" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugin/commission/core/mobile/myshop/select.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/mobile/goods/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="89" column="32" lean-forward="false" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/mobile/goods/detail.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -790,7 +815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
           <caret line="133" column="40" lean-forward="false" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -798,22 +822,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="137" column="207" lean-forward="false" selection-start-line="137" selection-start-column="198" selection-end-line="137" selection-end-column="207" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/shop/index/recommand.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9006">
+          <caret line="237" column="14" lean-forward="false" selection-start-line="237" selection-start-column="14" selection-end-line="237" selection-end-column="14" />
           <folding>
-            <marker date="1492007630375" expanded="true" signature="4244:4361" ph="..." />
-            <marker date="1492007630375" expanded="true" signature="4674:4769" ph="..." />
-            <marker date="1492007630375" expanded="true" signature="4783:4892" ph="..." />
-            <marker date="1492007630375" expanded="true" signature="4981:5078" ph="..." />
-            <marker date="1492007630375" expanded="true" signature="5274:5403" ph="..." />
-            <marker date="1492007630375" expanded="true" signature="5417:5448" ph="..." />
-            <marker date="1492007630375" expanded="true" signature="5545:5588" ph="..." />
+            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7106">
+          <caret line="187" column="98" lean-forward="false" selection-start-line="187" selection-start-column="55" selection-end-line="187" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4294">
+          <caret line="115" column="0" lean-forward="false" selection-start-line="114" selection-start-column="11" selection-end-line="115" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/newgoods/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4218">
+          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/model/goods.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="185" column="8" lean-forward="false" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="8" />
+        <state relative-caret-position="6954">
+          <caret line="183" column="18" lean-forward="false" selection-start-line="183" selection-start-column="18" selection-end-line="183" selection-end-column="18" />
           <folding>
             <marker date="1492673270557" expanded="true" signature="185:305" ph="select * fro... ${tablename('ewei_shop_goods_option')}" />
             <marker date="1492673270557" expanded="true" signature="498:620" ph="select marke... ${tablename('ewei_shop_goods_option')}" />
@@ -839,39 +891,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/mobile/default/shop/index/recommand.html">
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/member/info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="237" column="14" lean-forward="true" selection-start-line="237" selection-start-column="14" selection-end-line="237" selection-end-column="14" />
+        <state relative-caret-position="453">
+          <caret line="96" column="16" lean-forward="true" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/commission/template/mobile/default/myshop/yy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="99" column="22" lean-forward="false" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
           <folding>
-            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1492682249010" expanded="true" signature="4907:4912" ph="¥" />
+            <marker date="1492682249010" expanded="true" signature="4990:4995" ph="¥" />
+            <marker date="1492682249010" expanded="true" signature="5164:5169" ph="¥" />
+            <marker date="1492682249010" expanded="true" signature="5223:5228" ph="¥" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/detail.html">
+    <entry file="file://$PROJECT_DIR$/template/mobile/default/order/express.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="187" column="98" lean-forward="false" selection-start-line="187" selection-start-column="55" selection-end-line="187" selection-end-column="98" />
+        <state relative-caret-position="263">
+          <caret line="38" column="90" lean-forward="false" selection-start-line="38" selection-start-column="83" selection-end-line="38" selection-end-column="90" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/mobile/default/goods/index.html">
+    <entry file="file://$PROJECT_DIR$/core/mobile/order/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="115" column="0" lean-forward="true" selection-start-line="114" selection-start-column="11" selection-end-line="115" selection-end-column="0" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
-          </folding>
+        <state relative-caret-position="1379">
+          <caret line="663" column="32" lean-forward="false" selection-start-line="663" selection-start-column="32" selection-end-line="663" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/mobile/default/newgoods/index.html">
+    <entry file="file://$PROJECT_DIR$/core/model/utila.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
-          <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <caret line="12" column="49" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/model/util.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1851">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
