@@ -1,33 +1,42 @@
+
 <?php
-if (!(defined('IN_IA'))) 
+if (!defined('IN_IA')) 
 {
 	exit('Access Denied');
 }
 class Util_EweiShopV2Model 
 {
+	function randomFloat($min = 0, $max = 1) {
+		return $min + mt_rand() / mt_getrandmax() * ($max - $min);
+	}
+	
 	public function getExpressList($express, $expresssn) 
 	{
-		$express = (($express == 'jymwl' ? 'jiayunmeiwuliu' : $express));
-		$express = (($express == 'TTKD' ? 'tiantian' : $express));
-		$express = (($express == 'jjwl' ? 'jiajiwuliu' : $express));
-		$express = (($express == 'zhongtiekuaiyun' ? 'ztky' : $express));
-		$url = 'https://www.kuaidi100.com/query?type=' . $express . '&postid=' . $expresssn . '&id=1&valicode=&temp=';
-		load()->func('communication');
+		$url = "http://m.kuaidi100.com/query?type=" .$express. "&postid=" .$expresssn. "&id=1&valicode=&temp=" .$this->randomFloat();
+		//$url="http://api.kuaidi100.com/api?id=[]&com=[]&nu=[]&valicode=[]&show=[0|1|2|3]&muti=[0|1]&order=[desc|asc]"
+        load()->func('communication');
 		$resp = ihttp_request($url);
 		$content = $resp['content'];
 		if (empty($content)) 
 		{
 			return array();
 		}
-		$info = json_decode($content, true);
-		if (empty($info) || !(is_array($info)) || empty($info['data'])) 
+		
+		$arr = json_decode ($content,true);
+		if (!is_array($arr)) 
 		{
-			return array();
+			return false;
 		}
+		$arr = $arr['data'];
 		$list = array();
-		foreach ($info['data'] as $index => $data ) 
+		if ($arr) 
 		{
-			$list[] = array('time' => trim($data['time']), 'step' => trim($data['context']));
+			$i = 1;
+			foreach ($arr as $r)
+			{
+				$list[] = array('time' =>$r['time'], 'step' => $r['context'], 'ts' => $r['content']);
+				$i++;
+			}
 		}
 		return $list;
 	}
@@ -54,46 +63,6 @@ class Util_EweiShopV2Model
 		}
 		curl_close($curl);
 		return $found;
-	}
-	public function GetDistance($lat1, $lng1, $lat2, $lng2, $len_type = 1, $decimal = 2) 
-	{
-		$pi = 3.1415926000000001;
-		$er = 6378.1369999999997;
-		$radLat1 = ($lat1 * $pi) / 180;
-		$radLat2 = ($lat2 * $pi) / 180;
-		$a = $radLat1 - $radLat2;
-		$b = (($lng1 * $pi) / 180) - (($lng2 * $pi) / 180);
-		$s = 2 * asin(sqrt(pow(sin($a / 2), 2) + (cos($radLat1) * cos($radLat2) * pow(sin($b / 2), 2))));
-		$s = $s * $er;
-		$s = round($s * 1000);
-		if (1 < $len_type) 
-		{
-			$s /= 1000;
-		}
-		return round($s, $decimal);
-	}
-	public function multi_array_sort($multi_array, $sort_key, $sort = SORT_ASC) 
-	{
-		if (is_array($multi_array)) 
-		{
-			foreach ($multi_array as $row_array ) 
-			{
-				if (is_array($row_array)) 
-				{
-					$key_array[] = $row_array[$sort_key];
-				}
-				else 
-				{
-					return false;
-				}
-			}
-		}
-		else 
-		{
-			return false;
-		}
-		array_multisort($key_array, $sort, $multi_array);
-		return $multi_array;
 	}
 }
 ?>
