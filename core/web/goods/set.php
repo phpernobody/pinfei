@@ -28,9 +28,12 @@ class Set_EweiShopV2Page extends WebPage
                 $goods = pdo_getall('ewei_shop_goods', array('uniacid' => $_W['uniacid']));
                 if (!empty($goods)) {
                     foreach ($goods as $good) {
-                        $productprice = $good['productprice'];
+                    	
+                        //$productprice = $good['productprice'];
+                        $marketprice = $good['marketprice'];
                         $costprice = $good['costprice'];
-                        $p = $productprice - $costprice;
+//                      $p = $productprice - $costprice;
+                        $p = $marketprice -$costprice;
                         $provinceprice = $p * $data['province'] / 100.0 + $costprice;
                         $cityprice = $p * $data['city'] / 100.0 + $provinceprice;
                         $countyprice = $p * $data['county'] / 100.0 + $cityprice;
@@ -38,9 +41,11 @@ class Set_EweiShopV2Page extends WebPage
                         $options = pdo_getall('ewei_shop_goods_option', array('goodsid' => $good['id'], 'uniacid' => $_W['uniacid']));
                         if (!empty($options)) {
                             foreach ($options as $option) {
-                                $productprice = $option['productprice'];
+//                              $productprice = $option['productprice'];
+                                $marketprice = $optionp['marketprice'];                               
                                 $costprice = $option['costprice'];
-                                $p = $productprice - $costprice;
+//                              $p = $productprice - $costprice;
+                                $p = $marketprice -$costprice;
                                 $provinceprice = $p * $data['province'] / 100.0 + $costprice;
                                 $cityprice = $p * $data['city'] / 100.0 + $provinceprice;
                                 $countyprice = $p * $data['county'] / 100.0 + $cityprice;
@@ -52,7 +57,8 @@ class Set_EweiShopV2Page extends WebPage
             }
         }
         $data = m('common')->getSysset('mygoods');
-        include $this->template();
+          include $this->template();
+      
     }
 }
 

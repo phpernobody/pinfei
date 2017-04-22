@@ -128,6 +128,7 @@ class Op_EweiShopV2Page extends WebPage
 					pdo_update('ewei_shop_order_goods', array('realprice' => $realprice, 'changeprice' => $changeprice), array('id' => $ogid));
 				}
 			}
+
 			$pluginc = p('commission');
 			if ($pluginc) 
 			{

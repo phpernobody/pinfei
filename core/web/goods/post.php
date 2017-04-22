@@ -283,7 +283,8 @@ if ($_W['ispost'])
 
         //   代理商成本计算
         $aagentdata = m('common')->getSysset('mygoods');
-        $p = intval($data['productprice']) - intval($data['costprice']);
+//      $p = intval($data['productprice']) - intval($data['costprice']);
+		$p = intval($data['marketprice']) - intval($data['costprice']);
         $data['provinceprice'] = $p * intval($aagentdata['province']) / 100.0 + intval($data['costprice']);
         $data['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($data['provinceprice']);
         $data['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($data['cityprice']);
@@ -296,7 +297,8 @@ if ($_W['ispost'])
 	{
         //   代理商成本计算
         $aagentdata = m('common')->getSysset('mygoods');
-        $p = intval($data['productprice']) - intval($data['costprice']);
+//      $p = intval($data['productprice']) - intval($data['costprice']);
+		$p = intval($data['marketprice']) - intval($data['costprice']);
         $data['provinceprice'] = $p * intval($aagentdata['province']) / 100.0 + intval($data['costprice']);
         $data['cityprice'] = $p * intval($aagentdata['city']) / 100.0 + intval($data['provinceprice']);
         $data['countyprice'] = $p * intval($aagentdata['county']) / 100.0 + intval($data['cityprice']);
