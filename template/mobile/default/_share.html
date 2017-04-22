@@ -18,7 +18,6 @@
                         menuList: {php echo  json_encode($_W['shopshare']['hideMenus'])}
                     });
                 {/if}
-                console.log('share', window.shareData);
                 // by xiaorenwu 
                 // 修改分享信息
                 seShareData = {
@@ -33,9 +32,7 @@
                 // }
 
                 // seShareData.link = 'http://www.pinfeimy.com/app/index.php?i=2&c=entry&m=ewei_shopv2&do=mobile&mid=' + {php echo $member['id']};
-                seShareData.link = window.location.href + '&mid=' + {php echo $member['id']};
-
-                console.log(seShareData);
+                seShareData.link = window.location.href + '&mid=' + '{php echo $member["id"]}';
 
                 wx.onMenuShareAppMessage(seShareData);
                 wx.onMenuShareTimeline(seShareData);

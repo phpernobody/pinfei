@@ -22,7 +22,6 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
     };
     modal.init = function (params) {
         modal.params = $.extend(defaults, params || {});
-       	console.log(params)
         if (!modal.toGoods) {
             modal.page = 1
         } else {
@@ -216,6 +215,7 @@ define(['core', 'tpl', 'biz/goods/picker'], function (core, tpl, picker) {
     modal.getList = function () {
         modal.params.page = modal.page;
         core.json('shoppe/get_list', modal.params, function (ret) {
+            console.log('getList', ret.result.list)
             $('.infinite-loading').hide();
             var result = ret.result;
             if (result.total <= 0) {

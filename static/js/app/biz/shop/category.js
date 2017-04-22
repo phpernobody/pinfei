@@ -8,12 +8,32 @@ define(['core', 'tpl'], function (core, tpl) {
         grandchildren: new Array,
         recommend_children: new Array,
         recommend_grandchildren: new Array,
+        activecate: ''
+    };
+    modal.getQueryString = function (name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) return unescape(r[2]);
+      return null;
     };
     modal.init = function (cate, cateset) {
         modal.cate = cate;
         modal.cateset = cateset;
         core.tpl('#container', 'tpl_shop_category_list', modal.cate, false);
         $("#tab nav").click(function (e) {
+            modal.activecate = $(this).attr('data-cate');
+
+            if (modal.getQueryString('cate')) {
+                // window.location.href = window.location.href.split('mid=')[0] + 'mid=' + modal.activecate;
+                window.history.replaceState(window.history.state, '', window.location.href.split('cate=')[0] + 'cate=' + modal.activecate);
+            } else {
+                // window.location.href = window.location.href + '&mid=' + modal.activecate;
+                window.history.replaceState(window.history.state, '', window.location.href + '&cate=' + modal.activecate);
+            }
+// console.log(window.history)
+            
+
+            console.log('activecate', modal.activecate)
             $(this).siblings().removeClass("on");
             $(this).addClass("on");
             var result = {};
@@ -37,7 +57,21 @@ define(['core', 'tpl'], function (core, tpl) {
             core.tpl('#container', 'tpl_shop_category_list', result, false);
             modal.click_grandchildren()
         });
-        $("#tab nav[data-cate=recommend]").click()
+
+        var cate = '';
+
+        if (modal.activecate && modal.activecate !== '')
+        {
+            cate = modal.activecate;
+        } else {
+            cate = modal.getQueryString('cate');
+console.log(cate)
+            if (!cate) {
+                cate = 'recommend';
+            }
+        }    
+
+        $("#tab nav[data-cate=" + cate + "]").click()
     };
     modal.get_category = function (cateid) {
         modal.children = modal.cate.children[cateid];
