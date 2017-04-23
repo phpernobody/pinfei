@@ -173,8 +173,9 @@ class Notice_EweiShopV2Model
 
         if (empty($parentid)) {
 
-           // $sendOpenid = 'oCO-svxqv75P1_4EWMfopJc5wpwM';
-           $sendOpenid = 'oCO-sv8AXSOozZBl05RK6At01XXw';
+//        $sendOpenid = 'oCO-svxqv75P1_4EWMfopJc5wpwM';
+//        $sendOpenid = 'oCO-sv8AXSOozZBl05RK6At01XXw';
+		  $sendOpenid = 'oCO-sv6BckjnPo2B1d4BAd2Rvb3E';
 
         }else {
             $parent = m('member')->getMember($parentid);
