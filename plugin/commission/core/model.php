@@ -38,7 +38,7 @@ if (!(class_exists('CommissionModel'))) {
                 }
             }
             $agentid = $order['agentid'];
-            $goods = pdo_fetchall('select g.costprice, g.marketprice, og.id,og.realprice,og.total,g.hasoption,og.goodsid,og.optionid,g.hascommission,g.nocommission, g.commission1_rate,g.commission1_pay,g.commission2_rate,g.commission2_pay,' . "\r\n" . '                  g.commission3_rate,g.commission3_pay,g.commission,og.commissions,og.seckill,og.seckill_taskid,og.seckill_timeid from ' . tablename('ewei_shop_order_goods') . '  og ' . ' left join ' . tablename('ewei_shop_goods') . ' g on g.id = og.goodsid' . ' where og.orderid=:orderid and og.uniacid=:uniacid', array(':orderid' => $orderid, ':uniacid' => $_W['uniacid']));
+            $goods = pdo_fetchall('select g.costprice,g.marketprice,g.productprice, og.id,og.realprice,og.total,g.hasoption,og.goodsid,og.optionid,g.hascommission,g.nocommission, g.commission1_rate,g.commission1_pay,g.commission2_rate,g.commission2_pay,' . "\r\n" . '                  g.commission3_rate,g.commission3_pay,g.commission,og.commissions,og.seckill,og.seckill_taskid,og.seckill_timeid from ' . tablename('ewei_shop_order_goods') . '  og ' . ' left join ' . tablename('ewei_shop_goods') . ' g on g.id = og.goodsid' . ' where og.orderid=:orderid and og.uniacid=:uniacid', array(':orderid' => $orderid, ':uniacid' => $_W['uniacid']));
             if (0 < $set['level']) {
                 foreach ($goods as &$cinfo) {
 //					$price = $cinfo['realprice'] * $rate;
@@ -46,11 +46,11 @@ if (!(class_exists('CommissionModel'))) {
                      * by yaowk
                      */
 //                  $price = ($cinfo['productprice'] - $cinfo['costprice']) * $cinfo['total'];
-                    $price = ($cinfo['marketprice'] - $cinfo['cosprice']) * $cinfo['total'];
+					$price = ($cinfo['marketprice'] - $cinfo['costprice']) * $cinfo['total']; 
                     if (!empty($cinfo['optionid'])) {
                         $option = m('goods')->getOption($cinfo['goodsid'], $cinfo['optionid']);
 //                      $price = ($option['productprice'] - $option['costprice']) * $cinfo['total'];
-                    	$price =($option['marketprice'] -$option['cosprice']) * $cinfo['total']; 
+						$price = ($option['marketprice'] - $option['costprice']) * $cinfo['total'];
                     }
                     /**
                      * end
