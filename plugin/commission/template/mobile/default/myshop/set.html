@@ -1,128 +1,90 @@
 {template '_header'}
 <script>document.title = "我是店长"; </script>
 {template 'commission/common'}
+
 <div class="fui-page fui-page-current">
-	<!-- <div class="fui-header">
-	        <div class="fui-header-left">
-	            <a class="back"></a>
-	        </div>
-	        <div class="title">我是店长</div>
-	    </div> -->
-	<div class='fui-content' style="background: #fff">
-		<div style="width: 100%;background: #F33C2C; text-align: center;">
-			<div style="width: 100%; height: 6.2rem;border-bottom: 1px solid #f67167; padding: 1.5rem 0; display: flex; justify-content: space-between;">
-<!-- 				<div style="color: #fff;font-size: .75rem;"><b>今天付款金额（元）</b></div>
-				<div style="color:#fffc00;font-size: 1rem;margin-top: .6rem;">{$count['todayTotalPrice']}</div> -->
-				<div style="width: 50%; border-right: 1px solid #eee;">
-					<div style="color: #fff;font-size: .75rem;"><b>今日营业额（元）</b></div>
-					<div style="color:#fffc00;font-size: 1rem;margin-top: .6rem;">{$count['todayTotalPrice']}</div>
-				</div>
-				<div style="width: 50%;">
-					<div style="color: #fff;font-size: .75rem;"><b>今日纯利（元）</b></div>
-					<div style="color:#fffc00;font-size: 1rem;margin-top: .6rem;">{$count['todayTotalProfit']}</div>
-				</div>
-			</div>
-			<div style="width:100%; height: 3.1rem; padding: 0.65rem 0;font-size: .5rem;color: #fff; display
+    <!-- <div class="fui-header">
+            <div class="fui-header-left">
+                <a class="back"></a>
+            </div>
+            <div class="title">我是店长</div>
+        </div> -->
+    <div class='fui-content' style="background: #fff">
+        <div style="width: 100%;background: #F33C2C; text-align: center;" >
+            <div style="width: 100%; height: 6.2rem;border-bottom: 1px solid #f67167; padding: 1.5rem 0;">
+                <div style="width: 50%; border-right: 1px solid #eee;float:left;">
+                    <div style="color: #fff;font-size: .75rem;"><b>今日营业额（元）</b></div>
+                    <div style="color:#fffc00;font-size: 1rem;margin-top: .6rem;">{$count['todayTotalPrice']}</div>
+                </div>
+                <div style="width: 50%;float:right;">
+                    <div style="color: #fff;font-size: .75rem;"><b>今日纯利（元）</b></div>
+                    <div style="color:#fffc00;font-size: 1rem;margin-top: .6rem;">{$count['todayTotalProfit']}</div>
+                </div>
+            </div>
+            <div style="width:100%; height: 3.1rem; padding: 0.65rem 0;font-size: .5rem;color: #fff; display
 			: flex;">
-				<div style="width: calc(100% / 3); border-right: 1px solid #ededed;">浏览人数<br/>{$count['viewLog']}</div>
-				<div style="width: calc(100% / 3); border-right: 1px solid #ededed;">付款订单数<br/>{$count['payOrder']}</div>
-				<div style="width: calc(100% / 3);">付款件数<br/>{$count['totalGoods']}</div>
-			</div>
-		</div>
-		<div style="height: 3.1rem; border-bottom: 1px solid #ededed; border-top: 1px solid #ededed; display: flex;margin-top: .5rem;">
-			<div class="tap_team" style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem; border-right: 1px solid #ededed;">
-				<img src="../addons/ewei_shopv2/static/img/1.png" style="margin: .3rem auto; display: block; width:1.1rem; margin-top: .5rem;">
-				<div>
-					代理团队信息
-				</div>
-			</div>
-			<div class="tap_select" style="width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem; border-right: 1px solid #ededed;">
-				<img src="../addons/ewei_shopv2/static/img/2.png" style="margin: .3rem auto; display: block; width:1.1rem; margin-top: .5rem;">
-				<div>
-					商品管理
-				</div>
-			</div>
-			<div class="tap_order" style="position: relative;width: calc(100% / 3); display: flex; text-justify: center; flex-direction: column; text-align: center; font-size: 0.45rem;">
-				<img src="../addons/ewei_shopv2/static/img/3.png" style="margin: .3rem auto; display: block; width:1.1rem; margin-top: .5rem;">
-				<div style="position: relative;">
-					团队订单
-				</div>
-				{if intval($count['unSendOrder']) !== 0}
-				<div style="width: .8rem; height: .8rem; line-height: .8rem; border-radius: .4rem; font-size: .45rem; color: #fff;position: absolute; top: .2rem; left: 50%; background: #F33C2C;">{$count['unSendOrder']}</div>
-				{/if}
-			</div>
-		</div>
-		<div style="width: 100%; background:#f9f9fb; display: flex; border-top: 1px solid #ededed; border-bottom: 1px solid #ededed;margin-top: .5rem; height: 1.9rem; font-size: .7rem; justify-content: space-between; align-items: center;">
-			<div style="margin-left: .65rem;font-size: 1rem;">总账单&nbsp;&nbsp;&nbsp;：</div>
-			<div style="margin-right: .65rem;  padding-right: .2rem;"><a href="{php echo mobileUrl('commission/myshop/yy')}" style="color:#626262"><img src="../addons/ewei_shopv2/static/img/shou.png" style="height: 1rem;margin-right: .35rem;">查看</a></div>
-		</div>
-		<div style="width: 100%; display: flex; border-top: 1px solid #ededed; border-bottom: 1px solid #ededed;margin-top: .5rem; height: 1.9rem; font-size: .7rem; justify-content: space-between; align-items: center;">
-			<div style="margin-left: .65rem;font-size: 1rem;">店铺名称：{php echo $xiaodname;}</div>
-			<div style="margin-right: .65rem;  padding-right: .2rem;"><a href="{php echo mobileUrl('commission/myshop/setadd')}" style="color:#626262">编辑</a></div>
-		</div>
-		<div style="margin:1rem;margin-bottom: .5rem;">
-			<img src="{php echo $xiaodpath;}" style="width: 100%;" />
-		</div>
-		<div style='margin:1rem;margin-top:0;background:#ededed;display: flex;flex-direction: row;'>
-			<div style=''>店铺地址：</div>
-			<div style='width:70%;height: 3rem;word-wrap: break-word;'>{php echo $xiaodadd;}</div>
-		</div>
-<!--		
-		<div style="margin: .65rem; font-size: .45rem; line-height: 1.2rem;
-		padding-left: .5rem; background: #ededed;">
-			{$url}
-		</div>
+                <div style="width: 33.3%; border-right: 1px solid #ededed;float:left;">浏览人数<br/>{$count['viewLog']}</div>
+                <div style="width: 33.3%; border-right: 1px solid #ededed;float:left;">付款订单数<br/>{$count['payOrder']}</div>
+                <div style="width: 33.3%;float:left;">付款件数<br/>{$count['totalGoods']}</div>
+            </div>
+        </div>
+        <div style="height: 3.1rem; border-bottom: 1px solid #ededed; border-top: 1px solid #ededed; display: flex;margin-top: .5rem;">
+            <div class="tap_team" style="width: 33.3%; float:left; text-align: center; font-size: 0.45rem; border-right: 1px solid #ededed;">
+                <img src="../addons/ewei_shopv2/static/img/1.png" style="margin: .3rem auto; display: block; width:1.1rem;height:1.1rem; margin-top: .5rem;">
+                <div>
+                    代理团队信息
+                </div>
+            </div>
+            <div class="tap_select" style="width: 33.3%; float:left;  text-align: center; font-size: 0.45rem; border-right: 1px solid #ededed;">
+                <img src="../addons/ewei_shopv2/static/img/2.png" style="margin: .3rem auto; display: block; width:1.1rem;height:1.1rem; margin-top: .5rem;">
+                <div>
+                    商品管理
+                </div>
+            </div>
+            <div class="tap_order" style="position: relative;width: 33.3%; float:left; text-align: center; font-size: 0.45rem;">
+                <img src="../addons/ewei_shopv2/static/img/3.png" style="margin: .3rem auto; display: block; width:1.1rem;height:1.1rem; margin-top: .5rem;">
+                <div style="position: relative;">
+                    团队订单
+                </div>
+                {if intval($count['unSendOrder']) !== 0}
+                <div style="width: .8rem; height: .8rem; line-height: .8rem; border-radius: .4rem; font-size: .45rem; color: #fff;position: absolute; top: .2rem; left: 50%; background: #F33C2C;">{$count['unSendOrder']}</div>
+                {/if}
+            </div>
+        </div>
+        <div style="width: 100%; background:#f9f9fb; border-top: 1px solid #ededed; border-bottom: 1px solid #ededed;margin-top: .5rem; height: 1.9rem; font-size: .7rem;  align-items: center;">
+            <div style="margin-left: .65rem;font-size: 1rem;float: left;">总账单&nbsp;&nbsp;&nbsp;：</div>
+            <div style="margin-right: .65rem;margin-top:.3rem;float: right;padding-right: .2rem;"><a href="{php echo mobileUrl('commission/myshop/yy')}" style="color:#626262"><img src="../addons/ewei_shopv2/static/img/shou.png" style="height: 1rem;width:1rem;margin-right: .35rem;">查看</a></div>
+        </div>
+        <div style="width: 100%;  border-top: 1px solid #ededed; border-bottom: 1px solid #ededed;margin-top: .5rem; height: 1.9rem; font-size: .7rem;  align-items: center;">
+            <div style="margin-left: .65rem;font-size: 1rem;float: left;">店铺名称：{php echo $xiaodname;}</div>
+            <div style="margin-right: .65rem;margin-top:.3rem;padding-right: .2rem;float: right;"><a href="{php echo mobileUrl('commission/myshop/setadd')}" style="color:#626262">编辑</a></div>
+        </div>
+        <div style="margin:1rem;margin-bottom: .5rem;">
+            <img id="dp_img" src="{php echo $xiaodpath;}" style="width: 100%;" />
+        </div>
+        <div style='margin:1rem;margin-top:0;background:#ededed;display: flex;flex-direction: row;'>
+            <div style=''>店铺地址：</div>
+            <div style='width:70%;height: 3rem;word-wrap: break-word;'>{php echo $xiaodadd;}</div>
+        </div>
+    </div>
+    <script language='javascript'>
+        require(['../addons/ewei_shopv2/plugin/commission/static/js/myshop.js'], function (modal) {
+            modal.initSet();
+        });
+        $('.tap_select').click(function() {
+            window.location.href = "{php echo mobileUrl('commission/myshop/select').'#myshop-select-goods'}";
+        });
 
-		<img style="display: block; margin: auto; width: 7.1rem; height: 7.1rem; margin-top: 1.3rem;" src="{$qrimg}" alt="">-->
-			
+        $('.tap_team').click(function() {
+            console.log("{php echo mobileUrl('abonus.team')}")
+            window.location.href = "{php echo mobileUrl('abonus.team')}";
+        });
 
-<!-- 		<div style="width: 8rem; background: #ededed; height: 1.7rem; display: flex; justify-content: center; align-items: center; margin: auto;margin-top: .3rem; font-size: 0.45rem;">
-			<img style="width: .7rem; height: .7rem;" src="../addons/ewei_shopv2/static/img/down.png" alt="">
-			&nbsp;下载二维码
-		</div> -->
-	</div>
-
-
-
-
-
-<!-- 		<div style="width:100%;height:0.6rem;border-bottom:1px solid #d9d9d9"></div>
-		<div style="width:100%;height:3rem;border-bottom:1px solid #d9d9d9;line-height:3rem;">
-			<span style="margin-top:5px;font-size:21px;margin-left: 2rem;">我的推广连接</span>
-			<span style="float:right;margin-right: 2rem;">分享&nbsp;<img src="../addons/ewei_shopv2/static/img/fx.png" alt=""></span>
-		</div>
-		<div style="width:100%;height:1rem;"></div>
-        <div style="width:100%;height:4rem;">
-			<input class="form-control" id="disabledInput" type="text" placeholder="www.baidu.com" disabled style="width:90%;height:2rem;font-size:20px;margin-left:5%;margin-top:1rem;padding:1rem;">
-		</div>
-		<div style="width:100%;">
-			<img src="../addons/ewei_shopv2/static/img/erweima.png" alt="" style="margin-left:26%;margin-top:2rem;">
-		</div>
-		<div style="width:100%;height:3rem;">
-			<img src="../addons/ewei_shopv2/static/img/xiazhai.png" alt="" style="margin-left:35%;margin-top:0.5rem;">
-			<span style="font-size:26px;">下载二维码</span>
-		</div> -->
-
-
-	<script language='javascript'>
-		require(['../addons/ewei_shopv2/plugin/commission/static/js/myshop.js'], function (modal) {
-			modal.initSet();
-		});
-
-		$('.tap_select').click(function() {
-			window.location.href = "{php echo mobileUrl('commission/myshop/select').'#myshop-select-goods'}";
-		});
-
-		$('.tap_team').click(function() {
-			console.log("{php echo mobileUrl('abonus.team')}")
-			window.location.href = "{php echo mobileUrl('abonus.team')}";
-		});
-
-		$('.tap_order').click(function() {
-			console.log("{php echo mobileUrl('abonus.order')}")
-			window.location.href = "{php echo mobileUrl('abonus.order')}";
-		});
-	</script>
+        $('.tap_order').click(function() {
+            console.log("{php echo mobileUrl('abonus.order')}")
+            window.location.href = "{php echo mobileUrl('abonus.order')}";
+        });
+    </script>
 
 </div>
 {php $this->footerMenus()}
