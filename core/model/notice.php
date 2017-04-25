@@ -183,7 +183,8 @@ class Notice_EweiShopV2Model
         }
 //var_dump($sendOpenid);
 //        $sendOpenid = $openid;
-        $url = 'http://www.pinfeimy.com/app/index.php?i=2&c=entry&m=ewei_shopv2&do=mobile&r=member';
+//        $url = 'http://www.pinfeimy.com/app/index.php?i=2&c=entry&m=ewei_shopv2&do=mobile&r=member';
+        $url = 'http://www.pinfeimy.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=commission.myshop.set';
         $account = m('common')->getAccount();
 
         $disName = empty($member['realname']) ? $member['nickname'] : $member['realname'];

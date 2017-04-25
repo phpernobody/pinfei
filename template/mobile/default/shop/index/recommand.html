@@ -241,22 +241,21 @@
 </div>
 <!--魔方样式-->
 
-<div class="magic">
-	<div class="magic-left">
-		<div class='magic-left1'>
-
-				<img onclick="doNew()" src="../addons/ewei_shopv2/static/img/news.jpg" style="width: 100%;height: 4.275rem">
+<div style="overflow: hidden;">
+	<div style="width: 7.4rem; float: left; margin-left: .5rem;">
+		<div>
+			<img onclick="doNew()" src="../addons/ewei_shopv2/static/img/news.jpg" style="width: 100%;height: 4.275rem">
 		</div>
 		{loop $getIsnew1 $v}
-		<div class='magic-left2'>
+		<div>
 			<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
 				<img src="../attachment/{$v['thumb']}" style="width: 100%;height: 6.2rem">
 
-				<div class="left-cont">
-					<div style="color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
+				<div style="overflow: hidden;">
+					<div style="float: left; color: #000;font-size: .65rem;width: 63%;height: 2rem;line-height: 1rem; font-weight: bold;overflow: hidden;">
 						{$v['title']}
 					</div>
-					<div style='width: 37%;height: 2rem;'>
+					<div style='float: left; width: 37%;height: 2rem;'>
 						<div style="float: right;color: #fff;font-size: .5rem;background:#ec3028;text-align:center;width:2.5rem;height: 1rem;line-height: 1rem">
 							新品优惠
 						</div>
@@ -288,11 +287,11 @@
 		<!--</div>-->
 	</div>
 
-	<div class="magic-right">
+	<div style="width: 9.6rem; float: right; margin-right: .5rem;">
 		{loop $getIsnew2 $v}
-		<div class="magic-right2">
+		<div>
 			<a href="{php echo mobileUrl('goods/detail').'&id='.$v['id']}">
-				<img id="rightImg" src="../attachment/{$v['thumb']}" style="width: 100%;height: 8.55rem">
+				<img src="../attachment/{$v['thumb']}" style="width: 100%;height: 8.55rem">
 				<div class="right-cont">
 					<div style="color: #000;font-size: .65rem;width: 70%;height: 2rem;line-height: 1rem;font-weight: bold;overflow: hidden;">
 						{$v['title']}

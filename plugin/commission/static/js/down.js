@@ -29,25 +29,25 @@ define(['core', 'tpl'], function (core, tpl) {
                     for (var i = list.length - 1; i >= 0; i--) {
                         html += '<div class="se-table-body" data-openid="';
                         html += list[i]['openid'];
-                        html += '" style="display: flex; justify-content: space-between; height: 4.55rem; align-items: center; margin-top: .5rem; background: #F1F1F1;"><div style="position: relative;">';
+                        html += '" style="height: 4.6rem; margin-top: .5rem; background: #F1F1F1;"><div style="position: relative;">';
                         html += '<img src="';
                         if (list[i]['avatar']) {
                             html += list[i]['avatar'];
                         } else {
                             html += '../addons/ewei_shopv2/plugin/abonus/template/mobile/default/static/images/avatar.png';
                         }
-                        html += '" style="width: 3.3rem; height: 3.3rem; margin-left: .5rem">';
-                        html += '</div><div style="width: calc(100% - 7.5rem); font-size: .5rem; height: 3.3rem; text-align: left; display: flex; flex-direction: column; justify-content: space-between; margin-left: .5rem;"><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>';
+                        html += '" style="float: left; width: 3.3rem; height: 3.3rem; margin-top: .65rem; margin-left: .5rem">';
+                        html += '</div><div style="float: left; width: calc(100% - 8rem); font-size: .5rem; height: 3.3rem; text-align: left; margin-top: .65rem; margin-left: .5rem;"><div><span style="height: calc(3.3rem / 4); line-height: calc(3.3rem / 4);color: #ff5d15; width: 3.5rem; display: inline-block;">姓名：</span>';
                         html += list[i]['nickname'];
-                        html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">入住时间：</span>';
+                        html += '</div><div><span style="height: calc(3.3rem / 4); line-height: calc(3.3rem / 4);color: #ff5d15; width: 3.5rem; display: inline-block;">入住时间：</span>';
                         html += list[i]['createtime'];
-                        html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">消费金额：</span>';
+                        html += '</div><div><span style="height: calc(3.3rem / 4); line-height: calc(3.3rem / 4);color: #ff5d15; width: 3.5rem; display: inline-block;">消费金额：</span>';
                         html += list[i]['moneycount'];
-                        html += '</div><div><span style="color: #ff5d15; width: 3.5rem; display: inline-block;">佣金：</span>';
+                        html += '</div><div><span style="height: calc(3.3rem / 4); line-height: calc(3.3rem / 4);color: #ff5d15; width: 3.5rem; display: inline-block;">佣金：</span>';
                         html += list[i]['commission_total'];
-                        html += '</div></div><div style="width: 3rem;"><a href="';
+                        html += '</div></div><div style="width: 3rem; float: right; "><a href="';
                         html += link + list[i]['id'];
-                        html += '" style="width: 1.8rem; height: 1rem; line-height: 1.2rem; border-radius: .2rem; font-size: .45rem; text-align: center; background: #ec3028; color: #fff; display: block; margin-top: .3rem;">明细</a></div></div>';
+                        html += '" style="width: 1.8rem; height: 1rem; line-height: 1.2rem; border-radius: .2rem; font-size: .45rem; text-align: center; background: #ec3028; color: #fff; display: block; margin-top: 1.8rem;">明细</a></div></div>';
                     }
 
                     next.html(html);
