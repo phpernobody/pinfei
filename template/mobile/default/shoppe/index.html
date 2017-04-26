@@ -4,12 +4,13 @@
 	  <div class="fui-header-left">
 	    <a class="back"></a>
 	  </div>
-	<div class="title">
-		专柜
-	</div>
-	<div class="fui-header-right" data-nomenu="true">
-	    <a href="javascript:;"><i class="icon icon-sort" id="listblock" data-state="list"></i></a>
-	</div>
+		<div class="title">
+			{$shoppe['name']}——专柜
+		</div>
+		<!--<div class="fui-header-right" data-nomenu="true">
+		    <a href="javascript:;"><i class="icon icon-sort" id="listblock" data-state="list"></i></a>
+		</div>-->
+		
   </div>
 <!--     <div class="sort">
 	<div class="item on"><span class='text'>综合</span></div>
@@ -24,16 +25,17 @@
 	<div class="item"  data-order="filter"><span class='text'>筛选 <i class="icon icon-filter "></i></span> </div>
     </div> -->
 
-
-
-  <div class="fui-content navbar" style="margin-top: -40px;">
+	
+	
+  <div class="fui-content navbar" style='margin-top: -40px;'>
+  <div class="shppe-img">
+			<img style="width: 100%; display: block;" src="../attachment/{$shoppe['advimg']}" alt="">
+	</div>
 	<div class='fui-content-inner'>
 	    <div class='content-empty' style='display:none;'>
 		<i class='icon icon-searchlist'></i><br/>暂时没有任何商品
 	    </div>
-		<div class="shppe-img">
-			<div><img style="width: 100%; display: block;" src="../attachment/{$item['advimg']}" alt=""></div>
-		</div>
+		
 	    <div class="fui-goods-group container block" id="goods-list-container"></div>
 	    <div class='infinite-loading'><span class='fui-preloader'></span><span class='text'> 正在加载...</span></div>
 	</div>
@@ -95,9 +97,14 @@
 	   <a <%if g.bargain>0%>href="{php echo mobileUrl('bargain/detail')}&id=<%g.bargain%>"<%else%>href="{php echo mobileUrl('goods/detail')}&id=<%g.id%>"<%/if%>>
 	           <div class="name"><%g.title%></div>
 	   </a>
-	           <div class="price">
-		   <span class="text">￥<%g.minprice%></span>
-           <span class="buy"><%if g.bargain >0%>砍价活动<%else%><i class="icon icon-cart"></i><%/if%></span></div>
+	   	<div style='display:flex;justify-content: space-between;font-size:.65rem'>
+			<span style='float:left;color: #959595;'>月销:<%g.salesreal%></span>
+			<span style='float:right;color: #959595;'>库存:<%g.total%></span>
+	   	</div>
+	    <div class="price">
+			<span class="text">￥<%g.minprice%><span style="text-decoration:line-through;font-size:0.5rem;color: #5e5e5e;line-height: 1rem;height: 1rem;margin-left:.55rem">原价:￥<%g.productprice%></span></span>
+
+			<span class="buy"><%if g.bargain >0%>砍价活动<%else%><i class="icon icon-cart"></i><%/if%></span></div>
  	    </div>
 	</div>
     <%/each%>

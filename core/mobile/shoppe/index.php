@@ -13,6 +13,7 @@ class Index_EweiShopV2Page extends MobilePage
 		$catlevel = intval($_W['shopset']['category']['level']);
 		$opencategory = true;
 		$plugin_commission = p('commission');
+		$s_id = intval($_GPC['shoppe']);
 		if ($plugin_commission && (0 < intval($_W['shopset']['commission']['level']))) 
 		{
 			$mid = intval($_GPC['mid']);
@@ -25,6 +26,10 @@ class Index_EweiShopV2Page extends MobilePage
 				}
 			}
 		}
+		$sql = ' select * from ims_ewei_shop_shoppe where id = ' . $s_id;
+		$shoppes = pdo_fetchall($sql);
+//		$shoppes = pdo_fetchall('select * from '. tablename('ewei_shop_shoppe') . ' where id = '. $_sid);
+		$shoppe  =$shoppes[0];
 		
 		include $this->template();
 	}
