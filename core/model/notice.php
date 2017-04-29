@@ -172,19 +172,16 @@ class Notice_EweiShopV2Model
         $parentid = $member['hagentid'];
 
         if (empty($parentid)) {
-
-//        $sendOpenid = 'oCO-svxqv75P1_4EWMfopJc5wpwM';
-//        $sendOpenid = 'oCO-sv8AXSOozZBl05RK6At01XXw';
-		  $sendOpenid = 'oCO-sv6BckjnPo2B1d4BAd2Rvb3E';
-
+            $sendOpenid = 'oCO-sv6BckjnPo2B1d4BAd2Rvb3E';            
+           // $sendOpenid = 'oCO-svyGCqVkcqvJK-3qAPcGMnQo';
         }else {
             $parent = m('member')->getMember($parentid);
             $sendOpenid = $parent['openid'];
         }
-//var_dump($sendOpenid);
+        var_dump($sendOpenid);
 //        $sendOpenid = $openid;
-//        $url = 'http://www.pinfeimy.com/app/index.php?i=2&c=entry&m=ewei_shopv2&do=mobile&r=member';
-        $url = 'http://www.pinfeimy.com/app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=commission.myshop.set';
+//      $url = 'http://www.pinfeimy.com/app/index.php?i=2&c=entry&m=ewei_shopv2&do=mobile&r=member';
+        $url = 'http://www.pinfeimy.com/app/index.php?i=2&c=entry&m=ewei_shopv2&do=mobile&r=commission.myshop.set';
         $account = m('common')->getAccount();
 
         $disName = empty($member['realname']) ? $member['nickname'] : $member['realname'];
