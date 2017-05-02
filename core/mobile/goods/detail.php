@@ -536,11 +536,12 @@ class Detail_EweiShopV2Page extends MobilePage
 		$goodsdesc = ((!(empty($goods['description'])) ? $goods['description'] : $goods['subtitle']));
 		$_W['shopshare'] = array('title' => (!(empty($goods['share_title'])) ? $goods['share_title'] : $goods['title']), 'imgUrl' => (!(empty($goods['share_icon'])) ? tomedia($goods['share_icon']) : tomedia($goods['thumb'])), 'desc' => (!(empty($goodsdesc)) ? $goodsdesc : $_W['shopset']['shop']['name']), 'link' => mobileUrl('goods/detail', array('id' => $goods['id']), true));
 		$com = p('commission');
+//		分享链接
 		if ($com) 
 		{
-			$cset = $_W['shopset']['commission'];
-			if (!(empty($cset))) 
-			{
+//			$cset = $_W['shopset']['commission'];
+//			if (!(empty($cset))) 
+//			{
 				if (($member['isagent'] == 1) && ($member['status'] == 1)) 
 				{
 					$_W['shopshare']['link'] = mobileUrl('goods/detail', array('id' => $goods['id'], 'mid' => $member['id']), true);
@@ -549,7 +550,8 @@ class Detail_EweiShopV2Page extends MobilePage
 				{
 					$_W['shopshare']['link'] = mobileUrl('goods/detail', array('id' => $goods['id'], 'mid' => $_GPC['mid']), true);
 				}
-			}
+//			}
+			
 		}
 		$stores = array();
 		if ($goods['isverify'] == 2) 
