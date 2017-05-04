@@ -15,8 +15,8 @@
 	    height: 5.5rem;
 	    border-bottom: 3px solid #ee736e;
 	    padding-top: 1.625rem;
-	    display: flex;
-	    flex-direction: row;
+	    /*display: flex;
+	    flex-direction: row;*/
 	}
 	.top_left,.top_right{
 	    width: 50%;
@@ -24,7 +24,12 @@
 	    text-align: center;
 	    
 	}
-	
+	.top_left{
+		float:left;
+	}
+	.top_right{
+		float:right;
+	}
 	.top_left p,.top_right p{
     	font-size: 1rem;
     	color: #fffc00;
@@ -32,8 +37,8 @@
 	.bottom{
 	    width: 100%;
 	    height: 3.75rem;
-	    display: flex;
-	    flex-direction: row;
+	    /*display: flex;
+	    flex-direction: row;*/
 	}
 /************下拉菜单**************/
 	.bottom_left{
@@ -42,13 +47,16 @@
 	    height: 100%;
 	    border-right: 3px solid #ee736e;
 	    position: relative;
-	   	display: flex;
-	   	justify-content:center;
-	   	align-items:Center;	    
+	   	/*display: flex;
+	   	justify-content:center;*/
+	   	align-items:Center;	 
+	   	float:left;   
 	}
 	.reg_testdate{
-		display: flex;
-		flex-direction: row;		
+		/*display: flex;
+		flex-direction: row;*/		
+		text-align: center;
+		margin-top:1rem;
 	}
 	.reg_testdate select{
 		height: 1rem;
@@ -57,14 +65,20 @@
 	}
 /*****************************/
 	.bottom_right{
-	    display: flex;
+	    /*display: flex;
 	    flex-direction: column;
-	    justify-content: space-around;
+	    justify-content: space-around;*/
 		padding-left: 1rem;
+		height: 100%;
+		width: 50%;
+		float:right;
+		padding-top:.7rem;
 	}
 	.bottom_right p{
 	    font-size: .8rem;
 	    color: #fff;
+	    display: block;
+	    text-align: center;
 	}
 	.bottom_right>p>span{
 	    color: #fffc00;
