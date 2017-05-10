@@ -10,9 +10,9 @@
 
             jssdkconfig.jsApiList = ['checkJsApi','onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','showOptionMenu', 'hideMenuItems', 'onMenuShareQZone'];
             wx.config(jssdkconfig);
-           /* wx.error(function(res){
+           	wx.error(function(res){
             	alert('wx.error: '+JSON.stringify(res));
-            });*/
+            });
             wx.ready(function () {
                 wx.showOptionMenu();
 
