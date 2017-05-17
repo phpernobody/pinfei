@@ -81,7 +81,7 @@ class Yy_EweiShopV2Page extends CommissionMobileLoginPage
        			//将日期分割开
        			$y=substr($date,0,4);
        			$m=substr($date,5,2);
-				$d=substr($date,-2);
+				$d=intval(substr($date,-2));
 				//echo $d.'<br/>';
 				//判断是否为选择的月份
 				if($y==$year&&$m==$month){
