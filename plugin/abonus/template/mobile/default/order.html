@@ -133,9 +133,9 @@
     </div>
 
     <div class="se-send" style="position: absolute; top: 0; width: 100%; height: 100%; z-index: 100; background: #fff; display: none;">
-        <div style="width: 100%; height: 2rem; line-height: 2rem; padding: 0 .5rem; display: flex; justify-content: space-between; color: 0.65rem;">
-            <div>商品</div>
-            <div class="se-status" style="color: red; color: 0.55rem;">
+        <div style="width: 100%; height: 2rem; line-height: 2rem; padding: 0 .5rem;  color: 0.65rem;">
+            <div style="float: left">商品</div>
+            <div class="se-status" style="color: red; float:right;color: 0.55rem;">
                 待发货
             </div>
         </div>
@@ -153,23 +153,23 @@
 
 
         <div style="margin-top: .5rem; background: #fbfbfb; font-size: 0.65rem; border-top: 1px solid #eee; height: 1.5rem; line-height: 1.5rem; padding: 0 .5rem;">发货</div>
-         <div style="width: 100%; display: flex; border-top: 1px solid #ddd; font-size: .65rem; height: 1.5rem; line-height: 1.5rem; justify-content: space-between; padding: 0 .5rem;">
-            <div>快递公司</div>
-            <div style="color: #949494; font-size: .6rem; border: none; text-align: right;">
+         <div style="width: 100%;  border-top: 1px solid #ddd; font-size: .65rem; height: 1.5rem; line-height: 1.5rem;  padding: 0 .5rem;">
+            <div style="float: left">快递公司</div>
+            <div style="color: #949494;float:right; font-size: .6rem; border: none; text-align: right;">
                 <select id="se-plugin-express" >
                     <option value="false">其他快递</option>
                 </select>
             </div>
 
         </div>
-        <div style="width: 100%; display: flex; border-top: 1px solid #ddd; font-size: .65rem; height: 1.5rem; line-height: 1.5rem; justify-content: space-between; padding: 0 .5rem;">
-            <div>快递单号</div>
-            <input class="se-express-sn" type="text" style="color: #949494; font-size: .6rem; border: none; text-align: right;" placeholder="请输入物流单号">
+        <div style="width: 100%; border-top: 1px solid #ddd; font-size: .65rem; height: 1.5rem; line-height: 1.5rem;padding: 0 .5rem;">
+            <div style="float: left">快递单号</div>
+            <input class="se-express-sn" type="text" style="color: #949494; font-size: .6rem; border: none; text-align: right;float: right;" placeholder="请输入物流单号">
         </div>
 
-        <div style="width: 100%; position: absolute; bottom: 0; height: 2.5rem; line-height: 2.5rem; z-index: 1000; background: #eee; display: flex; justify-content: space-between; text-align: center;">
-            <div class="se-order-cancel" style="width: 5.5rem; color: #949494">返回</div>
-            <div class="se-order-confirm" style="width: calc(100% - 5.5rem); color: #fff; background: #ec3028;">确认发货</div>
+        <div style="width: 100%; position: absolute; bottom: 0; height: 2.5rem; line-height: 2.5rem; z-index: 1000; background: #eee; text-align: center;">
+            <div class="se-order-cancel" style="width: 25%; color: #949494;float: left">返回</div>
+            <div class="se-order-confirm" style="width:75%; float:right;color: #fff; background: #ec3028;">确认发货</div>
         </div>
     </div>
 
@@ -214,7 +214,7 @@
                         <span class='status'>共 <span class='text-danger'><%order.goods.length%></span> 个商品 实付: <span class='text-danger'>&yen; <%order.price%></span></span>
                     </div> -->
                     <% if order.status==1%>
-                    <div style="width: 100%; display: flex; justify-content: flex-end;">
+                    <div style="width: 100%; height: 1.5rem">
                         <div data-id="<%order.id%>" class="se-send-btn" style="float: right; margin-right: .5rem; margin-bottom: .5rem;width: 2rem; height: 1rem; line-height: 1rem; font-size: .5rem; background: red; border-radius: .2rem;color: #fff;text-align: center;">发货</div>
                     </div>
                     <%/if%>

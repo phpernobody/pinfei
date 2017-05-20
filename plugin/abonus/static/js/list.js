@@ -70,15 +70,15 @@ define(['core', 'tpl', 'biz/order/op'], function (core, tpl, op) {
         for (var i = goods.length - 1; i >= 0; i--) {
             html += '<img src="';
             html += goods[i].thumb;
-            html += '" alt="" style="width: 3.5rem; height: 3.5rem; display: block; float: left;"><div style="position: relative; height: 3.5rem;float: right; width: calc(100% - 4.5rem); font-size: .5rem;"><div style="width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: .8rem;">';
+            html += '" alt="" style="width: 3.5rem;height: 3.5rem; display: block; float: left;margin-top:.5rem;"><div style="position: relative; margin-top:.5rem;height: 3.5rem;float: right; width:80%; font-size: .5rem;"><div style="width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: .8rem;">';
             html += goods[i].title;
-            html += '</div><div style="width: 100%; color: #7d7c7c; height: 1rem; line-height: 1rem;">订单日期： <span class="se-order-time">';
+            html += '</div><div style="width: 100%;color: #7d7c7c; height: 1rem; line-height: 1rem;">订单日期： <span class="se-order-time">';
             html += orderDetail.paytime;
-            html += '</span></div><div style="width: 100%; display: flex; justify-content: space-between; position: absolute; bottom: 0;"><div style="color: red;">共';
+            html += '</span></div><div style="width: 100%;position: absolute; bottom: 0;"><div style="color: red;float:left">共';
             html += goods[i].total;
             html += '件商品：¥<span class="se-order-total">';
             html += goods[i].price;
-            html += '</span></div><div style="color: #949494;">数量：<span class="se-order-count">';
+            html += '</span></div><div style="color: #949494;float:right">数量：<span class="se-order-count">';
             html += goods[i].total;
             html += '</span>件</div></div></div>'
         }
